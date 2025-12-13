@@ -1,0 +1,26 @@
+= Next-Gen Languages
+
+*Experimental programming language projects*
+
+== Components
+
+|===
+| Repo | Description
+
+| link:betlang[betlang]
+| Bet programming language
+
+| link:julia-the-viper[julia-the-viper]
+| Julia-based language experimentation
+
+|===
+
+== Quick Start
+
+```bash
+git clone --recursive https://github.com/hyperpolymath/nextgen-languages.git
+```
+
+== License
+
+MIT OR Palimpsest-0.8
