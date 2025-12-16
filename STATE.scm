@@ -12,10 +12,10 @@
 ;;;============================================================================
 
 (define metadata
-  '((version . "0.1.0")
+  '((version . "0.2.0")
     (schema-version . "1.0")
     (created . "2025-12-15")
-    (updated . "2025-12-15")
+    (updated . "2025-12-16")
     (project . "nextgen-languages")
     (repo . "github.com/hyperpolymath/nextgen-languages")))
 
@@ -25,13 +25,19 @@
 
 (define project-context
   '((name . "nextgen-languages")
-    (tagline . "*Experimental programming language projects*")
-    (version . "0.1.0")
+    (tagline . "A strategic ecosystem of experimental programming languages")
+    (version . "0.2.0")
     (license . "AGPL-3.0-or-later")
     (rsr-compliance . "gold-target")
+    (role . "Hub repository for eight next-gen language satellites")
+
+    (languages
+     ((total . 8)
+      (defined . (Solo Duet Ensemble Phronesis Eclexia Oblíbený Anvomidav WokeLang))
+      (existing-satellites . (betlang))))
 
     (tech-stack
-     ((primary . "See repository languages")
+     ((primary . "Scheme (specification), multi-language (implementation)")
       (ci-cd . "GitHub Actions + GitLab CI + Bitbucket Pipelines")
       (security . "CodeQL + OSSF Scorecard")))))
 
@@ -40,8 +46,8 @@
 ;;;============================================================================
 
 (define current-position
-  '((phase . "v0.1 - Initial Setup and RSR Compliance")
-    (overall-completion . 25)
+  '((phase . "v0.2 - Language Strategy Definition")
+    (overall-completion . 40)
 
     (components
      ((rsr-compliance
@@ -50,25 +56,33 @@
         (notes . "SHA-pinned actions, SPDX headers, multi-platform CI")))
 
       (documentation
-       ((status . "foundation")
-        (completion . 30)
-        (notes . "README exists, META/ECOSYSTEM/STATE.scm added")))
+       ((status . "substantial")
+        (completion . 70)
+        (notes . "README updated as hub, LANGUAGES.scm added with full specs")))
+
+      (language-specifications
+       ((status . "complete")
+        (completion . 100)
+        (notes . "All 8 languages defined in LANGUAGES.scm with philosophy, features, domains")))
 
       (testing
        ((status . "minimal")
         (completion . 10)
         (notes . "CI/CD scaffolding exists, limited test coverage")))
 
-      (core-functionality
-       ((status . "in-progress")
-        (completion . 25)
-        (notes . "Initial implementation underway")))))
+      (satellite-repos
+       ((status . "partial")
+        (completion . 12)
+        (notes . "betlang exists; 8 language repos TBD")))))
 
     (working-features
      ("RSR-compliant CI/CD pipeline"
       "Multi-platform mirroring (GitHub, GitLab, Bitbucket)"
       "SPDX license headers on all files"
-      "SHA-pinned GitHub Actions"))))
+      "SHA-pinned GitHub Actions"
+      "Comprehensive language comparison table"
+      "Detailed LANGUAGES.scm specifications"
+      "Hub structure for satellite repositories"))))
 
 ;;;============================================================================
 ;;; ROUTE TO MVP
@@ -151,6 +165,17 @@
 
 (define session-history
   '((snapshots
+     ((date . "2025-12-16")
+      (session . "language-comparison-table")
+      (source-chat . "c_ffe1252d0dd5dd30")
+      (accomplishments
+       ("Created comprehensive LANGUAGES.scm with all 8 language specifications"
+        "Updated README.adoc as hub with comparison table"
+        "Defined satellite repository structure"
+        "Added design spectrum visualization"
+        "Documented language philosophies, paradigms, and target domains"))
+      (notes . "Consolidated language strategy from design chat into hub repository"))
+
      ((date . "2025-12-15")
       (session . "initial-state-creation")
       (accomplishments
@@ -184,11 +209,13 @@
 
 (define state-summary
   '((project . "nextgen-languages")
-    (version . "0.1.0")
-    (overall-completion . 25)
-    (next-milestone . "v0.2 - Core Functionality")
+    (version . "0.2.0")
+    (overall-completion . 40)
+    (next-milestone . "v0.3 - Satellite Repository Setup")
+    (languages-defined . 8)
+    (satellites-active . 1)
     (critical-blockers . 0)
     (high-priority-issues . 0)
-    (updated . "2025-12-15")))
+    (updated . "2025-12-16")))
 
 ;;; End of STATE.scm
