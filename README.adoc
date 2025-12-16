@@ -4,140 +4,198 @@
 
 == Overview
 
-This repository serves as the central hub for the Next-Gen Languages initiative—a coordinated effort to design and develop eight programming languages that collectively cover the full spectrum of modern software challenges, from AI-native development to formally verified real-time systems.
+This repository is the central hub for the **Next-Gen Languages** initiative within the link:https://gitlab.com/maa-framework[Mutually Assured Accountability Framework (MAAF)]. It coordinates the design and development of 10 programming languages organized into three families, collectively covering the full spectrum of modern software challenges.
 
-== Language Comparison
+[NOTE]
+====
+**Source of Truth:** GitLab (`gitlab.com/maa-framework/4a-languages`) +
+**Mirror:** GitHub (`github.com/hyperpolymath`)
+====
 
-[cols="1,2,2,2,2"]
+== Language Families
+
+=== My-Language Family (Progressive Complexity)
+
+A unified language family with four dialects of increasing complexity, designed for progressive learning from ages 8-18.
+
+[cols="1,1,2,2,1"]
 |===
-| Language | Core Philosophy | Primary Paradigms | Key Features | Target Domain
+| Dialect | Age | Philosophy | Key Features | Status
+
+| *Me*
+| 8-12
+| Educational, visual/Blockly-like
+| Belief states, epistemic types
+| 100%
 
 | *Solo*
-| Dependable foundation for systems programming
-| Imperative, Concurrent, Contract-Based
-| `effect`, `go`, `where { pre: ..., post: ... }`
-| General Systems Programming
+| 13-14
+| Systems programming with affine types
+| `effect`, `go`, `where { pre:, post: }`
+| 40%
 
 | *Duet*
-| AI-assisted development (Neuro-Symbolic) for verifiable software
-| Imperative, Contract-Based, Neuro-Symbolic
+| 15
+| AI-assisted neuro-symbolic development
 | `@synth`, `@verify`, `intent("...")`
-| High-Assurance, AI-Assisted Systems
+| 30%
 
 | *Ensemble*
-| AI as a first-class, native component of the language
-| Imperative, AI-as-Effect
-| `ai_model {}`, `prompt {}`, `AI<T>` effect type
-| AI-Native Applications, AI Agents
+| 16+
+| Multi-agent orchestration
+| `ai_model {}`, `prompt {}`, `AI<T>`, belief fusion
+| 20%
+
+|===
+
+*Repos:* link:https://github.com/hyperpolymath/my-lang[my-lang], link:https://github.com/hyperpolymath/me-dialect-playground[me-dialect-playground] +
+*Applications:* link:https://github.com/hyperpolymath/7-tentacles[7-tentacles] (curriculum), link:https://github.com/hyperpolymath/my-newsroom[my-newsroom], link:https://github.com/hyperpolymath/my-ssg[my-ssg]
+
+=== Foundational Languages
+
+[cols="1,2,2,2,1"]
+|===
+| Language | Philosophy | Key Features | Target Domain | Status
+
+| *betlang*
+| Ternary probabilistic programming
+| Ternary bets, Bayesian inference, MCMC
+| Finance, Statistics, Game Theory
+| Active (6000+ LOC)
+
+| *julia-the-viper*
+| Harvard Architecture security (code injection impossible)
+| Control/Data separation, 7 number systems
+| Security-critical, Input validation
+| v1: 80%
+
+|===
+
+*Repos:* link:https://github.com/hyperpolymath/betlang[betlang] (Racket), link:https://github.com/hyperpolymath/julia-the-viper[julia-the-viper] (Rust)
+
+=== Specialized Languages
+
+[cols="1,2,2,2,1"]
+|===
+| Language | Philosophy | Key Features | Target Domain | Status
 
 | *Phronesis*
-| Formal, auditable specification of an agent's ethical framework
-| Declarative, Logic-Based, Agent-Oriented
+| Formal AI ethics specification
 | `Agent.`, `Values:`, `EVALUATE(...)`
-| AI Safety, Alignment, and Auditing
-
-| *Eclexia*
-| Sustainable Software Engineering through resource-first constraints
-| Declarative, Constraint-Driven
-| `(energy budget ...)`, `(resource ...)`
-| Green Computing, IoT/Embedded, FinOps
-
-| *Oblíbený*
-| Provably secure, obfuscated code for hostile environments
-| Turing-Incomplete (Deploy), Metaprogramming
-| `(forbid recursion)`, `(bounded-for ...)`
-| Secure Enclaves (HSMs), Critical Embedded
-
-| *Anvomidav*
-| Maximalist formal verification for hard real-time systems
-| Functional, Concurrent, Formal (Linear/Session Types)
-| `task @sched(EDF)`, `Linear<T>`, `Π (...) . T`
-| Avionics, Autonomous Vehicles, Robotics
-
-| *WokeLang*
-| Human-centric programming focused on consent and well-being
-| Imperative, Natural-Language
-| `only if okay "..."`, `attempt ... or reassure`
-| Education, Personal Scripting, Accessibility
-
-|===
-
-== Satellite Repositories
-
-Each language has its own dedicated repository for implementation:
-
-[cols="1,1,2,1"]
-|===
-| Language | Repository | Description | Status
-
-| betlang
-| link:https://github.com/hyperpolymath/betlang[betlang]
-| Bet programming language (foundational experiment)
+| AI Safety, Alignment
 | Active
 
-| Solo
-| _TBD_
-| Systems programming foundation
-| Concept
+| *Eclexia*
+| Economics-as-Code for sustainability
+| `adaptive def`, `@requires: energy`, carbon scheduling
+| Green Computing, FinOps
+| Active (70-page white paper)
 
-| Duet
-| _TBD_
-| AI-assisted neuro-symbolic development
-| Concept
+| *Oblíbený*
+| Provably secure, Turing-incomplete deploy
+| `(forbid recursion)`, oblivious computing
+| HSMs, Secure Enclaves
+| Active
 
-| Ensemble
-| _TBD_
-| AI-native programming
-| Concept
+| *Anvomidav*
+| Maximalist formal verification
+| `task @sched(EDF)`, `Linear<T>`, `Π(...).T`
+| Avionics, Autonomous Vehicles
+| Early
 
-| Phronesis
-| _TBD_
-| AI ethics and safety specification
-| Concept
+| *WokeLang*
+| Human-centric, consent-based
+| `only if okay "..."`, `attempt ... or reassure`
+| Education, Accessibility
+| Early
 
-| Eclexia
-| _TBD_
-| Sustainable computing language
-| Concept
+|===
 
-| Oblíbený
-| _TBD_
-| Security-critical embedded language
-| Concept
+== Repository Status
 
-| Anvomidav
-| _TBD_
-| Formally verified real-time systems
-| Concept
+[cols="1,2,2,1,1"]
+|===
+| Language | GitHub | GitLab | Sync Status | Action
 
-| WokeLang
-| _TBD_
-| Human-centric programming
-| Concept
+| betlang
+| link:https://github.com/hyperpolymath/betlang[hyperpolymath/betlang]
+| link:https://gitlab.com/maa-framework/4a-languages/betlang[4a-languages/betlang]
+| GitHub ahead
+| —
+
+| julia-the-viper
+| link:https://github.com/hyperpolymath/julia-the-viper[hyperpolymath/julia-the-viper]
+| link:https://gitlab.com/maa-framework/4a-languages/julia-the-viper[4a-languages/julia-the-viper]
+| GitHub ahead
+| —
+
+| my-lang
+| link:https://github.com/hyperpolymath/my-lang[hyperpolymath/my-lang]
+| link:https://gitlab.com/maa-framework/4a-languages/my-lang[4a-languages/my-lang]
+| Check needed
+| Consolidate with me-dialect-playground
+
+| phronesis
+| link:https://github.com/hyperpolymath/phronesis[hyperpolymath/phronesis]
+| link:https://gitlab.com/maa-framework/4a-languages/phronesis[4a-languages/phronesis]
+| Check needed
+| —
+
+| eclexia
+| link:https://github.com/hyperpolymath/eclexia[hyperpolymath/eclexia]
+| link:https://gitlab.com/maa-framework/4a-languages/eclexia[4a-languages/eclexia]
+| *GitLab ahead*
+| *Sync white paper + compiler*
+
+| oblibeny
+| link:https://github.com/hyperpolymath/oblibeny[hyperpolymath/oblibeny]
+| link:https://gitlab.com/maa-framework/4a-languages/oblibeny[4a-languages/oblibeny]
+| Roughly synced
+| —
+
+| anvomidav
+| link:https://github.com/hyperpolymath/anvomidav[hyperpolymath/anvomidav]
+| _(mislabeled as betlang)_
+| *Naming mismatch*
+| *Rename on GitLab*
+
+| wokelang
+| link:https://github.com/hyperpolymath/wokelang[hyperpolymath/wokelang]
+| link:https://gitlab.com/maa-framework/4a-languages/wokelang[4a-languages/wokelang]
+| Check needed
+| —
 
 |===
 
 == Design Spectrum
 
-The eight languages span a complete spectrum of concerns:
-
 ----
-Abstraction Level:     Low ←————————————————→ High
-                       Solo                   WokeLang
+Abstraction Level:     Low ←————————————————————————→ High
+                       Solo, julia-the-viper          WokeLang, Me
 
-Verification Rigor:    Minimal ←——————————→ Maximal
-                       WokeLang              Anvomidav
+Verification Rigor:    Minimal ←————————————————————→ Maximal
+                       WokeLang                       Anvomidav, julia-the-viper
 
-AI Integration:        None ←——————————————→ Native
-                       Oblíbený              Ensemble
+AI Integration:        None ←——————————————————————→ Native
+                       Oblíbený, julia-the-viper      Ensemble, Phronesis
 
-Target Audience:       Expert ←————————————→ Beginner
-                       Anvomidav             WokeLang
+Age Progression:       8-12 ←——————————————————————→ 16+
+(My-Language)          Me                             Ensemble
 ----
+
+== MAAF Context
+
+These languages are part of the **Mutually Assured Accountability Framework (MAAF)**, specifically the `4a-languages` group focused on programming language research and development.
+
+Related MAAF components:
+
+* *Tri-Perimeter Contribution Framework (TPCF)* — Access control and governance
+* *Rhodium Standard Repositories (RSR)* — Repository quality standards
+* *STATE.scm / META.scm / ECOSYSTEM.scm* — Machine-readable project metadata
 
 == Documentation
 
-* `LANGUAGES.scm` — Detailed language specifications and comparison
+* `LANGUAGES.scm` — Complete language specifications, families, and repository map
 * `META.scm` — Architecture decisions and development practices
 * `STATE.scm` — Project checkpoint and session history
 * `ECOSYSTEM.scm` — Project ecosystem relationships
@@ -147,10 +205,6 @@ Target Audience:       Expert ←————————————→ Beginne
 ```bash
 git clone --recursive https://github.com/hyperpolymath/nextgen-languages.git
 ```
-
-== Contributing
-
-Each language welcomes contributions. See individual satellite repositories for language-specific contribution guidelines.
 
 == License
 

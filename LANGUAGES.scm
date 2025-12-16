@@ -1,464 +1,458 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
-;;; LANGUAGES.scm — Next-Gen Language Comparison and Strategy
+;;; LANGUAGES.scm — Next-Gen Language Ecosystem
 ;;; nextgen-languages
 ;;; Reference: https://github.com/hyperpolymath/nextgen-languages
-;;; Source Chat: c_ffe1252d0dd5dd30
+;;; GitLab Source: https://gitlab.com/maa-framework/4a-languages
 
 (define-module (nextgen-languages languages)
   #:export (language-overview
+            language-families
             language-specifications
-            language-comparison
+            repository-map
             design-philosophy))
 
 ;;;============================================================================
 ;;; LANGUAGE OVERVIEW
-;;; Strategic summary of the eight next-generation programming languages
+;;; Complete ecosystem of next-generation programming languages
 ;;;============================================================================
 
 (define language-overview
-  '((total-languages . 8)
-    (design-goal . "Comprehensive coverage of emerging paradigms from AI-native
-                    to formally verified, from sustainable computing to
-                    human-centric development")
-    (categories
-     ((systems-programming . (Solo))
-      (ai-assisted . (Duet Ensemble))
-      (ai-safety . (Phronesis))
-      (sustainable-computing . (Eclexia))
-      (security-critical . (Oblíbený))
-      (formally-verified . (Anvomidav))
-      (human-centric . (WokeLang))))
-    (existing-projects
-     ((betlang
-       ((url . "https://github.com/hyperpolymath/betlang")
-        (description . "Bet programming language - existing experimental language")))))))
+  '((ecosystem-name . "Next-Gen Languages")
+    (total-languages . 10)  ;; Including all dialects
+    (language-families . 3) ;; My-Language family, Foundational, Specialized
+
+    (design-goal
+     "Comprehensive coverage of emerging paradigms from AI-native to formally
+      verified, from sustainable computing to human-centric development, with
+      progressive complexity for educational pathways.")
+
+    (families
+     ((my-language-family
+       ((description . "Progressive complexity dialect family")
+        (dialects . (Me Solo Duet Ensemble))
+        (age-progression . "8-12 → 13-14 → 15 → 16+")))
+
+      (foundational-languages
+       ((description . "Established experimental languages")
+        (languages . (betlang julia-the-viper))))
+
+      (specialized-languages
+       ((description . "Domain-specific next-gen languages")
+        (languages . (Phronesis Eclexia Oblíbený Anvomidav WokeLang))))))))
 
 ;;;============================================================================
-;;; LANGUAGE COMPARISON TABLE
+;;; REPOSITORY MAP
+;;; GitLab (source) → GitHub (mirror) relationships
 ;;;============================================================================
 
-(define language-comparison
-  '((columns . (Language Core-Philosophy Primary-Paradigms Key-Features Target-Domain))
+(define repository-map
+  '((source-platform . "gitlab.com/maa-framework/4a-languages")
+    (mirror-platform . "github.com/hyperpolymath")
 
-    (entries
-     ((language . Solo)
-      (core-philosophy . "Dependable foundation for systems programming")
-      (primary-paradigms . (Imperative Concurrent Contract-Based))
-      (key-features . ("effect" "go" "where { pre: ..., post: ... }"))
-      (target-domain . "General Systems Programming"))
+    (repositories
+     ;; MY-LANGUAGE FAMILY
+     ((name . "my-lang")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/my-lang")
+      (github . "github.com/hyperpolymath/my-lang")
+      (github-alt . "github.com/hyperpolymath/me-dialect-playground")
+      (status . "active")
+      (sync-status . "check-needed")
+      (notes . "Main implementation; me-dialect-playground has more development"))
 
-     ((language . Duet)
-      (core-philosophy . "AI-assisted development (Neuro-Symbolic) for verifiable software")
-      (primary-paradigms . (Imperative Contract-Based Neuro-Symbolic))
-      (key-features . ("@synth" "@verify" "intent(\"...\")"))
-      (target-domain . "High-Assurance, AI-Assisted Systems"))
+     ;; FOUNDATIONAL LANGUAGES
+     ((name . "betlang")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/betlang")
+      (github . "github.com/hyperpolymath/betlang")
+      (status . "active")
+      (sync-status . "github-ahead")
+      (gitlab-commits . 5)
+      (github-commits . 43)
+      (notes . "Ternary probabilistic DSL; GitHub has main development"))
 
-     ((language . Ensemble)
-      (core-philosophy . "AI as a first-class, native component of the language")
-      (primary-paradigms . (Imperative AI-as-Effect))
-      (key-features . ("ai_model {}" "prompt {}" "AI<T> effect type"))
-      (target-domain . "AI-Native Applications, AI Agents"))
+     ((name . "julia-the-viper")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/julia-the-viper")
+      (github . "github.com/hyperpolymath/julia-the-viper")
+      (status . "active")
+      (sync-status . "github-ahead")
+      (notes . "Harvard Architecture security language; v1 ~80% complete"))
 
-     ((language . Phronesis)
-      (core-philosophy . "Formal, auditable specification of an agent's ethical framework")
-      (primary-paradigms . (Declarative Logic-Based Agent-Oriented))
-      (key-features . ("Agent." "Values:" "EVALUATE(...)"))
-      (target-domain . "AI Safety, Alignment, and Auditing"))
+     ;; SPECIALIZED LANGUAGES
+     ((name . "phronesis")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/phronesis")
+      (github . "github.com/hyperpolymath/phronesis")
+      (status . "active")
+      (sync-status . "check-needed")
+      (notes . "AI ethics/alignment; Elixir + TLA+ on BEAM VM"))
 
-     ((language . Eclexia)
-      (core-philosophy . "Sustainable Software Engineering through resource-first constraints")
-      (primary-paradigms . (Declarative Constraint-Driven))
-      (key-features . ("(energy budget ...)" "(resource ...)"))
-      (target-domain . "Green Computing, IoT/Embedded, FinOps"))
+     ((name . "eclexia")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/eclexia")
+      (github . "github.com/hyperpolymath/eclexia")
+      (status . "active")
+      (sync-status . "gitlab-ahead")
+      (gitlab-commits . 13)
+      (github-commits . 1)
+      (notes . "NEEDS SYNC: GitLab has white paper + Rust compiler; GitHub is template only"))
 
-     ((language . Oblíbený)
-      (core-philosophy . "Provably secure, obfuscated code for hostile environments")
-      (primary-paradigms . (Turing-Incomplete-Deploy Metaprogramming))
-      (key-features . ("(forbid recursion)" "(bounded-for ...)"))
-      (target-domain . "Secure Enclaves (HSMs), Critical Embedded"))
+     ((name . "oblibeny")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/oblibeny")
+      (github . "github.com/hyperpolymath/oblibeny")
+      (status . "active")
+      (sync-status . "roughly-synced")
+      (notes . "Oblivious computing ecosystem; Rust implementation"))
 
-     ((language . Anvomidav)
-      (core-philosophy . "Maximalist formal verification for hard real-time systems")
-      (primary-paradigms . (Functional Concurrent Formal-Linear-Session-Types))
-      (key-features . ("task @sched(EDF)" "Linear<T>" "Π (...) . T"))
-      (target-domain . "Avionics, Autonomous Vehicles, Robotics"))
+     ((name . "anvomidav")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/betlang")  ;; NAMING ISSUE
+      (github . "github.com/hyperpolymath/anvomidav")
+      (status . "template")
+      (sync-status . "naming-mismatch")
+      (notes . "ISSUE: Called 'betlang' on GitLab by mistake; needs rename"))
 
-     ((language . WokeLang)
-      (core-philosophy . "Human-centric programming focused on consent and well-being")
-      (primary-paradigms . (Imperative Natural-Language))
-      (key-features . ("only if okay \"...\"" "attempt ... or reassure"))
-      (target-domain . "Education, Personal Scripting, Accessibility")))))
+     ((name . "wokelang")
+      (gitlab . "gitlab.com/maa-framework/4a-languages/wokelang")
+      (github . "github.com/hyperpolymath/wokelang")
+      (status . "active")
+      (sync-status . "check-needed")
+      (notes . "Human-centric language; Rust implementation"))
+
+     ;; RELATED APPLICATIONS
+     ((name . "7-tentacles")
+      (github . "github.com/hyperpolymath/7-tentacles")
+      (type . "application")
+      (notes . "Educational curriculum using My-Language dialects"))
+
+     ((name . "my-newsroom")
+      (github . "github.com/hyperpolymath/my-newsroom")
+      (type . "application")
+      (notes . "Journalism/epistemic programming demo"))
+
+     ((name . "my-ssg")
+      (github . "github.com/hyperpolymath/my-ssg")
+      (type . "application")
+      (notes . "Static site generator"))
+
+     ((name . "nextgen-languages")
+      (github . "github.com/hyperpolymath/nextgen-languages")
+      (type . "hub")
+      (notes . "This repository - ecosystem hub and strategy docs")))
+
+    (sync-actions-needed
+     (("eclexia" . "Sync GitLab → GitHub (white paper, Rust compiler)")
+      ("anvomidav" . "Rename GitLab 'betlang' → 'anvomidav'")
+      ("my-lang" . "Consolidate with me-dialect-playground")))))
 
 ;;;============================================================================
-;;; DETAILED LANGUAGE SPECIFICATIONS
+;;; LANGUAGE FAMILIES - DETAILED
 ;;;============================================================================
 
-(define language-specifications
+(define language-families
   '(
     ;;=========================================================================
-    ;; SOLO - Systems Programming Foundation
+    ;; MY-LANGUAGE FAMILY - Progressive Complexity Dialects
     ;;=========================================================================
-    (Solo
-     ((name . "Solo")
-      (tagline . "Dependable foundation for systems programming")
-      (version . "concept-v0.1")
+    (my-language-family
+     ((name . "My Language")
+      (tagline . "Progressive complexity from education to orchestration")
+      (implementation-repos . ("my-lang" "me-dialect-playground"))
+      (application-repos . ("7-tentacles" "my-newsroom" "my-ssg"))
 
-      (philosophy
-       "Solo provides a solid, predictable foundation for systems programming.
-        It emphasizes explicit effects, structured concurrency, and design-by-contract
-        principles to create reliable, maintainable low-level code.")
+      (design-philosophy
+       "A unified language family with four dialects of increasing complexity,
+        designed for progressive learning from ages 8-18. Each dialect builds
+        on the previous, introducing new concepts while maintaining syntactic
+        familiarity.")
 
-      (paradigms
-       ((primary . Imperative)
-        (secondary . (Concurrent Contract-Based))))
+      (dialects
+       ((Me
+         ((age-range . "8-12")
+          (tagline . "Educational language with HTML-like syntax")
+          (complexity . "visual/blockly-like")
+          (completion . "100%")
+          (paradigms . (Educational Visual Epistemic))
+          (key-concepts . ("Basic parsing" "Belief states" "Probabilistic reasoning"))
+          (teaches . "Lexical analysis, syntax trees")))
 
-      (key-features
-       ((effects
-         ((description . "Explicit effect tracking for side effects")
-          (syntax . "effect { ... }")
-          (purpose . "Track and control side effects at type level")))
+        (Solo
+         ((age-range . "13-14")
+          (tagline . "Systems language with affine types")
+          (complexity . "text-based with safety")
+          (completion . "40%")
+          (paradigms . (Imperative Concurrent Contract-Based))
+          (key-features . ("effect" "go" "where { pre: ..., post: ... }"))
+          (key-concepts . ("Affine types" "Arena allocation" "M:N threading"))
+          (teaches . "Type systems, memory safety")))
 
-        (concurrency
-         ((description . "Lightweight, structured concurrency")
-          (syntax . "go { ... }")
-          (purpose . "Spawn concurrent tasks with clear lifecycle")))
+        (Duet
+         ((age-range . "15")
+          (tagline . "AI-assisted neuro-symbolic development")
+          (complexity . "AI collaboration")
+          (completion . "30%")
+          (paradigms . (Imperative Contract-Based Neuro-Symbolic))
+          (key-features . ("@synth" "@verify" "intent(\"...\")"))
+          (key-concepts . ("AI synthesis" "Formal verification" "Human-AI pairing"))
+          (teaches . "Verification, debugging, audit trails")))
 
-        (contracts
-         ((description . "Design-by-contract with pre/post conditions")
-          (syntax . "where { pre: condition, post: condition }")
-          (purpose . "Runtime and static verification of function contracts")))))
+        (Ensemble
+         ((age-range . "16+")
+          (tagline . "Multi-agent orchestration and coordination")
+          (complexity . "full orchestration")
+          (completion . "20%")
+          (paradigms . (Imperative AI-as-Effect Multi-Agent))
+          (key-features . ("ai_model {}" "prompt {}" "AI<T>" "belief fusion"))
+          (key-concepts . ("Dempster-Shafer theory" "Distributed coordination"))
+          (teaches . "Compile-time evaluation, language governance")))))
 
-      (target-domains
-       ("Operating system kernels"
-        "Device drivers"
-        "Embedded systems"
-        "High-performance libraries"
-        "Systems utilities"))
+      (academic-targets
+       ("POPL: Practical affine type systems"
+        "PLDI: Neurosymbolic language integration"
+        "AAMAS: Multi-agent programming models"
+        "CHI: Progressive language design pedagogy"
+        "S&P: Contract-based AI safety"))
 
-      (influences
-       ("Rust (ownership, safety)"
-        "Go (concurrency)"
-        "Eiffel (contracts)"
-        "Ada (reliability)"))))
-
-    ;;=========================================================================
-    ;; DUET - AI-Assisted Neuro-Symbolic Development
-    ;;=========================================================================
-    (Duet
-     ((name . "Duet")
-      (tagline . "AI-assisted development for verifiable software")
-      (version . "concept-v0.1")
-
-      (philosophy
-       "Duet enables a collaborative relationship between human programmers and
-        AI systems. It provides formal mechanisms for AI-synthesized code with
-        verification guarantees, bridging neural capabilities with symbolic
-        verification.")
-
-      (paradigms
-       ((primary . Imperative)
-        (secondary . (Contract-Based Neuro-Symbolic))))
-
-      (key-features
-       ((synthesis
-         ((description . "AI-powered code synthesis with verification")
-          (syntax . "@synth")
-          (purpose . "Request AI to synthesize implementation from specification")))
-
-        (verification
-         ((description . "Formal verification of AI-generated code")
-          (syntax . "@verify")
-          (purpose . "Prove correctness of synthesized code against contracts")))
-
-        (intent
-         ((description . "Natural language intent specification")
-          (syntax . "intent(\"...\")")
-          (purpose . "Express high-level intent for AI interpretation")))))
-
-      (target-domains
-       ("High-assurance software"
-        "Safety-critical systems"
-        "Formal methods integration"
-        "Rapid prototyping with guarantees"
-        "Human-AI pair programming"))
-
-      (influences
-       ("Dafny (verification)"
-        "GitHub Copilot (synthesis)"
-        "Liquid Haskell (refinement types)"
-        "F* (proof-oriented programming)"))))
+      (tech-stack
+       ((primary . "Rust (66.9%)")
+        (secondary . ("Scheme (12%)" "Just (7.7%)" "Shell (6.7%)" "Nix (5.4%)"))))))
 
     ;;=========================================================================
-    ;; ENSEMBLE - AI-Native Programming
+    ;; FOUNDATIONAL LANGUAGES
     ;;=========================================================================
-    (Ensemble
-     ((name . "Ensemble")
-      (tagline . "AI as a first-class, native component")
-      (version . "concept-v0.1")
+    (foundational-languages
+     ((betlang
+       ((name . "betlang")
+        (tagline . "Ternary Probabilistic Programming Language")
+        (status . "active")
+        (completion . "mature")
+        (tech-stack . "Racket")
+        (lines-of-code . "6000+")
+        (functions . "180+")
 
-      (philosophy
-       "Ensemble treats AI models as fundamental building blocks of software,
-        not external services. AI capabilities are expressed through the type
-        system as effects, enabling compositional, type-safe AI applications.")
+        (philosophy
+         "A domain-specific language built on Racket for probabilistic
+          programming. Its core concept is the 'ternary bet'—a choice
+          between three values with associated probabilities—enabling
+          elegant expression of complex probabilistic models.")
 
-      (paradigms
-       ((primary . Imperative)
-        (secondary . (AI-as-Effect))))
+        (paradigms . (Probabilistic Functional DSL))
 
-      (key-features
-       ((ai-model
-         ((description . "First-class AI model definition")
-          (syntax . "ai_model { ... }")
-          (purpose . "Define AI model configurations and capabilities")))
+        (key-features
+         ("Ternary bets with uniform and weighted probabilities"
+          "Conditional logic and lazy evaluation"
+          "Composition operators for combining bets"
+          "Rich statistics and probability libraries"
+          "Bayesian inference (MCMC, importance sampling, ABC)"
+          "Optimization algorithms"))
 
-        (prompts
-         ((description . "Structured prompt construction")
-          (syntax . "prompt { ... }")
-          (purpose . "Type-safe prompt template definition")))
+        (target-domains
+         ("Quantitative finance"
+          "Statistical modeling"
+          "Monte Carlo simulations"
+          "Game theory"
+          "Machine learning"))
 
-        (ai-effect
-         ((description . "AI operations as typed effects")
-          (syntax . "AI<T>")
-          (purpose . "Track AI operations in the type system")))))
+        (influences
+         ("Racket (host language)"
+          "Probabilistic programming research"
+          "Musical ternary form (A-B-A)"))))
 
-      (target-domains
-       ("AI agent development"
-        "LLM-powered applications"
-        "Multi-agent systems"
-        "Intelligent assistants"
-        "AI orchestration platforms"))
+      (julia-the-viper
+       ((name . "julia-the-viper")
+        (tagline . "Harvard Architecture Security Language")
+        (status . "active")
+        (completion . "v1: 80%, v2: specification complete")
+        (tech-stack . "Rust (parser), TypeScript/Deno (analysis)")
+        (named-after . "Julia Robinson (mathematician, 1919-1985)")
 
-      (influences
-       ("LangChain (AI orchestration)"
-        "TypeScript (type system)"
-        "Effect systems (Koka, Eff)"
-        "Actor model (agents)"))))
+        (philosophy
+         "Named after mathematician Julia Robinson, JtV enforces security
+          through architectural design rather than runtime validation.
+          By separating computation into two grammatically distinct channels,
+          code injection becomes grammatically impossible.")
 
-    ;;=========================================================================
-    ;; PHRONESIS - AI Ethics and Safety Specification
-    ;;=========================================================================
-    (Phronesis
-     ((name . "Phronesis")
-      (tagline . "Formal specification of ethical AI frameworks")
-      (version . "concept-v0.1")
+        (paradigms . (Harvard-Architecture Security-by-Design))
 
-      (philosophy
-       "Named after the Aristotelian concept of practical wisdom, Phronesis
-        provides a formal, auditable language for specifying AI agent ethics.
-        It enables transparent reasoning about values, constraints, and
-        decision-making processes.")
+        (architecture
+         ((control-language
+           ((description . "Turing-complete, imperative")
+            (capabilities . ("loops" "conditionals" "I/O"))))
+          (data-language
+           ((description . "Provably halting, addition-only")
+            (guarantee . "User data can never contain control flow")))))
 
-      (paradigms
-       ((primary . Declarative)
-        (secondary . (Logic-Based Agent-Oriented))))
+        (key-features
+         ("Grammatical separation of control and data"
+          "7 number systems (Int, Float, Rational, Complex, Hex, Binary, Symbolic)"
+          "105+ pure functions across 4 modules"
+          "VS Code extension support"
+          "Reversible computing (v2)"))
 
-      (key-features
-       ((agent-definition
-         ((description . "Formal agent specification")
-          (syntax . "Agent.")
-          (purpose . "Define an AI agent's identity and capabilities")))
+        (target-domains
+         ("Security-critical applications"
+          "Input validation"
+          "Template systems"
+          "Safe data processing"))
 
-        (values
-         ((description . "Explicit value hierarchy declaration")
-          (syntax . "Values:")
-          (purpose . "Specify prioritized ethical values and constraints")))
-
-        (evaluation
-         ((description . "Decision evaluation framework")
-          (syntax . "EVALUATE(...)")
-          (purpose . "Formally evaluate actions against ethical framework")))))
-
-      (target-domains
-       ("AI safety research"
-        "AI alignment verification"
-        "Regulatory compliance"
-        "Ethical AI auditing"
-        "Constitutional AI specification"))
-
-      (influences
-       ("Prolog (logic programming)"
-        "Deontic logic (obligations)"
-        "Constitutional AI (Anthropic)"
-        "Value Alignment research"))))
+        (rsr-status . "Gold (93%)")))))
 
     ;;=========================================================================
-    ;; ECLEXIA - Sustainable Computing Language
+    ;; SPECIALIZED LANGUAGES
     ;;=========================================================================
-    (Eclexia
-     ((name . "Eclexia")
-      (tagline . "Sustainable Software Engineering through resource-first constraints")
-      (version . "concept-v0.1")
+    (specialized-languages
+     ((Phronesis
+       ((name . "Phronesis")
+        (tagline . "Formal specification of ethical AI frameworks")
+        (status . "active")
+        (tech-stack . ("Elixir (92%)" "TLA+ (5.8%)" "Scheme (2.2%)"))
+        (runtime . "BEAM VM")
 
-      (philosophy
-       "Eclexia makes resource consumption a first-class concern in software
-        design. Energy budgets, memory limits, and computational constraints
-        are expressed declaratively, enabling optimization for sustainability
-        and cost-effectiveness.")
+        (philosophy
+         "Named after the Aristotelian concept of practical wisdom, Phronesis
+          is a neuro-symbolic agentic language designed to formalize ethical
+          reasoning in autonomous systems. It combines symbolic AI precision
+          with neural network adaptability.")
 
-      (paradigms
-       ((primary . Declarative)
-        (secondary . (Constraint-Driven))))
+        (paradigms . (Declarative Logic-Based Agent-Oriented Neuro-Symbolic))
 
-      (key-features
-       ((energy-budget
-         ((description . "Energy consumption constraints")
-          (syntax . "(energy budget ...)")
-          (purpose . "Declare maximum energy consumption allowances")))
+        (key-features
+         ("Agent." "Values:" "EVALUATE(...)"
+          "Provable safety guarantees"
+          "Fault tolerance through BEAM"))
 
-        (resource-declaration
-         ((description . "Resource requirement specification")
-          (syntax . "(resource ...)")
-          (purpose . "Specify computational resource constraints")))))
+        (target-domains
+         ("AI safety research"
+          "AI alignment verification"
+          "Regulatory compliance"
+          "Autonomous systems"))))
 
-      (target-domains
-       ("Green computing"
-        "IoT and embedded systems"
-        "Cloud cost optimization (FinOps)"
-        "Battery-constrained devices"
-        "Carbon-aware computing"))
+      (Eclexia
+       ((name . "Eclexia")
+        (tagline . "Economics-as-Code for Sustainable Computing")
+        (status . "active")
+        (tech-stack . "Rust")
+        (white-paper . "70+ pages, October 2025")
+        (sync-note . "NEEDS SYNC: GitLab has full implementation")
 
-      (influences
-       ("Constraint programming"
-        "Green Software Foundation principles"
-        "Resource-bounded computation"
-        "Energy-proportional computing"))))
+        (philosophy
+         "Economics-as-Code: A novel programming paradigm treating computational
+          resource allocation as an economic optimization problem. Energy budgets,
+          execution time, memory usage become first-class concerns in both the
+          type system and runtime semantics.")
 
-    ;;=========================================================================
-    ;; OBLÍBENÝ - Security-Critical Embedded Language
-    ;;=========================================================================
-    (Oblíbený
-     ((name . "Oblíbený")
-      (tagline . "Provably secure code for hostile environments")
-      (version . "concept-v0.1")
+        (paradigms . (Declarative Constraint-Driven Economics-as-Code))
 
-      (philosophy
-       "Oblíbený (Czech for 'favorite' or 'beloved') produces provably secure,
-        intentionally Turing-incomplete code for deployment in hostile
-        environments. By restricting expressiveness, it guarantees termination
-        and eliminates entire classes of vulnerabilities.")
+        (key-features
+         ((resource-types
+           "Compile-time dimensional analysis for Energy, Time, Memory, Carbon")
+          (adaptive-execution
+           "Multiple algorithmic approaches with automatic runtime selection")
+          (shadow-prices
+           "Computed marginal values guiding optimization decisions")
+          (carbon-scheduling
+           "Defers computation to periods of lower environmental impact")))
 
-      (paradigms
-       ((primary . Turing-Incomplete-Deploy)
-        (secondary . (Metaprogramming))))
+        (syntax-example
+         "adaptive def matrix_multiply(A: Matrix, B: Matrix) -> Matrix
+              @requires: energy < 100J, latency < 500ms
+              @optimize: minimize energy, minimize carbon
+          { ... }")
 
-      (key-features
-       ((forbid-recursion
-         ((description . "Explicit recursion prohibition")
-          (syntax . "(forbid recursion)")
-          (purpose . "Guarantee termination by eliminating unbounded recursion")))
+        (measured-benefits
+         ("20-40% energy reduction"
+          "25-35% battery life extension"
+          "40-60% carbon reduction"
+          "50-70% less manual optimization time"))
 
-        (bounded-iteration
-         ((description . "Bounded loop constructs")
-          (syntax . "(bounded-for ...)")
-          (purpose . "Ensure all loops terminate within known bounds")))))
+        (target-domains
+         ("Green computing"
+          "IoT/embedded systems"
+          "Cloud FinOps"
+          "Carbon-aware computing"))))
 
-      (target-domains
-       ("Hardware Security Modules (HSMs)"
-        "Secure enclaves (SGX, TrustZone)"
-        "Smart card programming"
-        "Critical embedded systems"
-        "High-assurance cryptographic code"))
+      (Oblíbený
+       ((name . "Oblíbený")
+        (tagline . "Provably secure code for hostile environments")
+        (status . "active")
+        (tech-stack . "Rust (83%)")
+        (meaning . "Czech for 'beloved' or 'favorite'")
 
-      (influences
-       ("Total functional programming"
-        "Cryptol (cryptographic DSL)"
-        "Ivory (embedded safety)"
-        "Coq/Agda (termination checking)"))))
+        (philosophy
+         "Produces provably secure, intentionally Turing-incomplete code for
+          deployment in hostile environments. By restricting expressiveness,
+          it guarantees termination and eliminates entire vulnerability classes.")
 
-    ;;=========================================================================
-    ;; ANVOMIDAV - Formally Verified Real-Time Systems
-    ;;=========================================================================
-    (Anvomidav
-     ((name . "Anvomidav")
-      (tagline . "Maximalist formal verification for hard real-time systems")
-      (version . "concept-v0.1")
+        (paradigms . (Turing-Incomplete-Deploy Metaprogramming Oblivious-Computing))
 
-      (philosophy
-       "Anvomidav combines linear types, session types, and dependent types
-        to provide maximum formal guarantees for hard real-time systems.
-        Every resource is tracked, every protocol is verified, every
-        deadline is statically guaranteed.")
+        (key-features
+         ("(forbid recursion)" "(bounded-for ...)"
+          "Provable termination"
+          "Resource-bounded execution"
+          "Oblivious computing (hides access patterns)"))
 
-      (paradigms
-       ((primary . Functional)
-        (secondary . (Concurrent Formal-Linear-Session-Types))))
+        (components
+         ("obli-transpiler-framework"
+          "obli-riscv-dev-kit"
+          "obli-fs"))
 
-      (key-features
-       ((scheduled-tasks
-         ((description . "Real-time task scheduling")
-          (syntax . "task @sched(EDF)")
-          (purpose . "Declare tasks with scheduling guarantees (e.g., Earliest Deadline First)")))
+        (target-domains
+         ("Hardware Security Modules (HSMs)"
+          "Secure enclaves (SGX, TrustZone)"
+          "Smart cards"
+          "Critical embedded systems"))))
 
-        (linear-types
-         ((description . "Linear resource tracking")
-          (syntax . "Linear<T>")
-          (purpose . "Ensure resources are used exactly once")))
+      (Anvomidav
+       ((name . "Anvomidav")
+        (tagline . "Maximalist formal verification for hard real-time systems")
+        (status . "early")
+        (sync-note . "ISSUE: Mislabeled as 'betlang' on GitLab")
 
-        (dependent-types
-         ((description . "Dependent type specifications")
-          (syntax . "Π (...) . T")
-          (purpose . "Express precise specifications in types")))))
+        (philosophy
+         "Combines linear types, session types, and dependent types to provide
+          maximum formal guarantees for hard real-time systems. Every resource
+          is tracked, every protocol is verified, every deadline is statically
+          guaranteed.")
 
-      (target-domains
-       ("Avionics systems (DO-178C)"
-        "Autonomous vehicle control"
-        "Medical device software"
-        "Robotics control systems"
-        "Nuclear and industrial control"))
+        (paradigms . (Functional Concurrent Formal-Verification))
 
-      (influences
-       ("SPARK/Ada (formal verification)"
-        "Idris (dependent types)"
-        "Rust (linear types)"
-        "Session types research"))))
+        (key-features
+         ("task @sched(EDF)" "Linear<T>" "Π (...) . T"
+          "Session types for protocol verification"
+          "Deadline guarantees"))
 
-    ;;=========================================================================
-    ;; WOKELANG - Human-Centric Programming
-    ;;=========================================================================
-    (WokeLang
-     ((name . "WokeLang")
-      (tagline . "Human-centric programming focused on consent and well-being")
-      (version . "concept-v0.1")
+        (target-domains
+         ("Avionics (DO-178C)"
+          "Autonomous vehicles"
+          "Medical devices"
+          "Robotics control"
+          "Industrial control"))))
 
-      (philosophy
-       "WokeLang prioritizes the human experience in programming. It uses
-        natural language constructs, explicit consent mechanisms, and
-        supportive error handling to make programming accessible and
-        psychologically safe.")
+      (WokeLang
+       ((name . "WokeLang")
+        (tagline . "Human-centric programming for consent and well-being")
+        (status . "early")
+        (tech-stack . "Rust (97%)")
+        (slogan . "Putting the 'spoke' in Woke - A First Class Language for Humans")
 
-      (paradigms
-       ((primary . Imperative)
-        (secondary . (Natural-Language))))
+        (philosophy
+         "Prioritizes the human experience in programming. Uses natural language
+          constructs, explicit consent mechanisms, and supportive error handling
+          to make programming accessible and psychologically safe.")
 
-      (key-features
-       ((consent
-         ((description . "Explicit consent for operations")
-          (syntax . "only if okay \"...\"")
-          (purpose . "Require explicit user consent for sensitive operations")))
+        (paradigms . (Imperative Natural-Language Human-Centric))
 
-        (graceful-handling
-         ((description . "Supportive error recovery")
-          (syntax . "attempt ... or reassure")
-          (purpose . "Handle failures with user-friendly messaging")))))
+        (key-features
+         ("only if okay \"...\""
+          "attempt ... or reassure"
+          "Consent-based operations"
+          "Supportive error messages"))
 
-      (target-domains
-       ("Educational programming"
-        "Personal scripting"
-        "Accessibility-focused tools"
-        "Mental health tech"
-        "Gentle introduction to coding"))
-
-      (influences
-       ("Natural language programming"
-        "Scratch (educational)"
-        "Human-centered design"
-        "Cognitive load theory"))))))
+        (target-domains
+         ("Educational programming"
+          "Personal scripting"
+          "Accessibility tools"
+          "Mental health tech"))))))))
 
 ;;;============================================================================
 ;;; DESIGN PHILOSOPHY
-;;; Overarching principles guiding all language designs
 ;;;============================================================================
 
 (define design-philosophy
@@ -475,37 +469,44 @@
        "Where applicable, languages are built on formal foundations
         enabling verification, proof, and static analysis.")
 
-      (human-readable
-       "Syntax is designed for human comprehension first, balancing
-        expressiveness with clarity.")))
+      (progressive-complexity
+       "The My-Language family demonstrates that complex concepts can
+        be taught progressively, building on familiar foundations.")
+
+      (security-by-design
+       "julia-the-viper and Oblíbený show that security can be
+        enforced grammatically, not just validated at runtime.")))
 
     (paradigm-coverage
-     ((imperative . (Solo Duet Ensemble WokeLang))
-      (declarative . (Phronesis Eclexia))
-      (functional . (Anvomidav))
-      (contract-based . (Solo Duet))
+     ((probabilistic . (betlang))
+      (security-architecture . (julia-the-viper Oblíbený))
+      (progressive-education . (Me Solo Duet Ensemble))
       (ai-integrated . (Duet Ensemble Phronesis))
-      (formally-verified . (Duet Oblíbený Anvomidav))
-      (resource-aware . (Eclexia Oblíbený))
-      (human-centric . (WokeLang))))
+      (formally-verified . (Duet Oblíbený Anvomidav julia-the-viper))
+      (sustainable . (Eclexia))
+      (human-centric . (WokeLang Me))))
 
     (spectrum-coverage
-     "The eight languages span a complete spectrum:
+     "The languages span complete spectrums:
 
       Abstraction Level:
-        Low  -----> High
-        Solo        WokeLang
+        Low  ────────────────────────────> High
+        Solo, julia-the-viper              WokeLang, Me
 
       Verification Rigor:
-        Minimal --> Maximal
-        WokeLang    Anvomidav
+        Minimal ────────────────────────> Maximal
+        WokeLang                           Anvomidav, julia-the-viper
 
       AI Integration:
-        None -----> Native
-        Oblíbený    Ensemble
+        None ──────────────────────────> Native
+        Oblíbený, julia-the-viper          Ensemble, Phronesis
 
       Target Audience:
-        Expert ---> Beginner
-        Anvomidav   WokeLang")))
+        Expert ────────────────────────> Beginner
+        Anvomidav                          Me, WokeLang
+
+      Age Progression (My-Language):
+        8-12 ──────────────────────────> 16+
+        Me                                 Ensemble")))
 
 ;;; End of LANGUAGES.scm
