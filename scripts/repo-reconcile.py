@@ -249,3 +249,32 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Quick check mode - just test a list of repos
+def quick_check_github(repos: list[str]) -> dict:
+    """Check if repos exist on GitHub without auth."""
+    import urllib.request
+    results = {"exists": [], "missing": []}
+    for repo in repos:
+        url = f"https://github.com/hyperpolymath/{repo}"
+        try:
+            req = urllib.request.Request(url, method='HEAD')
+            urllib.request.urlopen(req, timeout=5)
+            results["exists"].append(repo)
+        except:
+            results["missing"].append(repo)
+    return results
+
+if __name__ == "__main__" and len(__import__('sys').argv) > 1:
+    # Quick mode: python repo-reconcile.py check repo1 repo2 repo3
+    if __import__('sys').argv[1] == "check":
+        repos = __import__('sys').argv[2:]
+        print(f"Checking {len(repos)} repos against GitHub...")
+        results = quick_check_github(repos)
+        print(f"\n✓ EXISTS on GitHub ({len(results['exists'])}):")
+        for r in results['exists']:
+            print(f"  {r}")
+        print(f"\n✗ MISSING on GitHub ({len(results['missing'])}):")
+        for r in results['missing']:
+            print(f"  {r}")
