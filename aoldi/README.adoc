@@ -1,0 +1,221 @@
+= AOLDI - Aspect Oriented Language Development Interface
+
+*Central coordination hub for the NextGen Languages ecosystem*
+
+== Overview
+
+AOLDI is an Ada framework providing centralized coordination for the development of 12 programming languages. It implements a plugin architecture allowing:
+
+* **Language Plugins** - Each language (betlang, julia-the-viper, etc.) as an optional component
+* **Verification Plugins** - Echidna integration for formal verification
+* **Library Plugins** - Aggregate library loading and standard library parsing
+* **SLM Plugins** - Direct access to Small Language Models for development assistance
+
+== Architecture
+
+[source]
+----
+                     ┌─────────────────────────────────────────┐
+                     │              AOLDI Hub                   │
+                     │         (Ada Generic Framework)         │
+                     └─────────────────┬───────────────────────┘
+                                       │
+         ┌─────────────┬───────────────┼───────────────┬─────────────┐
+         │             │               │               │             │
+         ▼             ▼               ▼               ▼             ▼
+    ┌─────────┐  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
+    │Language │  │Language │    │Echidna  │    │Aggregate│    │  SLM    │
+    │ Plugin  │  │ Plugin  │    │ Plugin  │    │ Library │    │ Plugin  │
+    │(betlang)│  │(JtV)    │    │         │    │ Plugin  │    │         │
+    └────┬────┘  └────┬────┘    └────┬────┘    └────┬────┘    └────┬────┘
+         │             │               │               │             │
+         ▼             ▼               ▼               ▼             ▼
+    ┌─────────┐  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
+    │ Racket  │  │Rust/TS  │    │12 Provers│   │  aLib   │    │llama.cpp│
+    │ Runtime │  │ Runtime │    │Agda,Coq │    │  Specs  │    │ /Claude │
+    └─────────┘  └─────────┘    │Z3,Lean..│    └─────────┘    └─────────┘
+                                └─────────┘
+----
+
+== Core Components
+
+=== AOLDI.Hub
+Central coordination point. Manages plugin lifecycle, cross-language operations, and provides unified access to all subsystems.
+
+=== AOLDI.Plugins
+Generic plugin interface defining contracts for:
+
+* `Language_Plugin_Interface` - Parse, type-check, interpret, compile
+* `Verification_Plugin_Interface` - Prove, verify, generate tests
+* `Library_Plugin_Interface` - Load, parse, extract operations
+* `SLM_Plugin_Interface` - Infer, generate code, assist development
+
+=== AOLDI.Registry
+Plugin discovery and lifecycle management. Supports hot-loading and dynamic plugin registration.
+
+=== AOLDI.Aggregate
+Aggregate library management. Defines the 20 core operations from aLib:
+
+|===
+| Category | Operations
+
+| Arithmetic | add, subtract, multiply, divide, modulo
+| Comparison | less_than, greater_than, equal, not_equal, less_equal, greater_equal
+| Logical | and, or, not
+| String | concat, length, substring
+| Collection | map, filter, fold, contains
+| Conditional | if_then_else
+|===
+
+== Language Plugins
+
+Each language is an optional plugin:
+
+|===
+| Plugin | Language | Implementation | Status
+
+| `plugin_betlang` | betlang | Racket | 95%
+| `plugin_julia_the_viper` | julia-the-viper | TypeScript/Rust | 80%
+| `plugin_phronesis` | Phronesis | Elixir | 40%
+| `plugin_oblibeny` | Oblíbený | Rust | 25%
+| `plugin_my_lang` | My-Language Family | Rust | 20%
+| `plugin_ephapax` | Ephapax | Rust | 15%
+| `plugin_affinescript` | AffineScript | OCaml | 10%
+| `plugin_wokelang` | WokeLang | Rust | 10%
+| `plugin_eclexia` | Eclexia | Rust | 5%
+| `plugin_anvomidav` | Anvomidav | — | 0%
+|===
+
+== Echidna Integration
+
+The Echidna plugin provides access to 12 theorem provers:
+
+[cols="1,2,2"]
+|===
+| Prover | Strength | Use Case
+
+| Agda | Dependent types | Type system soundness
+| Coq | Inductive proofs | Compiler correctness
+| Lean | Modern DTT | Library verification
+| Isabelle | Large theories | Semantics formalization
+| Z3 | SMT solving | Property checking
+| CVC5 | SMT solving | Constraint verification
+| Metamath | Minimal logic | Foundation proofs
+| HOL Light | Lightweight | Quick verification
+| Mizar | Set theory | Mathematical libraries
+| PVS | Automation | Safety-critical
+| ACL2 | Termination | Loop proofs
+| HOL4 | Scripting | Custom tactics
+|===
+
+== SLM Integration
+
+Direct access to Small Language Models for:
+
+* **Code Generation** - Generate implementations from descriptions
+* **Code Analysis** - Analyze existing code for patterns and issues
+* **Educational Content** - Generate age-appropriate tutorials (My-Language family)
+* **Translation Assistance** - Help translate between language dialects
+* **Development Prioritization** - Suggest where to focus effort
+
+Supports local inference via llama.cpp and API fallback to Claude.
+
+== Building
+
+[source,bash]
+----
+# Using Alire (recommended)
+cd aoldi
+alr build
+
+# Using GPRbuild directly
+gprbuild -P aoldi.gpr
+
+# Debug build
+gprbuild -P aoldi.gpr -XAOLDI_BUILD_MODE=Debug
+
+# Release build
+gprbuild -P aoldi.gpr -XAOLDI_BUILD_MODE=Release
+----
+
+== Directory Structure
+
+[source]
+----
+aoldi/
+├── src/
+│   ├── aoldi.ads              # Core types and constants
+│   ├── aoldi-plugins.ads      # Plugin interfaces
+│   ├── aoldi-registry.ads     # Plugin registry
+│   ├── aoldi-hub.ads          # Central hub
+│   └── aoldi-aggregate.ads    # Aggregate library
+├── plugins/
+│   ├── plugin_betlang.ads     # betlang plugin
+│   ├── plugin_echidna.ads     # Echidna verification
+│   └── plugin_slm.ads         # SLM integration
+├── specs/                      # Language specifications
+├── tests/                      # Test suite
+├── alire.toml                  # Alire manifest
+├── aoldi.gpr                   # GPR project file
+└── README.adoc                 # This file
+----
+
+== Configuration
+
+Configuration via `alire.toml` or environment variables:
+
+[source,toml]
+----
+[configuration]
+plugin_dir = "./plugins"
+aggregate_lib = "./aggregate-library"
+cache_dir = "./.aoldi-cache"
+slm_model_dir = "./models"
+slm_default_context = 4096
+echidna_dir = "./echidna"
+default_prover = "z3"
+----
+
+== Example Usage
+
+[source,ada]
+----
+with AOLDI.Hub;
+with AOLDI.Plugins;
+
+procedure Main is
+   Hub : AOLDI.Hub.Development_Hub := AOLDI.Hub.Create;
+begin
+   -- Initialize the hub
+   if Hub.Initialize then
+      -- Get ecosystem status
+      declare
+         Status : constant String := To_String (Hub.Get_Ecosystem_Status);
+      begin
+         Put_Line ("Ecosystem: " & Status);
+      end;
+
+      -- Query SLM for development suggestions
+      declare
+         Suggestion : constant String :=
+            To_String (Hub.Suggest_Development_Priority);
+      begin
+         Put_Line ("Priority: " & Suggestion);
+      end;
+
+      -- Verify type system with Echidna
+      declare
+         Result : constant String :=
+            To_String (Hub.Verify_Type_System (Language => "betlang"));
+      begin
+         Put_Line ("Verification: " & Result);
+      end;
+
+      Hub.Shutdown;
+   end if;
+end Main;
+----
+
+== License
+
+AGPL-3.0-or-later

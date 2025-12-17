@@ -1,0 +1,45 @@
+[general]
+name = "aoldi"
+description = "Aspect Oriented Language Development Interface - Central Hub for NextGen Languages"
+version = "0.1.0"
+
+authors = ["Jonathan D.A. Jewell"]
+maintainers = ["Jonathan D.A. Jewell <jonathan@example.com>"]
+maintainers-logins = ["hyperpolymath"]
+
+licenses = "AGPL-3.0-or-later"
+website = "https://github.com/hyperpolymath/nextgen-languages"
+tags = ["language-development", "compiler", "framework", "ai", "verification"]
+
+[build-switches]
+"*".Debug_Ada = ["-g", "-O0", "-gnata", "-gnatwa", "-gnatVa"]
+"*".Release_Ada = ["-O3", "-gnatn", "-gnatp"]
+
+[[depends-on]]
+gnatcoll = "^23"  # GNAT Components Collection
+
+[[depends-on]]
+aws = "^23"  # Ada Web Server (for future HTTP interface)
+
+[[depends-on]]
+ada_toml = "^0.3"  # TOML parsing for config
+
+[gpr-externals]
+AOLDI_BUILD_MODE = ["Debug", "Release"]
+
+[gpr-set-externals]
+AOLDI_BUILD_MODE = "Debug"
+
+[configuration]
+# Plugin directories
+plugin_dir = "./plugins"
+aggregate_lib = "./aggregate-library"
+cache_dir = "./.aoldi-cache"
+
+# SLM configuration
+slm_model_dir = "./models"
+slm_default_context = 4096
+
+# Echidna configuration
+echidna_dir = "./echidna"
+default_prover = "z3"
