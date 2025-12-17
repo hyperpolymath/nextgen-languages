@@ -22,17 +22,52 @@ git clone --recursive https://github.com/hyperpolymath/nextgen-languages.git
 ----
 
 |===
-| Submodule | Language | Status
+| Submodule | Language | Implementation | Completion
 
-| `affinescript/` | AffineScript (OCaml → WASM) | Active
-| `betlang/` | betlang (Racket) | Active
-| `eclexia/` | Eclexia (Rust) | Active
-| `ephapax/` | Ephapax (Scheme) | Early
-| `julia-the-viper/` | julia-the-viper (Rust) | Active
-| `my-lang/` | My-Language Family (Rust) | Active
-| `oblibeny/` | Oblíbený (Rust) | Active
-| `phronesis/` | Phronesis (Elixir) | Active
-| `wokelang/` | WokeLang (Rust) | Early
+| `affinescript/`
+| AffineScript
+| OCaml → WASM
+| 10% (Lexer in progress)
+
+| `betlang/`
+| betlang
+| Racket
+| 95% (6000+ LOC, 180+ functions)
+
+| `eclexia/`
+| Eclexia
+| Rust
+| 5% (Template only - needs GitLab sync)
+
+| `ephapax/`
+| Ephapax
+| Rust
+| 15% (Scaffold + specs)
+
+| `julia-the-viper/`
+| julia-the-viper
+| TypeScript/Rust
+| 80% (v1 complete, 105+ functions)
+
+| `my-lang/`
+| My-Language Family
+| Rust
+| 20% (Grammar defined, scaffold)
+
+| `oblibeny/`
+| Oblíbený
+| Rust
+| 25% (Phase 0 complete - grammar, compiler skeleton)
+
+| `phronesis/`
+| Phronesis
+| Elixir
+| 40% (Mix project, lib/, formal/)
+
+| `wokelang/`
+| WokeLang
+| Rust
+| 10% (Scaffold, grammar/)
 
 |===
 
@@ -85,13 +120,13 @@ A unified language family with four dialects of increasing complexity, designed 
 | Ternary probabilistic programming
 | Ternary bets, Bayesian inference, MCMC
 | Finance, Statistics, Game Theory
-| Active (6000+ LOC)
+| *95%* (180+ functions, production-ready)
 
 | *julia-the-viper*
 | Harvard Architecture security (code injection impossible)
 | Control/Data separation, 7 number systems
 | Security-critical, Input validation
-| v1: 80%
+| *80%* (v1 complete, v2 planned)
 
 |===
 
@@ -107,31 +142,31 @@ A unified language family with four dialects of increasing complexity, designed 
 | Formal AI ethics specification
 | `Agent.`, `Values:`, `EVALUATE(...)`
 | AI Safety, Alignment
-| Active
+| *40%* (Elixir project, formal specs)
 
 | *Eclexia*
 | Economics-as-Code for sustainability
 | `adaptive def`, `@requires: energy`, carbon scheduling
 | Green Computing, FinOps
-| Active (70-page white paper)
+| *5%* (Needs GitLab sync - 70-page white paper there)
 
 | *Oblíbený*
 | Provably secure, Turing-incomplete deploy
 | `(forbid recursion)`, oblivious computing
 | HSMs, Secure Enclaves
-| Active
+| *25%* (Phase 0: grammar + compiler skeleton)
 
 | *Anvomidav*
 | Maximalist formal verification
 | `task @sched(EDF)`, `Linear<T>`, `Π(...).T`
 | Avionics, Autonomous Vehicles
-| Early
+| *Template* (Not started)
 
 | *WokeLang*
 | Human-centric, consent-based
 | `only if okay "..."`, `attempt ... or reassure`
 | Education, Accessibility
-| Early
+| *10%* (Scaffold + grammar)
 
 |===
 
@@ -145,13 +180,13 @@ A unified language family with four dialects of increasing complexity, designed 
 | Affine + dependent types for WASM
 | `Linear a`, `forall n. Vector n a`, effect system
 | Browser, Type-safe systems
-| Active
+| *10%* (Lexer in progress, parser planned)
 
 | *Ephapax*
 | Once-only evaluation, linear semantics
 | `(once x)`, session types, `(ephemeral ...)`
 | Security, Protocol verification
-| Early
+| *15%* (Rust scaffold + specs)
 
 |===
 
