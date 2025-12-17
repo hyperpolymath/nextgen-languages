@@ -20,8 +20,8 @@
 
 (define language-overview
   '((ecosystem-name . "Next-Gen Languages")
-    (total-languages . 10)  ;; Including all dialects
-    (language-families . 3) ;; My-Language family, Foundational, Specialized
+    (total-languages . 12)  ;; Including all dialects + AffineScript, Ephapax
+    (language-families . 4) ;; My-Language, Foundational, Specialized, Advanced-Type-Systems
 
     (design-goal
      "Comprehensive coverage of emerging paradigms from AI-native to formally
@@ -508,5 +508,228 @@
       Age Progression (My-Language):
         8-12 ──────────────────────────> 16+
         Me                                 Ensemble")))
+
+;;;============================================================================
+;;; ADVANCED TYPE SYSTEMS LANGUAGES
+;;;============================================================================
+
+(define advanced-type-systems
+  '((AffineScript
+     ((name . "AffineScript")
+      (tagline . "Affine types, dependent types, and effects for WASM")
+      (status . "active")
+      (tech-stack . "OCaml")
+      (target . "WebAssembly")
+
+      (philosophy
+       "Combines multiple advanced type system features—affine types,
+        dependent types, row polymorphism, and effect systems—into a
+        cohesive language targeting WebAssembly for broad deployment.")
+
+      (paradigms . (Functional Typed Effect-System))
+
+      (key-features
+       ("Affine types (use-at-most-once)")
+       ("Dependent types (types depending on values)")
+       ("Row polymorphism (flexible record/variant types)")
+       ("Effect system (explicit side effect tracking)")
+       ("WebAssembly compilation target"))
+
+      (type-system
+       ((affine-types
+         "Variables can be used at most once, enabling safe resource management
+          without garbage collection overhead.")
+        (dependent-types
+         "Types can depend on runtime values, enabling precise specifications
+          like `Vector n a` for length-indexed vectors.")
+        (row-polymorphism
+         "Functions can work with records/variants having at least certain
+          fields, enabling structural subtyping.")
+        (effects
+         "Side effects (IO, state, exceptions) are tracked in types,
+          enabling pure computation guarantees.")))
+
+      (target-domains
+       ("WebAssembly applications"
+        "Browser-based computation"
+        "Type-safe systems programming"
+        "Verified software components"))))
+
+    (Ephapax
+     ((name . "Ephapax")
+      (tagline . "Once-only evaluation with linear semantics")
+      (status . "early")
+      (tech-stack . "Scheme")
+      (meaning . "From Greek ἅπαξ (hapax) - 'once'")
+
+      (philosophy
+       "Explores the concept of ephemeral, once-only computation. Values
+        exist for a single use, enabling powerful guarantees about data
+        flow, security, and resource management.")
+
+      (paradigms . (Functional Linear-Logic Ephemeral))
+
+      (key-features
+       ("Linear values (must be used exactly once)")
+       ("Ephemeral bindings (single evaluation)")
+       ("Scheme-based implementation")
+       ("Session types for protocols"))
+
+      (target-domains
+       ("Security-critical applications"
+        "Protocol verification"
+        "Resource-safe computation"
+        "Cryptographic implementations"))))))
+
+;;;============================================================================
+;;; ECHIDNA INTEGRATION - FORMAL VERIFICATION & TEST GENERATION
+;;;============================================================================
+
+(define echidna-integration
+  '((description
+     "Echidna is a neurosymbolic theorem proving platform that provides
+      formal verification capabilities across 12 theorem provers. It enables
+      automated proof synthesis and verification for language semantics,
+      type system soundness, and program correctness.")
+
+    (supported-provers
+     ("Agda" "Coq" "Lean" "Isabelle" "Z3" "CVC5"
+      "Metamath" "HOL Light" "Mizar" "PVS" "ACL2" "HOL4"))
+
+    (integration-points
+     ((type-system-verification
+       ((description . "Prove soundness of type systems")
+        (applies-to . (AffineScript Ephapax julia-the-viper Anvomidav))
+        (provers . (Agda Coq Lean))))
+
+      (semantics-verification
+       ((description . "Formalize and verify operational semantics")
+        (applies-to . all-languages)
+        (provers . (Isabelle HOL-Light))))
+
+      (property-verification
+       ((description . "Verify program properties via SMT")
+        (applies-to . (Oblíbený Anvomidav Solo))
+        (provers . (Z3 CVC5))))
+
+      (termination-proofs
+       ((description . "Prove program termination")
+        (applies-to . (Oblíbený julia-the-viper))
+        (provers . (ACL2 Agda))))
+
+      (protocol-verification
+       ((description . "Verify communication protocols and session types")
+        (applies-to . (Ephapax Anvomidav))
+        (provers . (Isabelle Coq))))))
+
+    (test-generation
+     ((theory-tests
+       ((description . "Generate tests from formal specifications")
+        (method . "Property-based testing derived from type signatures")
+        (tool . "echidnabot")))
+
+      (practice-tests
+       ((description . "Generate implementation tests")
+        (method . "Counterexample-guided test generation from SMT queries")
+        (coverage . ("edge cases" "boundary conditions" "error paths"))))
+
+      (regression-tests
+       ((description . "Maintain semantic equivalence across refactoring")
+        (method . "Differential testing via proof obligations")))))
+
+    (repositories
+     ((echidna . "github.com/hyperpolymath/echidna")
+      (echidnabot . "github.com/hyperpolymath/echidnabot")))))
+
+;;;============================================================================
+;;; TESTING FRAMEWORK SPECIFICATION
+;;;============================================================================
+
+(define testing-framework
+  '((levels
+     ((unit-tests
+       ((description . "Individual function/module tests")
+        (generated-by . "Type-driven test generation")
+        (framework . "nextgen-test")))
+
+      (property-tests
+       ((description . "Property-based/fuzzing tests")
+        (generated-by . "Echidna specification mining")
+        (framework . "nextgen-prop")))
+
+      (integration-tests
+       ((description . "Cross-module interaction tests")
+        (generated-by . "Session type extraction")
+        (framework . "nextgen-integ")))
+
+      (verification-tests
+       ((description . "Formal verification obligations")
+        (generated-by . "Echidna proof synthesis")
+        (framework . "echidna-verify")))))
+
+    (per-language-requirements
+     ((Me
+       ((required . (unit-tests))
+        (optional . (property-tests))
+        (notes . "Simple tests for educational context")))
+
+      (Solo
+       ((required . (unit-tests property-tests))
+        (optional . (integration-tests))
+        (notes . "Introduce testing concepts")))
+
+      (Duet
+       ((required . (unit-tests property-tests integration-tests))
+        (optional . (verification-tests))
+        (notes . "Full testing with AI assistance")))
+
+      (Ensemble
+       ((required . all)
+        (notes . "Complete verification pipeline")))
+
+      (betlang
+       ((required . (unit-tests property-tests))
+        (special . "Probabilistic distribution testing")
+        (notes . "Statistical correctness verification")))
+
+      (julia-the-viper
+       ((required . (unit-tests property-tests verification-tests))
+        (special . "Security property verification")
+        (notes . "Prove injection impossibility")))
+
+      (Phronesis
+       ((required . (unit-tests property-tests verification-tests))
+        (special . "Ethical constraint verification")
+        (notes . "TLA+ model checking")))
+
+      (Eclexia
+       ((required . (unit-tests property-tests))
+        (special . "Resource bound verification")
+        (notes . "Energy/time constraint testing")))
+
+      (Oblíbený
+       ((required . (unit-tests verification-tests))
+        (special . "Termination proofs")
+        (notes . "Bounded computation guarantees")))
+
+      (Anvomidav
+       ((required . all)
+        (special . "Timing verification, session type checking")
+        (notes . "DO-178C compliance testing")))
+
+      (WokeLang
+       ((required . (unit-tests))
+        (special . "Accessibility testing")
+        (notes . "Human-centric validation")))
+
+      (AffineScript
+       ((required . (unit-tests property-tests verification-tests))
+        (special . "Linearity checking, effect verification")
+        (notes . "Type system soundness proofs")))
+
+      (Ephapax
+       ((required . (unit-tests property-tests verification-tests))
+        (special . "Once-only semantics verification")
+        (notes . "Linear logic proofs")))))))
 
 ;;; End of LANGUAGES.scm
