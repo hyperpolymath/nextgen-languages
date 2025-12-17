@@ -12,10 +12,10 @@
 ;;;============================================================================
 
 (define metadata
-  '((version . "0.2.0")
+  '((version . "0.2.1")
     (schema-version . "1.0")
     (created . "2025-12-15")
-    (updated . "2025-12-16")
+    (updated . "2025-12-17")
     (project . "nextgen-languages")
     (repo . "github.com/hyperpolymath/nextgen-languages")))
 
@@ -46,8 +46,8 @@
 ;;;============================================================================
 
 (define current-position
-  '((phase . "v0.2 - Language Strategy Definition")
-    (overall-completion . 40)
+  '((phase . "v0.2.1 - Security Hardening & SCM Review")
+    (overall-completion . 45)
 
     (components
      ((rsr-compliance
@@ -165,6 +165,17 @@
 
 (define session-history
   '((snapshots
+     ((date . "2025-12-17")
+      (session . "scm-security-review")
+      (accomplishments
+       ("Updated all GitHub Actions to SHA-pinned v4.2.2"
+        "Added SPDX header to dependabot.yml"
+        "Added container image pinning guidance to semgrep.yml"
+        "Standardized .gitmodules to use HTTPS URLs consistently"
+        "Reviewed all SCM files for completeness and correctness"
+        "Updated webfactory/ssh-agent to v0.9.1"))
+      (notes . "Security review and hardening of CI/CD configuration"))
+
      ((date . "2025-12-16")
       (session . "language-comparison-table")
       (source-chat . "c_ffe1252d0dd5dd30")
@@ -209,13 +220,14 @@
 
 (define state-summary
   '((project . "nextgen-languages")
-    (version . "0.2.0")
-    (overall-completion . 40)
+    (version . "0.2.1")
+    (overall-completion . 45)
     (next-milestone . "v0.3 - Satellite Repository Setup")
     (languages-defined . 8)
     (satellites-active . 1)
     (critical-blockers . 0)
     (high-priority-issues . 0)
-    (updated . "2025-12-16")))
+    (security-status . "hardened")
+    (updated . "2025-12-17")))
 
 ;;; End of STATE.scm

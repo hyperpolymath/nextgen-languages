@@ -1,9 +1,9 @@
 [submodule "betlang"]
 	path = betlang
-	url = git@github.com:hyperpolymath/betlang.git
+	url = https://github.com/hyperpolymath/betlang.git
 [submodule "julia-the-viper"]
 	path = julia-the-viper
-	url = git@github.com:hyperpolymath/julia-the-viper.git
+	url = https://github.com/hyperpolymath/julia-the-viper.git
 [submodule "affinescript"]
 	path = affinescript
 	url = https://github.com/hyperpolymath/affinescript.git
