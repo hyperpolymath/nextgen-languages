@@ -25,3 +25,6 @@
 [submodule "wokelang"]
 	path = wokelang
 	url = https://github.com/hyperpolymath/wokelang.git
+[submodule "7-tentacles"]
+	path = 7-tentacles
+	url = git@github.com:hyperpolymath/7-tentacles.git
