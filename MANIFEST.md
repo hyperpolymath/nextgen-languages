@@ -12,7 +12,7 @@
 | [Phronesis](#phronesis) | 🔴 DIVERGED | AI Ethics/Safety | Elixir | `mix run` |
 | [Eclexia](#eclexia) | 🔴 NOT SYNCED | Sustainable Computing | Rust | `cargo run` |
 | [Oblíbený](#oblíbený) | 🔴 DIVERGED | Security-Critical | Rust | `cargo run` |
-| [Anvomidav](#anvomidav) | ⚠️ NAMING ISSUE | Real-Time Systems | LLVM/Rust | `cargo run` |
+| [Anvomidav](#anvomidav) | 🟢 ACTIVE | Real-Time Systems | LLVM/Rust | `cargo run` |
 | [WokeLang](#wokelang) | 🔴 DIVERGED | Human-Centric | Rust | `cargo run` |
 | [betlang](#betlang) | 🟡 TO VERIFY | Probabilistic | Racket | `racket main.rkt` |
 | [julia-the-viper](#julia-the-viper) | 🟡 TO VERIFY | Systems (Harvard Arch) | Rust | `cargo run` |
@@ -173,10 +173,10 @@ cargo run
 
 | Property | Value |
 |----------|-------|
-| Status | ⚠️ NAMING ISSUE (GitLab calls it "betlang") |
+| Status | 🟢 ACTIVE |
 | Paradigm | Functional, Concurrent, Formal-Linear-Session-Types |
 | Implementation | LLVM/Rust |
-| Submodule | TBD |
+| Submodule | `anvomidav/` |
 
 **Key Features:**
 - `task @sched(EDF)` - Real-time scheduling
@@ -185,7 +185,7 @@ cargo run
 
 **Run:**
 ```bash
-# Resolve naming issue first
+cd anvomidav && git submodule update --init
 cargo run
 ```
 
@@ -296,6 +296,38 @@ cd ephapax && git submodule update --init
 |----------|-------|
 | Status | Active |
 | Submodule | `7-tentacles/` |
+
+---
+
+### language-playgrounds
+**Interactive experimentation sandboxes**
+
+| Property | Value |
+|----------|-------|
+| Status | Active |
+| Submodule | `language-playgrounds/` |
+| URL | https://github.com/hyperpolymath/language-playgrounds |
+
+**Features:**
+- Browser-based REPLs
+- Curated examples
+- Interactive tutorials
+- Code sharing
+
+---
+
+## Playgrounds
+
+Interactive sandboxes for trying languages without local setup:
+
+| Language | Playground |
+|----------|------------|
+| my-lang (me/solo/duet/ensemble) | `language-playgrounds/my-lang/` |
+| Phronesis | `language-playgrounds/phronesis/` |
+| Eclexia | `language-playgrounds/eclexia/` |
+| WokeLang | `language-playgrounds/wokelang/` |
+
+See [language-playgrounds](https://github.com/hyperpolymath/language-playgrounds) for full list.
 
 ---
 

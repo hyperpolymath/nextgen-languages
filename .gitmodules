@@ -28,3 +28,9 @@
 [submodule "7-tentacles"]
 	path = 7-tentacles
 	url = git@github.com:hyperpolymath/7-tentacles.git
+[submodule "anvomidav"]
+	path = anvomidav
+	url = https://github.com/hyperpolymath/anvomidav.git
+[submodule "language-playgrounds"]
+	path = language-playgrounds
+	url = https://github.com/hyperpolymath/language-playgrounds.git

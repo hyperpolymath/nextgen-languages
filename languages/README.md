@@ -8,6 +8,7 @@ Each language has one core invariant that defines its design philosophy.
 | [phronesis](phronesis.md) | Every AI decision traces to declared values |
 | [eclexia](eclexia.md) | No computation without explicit resource budget |
 | [oblibeny](oblibeny.md) | All programs must provably terminate |
+| [anvomidav](anvomidav.md) | Every deadline is statically guaranteed |
 | [wokelang](wokelang.md) | No operation without explicit consent |
 | [betlang](betlang.md) | All uncertainty must be explicitly modeled |
 | [julia-the-viper](julia-the-viper.md) | Data and code are strictly separated |
