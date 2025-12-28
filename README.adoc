@@ -75,45 +75,50 @@ Each language has its own dedicated repository for implementation:
 | Bet programming language (foundational experiment)
 | Active
 
-| Solo
-| _TBD_
-| Systems programming foundation
-| Concept
-
-| Duet
-| _TBD_
-| AI-assisted neuro-symbolic development
-| Concept
-
-| Ensemble
-| _TBD_
-| AI-native programming
-| Concept
+| Solo/Duet/Ensemble
+| link:https://github.com/hyperpolymath/my-lang[my-lang]
+| Progressive language family (me → solo → duet → ensemble)
+| Active
 
 | Phronesis
-| _TBD_
+| link:https://github.com/hyperpolymath/phronesis[phronesis]
 | AI ethics and safety specification
-| Concept
+| Active
 
 | Eclexia
-| _TBD_
+| link:https://github.com/hyperpolymath/eclexia[eclexia]
 | Sustainable computing language
-| Concept
+| Active
 
 | Oblíbený
-| _TBD_
+| link:https://github.com/hyperpolymath/oblibeny[oblibeny]
 | Security-critical embedded language
-| Concept
+| Active
 
 | Anvomidav
-| _TBD_
+| link:https://github.com/hyperpolymath/anvomidav[anvomidav]
 | Formally verified real-time systems
-| Concept
+| Active
 
 | WokeLang
-| _TBD_
+| link:https://github.com/hyperpolymath/wokelang[wokelang]
 | Human-centric programming
-| Concept
+| Active
+
+| AffineScript
+| link:https://github.com/hyperpolymath/affinescript[affinescript]
+| Affine types for WASM
+| Active
+
+| Ephapax
+| link:https://github.com/hyperpolymath/ephapax[ephapax]
+| Once-only evaluation, linear semantics
+| Active
+
+| Julia-the-Viper
+| link:https://github.com/hyperpolymath/julia-the-viper[julia-the-viper]
+| Systems programming, Harvard Architecture
+| Active
 
 |===
 
@@ -141,6 +146,15 @@ Target Audience:       Expert ←————————————→ Beginne
 * `META.scm` — Architecture decisions and development practices
 * `STATE.scm` — Project checkpoint and session history
 * `ECOSYSTEM.scm` — Project ecosystem relationships
+* `PLAYBOOK.scm` — Operational playbook and workflows
+* `AGENTIC.scm` — Agent-oriented language specifications
+* `NEUROSYM.scm` — Neuro-symbolic integration specifications
+* `MANIFEST.md` — Quick reference with status and run commands
+* `languages/` — Per-language READMEs with core invariants
+
+== Playgrounds
+
+Interactive experimentation sandboxes: link:https://github.com/hyperpolymath/language-playgrounds[language-playgrounds]
 
 == Quick Start
 
