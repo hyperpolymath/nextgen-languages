@@ -106,16 +106,45 @@
 ;;;============================================================================
 
 (define playgrounds
-  '((hub . "https://github.com/hyperpolymath/language-playgrounds")
+  '((hub
+     ((url . "https://github.com/hyperpolymath/language-playgrounds")
+      (description . "Experimentation sandboxes for language and learning")))
 
-    (language-mapping
-     ((my-lang . "language-playgrounds/my-lang/")
-      (solo . "language-playgrounds/solo/")
-      (duet . "language-playgrounds/duet/")
-      (ensemble . "language-playgrounds/ensemble/")
-      (phronesis . "language-playgrounds/phronesis/")
-      (eclexia . "language-playgrounds/eclexia/")
-      (wokelang . "language-playgrounds/wokelang/")))
+    (satellites
+     ((me-dialect-playground
+       ((url . "https://github.com/hyperpolymath/me-dialect-playground")
+        (languages . (me solo duet ensemble))
+        (status . active)
+        (features
+         ((grammars . "4 complete EBNF grammars")
+          (examples . "110+ example programs")
+          (lexer . "Production-ready Rust+logos tokenizer")
+          (ast . "Complete syntax tree with serde")
+          (syntax-highlighting . "VSCode, Vim, Emacs")))))
+
+      (jtv-playground
+       ((url . "https://github.com/hyperpolymath/jtv-playground")
+        (languages . (julia-the-viper))
+        (status . active)
+        (features
+         ((structure . "Organized experiments directory")
+          (build . "Justfile automation")
+          (packaging . "Guix/Nix reproducible builds")))))
+
+      (eclexia-playground
+       ((url . "https://github.com/hyperpolymath/eclexia-playground")
+        (languages . (eclexia))
+        (status . active)
+        (features
+         ((stack . "RSR-compliant: ReScript/Deno/Rust")
+          (build . "Justfile automation")
+          (packaging . "Guix/Nix reproducible builds")))))
+
+      (ephapax-playground
+       ((url . "coming-soon")
+        (languages . (ephapax))
+        (status . planned)
+        (description . "Physics as Code sandbox")))))
 
     (features
      ((repl . "Browser-based REPL for each language")
