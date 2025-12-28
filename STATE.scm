@@ -1,155 +1,146 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
-;;; STATE.scm — Project Checkpoint and Session History
+;;; STATE.scm — Project Checkpoint (state.scm format)
 ;;; nextgen-languages
-;;; Reference: https://github.com/hyperpolymath/nextgen-languages
+;;; Reference: https://github.com/hyperpolymath/state.scm
 
 (define-module (nextgen-languages state)
-  #:export (project-checkpoint
-            session-history
-            migration-state
-            blockers))
+  #:export (state))
 
 ;;;============================================================================
-;;; PROJECT CHECKPOINT
-;;; Current state of the project as of last update
+;;; STATE — Checkpoint for AI conversation context persistence
+;;; Format: https://github.com/hyperpolymath/state.scm
 ;;;============================================================================
 
-(define project-checkpoint
-  '((last-updated . "2025-12-28")
-    (updated-by . "claude/add-language-manifest-rDBhd")
+(define state
+  '((metadata
+     ((format-version . "0.1.0")
+      (schema-version . "2025-12-28")
+      (created-at . "2025-10-01T00:00:00Z")
+      (last-updated . "2025-12-28T00:00:00Z")
+      (generator . "claude-code")))
 
-    (languages-status
+    (user
+     ((name . "Jonathan D.A. Jewell")
+      (roles . (maintainer architect))
+      (preferences
+       ((language-policy . "hyperpolymath-standard")
+        (primary-languages . (Rust ReScript Gleam Guile))
+        (banned . (TypeScript Node npm Go))))))
+
+    (session
+     ((conversation-id . "claude/add-language-manifest-rDBhd")
+      (started-at . "2025-12-28T00:00:00Z")
+      (focus . "ecosystem-expansion")))
+
+    (focus
+     ((current-project . "nextgen-languages")
+      (current-phase . "consolidation")
+      (blocking-projects . (eclexia-sync gitlab-migration))))
+
+    (projects
+     ;; Core 8 Languages
      ((my-lang
-       ((status . to-verify)
+       ((name . "My-Lang Family")
+        (status . to-verify)
+        (completion . 20)
+        (category . educational)
+        (phase . design)
         (dialects . (me solo duet ensemble))
         (implementation . Rust)
-        (submodule . "my-lang/")))
+        (next . ("Set up dialect subfolders" "Define progression curriculum"))))
+
       (phronesis
-       ((status . diverged)
-        (gitlab . "Original design")
-        (github . "Elixir implementation")
-        (action-needed . "Evaluate and merge")))
+       ((name . "Phronesis")
+        (status . diverged)
+        (completion . 30)
+        (category . ai-safety)
+        (blockers . ("GitLab has original design" "GitHub has Elixir impl"))
+        (next . ("Evaluate both implementations" "Decide merge strategy"))))
+
       (eclexia
-       ((status . not-synced)
-        (priority . 1)
-        (gitlab . "70-page white paper + Rust compiler")
-        (github . "Template only")
-        (action-needed . "Sync from GitLab immediately")))
+       ((name . "Eclexia")
+        (status . not-synced)
+        (completion . 40)
+        (category . sustainable-computing)
+        (blockers . ("70-page white paper only on GitLab" "Rust compiler only on GitLab"))
+        (next . ("PRIORITY: Sync from GitLab"))))
+
       (oblibeny
-       ((status . diverged)
-        (gitlab-commits . 40)
-        (github-commits . 30)
-        (action-needed . "Manual merge")))
+       ((name . "Oblíbený")
+        (status . diverged)
+        (completion . 35)
+        (category . security-critical)
+        (blockers . ("40 commits on GitLab" "30 commits on GitHub" "Manual merge needed"))))
+
       (anvomidav
-       ((status . active)
-        (url . "https://github.com/hyperpolymath/anvomidav")
-        (note . "Recently added as satellite")))
+       ((name . "Anvomidav")
+        (status . active)
+        (completion . 15)
+        (category . real-time-systems)
+        (next . ("Define type system" "Implement scheduler"))))
+
       (wokelang
-       ((status . diverged)
-        (gitlab . "Original design")
-        (github . "Rust bytecode VM")
-        (action-needed . "Evaluate and merge")))
+       ((name . "WokeLang")
+        (status . diverged)
+        (completion . 25)
+        (category . human-centric)
+        (blockers . ("GitLab has original" "GitHub has Rust VM"))))
+
       (betlang
-       ((status . to-verify)
+       ((name . "betlang")
+        (status . to-verify)
+        (completion . 50)
+        (category . probabilistic)
         (implementation . Racket)))
+
       (julia-the-viper
-       ((status . to-verify)
+       ((name . "julia-the-viper")
+        (status . to-verify)
+        (completion . 20)
+        (category . systems)
         (implementation . Rust)))
+
       (affinescript
-       ((status . to-verify)
+       ((name . "AffineScript")
+        (status . to-verify)
+        (completion . 15)
+        (category . type-systems)
         (implementation . OCaml)))
+
       (ephapax
-       ((status . to-verify)
-        (implementation . "TBD")))))
+       ((name . "Ephapax")
+        (status . to-verify)
+        (completion . 10)
+        (category . linear-semantics)
+        (implementation . TBD)))))
 
-    (infrastructure-status
-     ((hub-repo . active)
-      (wiki . "12 pages, 70+ stubs needed")
-      (ci-cd . configured)
-      (mirrors . pending)))))
+    (critical-next
+     ((1 . "Sync eclexia from GitLab (70-page white paper + Rust compiler)")
+      (2 . "Resolve phronesis divergence (GitLab original vs GitHub Elixir)")
+      (3 . "Resolve wokelang divergence (GitLab original vs GitHub Rust)")
+      (4 . "Merge oblibeny branches (40 GitLab + 30 GitHub commits)")
+      (5 . "Set up my-lang dialect subfolders (me/solo/duet/ensemble)")))
 
-;;;============================================================================
-;;; SESSION HISTORY
-;;; Record of significant development sessions
-;;;============================================================================
-
-(define session-history
-  '((sessions
-     ((session-2025-12-28-manifest
-       ((branch . "claude/add-language-manifest-rDBhd")
-        (changes
-         ("Created MANIFEST.md with language index"
-          "Created languages/ directory with per-language READMEs"
-          "Added core invariants for each language"
-          "Created META.scm, STATE.scm, ECOSYSTEM.scm"
-          "Added anvomidav and language-playgrounds as satellites"
-          "Updated README.adoc with actual repo links"))
-        (commits . TBD)))
-
-      (session-2025-12-16-migration
-       ((focus . "Migration planning")
-        (changes
-         ("Created MIGRATION-STATUS.md"
-          "Created MIGRATION-STRATEGY.md"
-          "Identified diverged repos"))
-        (outcome . "Strategy documented, execution pending")))
-
-      (session-2025-10-original
-       ((focus . "Initial language design")
-        (changes
-         ("Created LANGUAGES.scm"
-          "Defined 8 core languages"
-          "Established design philosophy"))
-        (platform . "GitLab")))))))
-
-;;;============================================================================
-;;; MIGRATION STATE
-;;; Status of GitLab → GitHub migration
-;;;============================================================================
-
-(define migration-state
-  '((source-of-truth . GitHub)
-    (target-mirrors . (GitLab Codeberg Bitbucket))
-
-    (phase . 1)
-    (phase-description . "Language repos sync")
-
-    (repos
-     ((synced . ())
-      (to-verify . (betlang julia-the-viper my-lang affinescript ephapax))
-      (diverged . (phronesis wokelang oblibeny))
-      (not-synced . (eclexia))
-      (naming-issue . (anvomidav))))
-
-    (priority-queue
-     ((1 . eclexia)
-      (2 . phronesis)
-      (3 . wokelang)
-      (4 . oblibeny)))))
-
-;;;============================================================================
-;;; BLOCKERS
-;;; Current issues blocking progress
-;;;============================================================================
-
-(define blockers
-  '((active
-     ((blocker-001
-       ((title . "Eclexia not synced from GitLab")
+    (issues
+     ((migration
+       ((id . "issue-001")
+        (title . "GitLab → GitHub migration incomplete")
         (severity . critical)
-        (description . "70-page white paper and Rust compiler only on GitLab")
-        (resolution . "Manual sync required with GitLab access")
-        (owner . "maintainer")))
+        (description . "Original work from Aug-Oct 2025 on GitLab not synced")
+        (affected . (eclexia phronesis wokelang oblibeny))))
 
-      (blocker-002
-       ((title . "Diverged implementations need decisions")
-        (severity . high)
-        (description . "phronesis, wokelang, oblibeny have different work on GitLab vs GitHub")
-        (resolution . "Review both implementations, decide which to keep/merge")
-        (owner . "maintainer")))))
+      (structure
+       ((id . "issue-002")
+        (title . "my-lang needs dialect subfolders")
+        (severity . medium)
+        (description . "me/solo/duet/ensemble should be subfolders of my-lang")))))
 
-    (resolved . ())))
+    (history
+     ((velocity
+       ((2025-12-28 . ((tasks-completed . 15) (files-created . 28)))
+        (2025-12-16 . ((tasks-completed . 5) (focus . "migration-planning")))
+        (2025-10-01 . ((tasks-completed . 10) (focus . "initial-design")))))))))
 
 ;;; End of STATE.scm
