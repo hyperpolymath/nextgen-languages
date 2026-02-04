@@ -1,0 +1,467 @@
+= FormBD & VeriSimDB Parallel Development Plan
+:toc:
+:toc-placement!:
+
+// SPDX-License-Identifier: PMPL-1.0-or-later
+
+[.lead]
+**Co-developing two complementary database systems to the same maturity level**
+
+toc::[]
+
+== Executive Summary
+
+*FormBD* and *VeriSimDB* are sibling database projects with complementary philosophies:
+
+* **FormBD**: Narrative-first, audit-grade, single-modal (document+graph) with deep reversibility
+* **VeriSimDB**: Federation-first, multi-modal (6 modalities), drift-aware
+
+**Current Status:**
+[cols="1,1,1"]
+|===
+|Project |Completion |Phase
+
+|FormBD |70% |PoC implementation
+|VeriSimDB |5% |Architecture complete, implementation nascent
+|===
+
+**Goal**: Bring VeriSimDB to 70% completion while advancing FormBD to production readiness in parallel.
+
+== Architecture Comparison
+
+=== FormBD Stack
+
+----
+┌─────────────────────────────────────────────────────────────┐
+│  Form.ControlPlane (Elixir/OTP - deferred)                  │
+├─────────────────────────────────────────────────────────────┤
+│  Form.Normalizer (Factor + Lean 4)                          │
+│  FD discovery, proof-carrying normalization                 │
+├─────────────────────────────────────────────────────────────┤
+│  Form.Runtime (Factor)                                      │
+│  FBQL parse/plan/exec, EXPLAIN, introspection              │
+├─────────────────────────────────────────────────────────────┤
+│  Form.Bridge (Zig)                                          │
+│  Stable FFI, CBOR encoding                                  │
+├─────────────────────────────────────────────────────────────┤
+│  Form.Model (Forth)                                         │
+│  Documents, edges, schemas, migrations                      │
+├─────────────────────────────────────────────────────────────┤
+│  Form.Blocks (Forth)                                        │
+│  4096-byte blocks, journal, crash recovery                  │
+└─────────────────────────────────────────────────────────────┘
+----
+
+**Query Language**: FBQL (FormBD Query Language)
+
+=== VeriSimDB Stack
+
+----
+┌─────────────────────────────────────────────────────────────┐
+│  Elixir Orchestration Layer                                 │
+│  EntityServer, DriftMonitor, QueryRouter, SchemaRegistry    │
+├─────────────────────────────────────────────────────────────┤
+│  ReScript Registry (Tiny Core <5k LOC)                      │
+│  UUID → Store Mapping, KRaft Metadata Log, Trust Window     │
+├─────────────────────────────────────────────────────────────┤
+│  Rust Modality Stores (10 crates)                           │
+│  graph, vector, tensor, semantic, document, temporal        │
+│  + hexad, drift, normalizer, api                            │
+└─────────────────────────────────────────────────────────────┘
+----
+
+**Query Language**: VQL (VeriSim Query Language)
+
+== Shared Elements
+
+Both projects use:
+
+* **Elixir/OTP**: Fault-tolerant orchestration layer
+* **Multi-model approach**: FormBD (document+graph), VeriSimDB (6 modalities)
+* **Auditability-first**: FormBD (narrative artefacts), VeriSimDB (drift detection)
+* **Query explanation**: FormBD (EXPLAIN), VeriSimDB (query plan visualization)
+* **Type safety**: FormBD (Lean 4 proofs), VeriSimDB (ReScript + Rust)
+
+== Phase 1: Bring VeriSimDB to 70% (12-16 weeks)
+
+=== Milestone V1: Rust Modality Stores (Weeks 1-6)
+
+Priority order (based on FormBD's document-first approach):
+
+==== Week 1-2: verisim-document
+* Implement Tantivy-based full-text search
+* CRUD operations (create, read, update, delete)
+* Schema validation
+* Unit tests + property-based tests
+
+**Deliverable**: Document modality feature-complete
+
+==== Week 2-3: verisim-temporal
+* Version history storage (inspired by FormBD's journal)
+* Time-travel queries
+* Snapshot management
+* Audit trail
+
+**Deliverable**: Temporal modality feature-complete
+
+==== Week 3-4: verisim-graph
+* Oxigraph integration (RDF + property graph)
+* SPARQL subset
+* Edge traversal
+* Graph algorithms (shortest path, centrality)
+
+**Deliverable**: Graph modality feature-complete
+
+==== Week 4-5: verisim-vector
+* HNSW index implementation
+* Embedding storage
+* Similarity search (cosine, euclidean, dot product)
+* Dimensionality reduction hooks
+
+**Deliverable**: Vector modality feature-complete
+
+==== Week 5-6: verisim-semantic + verisim-tensor
+* **verisim-semantic**: Type annotations, CBOR proof blobs (proven + sactify-php integration)
+* **verisim-tensor**: ndarray storage, multi-dimensional indexing
+
+**Deliverable**: All 6 modality stores operational
+
+=== Milestone V2: Hexad Entity Layer (Weeks 7-8)
+
+* `verisim-hexad`: Unified entity abstraction
+* Cross-modal indexing (UUID → modality mappings)
+* Drift detection between modalities
+* Consistency checking
+
+**Deliverable**: Hexad layer complete with cross-modal queries
+
+=== Milestone V3: VQL Execution Engine (Weeks 9-11)
+
+* VQL parser integration (ReScript → Rust)
+* Query planner (using existing planner design docs)
+* Execution engine with multi-modal routing
+* EXPLAIN functionality (like FormBD's FBQL EXPLAIN)
+
+**Deliverable**: VQL queries execute across all modalities
+
+=== Milestone V4: Testing & Stability (Weeks 12-14)
+
+* Property-based tests (inspired by FormBD's test suite)
+* Fuzz testing for VQL parser
+* Integration tests for all modalities
+* E2E test suite for federated scenarios
+
+**Deliverable**: Test coverage > 80%, fuzzing passes 24hrs
+
+=== Milestone V5: Performance & Documentation (Weeks 15-16)
+
+* Query plan caching (like FormBD)
+* Connection pooling
+* Batch operations
+* Performance benchmarks
+* User documentation (QUICKSTART, API reference)
+
+**Deliverable**: VeriSimDB at 70% completion, production-ready PoC
+
+== Phase 2: Parallel Advancement (Weeks 17-24)
+
+=== FormBD: Production Hardening
+
+* **Week 17-18**: HTTP API server (Milestone M11 from STATE.scm)
+* **Week 19-20**: Form.Normalizer implementation (currently design-complete)
+* **Week 21-22**: Migration artefacts (M3 pending item)
+* **Week 23-24**: Production deployment guide, monitoring, observability
+
+**Target**: FormBD 1.0 production release
+
+=== VeriSimDB: Federation & Advanced Features
+
+* **Week 17-18**: ReScript registry implementation (KRaft metadata log)
+* **Week 19-20**: Federation protocol (standalone → federated transition)
+* **Week 21-22**: ZKP integration (`proven` + `sactify-php`)
+* **Week 23-24**: Adaptive learner (cache TTL tuning, query plan selection)
+
+**Target**: VeriSimDB 1.0 production release (standalone mode)
+
+== Phase 3: Synergy & Integration (Weeks 25-32)
+
+=== Cross-Pollination
+
+==== FormBD ← VeriSimDB
+* **Drift Detection**: Enhance FormBD's consistency checking with VeriSimDB's drift detection algorithms
+* **Federation**: Add federated FormBD nodes using VeriSimDB's registry approach
+* **Multi-Modal Projections**: Unify formbd-geo and formbd-analytics as modality layers (like VeriSimDB)
+
+==== VeriSimDB ← FormBD
+* **Self-Normalization**: Add `verisim-normalizer` using FormBD's FD discovery (DFD algorithm)
+* **Reversibility**: Enhance all modalities with FormBD's journal-first reversibility guarantees
+* **Narrative Explanations**: Add narrative drift repair explanations (inspired by FormBD's constraint rejections)
+
+=== Query Language Integration Study
+
+**Research Question**: Can VQL and FBQL interoperate?
+
+* **Hypothesis**: VQL as multi-modal routing layer, FBQL as document/graph sublanguage
+* **PoC**: Translate FBQL queries to VQL document+graph modality queries
+* **Evaluation**: Performance, expressiveness, backward compatibility
+
+**Deliverable**: Technical report on FBQL/VQL unification feasibility
+
+== Development Workflow
+
+=== Parallel Work Streams
+
+[cols="1,2,2"]
+|===
+|Week |FormBD Focus |VeriSimDB Focus
+
+|1-6 |M11 HTTP API design, Form.Normalizer planning |Rust modality stores implementation
+|7-11 |HTTP API implementation, normalizer scaffolding |Hexad layer + VQL execution engine
+|12-16 |Testing, documentation, performance tuning |Testing, documentation, performance tuning
+|17-24 |Production hardening, M3 migration artefacts |Federation layer, ReScript registry
+|25-32 |Integrate drift detection, federated FormBD PoC |Integrate self-normalization, reversibility
+|===
+
+=== Checkpoint Protocol
+
+Both projects maintain synchronized checkpoint files:
+
+* **STATE.scm**: Updated weekly with progress, blockers, next actions
+* **ECOSYSTEM.scm**: Updated when cross-project dependencies or relationships change
+* **META.scm**: Updated when architectural decisions or design philosophy evolves
+
+=== Weekly Sync
+
+**Every Friday**:
+1. Review both STATE.scm files
+2. Identify blocking dependencies (e.g., VeriSimDB drift detection → FormBD integration)
+3. Update UNIFIED-ROADMAP.scm in both repos
+4. Adjust priorities based on cross-pollination opportunities
+
+== Success Criteria
+
+=== Week 16 Targets (Both Projects at 70%)
+
+**FormBD**:
+- [ ] M11 HTTP API server operational
+- [ ] Form.Normalizer scaffolding complete
+- [ ] Migration artefacts implemented
+- [ ] Test coverage > 80%
+- [ ] QUICKSTART guide complete
+
+**VeriSimDB**:
+- [ ] All 6 modality stores operational
+- [ ] Hexad layer complete
+- [ ] VQL execution engine functional
+- [ ] Test coverage > 80%
+- [ ] QUICKSTART guide complete
+
+=== Week 24 Targets (Both Projects Production-Ready)
+
+**FormBD**:
+- [ ] FormBD 1.0 release
+- [ ] Production deployment docs
+- [ ] Monitoring/observability setup
+- [ ] Self-normalization operational
+
+**VeriSimDB**:
+- [ ] VeriSimDB 1.0 release (standalone mode)
+- [ ] Federation protocol operational
+- [ ] ZKP integration complete
+- [ ] Adaptive learner functional
+
+=== Week 32 Targets (Synergy Realized)
+
+**FormBD**:
+- [ ] Drift detection integrated
+- [ ] Federated FormBD PoC working
+- [ ] formbd-geo and formbd-analytics refactored as modality layers
+
+**VeriSimDB**:
+- [ ] Self-normalization operational across all modalities
+- [ ] Reversibility guarantees for all modalities
+- [ ] Narrative drift explanations
+
+== Risk Mitigation
+
+=== Technical Risks
+
+[cols="2,1,3"]
+|===
+|Risk |Severity |Mitigation
+
+|VeriSimDB Rust implementation slower than expected |High
+|Start with verisim-document only; defer tensor/semantic if needed
+
+|FBQL/VQL integration infeasible |Medium
+|Keep as separate query languages; add translation layer in Phase 3
+
+|Elixir/OTP integration complexity |Medium
+|Share learnings between FormBD and VeriSimDB teams weekly
+
+|FFI complexity (FormBD Zig, VeriSimDB Rust) |Low
+|Both follow ABI/FFI Universal Standard (Idris2 + Zig)
+|===
+
+=== Resource Risks
+
+[cols="2,1,3"]
+|===
+|Risk |Severity |Mitigation
+
+|Developer bandwidth insufficient for parallel development |High
+|Prioritize FormBD M11 and VeriSimDB modality stores; defer federation to Phase 2
+
+|Specification drift between projects |Medium
+|Weekly STATE.scm sync, unified ECOSYSTEM.scm updates
+
+|Testing infrastructure setup time |Low
+|Reuse FormBD's property-based and fuzz testing frameworks for VeriSimDB
+|===
+
+== Ecosystem Repos
+
+=== FormBD Ecosystem (8 repos)
+
+All located in `~/Documents/hyperpolymath-repos/`:
+
+* `formbd` - Core database engine
+* `formbd-geo` - R-tree spatial indexing projection layer
+* `formbd-analytics` - Columnar OLAP analytics projection layer
+* `formbd-studio` - Zero-friction GUI for non-technical users
+* `formbd-debugger` - Proof-carrying debugger (Lean 4 + Idris 2)
+* `formbd-beam` - BEAM/Elixir integration layer
+* `formbase` - Open-source Airtable alternative with provenance
+* `zotero-formbd` - Post-truth reference manager with PROMPT scores
+
+**Relationship to VeriSimDB**: formbd-geo and formbd-analytics could be reimagined as VeriSimDB-style modality layers in Phase 3.
+
+=== VeriSimDB Ecosystem (1 repo, 10 crates)
+
+* `verisimdb` - Main repo with 10 Rust crates:
+  - `verisim-graph` - Graph modality (Oxigraph)
+  - `verisim-vector` - Vector modality (HNSW)
+  - `verisim-tensor` - Tensor modality (ndarray)
+  - `verisim-semantic` - Semantic modality (CBOR + ZKP)
+  - `verisim-document` - Document modality (Tantivy)
+  - `verisim-temporal` - Temporal modality (version history)
+  - `verisim-hexad` - Unified entity abstraction
+  - `verisim-drift` - Cross-modal drift detection
+  - `verisim-normalizer` - Self-normalization (to be enhanced with FormBD's approach)
+  - `verisim-api` - HTTP API server
+
+**Relationship to FormBD**: VeriSimDB's drift detection and federation could extend FormBD beyond single-node in Phase 3.
+
+== Tools & Infrastructure
+
+=== Shared Development Tools
+
+* **Testing**: Property-based testing (FormBD uses ReScript, VeriSimDB can use Rust proptest)
+* **Fuzzing**: ClusterFuzzLite (both projects already configured)
+* **CI/CD**: GitHub Actions with Hypatia neurosymbolic scanning
+* **Documentation**: AsciiDoc (both projects use this format)
+
+=== Language-Specific Tools
+
+**FormBD**:
+* `gforth` - Forth interpreter for Form.Blocks/Form.Model
+* `factor` - Factor runtime for Form.Runtime/Form.Normalizer
+* `zig` - Form.Bridge FFI
+* `lean4` - Proof verification
+
+**VeriSimDB**:
+* `cargo` - Rust workspace build
+* `rescript` - Registry and VQL parser
+* `mix` - Elixir orchestration layer
+
+== References
+
+* link:~/Documents/hyperpolymath-repos/formbd/README.adoc[FormBD README]
+* link:~/Documents/hyperpolymath-repos/formbd/STATE.scm[FormBD STATE.scm]
+* link:~/Documents/hyperpolymath-repos/formbd/ECOSYSTEM.scm[FormBD ECOSYSTEM.scm]
+* link:~/Documents/hyperpolymath-repos/verisimdb/README.adoc[VeriSimDB README]
+* link:~/Documents/hyperpolymath-repos/verisimdb/STATE.scm[VeriSimDB STATE.scm]
+* link:~/Documents/hyperpolymath-repos/verisimdb/ECOSYSTEM.scm[VeriSimDB ECOSYSTEM.scm]
+* link:~/ffi-migration-guide.md[FFI Migration Guide] - ABI/FFI Universal Standard (Idris2 + Zig)
+
+== Next Steps
+
+1. **Update ECOSYSTEM.scm** in both repos to reflect sibling relationship
+2. **Create detailed STATE.scm** for VeriSimDB with Milestones V1-V5
+3. **Scaffold Rust modality stores** with proper tests and documentation
+4. **Begin Milestone V1** (verisim-document implementation)
+
+== Appendix: Query Language Comparison
+
+=== FBQL (FormBD Query Language)
+
+[source,sql]
+----
+-- Document insert with provenance
+INSERT INTO papers {
+  title: "Machine Learning Survey",
+  authors: ["Smith", "Jones"],
+  year: 2024
+} WITH PROVENANCE;
+
+-- Graph edge insert
+INSERT EDGE cites FROM paper:123 TO paper:456 {
+  context: "Related work section"
+};
+
+-- Explain query
+EXPLAIN SELECT * FROM papers WHERE year > 2020;
+
+-- Introspect schema
+INTROSPECT SCHEMA papers;
+----
+
+**Philosophy**: Narrative-first, explainable, document+graph
+
+=== VQL (VeriSim Query Language)
+
+[source,sql]
+----
+-- Multi-modal query
+SELECT hexad.title, hexad.embedding
+FROM hexads
+WHERE
+  DOCUMENT MATCHES "machine learning" AND
+  VECTOR SIMILAR TO embedding(query_text) WITHIN 0.8 AND
+  GRAPH CONNECTED TO hexad:456 VIA "cites";
+
+-- Drift detection query
+SELECT hexad_id, drift_score
+FROM hexads
+WHERE DRIFT BETWEEN (document, vector) > 0.3;
+
+-- Time-travel query
+SELECT * FROM hexads
+VERSION AT timestamp('2024-01-01T00:00:00Z');
+
+-- Federation query
+SELECT * FROM hexads@remote_store
+WHERE modality = 'document';
+----
+
+**Philosophy**: Multi-modal, federation-aware, drift-conscious
+
+=== Potential Unification
+
+**Hypothesis**: VQL as routing layer, FBQL as document/graph sublanguage
+
+[source,sql]
+----
+-- VQL wrapping FBQL
+SELECT verisim.route(
+  FBQL("SELECT * FROM papers WHERE year > 2020"),
+  modalities: ['document', 'graph']
+);
+
+-- FBQL with VQL modality hints
+SELECT * FROM papers
+WHERE year > 2020
+WITH MODALITY HINT vector_similarity(embedding, threshold: 0.8);
+----
+
+**Evaluation needed**: Feasibility, performance, backward compatibility.

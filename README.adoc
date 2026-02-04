@@ -66,6 +66,26 @@ This repository serves as the central hub for the Next-Gen Languages initiativeâ
 
 |===
 
+== Database & Specialized Languages
+
+In addition to the core eight languages, the ecosystem includes specialized languages for database queries and markup:
+
+[cols="1,1,2,1"]
+|===
+| Language | Repository | Description | Status
+
+| FQLdt
+| link:https://github.com/hyperpolymath/fqldt[fqldt]
+| FormDB Query Language with Dependent Types
+| Active
+
+| A2ML
+| link:https://github.com/hyperpolymath/a2ml[a2ml]
+| Attested Markup Language
+| Active
+
+|===
+
 == Satellite Repositories
 
 Each language has its own dedicated repository for implementation:

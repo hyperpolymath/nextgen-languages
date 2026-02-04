@@ -1,0 +1,479 @@
+= FormBD & VeriSimDB Parallel Development: Quick Start Guide
+:toc:
+:toc-placement!:
+
+// SPDX-License-Identifier: PMPL-1.0-or-later
+
+[.lead]
+**Start co-developing FormBD and VeriSimDB to the same level**
+
+toc::[]
+
+== Current Status Summary
+
+[cols="1,1,1,3"]
+|===
+|Project |Completion |Phase |Next Milestone
+
+|**FormBD** |70% |PoC implementation |M11: HTTP API Server
+|**VeriSimDB** |10% |Implementation ramp-up |V1: Rust Modality Stores
+|===
+
+**Goal**: Bring VeriSimDB to 70% (match FormBD) by Week 16, then advance both to production readiness.
+
+== Quick Reference
+
+=== Key Documents
+
+* **Parallel Development Plan**: link:~/Documents/hyperpolymath-repos/FORMBD-VERISIMDB-PARALLEL-DEV.adoc[FORMBD-VERISIMDB-PARALLEL-DEV.adoc]
+* **FormBD STATE**: link:~/Documents/hyperpolymath-repos/formbd/STATE.scm[formbd/STATE.scm]
+* **VeriSimDB STATE**: link:~/Documents/hyperpolymath-repos/verisimdb/STATE.scm[verisimdb/STATE.scm]
+* **FormBD ECOSYSTEM**: link:~/Documents/hyperpolymath-repos/formbd/ECOSYSTEM.scm[formbd/ECOSYSTEM.scm]
+* **VeriSimDB ECOSYSTEM**: link:~/Documents/hyperpolymath-repos/verisimdb/ECOSYSTEM.scm[verisimdb/ECOSYSTEM.scm]
+
+=== FormBD Associated Repos
+
+All in `~/Documents/hyperpolymath-repos/`:
+
+[cols="1,3"]
+|===
+|Repo |Purpose
+
+|`formbd` |Core database engine (Forth + Factor + Zig)
+|`formbd-geo` |R-tree spatial indexing projection layer
+|`formbd-analytics` |Columnar OLAP analytics projection layer
+|`formbd-studio` |Zero-friction GUI for non-technical users
+|`formbd-debugger` |Proof-carrying debugger (Lean 4 + Idris 2)
+|`formbd-beam` |BEAM/Elixir integration layer
+|`formbase` |Open-source Airtable alternative with provenance
+|`zotero-formbd` |Post-truth reference manager with PROMPT scores
+|===
+
+=== VeriSimDB Structure
+
+Single repo with 10 Rust crates:
+
+[cols="1,3"]
+|===
+|Crate |Purpose
+
+|`verisim-document` |Full-text search (Tantivy) - **Start here**
+|`verisim-temporal` |Version history, time-travel queries
+|`verisim-graph` |RDF + property graph (Oxigraph)
+|`verisim-vector` |Embeddings, similarity search (HNSW)
+|`verisim-semantic` |Type annotations, ZKP integration
+|`verisim-tensor` |Multi-dimensional numeric data
+|`verisim-hexad` |Unified entity abstraction
+|`verisim-drift` |Cross-modal drift detection
+|`verisim-normalizer` |Self-normalization (to be enhanced with FormBD's approach)
+|`verisim-api` |HTTP API server
+|===
+
+== Week 1-2: Getting Started (verisim-document)
+
+=== Prerequisites
+
+[source,bash]
+----
+# Rust (edition 2024)
+rustc --version  # Should be 1.80+
+
+# Elixir
+elixir --version  # Should be 1.17+
+
+# ReScript (for VQL parser)
+npm install -g rescript  # Or use deno
+
+# FormBD tools
+gforth --version  # Forth interpreter
+factor --version  # Factor runtime (0.102)
+zig version      # Zig compiler
+----
+
+=== Workspace Setup
+
+[source,bash]
+----
+# Verify repos are in canonical location (symlink to Eclipse drive)
+ls -la ~/Documents/hyperpolymath-repos/formbd
+ls -la ~/Documents/hyperpolymath-repos/verisimdb
+
+# Navigate to VeriSimDB
+cd ~/Documents/hyperpolymath-repos/verisimdb
+
+# Build Rust workspace
+cargo build
+
+# Run tests (should have some scaffolding tests)
+cargo test
+----
+
+=== Milestone V1 - Week 1-2: verisim-document
+
+**Goal**: Implement full-text search modality using Tantivy
+
+==== Step 1: Review existing structure
+
+[source,bash]
+----
+cd ~/Documents/hyperpolymath-repos/verisimdb/rust-core/verisim-document
+
+# Check existing code
+cat src/lib.rs
+
+# Check Cargo.toml dependencies
+cat Cargo.toml
+----
+
+==== Step 2: Implement CRUD operations
+
+**Create** (`verisim-document/src/crud.rs`):
+[source,rust]
+----
+use tantivy::schema::*;
+use tantivy::{Index, IndexWriter, TantivyError};
+use uuid::Uuid;
+
+pub struct DocumentStore {
+    index: Index,
+    writer: IndexWriter,
+    schema: Schema,
+}
+
+impl DocumentStore {
+    pub fn new() -> Result<Self, TantivyError> {
+        let mut schema_builder = Schema::builder();
+        schema_builder.add_text_field("hexad_id", STRING | STORED);
+        schema_builder.add_text_field("title", TEXT | STORED);
+        schema_builder.add_text_field("body", TEXT);
+        let schema = schema_builder.build();
+
+        let index = Index::create_in_ram(schema.clone());
+        let writer = index.writer(50_000_000)?;
+
+        Ok(Self { index, writer, schema })
+    }
+
+    pub fn create(&mut self, hexad_id: Uuid, title: &str, body: &str) -> Result<(), TantivyError> {
+        let title_field = self.schema.get_field("title").unwrap();
+        let body_field = self.schema.get_field("body").unwrap();
+        let id_field = self.schema.get_field("hexad_id").unwrap();
+
+        let mut doc = Document::default();
+        doc.add_text(id_field, hexad_id.to_string());
+        doc.add_text(title_field, title);
+        doc.add_text(body_field, body);
+
+        self.writer.add_document(doc)?;
+        self.writer.commit()?;
+        Ok(())
+    }
+}
+----
+
+**Read/Search** (`verisim-document/src/search.rs`):
+[source,rust]
+----
+use tantivy::collector::TopDocs;
+use tantivy::query::QueryParser;
+use tantivy::{Index, TantivyError};
+
+pub struct SearchResult {
+    pub hexad_id: String,
+    pub title: String,
+    pub score: f32,
+}
+
+pub fn search(index: &Index, query_str: &str, limit: usize) -> Result<Vec<SearchResult>, TantivyError> {
+    let reader = index.reader()?;
+    let searcher = reader.searcher();
+
+    let schema = index.schema();
+    let title_field = schema.get_field("title").unwrap();
+    let body_field = schema.get_field("body").unwrap();
+
+    let query_parser = QueryParser::for_index(&index, vec![title_field, body_field]);
+    let query = query_parser.parse_query(query_str)?;
+
+    let top_docs = searcher.search(&query, &TopDocs::with_limit(limit))?;
+
+    let mut results = Vec::new();
+    for (score, doc_address) in top_docs {
+        let retrieved_doc = searcher.doc(doc_address)?;
+        let hexad_id = retrieved_doc.get_first(schema.get_field("hexad_id").unwrap())
+            .unwrap().as_text().unwrap().to_string();
+        let title = retrieved_doc.get_first(title_field)
+            .unwrap().as_text().unwrap().to_string();
+
+        results.push(SearchResult { hexad_id, title, score });
+    }
+
+    Ok(results)
+}
+----
+
+==== Step 3: Add property-based tests
+
+**Install proptest**:
+[source,toml]
+----
+# In verisim-document/Cargo.toml
+[dev-dependencies]
+proptest = "1.4"
+----
+
+**Property tests** (`verisim-document/tests/property_tests.rs`):
+[source,rust]
+----
+use proptest::prelude::*;
+use verisim_document::DocumentStore;
+use uuid::Uuid;
+
+proptest! {
+    #[test]
+    fn test_insert_then_search(title in "\\w{1,50}", body in "\\w{10,200}") {
+        let mut store = DocumentStore::new().unwrap();
+        let hexad_id = Uuid::new_v4();
+
+        // Insert document
+        store.create(hexad_id, &title, &body).unwrap();
+
+        // Search should find it
+        let results = verisim_document::search(&store.index, &title, 10).unwrap();
+        assert!(results.len() > 0);
+        assert_eq!(results[0].hexad_id, hexad_id.to_string());
+    }
+}
+----
+
+==== Step 4: Run tests and verify
+
+[source,bash]
+----
+cd ~/Documents/hyperpolymath-repos/verisimdb/rust-core/verisim-document
+cargo test
+
+# Expected: All tests pass
+# If failures, review and fix
+----
+
+==== Step 5: Update STATE.scm
+
+[source,bash]
+----
+cd ~/Documents/hyperpolymath-repos/verisimdb
+
+# Update STATE.scm
+# Change verisim-document items from "pending" to "complete"
+# Update overall-completion from 10 → 20
+----
+
+== Week 3-4: Continue Milestone V1
+
+=== Week 3: verisim-temporal
+
+Implement version history similar to FormBD's journal:
+
+* Use FormBD's journal format as inspiration (`formbd/spec/journal.adoc`)
+* CBOR encoding for entries (like FormBD)
+* Time-travel queries (VERSION AT timestamp)
+
+=== Week 4: verisim-graph
+
+Integrate Oxigraph for RDF + property graph:
+
+* Review FormBD's edge collections (`formbd/core-forth/src/formbd-model.fs`)
+* Implement SPARQL subset
+* Graph traversal algorithms
+
+== Week 5-6: Complete Milestone V1
+
+=== Week 5: verisim-vector
+
+* HNSW index for embeddings
+* Similarity search (cosine, euclidean, dot product)
+* Integration with document modality for hybrid search
+
+=== Week 6: verisim-semantic + verisim-tensor
+
+* **verisim-semantic**: CBOR proof blobs, `proven` + `sactify-php` integration
+* **verisim-tensor**: ndarray storage for multi-dimensional data
+
+**Milestone V1 Complete**: All 6 modality stores operational
+
+== Parallel FormBD Work (Weeks 1-6)
+
+While implementing VeriSimDB modalities, FormBD team works on:
+
+* **M11: HTTP API Server** (FormBD currently has no HTTP interface)
+* **Form.Normalizer**: Implement FD discovery (currently design-complete)
+* **Migration artefacts**: Complete M3 pending item
+
+== Weekly Sync Protocol
+
+**Every Friday**:
+
+1. **Update STATE.scm** in both repos
+2. **Review blockers** in both projects
+3. **Identify synergies**:
+   * Can VeriSimDB's document modality learn from FormBD's implementation?
+   * Can FormBD's normalization approach enhance VeriSimDB's normalizer?
+4. **Adjust priorities** based on dependencies
+
+=== Weekly Sync Template
+
+[source,scm]
+----
+;; Add to verisimdb/STATE.scm session-history every Friday
+(snapshot (date "2026-02-XX") (session "week-N-sync")
+  (accomplishments
+    "Completed verisim-document CRUD operations"
+    "Added property-based tests (10 passing)"
+    "Integrated Tantivy for full-text search")
+  (blockers
+    "VQL parser → execution engine integration needs design")
+  (formbd-synergy
+    "Reviewed FormBD's journal format for verisim-temporal inspiration"))
+----
+
+== Testing Strategy
+
+=== Property-Based Testing (Reuse FormBD's Approach)
+
+FormBD uses property-based testing extensively. Reuse patterns:
+
+[source,bash]
+----
+# Review FormBD's property tests
+cat ~/Documents/hyperpolymath-repos/formbd/tests/property/*.res
+
+# Apply similar patterns to VeriSimDB Rust crates
+# Example: "If you insert X, searching for X should return X"
+----
+
+=== Fuzz Testing
+
+Both projects use ClusterFuzzLite:
+
+[source,bash]
+----
+# FormBD fuzz testing
+cat ~/Documents/hyperpolymath-repos/formbd/tests/fuzz/*.res
+
+# Add similar fuzz targets for VQL parser
+# Example: Generate random VQL queries, ensure parser doesn't crash
+----
+
+== Integration Testing
+
+=== Cross-Modal Queries
+
+Once Milestone V2 (Hexad layer) is complete, test cross-modal queries:
+
+[source,sql]
+----
+-- VQL query spanning document + vector modalities
+SELECT hexad.title, hexad.embedding
+FROM hexads
+WHERE
+  DOCUMENT MATCHES "neural networks" AND
+  VECTOR SIMILAR TO embedding(query_text) WITHIN 0.8;
+----
+
+=== Drift Detection
+
+Test drift between modalities:
+
+[source,sql]
+----
+-- VQL drift query
+SELECT hexad_id, drift_score
+FROM hexads
+WHERE DRIFT BETWEEN (document, vector) > 0.3;
+----
+
+== Documentation Tasks
+
+As you implement, update:
+
+1. **README.adoc**: Update "Quick Start" with actual build/run instructions
+2. **API Reference**: Document each modality's API
+3. **QUICKSTART.adoc**: Create end-to-end tutorial
+4. **STATE.scm**: Update weekly with progress
+
+== Checkpoints
+
+=== Week 2 Checkpoint
+
+- [ ] verisim-document CRUD complete
+- [ ] Property-based tests passing
+- [ ] Tantivy integration working
+- [ ] STATE.scm updated (completion: 10% → 20%)
+
+=== Week 6 Checkpoint
+
+- [ ] All 6 modality stores operational
+- [ ] Unit tests + property tests passing for all modalities
+- [ ] STATE.scm updated (completion: 20% → 40%)
+- [ ] FormBD M11 HTTP API design reviewed for VeriSimDB API inspiration
+
+=== Week 8 Checkpoint
+
+- [ ] Hexad entity layer complete
+- [ ] Cross-modal queries working
+- [ ] Drift detection operational
+- [ ] STATE.scm updated (completion: 40% → 55%)
+
+=== Week 11 Checkpoint
+
+- [ ] VQL execution engine complete
+- [ ] EXPLAIN functionality working
+- [ ] Query planner operational
+- [ ] STATE.scm updated (completion: 55% → 65%)
+
+=== Week 16 Checkpoint (Target: Both at 70%)
+
+- [ ] **VeriSimDB**: All milestones V1-V5 complete (70% completion)
+- [ ] **FormBD**: M11 HTTP API + Form.Normalizer complete (maintain 70%)
+- [ ] Both projects have production-ready PoCs
+- [ ] Testing coverage > 80% for both
+- [ ] QUICKSTART guides complete for both
+
+== Troubleshooting
+
+=== Common Issues
+
+**Issue**: Rust compilation errors in verisim-* crates
+**Solution**: Check Rust edition in Cargo.toml (should be `edition = "2024"`)
+
+**Issue**: VQL parser (ReScript) → execution engine (Rust) integration unclear
+**Solution**: Review FormBD's Factor → Zig integration (`formbd/core-zig/src/bridge.zig`)
+
+**Issue**: Testing framework setup time-consuming
+**Solution**: Copy FormBD's test structure (`formbd/tests/`) and adapt for Rust
+
+== Resources
+
+* **FormBD Documentation**: link:~/Documents/hyperpolymath-repos/formbd/README.adoc[formbd/README.adoc]
+* **VeriSimDB Whitepaper**: link:~/Documents/hyperpolymath-repos/verisimdb/WHITEPAPER.md[verisimdb/WHITEPAPER.md]
+* **VQL Grammar**: link:~/Documents/hyperpolymath-repos/verisimdb/docs/vql-grammar.ebnf[verisimdb/docs/vql-grammar.ebnf]
+* **FormBD FBQL Spec**: link:~/Documents/hyperpolymath-repos/formbd/spec/fbql.adoc[formbd/spec/fbql.adoc]
+* **ABI/FFI Standard**: link:~/ffi-migration-guide.md[FFI Migration Guide]
+
+== Next Steps
+
+1. **Now**: Review this guide and the parallel development plan
+2. **Today**: Set up development environment (Rust, Elixir, gforth, factor, zig)
+3. **This week**: Begin Milestone V1 - verisim-document implementation
+4. **Friday**: First weekly sync, update STATE.scm with progress
+
+== Getting Help
+
+If you encounter blockers:
+
+1. Check FormBD's implementation for similar features
+2. Review VeriSimDB's extensive design docs (`docs/`)
+3. Update STATE.scm blockers section
+4. Adjust priorities in weekly sync
+
+**Remember**: The goal is parallel advancement, not sequential. FormBD and VeriSimDB can learn from each other throughout the process.
