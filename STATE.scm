@@ -18,7 +18,7 @@
      ((format-version . "0.1.0")
       (schema-version . "2025-12-28")
       (created-at . "2025-10-01T00:00:00Z")
-      (last-updated . "2025-12-28T00:00:00Z")
+      (last-updated . "2026-02-06T00:00:00Z")
       (generator . "claude-code")))
 
     (user
@@ -30,116 +30,199 @@
         (banned . (TypeScript Node npm Go))))))
 
     (session
-     ((conversation-id . "claude/add-language-manifest-rDBhd")
-      (started-at . "2025-12-28T00:00:00Z")
-      (focus . "ecosystem-expansion")))
+     ((conversation-id . "claude/state-audit-2026-02-06")
+      (started-at . "2026-02-06T00:00:00Z")
+      (focus . "state-file-audit-and-update")))
 
     (focus
      ((current-project . "nextgen-languages")
-      (current-phase . "consolidation")
-      (blocking-projects . (eclexia-sync gitlab-migration))))
+      (current-phase . "accurate-state-tracking")
+      (blocking-projects . ())))
 
     (projects
-     ;; Core 8 Languages
-     ((my-lang
-       ((name . "My-Lang Family")
-        (status . to-verify)
-        (completion . 20)
-        (category . educational)
-        (phase . design)
-        (dialects . (me solo duet ensemble))
-        (implementation . Rust)
-        (next . ("Set up dialect subfolders" "Define progression curriculum"))))
-
-      (phronesis
+     ;; Tier 1: Production Ready
+     ((phronesis
        ((name . "Phronesis")
-        (status . diverged)
-        (completion . 30)
+        (status . complete)
+        (completion . 100)
         (category . ai-safety)
-        (blockers . ("GitLab has original design" "GitHub has Elixir impl"))
-        (next . ("Evaluate both implementations" "Decide merge strategy"))))
+        (phase . production)
+        (implementation . Elixir)
+        (loc . 17650)
+        (files . 120)
+        (has . (lexer parser compiler interpreter stdlib lsp debugger profiler
+                static-analyzer package-manager doc-generator vscode-extension
+                testing-framework cli docker kubernetes raft-consensus))
+        (next . ("Update license to PMPL-1.0-or-later" "Real RPKI validator integration"))))
 
+      ;; Tier 2: Substantial & Functional
       (eclexia
        ((name . "Eclexia")
-        (status . not-synced)
-        (completion . 40)
+        (status . active)
+        (completion . 90)
         (category . sustainable-computing)
-        (blockers . ("70-page white paper only on GitLab" "Rust compiler only on GitLab"))
-        (next . ("PRIORITY: Sync from GitLab"))))
+        (phase . tooling)
+        (implementation . Rust)
+        (loc . 14500)
+        (files . 41)
+        (has . (lexer parser ast type-checker hir mir codegen vm interpreter
+                repl cli test-framework bench-framework))
+        (partial . (lsp package-manager stdlib))
+        (missing . (debugger vscode-extension linter llvm-backend))
+        (next . ("Complete LSP rename/formatting" "Build debugger" "Expand stdlib"))))
 
-      (oblibeny
-       ((name . "Oblíbený")
-        (status . diverged)
-        (completion . 35)
-        (category . security-critical)
-        (blockers . ("40 commits on GitLab" "30 commits on GitHub" "Manual merge needed"))))
+      (wokelang
+       ((name . "WokeLang")
+        (status . active)
+        (completion . 80)
+        (category . human-centric)
+        (phase . feature-completion)
+        (implementation . Rust)
+        (loc . 15965)
+        (files . 54)
+        (has . (lexer parser type-checker interpreter bytecode-vm repl cli lsp
+                stdlib-modules))
+        (partial . (consent-system workers abi-ffi))
+        (missing . (record-field-access package-manager debugger))
+        (blockers . ("Worker message passing disabled (Rc/Send conflict)"
+                     "Record field dot access not implemented"))
+        (next . ("Implement dot access" "Fix worker message passing" "Wire stdlib into interpreter"))))
+
+      (my-lang
+       ((name . "My-Lang")
+        (status . active)
+        (completion . 75)
+        (category . ai-native)
+        (phase . solo-dialect-complete)
+        (implementation . Rust)
+        (loc . 26900)
+        (files . 69)
+        (dialects . (me solo duet ensemble))
+        (has . (lexer parser type-checker interpreter hir mir llvm-codegen
+                lsp formatter linter test-runner ai-runtime repl cli))
+        (partial . (llvm-codegen package-manager))
+        (missing . (me-dialect duet-dialect ensemble-dialect vscode-extension))
+        (next . ("Complete LLVM native binary output" "VS Code extension" "Me dialect prototype"))))
+
+      ;; Tier 3: Core Working, Gaps Remain
+      (julia-the-viper
+       ((name . "Julia the Viper")
+        (status . active)
+        (completion . 60)
+        (category . systems)
+        (phase . active-development)
+        (implementation . Rust)
+        (loc . 5500)
+        (files . 18)
+        (has . (parser type-checker formatter interpreter reversible-computing
+                purity-checker number-system cli repl))
+        (partial . (wasm-backend web-ui))
+        (missing . (lsp debugger package-manager))
+        (next . ("Complete WASM backend" "Monaco editor integration" "Begin LSP"))))
+
+      (ephapax
+       ((name . "Ephapax")
+        (status . active)
+        (completion . 55)
+        (category . linear-semantics)
+        (phase . type-checker-and-wasm)
+        (implementation . "Rust + Idris2 + Coq")
+        (loc . 7918)
+        (files . 12)
+        (has . (lexer parser interpreter repl cli ir coq-proofs
+                ephapax-proven zig-ffi))
+        (partial . (type-checker wasm-backend stdlib idris2-abi))
+        (missing . (lsp debugger package-manager))
+        (blockers . ("Type checker incomplete - critical path"))
+        (next . ("Complete linear type checker" "Advance WASM codegen" "Expand stdlib"))))
 
       (anvomidav
        ((name . "Anvomidav")
         (status . active)
-        (completion . 15)
-        (category . real-time-systems)
-        (next . ("Define type system" "Implement scheduler"))))
+        (completion . 55)
+        (category . figure-skating-dsl)
+        (phase . developer-experience)
+        (implementation . Rust)
+        (loc . 13900)
+        (files . 37)
+        (has . (lexer parser type-checker isu-semantics lsp cli examples))
+        (partial . (ir visualization))
+        (missing . (visualization ecosystem documentation))
+        (next . ("Write documentation" "Implement 2D rink visualization" "Package VS Code extension"))))
 
-      (wokelang
-       ((name . "WokeLang")
-        (status . diverged)
-        (completion . 25)
-        (category . human-centric)
-        (blockers . ("GitLab has original" "GitHub has Rust VM"))))
+      ;; Tier 4: Substantial Code, Needs Integration
+      (affinescript
+       ((name . "AffineScript")
+        (status . active)
+        (completion . 40)
+        (category . type-systems)
+        (phase . integration)
+        (implementation . OCaml)
+        (loc . 75000)
+        (files . 38)
+        (has . (lexer parser type-checker resolver traits effects
+                borrow-checker optimizer wasm-backend julia-backend
+                interpreter repl module-loader))
+        (missing . (lsp debugger package-manager documentation))
+        (blockers . ("End-to-end pipeline integration unclear"
+                     "Borrow checker incomplete"
+                     "No test suite verifying compiler correctness"))
+        (next . ("Validate E2E pipeline" "Complete borrow checker" "Create test suite"))))
 
       (betlang
        ((name . "betlang")
-        (status . to-verify)
-        (completion . 50)
+        (status . active)
+        (completion . 35)
         (category . probabilistic)
-        (implementation . Racket)))
+        (phase . development)
+        (implementation . Rust)
+        (loc . 51000)
+        (files . 53)
+        (has . (parser type-checker evaluator codegen semantic-checker
+                cli repl lsp vscode-extension stdlib fuzzing))
+        (partial . (chapel-bindings julia-bindings))
+        (missing . (debugger package-manager documentation))
+        (next . ("Validate E2E pipeline" "Complete language bindings" "Write documentation"))))
 
-      (julia-the-viper
-       ((name . "julia-the-viper")
-        (status . to-verify)
-        (completion . 20)
-        (category . systems)
-        (implementation . Rust)))
-
-      (affinescript
-       ((name . "AffineScript")
-        (status . to-verify)
-        (completion . 15)
-        (category . type-systems)
-        (implementation . OCaml)))
-
-      (ephapax
-       ((name . "Ephapax")
-        (status . to-verify)
-        (completion . 10)
-        (category . linear-semantics)
-        (implementation . TBD)))))
+      (oblibeny
+       ((name . "Oblibeny")
+        (status . active)
+        (completion . 30)
+        (category . security-critical)
+        (phase . minimal-viable-product)
+        (implementation . "OCaml + Zig")
+        (loc . 2600)
+        (files . 14)
+        (has . (lexer parser type-checker evaluator constrained-checker
+                zig-ffi crypto-stack distro-image))
+        (partial . (package-manager))
+        (missing . (idris2-abi-proofs))
+        (next . ("Optimize liboqs" "Wire obli-pkg to crypto" "Idris2 ABI proofs"))))))
 
     (critical-next
-     ((1 . "Sync eclexia from GitLab (70-page white paper + Rust compiler)")
-      (2 . "Resolve phronesis divergence (GitLab original vs GitHub Elixir)")
-      (3 . "Resolve wokelang divergence (GitLab original vs GitHub Rust)")
-      (4 . "Merge oblibeny branches (40 GitLab + 30 GitHub commits)")
-      (5 . "Set up my-lang dialect subfolders (me/solo/duet/ensemble)")))
+     ((1 . "Validate AffineScript end-to-end pipeline (75K LOC needs integration testing)")
+      (2 . "Complete Ephapax type checker (critical path to MVP)")
+      (3 . "Fix WokeLang worker message passing (Rc/Send conflict)")
+      (4 . "Implement WokeLang record field dot access")
+      (5 . "Complete My-Lang LLVM native binary output")))
 
     (issues
-     ((migration
+     ((stale-state-files
        ((id . "issue-001")
-        (title . "GitLab → GitHub migration incomplete")
-        (severity . critical)
-        (description . "Original work from Aug-Oct 2025 on GitLab not synced")
-        (affected . (eclexia phronesis wokelang oblibeny))))
+        (title . "STATE.scm files were boilerplate templates")
+        (severity . resolved)
+        (description . "8 of 10 language repos had placeholder STATE.scm files. Updated 2026-02-06.")))
 
-      (structure
+      (migration
        ((id . "issue-002")
-        (title . "my-lang needs dialect subfolders")
-        (severity . medium)
-        (description . "me/solo/duet/ensemble should be subfolders of my-lang")))))
+        (title . "GitLab -> GitHub migration status")
+        (severity . low)
+        (description . "Original migration concern from 2025. Most repos now active on GitHub.")))))
 
     (history
      ((velocity
-       ((2025-12-28 . ((tasks-completed . 15) (files-created . 28)))
+       ((2026-02-06 . ((tasks-completed . 11) (focus . "state-file-audit-and-update")))
+        (2025-12-28 . ((tasks-completed . 15) (files-created . 28)))
         (2025-12-16 . ((tasks-completed . 5) (focus . "migration-planning")))
         (2025-10-01 . ((tasks-completed . 10) (focus . "initial-design")))))))))
 
