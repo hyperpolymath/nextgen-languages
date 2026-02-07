@@ -148,6 +148,11 @@ Each language has its own dedicated repository for implementation:
 | Systems programming, Harvard Architecture
 | Active
 
+| Error-Lang
+| link:https://github.com/hyperpolymath/error-lang[error-lang]
+| Pedagogical language for systems thinking
+| Active
+
 |===
 
 == Design Spectrum
