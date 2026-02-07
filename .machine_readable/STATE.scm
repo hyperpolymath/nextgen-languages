@@ -168,7 +168,7 @@
       (ephapax
        ((name . "Ephapax")
         (status . complete)
-        (completion . 85)
+        (completion . 90)
         (category . linear-semantics)
         (phase . production-ready)
         (implementation . "Rust + Idris2 + Coq")
@@ -178,7 +178,7 @@
         (completed . "2026-02-07")
         (has . (lexer parser type-checker interpreter repl cli coq-proofs
                 dyadic-mode-support affine-mode linear-mode wasm-codegen
-                lambda-compilation integration-tests examples))
+                lambda-compilation integration-tests examples stdlib-complete))
         (completion-details . ((lexer . 100)
                                (parser . 100)
                                (type-checker . 85)
@@ -186,7 +186,10 @@
                                (lambda-support . 60)
                                (interpreter . 100)
                                (repl . 100)
-                               (cli . 100)))
+                               (cli . 100)
+                               (stdlib . 100)))
+        (stdlib-modules . (prelude io string math memory))
+        (stdlib-functions . 50)
         (testing . ((total-tests . 150)
                     (type-checker . 38)
                     (wasm-codegen . 58)
@@ -200,14 +203,13 @@
         (binary . ((size . "2.1 MB")
                    (stripped . true)
                    (includes . "compiler + type-checker + REPL")))
-        (partial . (closure-environment-capture function-tables stdlib))
+        (partial . (closure-environment-capture function-tables))
         (missing . (lsp debugger package-manager))
         (blockers . ())
         (git-commits . "244fe75 109ba50 c6181af 5a4eb18 6eb7d07")
-        (next . ("Complete closure environment capture (10% remaining)"
-                 "Add function tables for indirect calls (5% remaining)"
-                 "Expand standard library"
-                 "Build LSP server"))))
+        (next . ("Implement closure environment capture (5% remaining)"
+                 "Add function tables and call_indirect (5% remaining)"
+                 "Optional: Build LSP server, debugger, package manager"))))
 
       ;; Tier 1: Production Ready & Feature-Complete
       (anvomidav
