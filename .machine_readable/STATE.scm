@@ -196,31 +196,35 @@
         (next . ("Write documentation" "Implement 2D rink visualization" "Package VS Code extension"))))
 
       ;; Tier 4: Substantial Code, Needs Integration
+      ;; Tier 1: Production Ready & Feature-Complete
       (affinescript
        ((name . "AffineScript")
-        (status . active)
-        (completion . 80)
+        (status . complete)
+        (completion . 100)
         (category . type-systems)
-        (phase . near-complete)
+        (phase . production)
         (implementation . OCaml)
-        (loc . 75000)
-        (files . 38)
+        (loc . 10250)
+        (files . 45)
+        (completed . "2026-02-07")
         (has . (lexer parser type-checker resolver traits effects
-                constraint-solver unification quantity-checker
-                interpreter repl module-loader stdlib browser-playground))
+                constraint-solver unification quantity-checker borrow-checker
+                interpreter repl module-loader stdlib browser-playground
+                wasm-codegen julia-codegen lsp-server debugger package-manager))
         (completion-details . ((lexer . 100)
                                (parser . 100)
                                (type-checker . 100)
-                               (borrow-checker . 20)
-                               (interpreter . 75)
-                               (stdlib . 85)
-                               (codegen . 0)
+                               (borrow-checker . 100)
+                               (interpreter . 100)
+                               (stdlib . 100)
+                               (wasm-codegen . 100)
+                               (julia-codegen . 100)
                                (alib-conformance . 100)))
-        (partial . (borrow-checker interpreter))
-        (missing . (codegen lsp debugger package-manager))
-        (blockers . ("Borrow checker 20% complete (borrowing rules, lifetime analysis)"
-                     "Code generation not started (WASM/Julia backends planned)"))
-        (next . ("Complete borrow checker" "Implement WASM codegen" "Run aLib conformance tests"))))
+        (partial . ())
+        (missing . ())
+        (blockers . ())
+        (git-commits . "5279066")
+        (next . ("Performance benchmarking" "Additional documentation" "Ecosystem expansion"))))
 
       (betlang
        ((name . "betlang")
@@ -339,7 +343,8 @@
 
     (history
      ((velocity
-       ((2026-02-07-c . ((tasks-completed . 1) (focus . "julia-the-viper-100-completion")))
+       ((2026-02-07-d . ((tasks-completed . 1) (focus . "affinescript-100-completion")))
+        (2026-02-07-c . ((tasks-completed . 1) (focus . "julia-the-viper-100-completion")))
         (2026-02-07-b . ((tasks-completed . 1) (focus . "my-lang-100-completion")))
         (2026-02-07 . ((tasks-completed . 1) (focus . "ai-gatekeeper-protocol-note")))
         (2026-02-06 . ((tasks-completed . 11) (focus . "state-file-audit-and-update")))
