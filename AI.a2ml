@@ -1,9 +1,12 @@
 # AI Assistant Instructions
 
-# Machine-Readable Metadata
+## CRITICAL INVARIANTS (Anti-Amnesia Protocol)
 
-Project metadata and AI agent configuration files are located in `.machine_readable/`:
+**READ THIS FIRST - EVERY SESSION - NO EXCEPTIONS**
 
+### Canonical File Locations (ONLY THESE - NO DUPLICATES)
+
+**Machine-Readable Metadata:** `.machine_readable/` directory ONLY
 - **STATE.scm** - Current project state, progress, blockers, next actions
 - **ECOSYSTEM.scm** - Position in ecosystem, relationships to other projects
 - **META.scm** - Architecture decisions, governance, development practices
@@ -11,6 +14,33 @@ Project metadata and AI agent configuration files are located in `.machine_reada
 - **AGENTIC.scm** - AI agent interaction patterns and constraints
 - **NEUROSYM.scm** - Neurosymbolic integration configuration
 - **LANGUAGES.scm** - Language portfolio status and metadata
+
+**CRITICAL:** If ANY of these 6 SCM files exist in the root directory, this is an ERROR state.
+The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
+
+**Bot Directives:** `.bot_directives/` directory
+- Bot-specific instructions and automation rules
+- Gitbot-fleet configuration (rhodibot, echidnabot, sustainabot, glambot, seambot, finishbot)
+
+**Agent-Specific Instructions:**
+- `.claude/CLAUDE.md` - Claude-specific patterns and rules (if exists)
+- `AI.a2ml` - THIS FILE - Universal bot entry point
+
+### Core Constraints That Prevent Errors
+
+1. **No SCM file duplication** - Root directory must NOT contain STATE.scm, META.scm, ECOSYSTEM.scm, AGENTIC.scm, NEUROSYM.scm, PLAYBOOK.scm, or LANGUAGES.scm
+2. **Single source of truth** - `.machine_readable/` is authoritative
+3. **No stale metadata** - If root SCMs exist, they are OUT OF DATE and must be removed
+4. **Submodule integrity** - All 10 core languages + 7-tentacles must be checked out (not empty directories)
+5. **License consistency** - All code PMPL-1.0-or-later unless platform requires MPL-2.0 fallback
+
+### Session Startup Checklist
+
+✅ Read THIS file (AI.a2ml) first
+✅ Read `.machine_readable/STATE.scm` for current status
+✅ Check `.machine_readable/AGENTIC.scm` for interaction constraints
+✅ Verify no duplicate SCM files exist in root
+✅ Check git submodule status (must not be empty)
 
 **These files are the canonical source of truth for project metadata.**
 
