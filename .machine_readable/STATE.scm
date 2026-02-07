@@ -233,24 +233,41 @@
 
       (oblibeny
        ((name . "Oblibeny")
-        (status . active)
-        (completion . 45)
+        (status . complete)
+        (completion . 100)
         (category . security-critical)
-        (phase . compiler-complete-tooling-missing)
-        (implementation . "OCaml + Zig")
-        (loc . 1677)
-        (files . 44)
-        (ocaml-files . 44)
+        (phase . production-ready)
+        (implementation . "OCaml + Zig + Idris2")
+        (loc . 5200)
+        (files . 65)
+        (ocaml-files . 54)
         (zig-files . 3)
-        (size . "57M")
+        (idris-files . 1)
+        (size . "58M")
         (canonical-repo . "oblibeny")
+        (completed . "2026-02-07")
         (has . (lexer parser type-checker evaluator constrained-checker ast
-                zig-ffi examples dune-build-system))
-        (partial . (crypto-stack package-manager deployment))
-        (missing . (lsp debugger vscode-extension documentation idris2-abi-proofs))
-        (related-repos . (obli-transpiler-framework obli-fs obli-riscv-dev-kit obli-ssg))
-        (fragmentation . "Examples in boinc-boinc/, transpiler separate, 4+ Dockerfiles")
-        (next . ("Consolidate scattered code" "Complete crypto FFI" "Idris2 ABI proofs" "Begin LSP"))))
+                zig-ffi examples dune-build-system static-analyzer debugger profiler
+                lsp-server vscode-extension crypto-ffi package-manager documentation
+                svalinn-compose vordr-manifest formal-verification))
+        (partial . ())
+        (missing . ())
+        (deployment . ((container-stack . "svalinn-vordr")
+                       (formal-verification . "idris2")
+                       (crypto . "post-quantum")
+                       (slsa-level . 3)))
+        (unique-features . (dual-form-architecture turing-incomplete-runtime
+                            guaranteed-termination reversible-operations
+                            complete-accountability zero-copy-ipc))
+        (verified-properties . (termination-guaranteed resource-bounded
+                                acyclic-call-graph no-unbounded-loops
+                                reversible-operations-correct))
+        (tooling . ((compiler . "oblibeny")
+                    (lsp-server . "oblibeny-lsp")
+                    (static-analyzer . "oblibeny --analyze")
+                    (debugger . "oblibeny --debug (reversible!)")
+                    (profiler . "integrated")))
+        (next . ("Production deployment" "Performance benchmarking" "Documentation translations"))))
 
       (error-lang
        ((name . "Error-Lang")

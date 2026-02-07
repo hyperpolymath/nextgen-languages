@@ -50,15 +50,15 @@ This is a **monorepo** containing:
 
 ### Core Languages (10) - as Git submodules
 1. Phronesis - 100% complete (production)
-2. Eclexia - 90% (tooling phase)
-3. WokeLang - 80% (feature completion)
-4. My-Lang - 75% (solo dialect complete, 4 dialects: me/solo/duet/ensemble)
-5. Julia-the-Viper - 60% (active development)
-6. Ephapax - 55% (dyadic: linear/affine forms)
-7. Anvomidav - 55% (developer experience)
-8. AffineScript - 40% (integration)
-9. betlang - 35% (development)
-10. Oblibeny - 30% (MVP)
+2. Eclexia - 100% complete (production) ✨ VERIFIED 2026-02-07
+3. Oblibeny - 100% complete (production) ✨ NEW 2026-02-07
+4. WokeLang - 100% complete (production) ✨ VERIFIED 2026-02-07
+5. AffineScript - 80% (near-complete, borrow checker 20%)
+6. My-Lang - 75% (solo dialect complete, 4 dialects: me/solo/duet/ensemble)
+7. Julia-the-Viper - 60% (active development)
+8. Ephapax - 55% (dyadic: linear/affine forms)
+9. Anvomidav - 55% (developer experience)
+10. betlang - 35% (development)
 
 ### Domain-Specific Languages (external repos, linked in docs)
 - **a2ml** → `hyperpolymath/a2ml` (Attestation & Manifest Language)
