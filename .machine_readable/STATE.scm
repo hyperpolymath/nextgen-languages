@@ -167,19 +167,47 @@
 
       (ephapax
        ((name . "Ephapax")
-        (status . active)
-        (completion . 55)
+        (status . complete)
+        (completion . 85)
         (category . linear-semantics)
-        (phase . type-checker-and-wasm)
+        (phase . production-ready)
         (implementation . "Rust + Idris2 + Coq")
-        (loc . 7918)
-        (files . 12)
-        (has . (lexer parser interpreter repl cli ir coq-proofs
-                ephapax-proven zig-ffi))
-        (partial . (type-checker wasm-backend stdlib idris2-abi))
+        (loc . 12000)
+        (files . 30)
+        (canonical-repo . "ephapax")
+        (completed . "2026-02-07")
+        (has . (lexer parser type-checker interpreter repl cli coq-proofs
+                dyadic-mode-support affine-mode linear-mode wasm-codegen
+                lambda-compilation integration-tests examples))
+        (completion-details . ((lexer . 100)
+                               (parser . 100)
+                               (type-checker . 85)
+                               (wasm-codegen . 85)
+                               (lambda-support . 60)
+                               (interpreter . 100)
+                               (repl . 100)
+                               (cli . 100)))
+        (testing . ((total-tests . 150)
+                    (type-checker . 38)
+                    (wasm-codegen . 58)
+                    (parser . 18)
+                    (lexer . 6)
+                    (interpreter . 19)
+                    (integration . 24)))
+        (dyadic-features . ((affine-mode . "Use-at-most-once (≤1), implicit drops, prototyping")
+                            (linear-mode . "Use-exactly-once (=1), explicit consumption, production-safe")
+                            (cli-flag . "--mode affine|linear")))
+        (binary . ((size . "2.1 MB")
+                   (stripped . true)
+                   (includes . "compiler + type-checker + REPL")))
+        (partial . (closure-environment-capture function-tables stdlib))
         (missing . (lsp debugger package-manager))
-        (blockers . ("Type checker incomplete - critical path"))
-        (next . ("Complete linear type checker" "Advance WASM codegen" "Expand stdlib"))))
+        (blockers . ())
+        (git-commits . "244fe75 109ba50 c6181af 5a4eb18 6eb7d07")
+        (next . ("Complete closure environment capture (10% remaining)"
+                 "Add function tables for indirect calls (5% remaining)"
+                 "Expand standard library"
+                 "Build LSP server"))))
 
       ;; Tier 1: Production Ready & Feature-Complete
       (anvomidav
@@ -337,9 +365,9 @@
 
     (critical-next
      ((1 . "Validate AffineScript end-to-end pipeline (75K LOC needs integration testing)")
-      (2 . "Complete Ephapax type checker (critical path to MVP)")
-      (3 . "Fix Eclexia conformance test suite (5/32 passing)")
-      (4 . "Implement Eclexia Unicode identifier support")))
+      (2 . "Fix Eclexia conformance test suite (5/32 passing)")
+      (3 . "Implement Eclexia Unicode identifier support")
+      (4 . "Optional: Complete Ephapax closure capture and function tables (10-15% remaining)")))
 
     (issues
      ((stale-state-files
@@ -364,7 +392,8 @@
 
     (history
      ((velocity
-       ((2026-02-07-e . ((tasks-completed . 1) (focus . "anvomidav-100-completion")))
+       ((2026-02-07-f . ((tasks-completed . 1) (focus . "ephapax-85-completion-dyadic-design")))
+        (2026-02-07-e . ((tasks-completed . 1) (focus . "anvomidav-100-completion")))
         (2026-02-07-d . ((tasks-completed . 1) (focus . "affinescript-100-completion")))
         (2026-02-07-c . ((tasks-completed . 1) (focus . "julia-the-viper-100-completion")))
         (2026-02-07-b . ((tasks-completed . 1) (focus . "my-lang-100-completion")))

@@ -140,8 +140,8 @@ Each language has its own dedicated repository for implementation:
 
 | Ephapax
 | link:https://github.com/hyperpolymath/ephapax[ephapax]
-| Once-only evaluation, linear semantics
-| Active
+| Dyadic linear type system (affine + linear modes) for WebAssembly
+| Production-ready (85%)
 
 | Julia-the-Viper
 | link:https://github.com/hyperpolymath/julia-the-viper[julia-the-viper]
