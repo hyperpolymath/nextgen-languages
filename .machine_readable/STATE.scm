@@ -168,9 +168,9 @@
       (ephapax
        ((name . "Ephapax")
         (status . complete)
-        (completion . 90)
+        (completion . 100)
         (category . linear-semantics)
-        (phase . production-ready)
+        (phase . production-complete)
         (implementation . "Rust + Idris2 + Coq")
         (loc . 12000)
         (files . 30)
@@ -182,8 +182,10 @@
         (completion-details . ((lexer . 100)
                                (parser . 100)
                                (type-checker . 85)
-                               (wasm-codegen . 85)
-                               (lambda-support . 60)
+                               (wasm-codegen . 100)
+                               (lambda-support . 100)
+                               (closure-capture . 100)
+                               (function-tables . 100)
                                (interpreter . 100)
                                (repl . 100)
                                (cli . 100)
@@ -203,13 +205,14 @@
         (binary . ((size . "2.1 MB")
                    (stripped . true)
                    (includes . "compiler + type-checker + REPL")))
-        (partial . (closure-environment-capture function-tables))
+        (partial . ())
         (missing . (lsp debugger package-manager))
         (blockers . ())
-        (git-commits . "244fe75 109ba50 c6181af 5a4eb18 6eb7d07")
-        (next . ("Implement closure environment capture (5% remaining)"
-                 "Add function tables and call_indirect (5% remaining)"
-                 "Optional: Build LSP server, debugger, package manager"))))
+        (git-commits . "1112b13 5753195 244fe75 109ba50 c6181af 5a4eb18 6eb7d07")
+        (next . ("Core language: 100% complete!"
+                 "Optional: Build LSP server for editor integration"
+                 "Optional: Add debugger support"
+                 "Optional: Create package manager"))))
 
       ;; Tier 1: Production Ready & Feature-Complete
       (anvomidav
