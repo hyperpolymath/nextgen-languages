@@ -55,19 +55,20 @@
                 testing-framework cli docker kubernetes raft-consensus))
         (next . ("Update license to PMPL-1.0-or-later" "Real RPKI validator integration"))))
 
-      ;; Tier 2: Substantial & Functional (PRODUCTION-READY)
+      ;; Tier 1: Production Ready & Feature-Complete
       (eclexia
        ((name . "Eclexia")
-        (status . production-ready)
-        (completion . 99)
+        (status . complete)
+        (completion . 100)
         (category . sustainable-computing)
-        (phase . tier-3-complete)
+        (phase . production)
         (implementation . Rust)
         (loc . 25000)
         (files . 80+)
         (has . (lexer parser ast type-checker hir mir codegen vm interpreter
                 repl cli test-framework bench-framework lsp formatter linter debugger
-                vscode-extension doc-generator))
+                vscode-extension doc-generator package-manager registry-client
+                dependency-resolver cache lock-file))
         (testing . ((total-tests . 96)
                     (conformance . 51)
                     (property-based . 11)
@@ -85,10 +86,10 @@
                        (kubernetes . "StatefulSet")
                        (guix . "reproducible")))
         (stdlib . (core collections math io text time))
-        (partial . (package-manager))
+        (partial . ())
         (missing . (llvm-backend jit-compilation))
-        (tier-3-completed . "2026-02-07")
-        (next . ("Package registry client" "Increase coverage to 80%" "Complete formal proofs"))))
+        (completed . "2026-02-07")
+        (next . ("Code coverage to 80%" "Complete formal proofs" "LLVM backend"))))
 
       (wokelang
        ((name . "WokeLang")
