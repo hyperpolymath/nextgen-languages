@@ -4,11 +4,15 @@ image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,
 image:https://img.shields.io/badge/Philosophy-Palimpsest-indigo.svg[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-license"]
 
 
-*A strategic ecosystem of experimental programming languages exploring emerging paradigms*
+*Parent repository for tracking and coordinating experimental language development*
+
+**IMPORTANT:** This is a **PARENT REPOSITORY ONLY** - it contains documentation and tracking but NO implementation code.
 
 == Overview
 
-This repository serves as the central hub for the Next-Gen Languages initiative—a coordinated effort to design and develop eight programming languages that collectively cover the full spectrum of modern software challenges, from AI-native development to formally verified real-time systems.
+This repository serves as the central tracking hub for the Next-Gen Languages initiative—a coordinated effort to design and develop ten programming languages that collectively cover the full spectrum of modern software challenges, from AI-native development to formally verified real-time systems.
+
+**All language implementations are in their respective canonical repositories.**
 
 == Language Comparison
 
@@ -178,7 +182,7 @@ Target Audience:       Expert ←————————————→ Beginne
 
 == Playgrounds
 
-Interactive experimentation sandboxes: link:https://github.com/hyperpolymath/language-playgrounds[language-playgrounds]
+Interactive experimentation sandboxes are now integrated into each language's canonical repository under a `playground/` directory. This consolidation ensures all language-related code (implementation, examples, and experiments) lives in one place.
 
 == Quick Start
 
