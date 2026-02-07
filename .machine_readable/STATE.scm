@@ -94,19 +94,25 @@
       (wokelang
        ((name . "WokeLang")
         (status . active)
-        (completion . 80)
+        (completion . 95)
         (category . human-centric)
-        (phase . feature-completion)
+        (phase . near-complete)
         (implementation . Rust)
         (loc . 15965)
         (files . 54)
         (has . (lexer parser type-checker interpreter bytecode-vm repl cli lsp
-                stdlib-modules))
-        (partial . (consent-system workers abi-ffi))
-        (missing . (record-field-access package-manager debugger))
-        (blockers . ("Worker message passing disabled (Rc/Send conflict)"
-                     "Record field dot access not implemented"))
-        (next . ("Implement dot access" "Fix worker message passing" "Wire stdlib into interpreter"))))
+                stdlib-modules abi-ffi vm-compiler vm-machine))
+        (completion-details . ((parser . 95)
+                               (type-checker . 95)
+                               (interpreter . 95)
+                               (vm . 85)
+                               (stdlib . 90)
+                               (repl . 90)))
+        (partial . (worker-implementation type-system-finalization))
+        (missing . (package-manager debugger vscode-extension))
+        (blockers . ("Type system design not finalized (unit-of-measure integration)"
+                     "Worker implementation incomplete"))
+        (next . ("Finalize type system design" "Complete worker implementation" "Add CLI commands"))))
 
       (my-lang
        ((name . "My-Lang")
@@ -174,20 +180,28 @@
       (affinescript
        ((name . "AffineScript")
         (status . active)
-        (completion . 40)
+        (completion . 80)
         (category . type-systems)
-        (phase . integration)
+        (phase . near-complete)
         (implementation . OCaml)
         (loc . 75000)
         (files . 38)
         (has . (lexer parser type-checker resolver traits effects
-                borrow-checker optimizer wasm-backend julia-backend
-                interpreter repl module-loader))
-        (missing . (lsp debugger package-manager documentation))
-        (blockers . ("End-to-end pipeline integration unclear"
-                     "Borrow checker incomplete"
-                     "No test suite verifying compiler correctness"))
-        (next . ("Validate E2E pipeline" "Complete borrow checker" "Create test suite"))))
+                constraint-solver unification quantity-checker
+                interpreter repl module-loader stdlib browser-playground))
+        (completion-details . ((lexer . 100)
+                               (parser . 100)
+                               (type-checker . 100)
+                               (borrow-checker . 20)
+                               (interpreter . 75)
+                               (stdlib . 85)
+                               (codegen . 0)
+                               (alib-conformance . 100)))
+        (partial . (borrow-checker interpreter))
+        (missing . (codegen lsp debugger package-manager))
+        (blockers . ("Borrow checker 20% complete (borrowing rules, lifetime analysis)"
+                     "Code generation not started (WASM/Julia backends planned)"))
+        (next . ("Complete borrow checker" "Implement WASM codegen" "Run aLib conformance tests"))))
 
       (betlang
        ((name . "betlang")
