@@ -1,6 +1,6 @@
 # Consolidation Complete: 2026-02-07
 
-**Status:** ✅ PHASES 1-3 COMPLETE
+**Status:** ✅ PHASES 1-4 COMPLETE
 
 All language implementations have been consolidated into their canonical repositories.
 
@@ -129,39 +129,46 @@ All three languages now have accurate STATE.scm files reflecting reality:
 
 ---
 
-## Repos Ready for Cleanup
+## Repos Cleaned Up ✅
 
-These repos can now be archived/removed as their code has been consolidated:
+All scattered repos have been removed and code consolidated:
 
-**Safe to remove (code consolidated):**
-- [ ] `jtv-playground/` → moved to `julia-the-viper/playground/`
-- [ ] `julia-zig-ffi/` → moved to `julia-the-viper/ffi/zig/`
-- [ ] `obli-transpiler-framework/` → moved to `oblibeny/transpiler/`
-- [ ] `obli-fs/` → moved to `oblibeny/fs/`
-- [ ] `obli-riscv-dev-kit/` → moved to `oblibeny/riscv-dev-kit/`
-- [ ] `obli-ssg/` → moved to `oblibeny/ssg/`
-- [ ] `my-newsroom/` → moved to `my-lang/dialects/solo/` and `my-lang/examples/newsroom/`
-- [ ] `mylang-playground/` → moved to `my-lang/dialects/me/` and `my-lang/playground/`
+**Removed (code moved to canonical repos):**
+- ✅ `jtv-playground/` → moved to `julia-the-viper/playground/`
+- ✅ `julia-zig-ffi/` → moved to `julia-the-viper/ffi/zig/`
+- ✅ `obli-transpiler-framework/` → moved to `oblibeny/transpiler/`
+- ✅ `obli-fs/` → moved to `oblibeny/fs/`
+- ✅ `obli-riscv-dev-kit/` → moved to `oblibeny/riscv-dev-kit/`
+- ✅ `obli-ssg/` → moved to `oblibeny/ssg/`
+- ✅ `my-newsroom/` → moved to `my-lang/dialects/solo/` and `my-lang/examples/newsroom/`
+- ✅ `mylang-playground/` → moved to `my-lang/dialects/me/` and `my-lang/playground/`
 
-**Keep with .archived marker:**
-- [ ] `my-lang-archive/` - Historical reference (534M, 75 files)
+**Archived with marker:**
+- ✅ `my-lang-archive/` - Historical reference (534M, 75 files) - `.archived` marker + README.archived added
 
 **Note:** Examples in `boinc-boinc/` kept but also copied to `oblibeny/examples/`
 
 ---
 
-## Remaining Phases
+## Completed Phases
 
-### Phase 4: nextgen-languages Cleanup (NOT YET STARTED)
-- Remove outdated embedded code directories
-- Update README.adoc to reflect parent-repo-only status
-- Add migration documentation
+### Phase 4: nextgen-languages Cleanup ✅ COMPLETE
+- ✅ Removed scattered repos (jtv-playground, julia-zig-ffi, obli-*, my-newsroom, mylang-playground)
+- ✅ Updated README.adoc to emphasize "PARENT REPOSITORY ONLY" status
+- ✅ Updated playgrounds section (now integrated in language repos)
+- ✅ Added consolidation documentation (CONSOLIDATION-PLAN.md, CONSOLIDATION-COMPLETE.md, EPHAPAX-DYADIC-ARCHITECTURE.md)
+- ✅ Marked my-lang-archive as archived
+- ✅ Deleted root SCM files (moved to .machine_readable/ in Phase 1)
+- **Commit:** `ec6e10a` - Phase 4: Complete scattered code cleanup and consolidation
+- **Pushed:** ✅ https://github.com/hyperpolymath/nextgen-languages
 
-### Phase 5: Sync Automation (NOT YET STARTED)
+## Optional Future Phases
+
+### Phase 5: Sync Automation (OPTIONAL)
 - Create `scripts/sync-state-files.sh`
 - Add git pre-commit hooks
 
-### Phase 6: Verification (NOT YET STARTED)
+### Phase 6: Verification (OPTIONAL)
 - Test all builds
 - Verify documentation
 - Confirm all tests pass
