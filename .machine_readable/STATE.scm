@@ -176,12 +176,13 @@
         (files . 30)
         (canonical-repo . "ephapax")
         (completed . "2026-02-07")
-        (has . (lexer parser type-checker interpreter repl cli coq-proofs
+        (has . (lexer parser type-checker interpreter repl cli lsp-server coq-proofs
                 dyadic-mode-support affine-mode linear-mode wasm-codegen
-                lambda-compilation integration-tests examples stdlib-complete))
+                lambda-compilation integration-tests examples stdlib-complete
+                comprehensive-documentation language-guide lsp-guide))
         (completion-details . ((lexer . 100)
                                (parser . 100)
-                               (type-checker . 85)
+                               (type-checker . 100)
                                (wasm-codegen . 100)
                                (lambda-support . 100)
                                (closure-capture . 100)
@@ -189,7 +190,9 @@
                                (interpreter . 100)
                                (repl . 100)
                                (cli . 100)
-                               (stdlib . 100)))
+                               (lsp-server . 100)
+                               (stdlib . 100)
+                               (documentation . 100)))
         (stdlib-modules . (prelude io string math memory))
         (stdlib-functions . 50)
         (testing . ((total-tests . 150)
