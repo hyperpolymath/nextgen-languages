@@ -1,20 +1,201 @@
 ;; SPDX-License-Identifier: PMPL-1.0-or-later
-;; ECOSYSTEM.scm - Ecosystem position for nextgen-languages
-;; Media-Type: application/vnd.ecosystem+scm
+;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
-(ecosystem
-  (version "1.0")
-  (name "nextgen-languages")
-  (type "")
-  (purpose "")
+;;; ECOSYSTEM.scm — Project Ecosystem Relationships
+;;; nextgen-languages
+;;; Reference: https://github.com/hyperpolymath/nextgen-languages
 
-  (position-in-ecosystem
-    (category "")
-    (subcategory "")
-    (unique-value ()))
+(define-module (nextgen-languages ecosystem)
+  #:export (repository-map
+            satellites
+            playgrounds
+            dependencies
+            integrations))
 
-  (related-projects ())
+;;;============================================================================
+;;; REPOSITORY MAP
+;;; Complete map of all repositories in the ecosystem
+;;;============================================================================
 
-  (what-this-is ())
+(define repository-map
+  '((hub
+     ((name . "nextgen-languages")
+      (url . "https://github.com/hyperpolymath/nextgen-languages")
+      (role . "Central coordination, documentation, specifications")
+      (contains . (wiki scripts languages .scm-files))))
 
-  (what-this-is-not ()))
+    (language-satellites
+     ((my-lang
+       ((url . "https://github.com/hyperpolymath/my-lang")
+        (description . "Progressive language family: me → solo → duet → ensemble")
+        (dialects . (me solo duet ensemble))
+        (implementation . Rust)
+        (playground . "https://github.com/hyperpolymath/language-playgrounds")))
+      (phronesis
+       ((url . "https://github.com/hyperpolymath/phronesis")
+        (description . "AI ethics and safety specification language")
+        (implementation . Elixir)))
+      (eclexia
+       ((url . "https://github.com/hyperpolymath/eclexia")
+        (description . "Sustainable computing with resource-first constraints")
+        (implementation . Rust)))
+      (oblibeny
+       ((url . "https://github.com/hyperpolymath/oblibeny")
+        (description . "Provably secure, Turing-incomplete for hostile environments")
+        (implementation . Rust)))
+      (anvomidav
+       ((url . "https://github.com/hyperpolymath/anvomidav")
+        (description . "Formally verified hard real-time systems")
+        (implementation . Rust/LLVM)))
+      (wokelang
+       ((url . "https://github.com/hyperpolymath/wokelang")
+        (description . "Human-centric programming with consent and well-being")
+        (implementation . Rust)))
+      (betlang
+       ((url . "https://github.com/hyperpolymath/betlang")
+        (description . "Probabilistic programming language")
+        (implementation . Racket)))
+      (julia-the-viper
+       ((url . "https://github.com/hyperpolymath/julia-the-viper")
+        (description . "Systems programming with Harvard Architecture")
+        (implementation . Rust)))
+      (affinescript
+       ((url . "https://github.com/hyperpolymath/affinescript")
+        (description . "Affine types and dependent types for WASM")
+        (implementation . OCaml)))
+      (ephapax
+       ((url . "https://github.com/hyperpolymath/ephapax")
+        (description . "Once-only evaluation with linear semantics")
+        (implementation . "TBD")))))
+
+    (tooling-satellites
+     ((7-tentacles
+       ((url . "https://github.com/hyperpolymath/7-tentacles")
+        (description . "Orchestration and satellite coordination tool")
+        (role . "Multi-repo management")))
+      (language-playgrounds
+       ((url . "https://github.com/hyperpolymath/language-playgrounds")
+        (description . "Experimentation sandboxes for language learning")
+        (role . "Interactive language exploration")))))))
+
+;;;============================================================================
+;;; SATELLITES
+;;; Submodule configuration for all satellites
+;;;============================================================================
+
+(define satellites
+  '((configured
+     ((betlang . "git@github.com:hyperpolymath/betlang.git")
+      (julia-the-viper . "git@github.com:hyperpolymath/julia-the-viper.git")
+      (affinescript . "https://github.com/hyperpolymath/affinescript.git")
+      (eclexia . "https://github.com/hyperpolymath/eclexia.git")
+      (ephapax . "https://github.com/hyperpolymath/ephapax.git")
+      (my-lang . "https://github.com/hyperpolymath/my-lang.git")
+      (oblibeny . "https://github.com/hyperpolymath/oblibeny.git")
+      (phronesis . "https://github.com/hyperpolymath/phronesis.git")
+      (wokelang . "https://github.com/hyperpolymath/wokelang.git")
+      (7-tentacles . "git@github.com:hyperpolymath/7-tentacles.git")
+      (anvomidav . "https://github.com/hyperpolymath/anvomidav.git")
+      (language-playgrounds . "https://github.com/hyperpolymath/language-playgrounds.git")))
+
+    (to-add . ())))
+
+;;;============================================================================
+;;; PLAYGROUNDS
+;;; Language playground relationships
+;;;============================================================================
+
+(define playgrounds
+  '((hub
+     ((url . "https://github.com/hyperpolymath/language-playgrounds")
+      (description . "Experimentation sandboxes for language and learning")))
+
+    (satellites
+     ((me-dialect-playground
+       ((url . "https://github.com/hyperpolymath/me-dialect-playground")
+        (languages . (me solo duet ensemble))
+        (status . active)
+        (features
+         ((grammars . "4 complete EBNF grammars")
+          (examples . "110+ example programs")
+          (lexer . "Production-ready Rust+logos tokenizer")
+          (ast . "Complete syntax tree with serde")
+          (syntax-highlighting . "VSCode, Vim, Emacs")))))
+
+      (jtv-playground
+       ((url . "https://github.com/hyperpolymath/jtv-playground")
+        (languages . (julia-the-viper))
+        (status . active)
+        (features
+         ((structure . "Organized experiments directory")
+          (build . "Justfile automation")
+          (packaging . "Guix/Nix reproducible builds")))))
+
+      (eclexia-playground
+       ((url . "https://github.com/hyperpolymath/eclexia-playground")
+        (languages . (eclexia))
+        (status . active)
+        (features
+         ((stack . "RSR-compliant: ReScript/Deno/Rust")
+          (build . "Justfile automation")
+          (packaging . "Guix/Nix reproducible builds")))))
+
+      (ephapax-playground
+       ((url . "coming-soon")
+        (languages . (ephapax))
+        (status . planned)
+        (description . "Physics as Code sandbox")))))
+
+    (features
+     ((repl . "Browser-based REPL for each language")
+      (examples . "Curated example programs")
+      (tutorials . "Interactive tutorials")
+      (share . "Share code snippets")))))
+
+;;;============================================================================
+;;; DEPENDENCIES
+;;; Cross-project dependencies
+;;;============================================================================
+
+(define dependencies
+  '((shared-infrastructure
+     ((echidna
+       ((url . "https://github.com/hyperpolymath/echidna")
+        (role . "Neurosymbolic theorem proving platform")
+        (used-by . (anvomidav oblibeny duet))))
+      (instant-sync
+       ((role . "Automatic forge propagation")
+        (used-by . all)))))
+
+    (language-dependencies
+     ((my-lang
+       ((depends-on . ())
+        (depended-by . ())))
+      (duet
+       ((depends-on . (solo))
+        (note . "Duet extends Solo with AI features")))
+      (ensemble
+       ((depends-on . (duet))
+        (note . "Ensemble extends Duet with native AI")))))))
+
+;;;============================================================================
+;;; INTEGRATIONS
+;;; External system integrations
+;;;============================================================================
+
+(define integrations
+  '((forges
+     ((primary . GitHub)
+      (mirrors . (GitLab Codeberg Bitbucket))
+      (sync-tool . "instant-sync")))
+
+    (ci-cd
+     ((GitHub-Actions . "Primary CI/CD")
+      (workflows . (test build release mirror))))
+
+    (documentation
+     ((wiki . "GitHub Wiki format")
+      (api-docs . "Language-specific (rustdoc, etc.)")
+      (specs . ".scm files in repo root")))))
+
+;;; End of ECOSYSTEM.scm

@@ -1,0 +1,49 @@
+# AI Assistant Instructions
+
+# Machine-Readable Metadata
+
+Project metadata and AI agent configuration files are located in `.machine_readable/`:
+
+- **STATE.scm** - Current project state, progress, blockers, next actions
+- **ECOSYSTEM.scm** - Position in ecosystem, relationships to other projects
+- **META.scm** - Architecture decisions, governance, development practices
+- **PLAYBOOK.scm** - Operational runbook, procedures, alerts
+- **AGENTIC.scm** - AI agent interaction patterns and constraints
+- **NEUROSYM.scm** - Neurosymbolic integration configuration
+- **LANGUAGES.scm** - Language portfolio status and metadata
+
+**These files are the canonical source of truth for project metadata.**
+
+## Repository Structure
+
+This is a **monorepo** containing:
+
+### Core Languages (10) - as Git submodules
+1. Phronesis - 100% complete (production)
+2. Eclexia - 90% (tooling phase)
+3. WokeLang - 80% (feature completion)
+4. My-Lang - 75% (solo dialect complete, 4 dialects: me/solo/duet/ensemble)
+5. Julia-the-Viper - 60% (active development)
+6. Ephapax - 55% (dyadic: linear/affine forms)
+7. Anvomidav - 55% (developer experience)
+8. AffineScript - 40% (integration)
+9. betlang - 35% (development)
+10. Oblibeny - 30% (MVP)
+
+### Domain-Specific Languages (external repos, linked in docs)
+- **a2ml** → `hyperpolymath/a2ml` (Attestation & Manifest Language)
+- **vql/vql-dt** → `hyperpolymath/verisimdb` (VeriSim Query Language, normal + dependent types)
+- **gql/gql-dt** → `hyperpolymath/lithoglyph` + `hyperpolymath/gql-dt` (Glyph Query Language)
+- **k9-svc** → `hyperpolymath/k9-svc` (Self-Validating Components + tools)
+
+### Companion Tools
+- **7-tentacles** → Educational program for My-Lang (submodule)
+
+## Workflow
+
+1. Read `.machine_readable/*.scm` files at session start
+2. Check STATE.scm for current phase, blockers, next actions
+3. Update submodules if needed: `git submodule update --remote`
+4. Follow patterns and constraints from AGENTIC.scm
+5. Update STATE.scm after completing work
+6. Update LANGUAGE-STATUS-MASTER.md with language progress
