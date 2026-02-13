@@ -17,7 +17,7 @@
 8. **Error-Lang** - `/var/mnt/eclipse/repos/error-lang` ⚠️ 45%
 9. **Oblibeny** - `/var/mnt/eclipse/repos/oblibeny` ⚠️ 20%
 
-### Database Query Languages (2)
+### Database Query Languages (3)
 
 10. **VQL** (Verification Query Language) - `/var/mnt/eclipse/repos/verisimdb/src/vql/` ⚠️ ~40%
     - Part of VeriSimDB multimodal database
@@ -25,7 +25,12 @@
     - Parser, AST, Error handling exist
     - Query language for 6 modalities (Graph, Vector, Tensor, Semantic, Document, Temporal)
 
-11. **FBQL-DT** (FormDB Query Language - Dependent Types) - `/var/mnt/eclipse/repos/fbql-dt/` ⚠️ ~50%
+11. **KQL** (Knot Query Language) - `/var/mnt/eclipse/repos/quandledb/` (in development)
+    - Query language for QuandleDB knot-theory database
+    - Wraps Skein.jl engine (Julia)
+    - Topological queries: crossing number, writhe, genus, Jones polynomial
+
+12. **FBQL-DT** (FormDB Query Language - Dependent Types) - `/var/mnt/eclipse/repos/fbql-dt/` ⚠️ ~50%
     - Lean 4 implementation
     - Dependent types for compile-time DB constraint verification
     - Zig FFI bridge to Forth core
@@ -261,6 +266,19 @@ program competition_2025 {
 4. No workers needed (query language)
 
 **Total to Green Tick:** ~12 hours (but 1 feature N/A)
+
+---
+
+#### KQL (Knot Query Language)
+**Location:** `quandledb/` (in development)
+**Tech:** Julia (server) + ReScript (frontend)
+**Purpose:** Query language for QuandleDB — a knot-theory database built on Skein.jl
+**Status:** In development
+
+<!-- KQL is the planned query language for QuandleDB, a web application wrapping
+     the Skein.jl knot database engine. QuandleDB provides HTTP API + web UI for
+     querying knots by invariants (crossing number, writhe, genus, Jones polynomial).
+     KQL will add a dedicated query DSL for topological queries. -->
 
 ---
 
