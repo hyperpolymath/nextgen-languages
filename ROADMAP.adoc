@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+= Roadmap
+:toc:
+
+== Current Phase: Language Maturation
+
+This repository is a **parent tracking repo** for the NextGen Languages ecosystem.
+All implementation work happens in the individual canonical repositories.
+
+== Priorities
+
+=== Active
+
+* Complete remaining languages to production-ready status
+* Establish ABI/FFI layer (Idris2 + Zig) for cross-language interop
+* Integrate `proven` library for shared formal verification
+
+=== Planned
+
+* Cross-language interoperability framework
+* Unified package registry
+* Shared test infrastructure
+
+== Language Canonical Repos
+
+See `README.adoc` for the full list of canonical repositories.
+
+== Tracking
+
+Progress tracked in `.machine_readable/STATE.scm`.
