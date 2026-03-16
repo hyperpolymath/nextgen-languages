@@ -1,0 +1,385 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# LANGUAGES.a2ml — Migrated from LANGUAGES.scm
+
+[metadata]
+version = "0.1.0"
+last-updated = "2026-03-16"
+migrated-from = "LANGUAGES.scm"
+
+[content]
+# - Comprehensive coverage of emerging paradigms from AI-native
+# - )
+# - https://github.com/hyperpolymath/betlang
+# - )
+# - Bet programming language - existing experimental language
+# - )))))))
+# - Dependable foundation for systems programming
+# - )
+# - effect
+# -  
+# - go
+# -  
+# - where { pre: ..., post: ... }
+# - ))
+# - General Systems Programming
+# - ))
+# - AI-assisted development (Neuro-Symbolic) for verifiable software
+# - )
+# - @synth
+# -  
+# - @verify
+# -  
+# - intent(\
+# - ...\
+# - )
+# - ))
+# - High-Assurance, AI-Assisted Systems
+# - ))
+# - AI as a first-class, native component of the language
+# - )
+# - ai_model {}
+# -  
+# - prompt {}
+# -  
+# - AI<T> effect type
+# - ))
+# - AI-Native Applications, AI Agents
+# - ))
+# - Formal, auditable specification of an agent's ethical framework
+# - )
+# - Agent.
+# -  
+# - Values:
+# -  
+# - EVALUATE(...)
+# - ))
+# - AI Safety, Alignment, and Auditing
+# - ))
+# - Sustainable Software Engineering through resource-first constraints
+# - )
+# - (energy budget ...)
+# -  
+# - (resource ...)
+# - ))
+# - Green Computing, IoT/Embedded, FinOps
+# - ))
+# - Provably secure, obfuscated code for hostile environments
+# - )
+# - (forbid recursion)
+# -  
+# - (bounded-for ...)
+# - ))
+# - Secure Enclaves (HSMs), Critical Embedded
+# - ))
+# - Maximalist formal verification for hard real-time systems
+# - )
+# - task @sched(EDF)
+# -  
+# - Linear<T>
+# -  
+# - Π (...) . T
+# - ))
+# - Avionics, Autonomous Vehicles, Robotics
+# - ))
+# - Human-centric programming focused on consent and well-being
+# - )
+# - only if okay \
+# - ...\
+# -  
+# - attempt ... or reassure
+# - ))
+# - Education, Personal Scripting, Accessibility
+# - )))))
+# - Solo
+# - )
+# - Dependable foundation for systems programming
+# - )
+# - concept-v0.1
+# - )
+# - Solo provides a solid, predictable foundation for systems programming.
+# - )
+# - Explicit effect tracking for side effects
+# - )
+# - effect { ... }
+# - )
+# - Track and control side effects at type level
+# - )))
+# - Lightweight, structured concurrency
+# - )
+# - go { ... }
+# - )
+# - Spawn concurrent tasks with clear lifecycle
+# - )))
+# - Design-by-contract with pre/post conditions
+# - )
+# - where { pre: condition, post: condition }
+# - )
+# - Runtime and static verification of function contracts
+# - )))))
+# - Operating system kernels
+# - Device drivers
+# - Embedded systems
+# - High-performance libraries
+# - Systems utilities
+# - ))
+# - Rust (ownership, safety)
+# - Go (concurrency)
+# - Eiffel (contracts)
+# - Ada (reliability)
+# - ))))
+# - Duet
+# - )
+# - AI-assisted development for verifiable software
+# - )
+# - concept-v0.1
+# - )
+# - Duet enables a collaborative relationship between human programmers and
+# - )
+# - AI-powered code synthesis with verification
+# - )
+# - @synth
+# - )
+# - Request AI to synthesize implementation from specification
+# - )))
+# - Formal verification of AI-generated code
+# - )
+# - @verify
+# - )
+# - Prove correctness of synthesized code against contracts
+# - )))
+# - Natural language intent specification
+# - )
+# - intent(\
+# - ...\
+# - )
+# - )
+# - Express high-level intent for AI interpretation
+# - )))))
+# - High-assurance software
+# - Safety-critical systems
+# - Formal methods integration
+# - Rapid prototyping with guarantees
+# - Human-AI pair programming
+# - ))
+# - Dafny (verification)
+# - GitHub Copilot (synthesis)
+# - Liquid Haskell (refinement types)
+# - F* (proof-oriented programming)
+# - ))))
+# - Ensemble
+# - )
+# - AI as a first-class, native component
+# - )
+# - concept-v0.1
+# - )
+# - Ensemble treats AI models as fundamental building blocks of software,
+# - )
+# - First-class AI model definition
+# - )
+# - ai_model { ... }
+# - )
+# - Define AI model configurations and capabilities
+# - )))
+# - Structured prompt construction
+# - )
+# - prompt { ... }
+# - )
+# - Type-safe prompt template definition
+# - )))
+# - AI operations as typed effects
+# - )
+# - AI<T>
+# - )
+# - Track AI operations in the type system
+# - )))))
+# - AI agent development
+# - LLM-powered applications
+# - Multi-agent systems
+# - Intelligent assistants
+# - AI orchestration platforms
+# - ))
+# - LangChain (AI orchestration)
+# - TypeScript (type system)
+# - Effect systems (Koka, Eff)
+# - Actor model (agents)
+# - ))))
+# - Phronesis
+# - )
+# - Formal specification of ethical AI frameworks
+# - )
+# - concept-v0.1
+# - )
+# - Named after the Aristotelian concept of practical wisdom, Phronesis
+# - )
+# - Formal agent specification
+# - )
+# - Agent.
+# - )
+# - Define an AI agent's identity and capabilities
+# - )))
+# - Explicit value hierarchy declaration
+# - )
+# - Values:
+# - )
+# - Specify prioritized ethical values and constraints
+# - )))
+# - Decision evaluation framework
+# - )
+# - EVALUATE(...)
+# - )
+# - Formally evaluate actions against ethical framework
+# - )))))
+# - AI safety research
+# - AI alignment verification
+# - Regulatory compliance
+# - Ethical AI auditing
+# - Constitutional AI specification
+# - ))
+# - Prolog (logic programming)
+# - Deontic logic (obligations)
+# - Constitutional AI (Anthropic)
+# - Value Alignment research
+# - ))))
+# - Eclexia
+# - )
+# - Sustainable Software Engineering through resource-first constraints
+# - )
+# - concept-v0.1
+# - )
+# - Eclexia makes resource consumption a first-class concern in software
+# - )
+# - Energy consumption constraints
+# - )
+# - (energy budget ...)
+# - )
+# - Declare maximum energy consumption allowances
+# - )))
+# - Resource requirement specification
+# - )
+# - (resource ...)
+# - )
+# - Specify computational resource constraints
+# - )))))
+# - Green computing
+# - IoT and embedded systems
+# - Cloud cost optimization (FinOps)
+# - Battery-constrained devices
+# - Carbon-aware computing
+# - ))
+# - Constraint programming
+# - Green Software Foundation principles
+# - Resource-bounded computation
+# - Energy-proportional computing
+# - ))))
+# - Oblíbený
+# - )
+# - Provably secure code for hostile environments
+# - )
+# - concept-v0.1
+# - )
+# - Oblíbený (Czech for 'favorite' or 'beloved') produces provably secure,
+# - )
+# - Explicit recursion prohibition
+# - )
+# - (forbid recursion)
+# - )
+# - Guarantee termination by eliminating unbounded recursion
+# - )))
+# - Bounded loop constructs
+# - )
+# - (bounded-for ...)
+# - )
+# - Ensure all loops terminate within known bounds
+# - )))))
+# - Hardware Security Modules (HSMs)
+# - Secure enclaves (SGX, TrustZone)
+# - Smart card programming
+# - Critical embedded systems
+# - High-assurance cryptographic code
+# - ))
+# - Total functional programming
+# - Cryptol (cryptographic DSL)
+# - Ivory (embedded safety)
+# - Coq/Agda (termination checking)
+# - ))))
+# - Anvomidav
+# - )
+# - Maximalist formal verification for hard real-time systems
+# - )
+# - concept-v0.1
+# - )
+# - Anvomidav combines linear types, session types, and dependent types
+# - )
+# - Real-time task scheduling
+# - )
+# - task @sched(EDF)
+# - )
+# - Declare tasks with scheduling guarantees (e.g., Earliest Deadline First)
+# - )))
+# - Linear resource tracking
+# - )
+# - Linear<T>
+# - )
+# - Ensure resources are used exactly once
+# - )))
+# - Dependent type specifications
+# - )
+# - Π (...) . T
+# - )
+# - Express precise specifications in types
+# - )))))
+# - Avionics systems (DO-178C)
+# - Autonomous vehicle control
+# - Medical device software
+# - Robotics control systems
+# - Nuclear and industrial control
+# - ))
+# - SPARK/Ada (formal verification)
+# - Idris (dependent types)
+# - Rust (linear types)
+# - Session types research
+# - ))))
+# - WokeLang
+# - )
+# - Human-centric programming focused on consent and well-being
+# - )
+# - concept-v0.1
+# - )
+# - WokeLang prioritizes the human experience in programming. It uses
+# - )
+# - Explicit consent for operations
+# - )
+# - only if okay \
+# - ...\
+# - )
+# - Require explicit user consent for sensitive operations
+# - )))
+# - Supportive error recovery
+# - )
+# - attempt ... or reassure
+# - )
+# - Handle failures with user-friendly messaging
+# - )))))
+# - Educational programming
+# - Personal scripting
+# - Accessibility-focused tools
+# - Mental health tech
+# - Gentle introduction to coding
+# - ))
+# - Natural language programming
+# - Scratch (educational)
+# - Human-centered design
+# - Cognitive load theory
+# - ))))))
+# - All languages favor explicit declaration of intent, effects,
+# - )
+# - Each language is optimized for its domain rather than being
+# - )
+# - Where applicable, languages are built on formal foundations
+# - )
+# - Syntax is designed for human comprehension first, balancing
+# - )))
+# - The eight languages span a complete spectrum:
+# - )))
