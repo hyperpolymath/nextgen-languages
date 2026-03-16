@@ -174,7 +174,7 @@
     (scm-file
      ((format . guile-scheme)
       (sections
-       ((header . ";; SPDX-License-Identifier: AGPL-3.0-or-later\n;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell")
+       ((header . ";; SPDX-License-Identifier: PMPL-1.0-or-later\n;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell")
         (docstring . ";;; <FILENAME>.scm — <Description>")
         (module . "(define-module (nextgen-languages <name>)\n  #:export (<exports>))")
         (sections . ";;;===...\n;;; SECTION NAME\n;;;===...")))))))
