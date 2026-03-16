@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "0b39d160-9cf6-52ae-9cbf-317580c5b5b1"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "nextgen-languages"
+prefixed-name = "nl-nextgen-languages"
+
+[clade]
+primary = "nl"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/nextgen-languages"
+gitlab = "hyperpolymath/nextgen-languages"
+bitbucket = "hyperpolymath/nextgen-languages"
+
+[lineage]
+type = "monorepo"
+parent = "Monorepo — anvomidav, ephapax, wokelang, eclexia, affinescript, betlang, etc."
+born = "2026-03-16"
