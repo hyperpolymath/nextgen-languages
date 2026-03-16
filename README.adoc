@@ -176,12 +176,12 @@ Target Audience:       Expert ←————————————→ Beginne
 == Documentation
 
 * `LANGUAGES.scm` — Detailed language specifications and comparison
-* `META.scm` — Architecture decisions and development practices
-* `STATE.scm` — Project checkpoint and session history
-* `ECOSYSTEM.scm` — Project ecosystem relationships
-* `PLAYBOOK.scm` — Operational playbook and workflows
-* `AGENTIC.scm` — Agent-oriented language specifications
-* `NEUROSYM.scm` — Neuro-symbolic integration specifications
+* `.machine_readable/6a2/META.a2ml` — Architecture decisions and development practices
+* `.machine_readable/6a2/STATE.a2ml` — Project checkpoint and session history
+* `.machine_readable/6a2/ECOSYSTEM.a2ml` — Project ecosystem relationships
+* `.machine_readable/6a2/PLAYBOOK.a2ml` — Operational playbook and workflows
+* `.machine_readable/6a2/AGENTIC.a2ml` — Agent-oriented language specifications
+* `.machine_readable/6a2/NEUROSYM.a2ml` — Neuro-symbolic integration specifications
 * `MANIFEST.md` — Quick reference with status and run commands
 * `languages/` — Per-language READMEs with core invariants
 

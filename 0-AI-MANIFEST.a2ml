@@ -7,12 +7,12 @@
 ### Canonical File Locations (ONLY THESE - NO DUPLICATES)
 
 **Machine-Readable Metadata:** `.machine_readable/` directory ONLY
-- **STATE.scm** - Current project state, progress, blockers, next actions
-- **ECOSYSTEM.scm** - Position in ecosystem, relationships to other projects
-- **META.scm** - Architecture decisions, governance, development practices
-- **PLAYBOOK.scm** - Operational runbook, procedures, alerts
-- **AGENTIC.scm** - AI agent interaction patterns and constraints
-- **NEUROSYM.scm** - Neurosymbolic integration configuration
+- **.machine_readable/6a2/STATE.a2ml** - Current project state, progress, blockers, next actions
+- **.machine_readable/6a2/ECOSYSTEM.a2ml** - Position in ecosystem, relationships to other projects
+- **.machine_readable/6a2/META.a2ml** - Architecture decisions, governance, development practices
+- **.machine_readable/6a2/PLAYBOOK.a2ml** - Operational runbook, procedures, alerts
+- **.machine_readable/6a2/AGENTIC.a2ml** - AI agent interaction patterns and constraints
+- **.machine_readable/6a2/NEUROSYM.a2ml** - Neurosymbolic integration configuration
 - **LANGUAGES.scm** - Language portfolio status and metadata
 
 **CRITICAL:** If ANY of these 6 SCM files exist in the root directory, this is an ERROR state.
@@ -28,7 +28,7 @@ The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
 
 ### Core Constraints That Prevent Errors
 
-1. **No SCM file duplication** - Root directory must NOT contain STATE.scm, META.scm, ECOSYSTEM.scm, AGENTIC.scm, NEUROSYM.scm, PLAYBOOK.scm, or LANGUAGES.scm
+1. **No SCM file duplication** - Root directory must NOT contain .machine_readable/6a2/STATE.a2ml, .machine_readable/6a2/META.a2ml, .machine_readable/6a2/ECOSYSTEM.a2ml, .machine_readable/6a2/AGENTIC.a2ml, .machine_readable/6a2/NEUROSYM.a2ml, .machine_readable/6a2/PLAYBOOK.a2ml, or LANGUAGES.scm
 2. **Single source of truth** - `.machine_readable/` is authoritative
 3. **No stale metadata** - If root SCMs exist, they are OUT OF DATE and must be removed
 4. **Submodule integrity** - All 10 core languages + 7-tentacles must be checked out (not empty directories)
@@ -37,8 +37,8 @@ The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
 ### Session Startup Checklist
 
 ✅ Read THIS file (AI.a2ml) first
-✅ Read `.machine_readable/STATE.scm` for current status
-✅ Check `.machine_readable/AGENTIC.scm` for interaction constraints
+✅ Read `.machine_readable/6a2/STATE.a2ml` for current status
+✅ Check `.machine_readable/6a2/AGENTIC.a2ml` for interaction constraints
 ✅ Verify no duplicate SCM files exist in root
 ✅ Check git submodule status (must not be empty)
 
@@ -72,8 +72,8 @@ This is a **monorepo** containing:
 ## Workflow
 
 1. Read `.machine_readable/*.scm` files at session start
-2. Check STATE.scm for current phase, blockers, next actions
+2. Check .machine_readable/6a2/STATE.a2ml for current phase, blockers, next actions
 3. Update submodules if needed: `git submodule update --remote`
-4. Follow patterns and constraints from AGENTIC.scm
-5. Update STATE.scm after completing work
+4. Follow patterns and constraints from .machine_readable/6a2/AGENTIC.a2ml
+5. Update .machine_readable/6a2/STATE.a2ml after completing work
 6. Update LANGUAGE-STATUS-MASTER.md with language progress
