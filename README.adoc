@@ -84,7 +84,7 @@ In addition to the core eight languages, the ecosystem includes specialized lang
 | Active
 
 | A2ML
-| link:https://github.com/hyperpolymath/a2ml[a2ml]
+| link:https://github.com/hyperpolymath/standards/tree/main/a2ml[a2ml]
 | Attested Markup Language
 | Active
 
