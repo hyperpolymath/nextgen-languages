@@ -37,3 +37,9 @@
 [submodule "error-lang"]
 	path = error-lang
 	url = git@github.com:hyperpolymath/error-lang.git
+[submodule "tangle"]
+	path = tangle
+	url = git@github.com:hyperpolymath/tangle.git
+[submodule "me-dialect"]
+	path = me-dialect
+	url = git@github.com:hyperpolymath/me-dialect.git
