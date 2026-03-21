@@ -6,34 +6,34 @@
 	url = git@github.com:hyperpolymath/julia-the-viper.git
 [submodule "affinescript"]
 	path = affinescript
-	url = https://github.com/hyperpolymath/affinescript.git
+	url = git@github.com:hyperpolymath/affinescript.git
 [submodule "eclexia"]
 	path = eclexia
-	url = https://github.com/hyperpolymath/eclexia.git
+	url = git@github.com:hyperpolymath/eclexia.git
 [submodule "ephapax"]
 	path = ephapax
-	url = https://github.com/hyperpolymath/ephapax.git
+	url = git@github.com:hyperpolymath/ephapax.git
 [submodule "my-lang"]
 	path = my-lang
-	url = https://github.com/hyperpolymath/my-lang.git
+	url = git@github.com:hyperpolymath/my-lang.git
 [submodule "oblibeny"]
 	path = oblibeny
-	url = https://github.com/hyperpolymath/oblibeny.git
+	url = git@github.com:hyperpolymath/oblibeny.git
 [submodule "phronesis"]
 	path = phronesis
-	url = https://github.com/hyperpolymath/phronesis.git
+	url = git@github.com:hyperpolymath/phronesis.git
 [submodule "wokelang"]
 	path = wokelang
-	url = https://github.com/hyperpolymath/wokelang.git
+	url = git@github.com:hyperpolymath/wokelang.git
 [submodule "7-tentacles"]
 	path = 7-tentacles
 	url = git@github.com:hyperpolymath/7-tentacles.git
 [submodule "anvomidav"]
 	path = anvomidav
-	url = https://github.com/hyperpolymath/anvomidav.git
+	url = git@github.com:hyperpolymath/anvomidav.git
 [submodule "language-playgrounds"]
 	path = language-playgrounds
-	url = https://github.com/hyperpolymath/language-playgrounds.git
+	url = git@github.com:hyperpolymath/language-playgrounds.git
 [submodule "error-lang"]
 	path = error-lang
 	url = git@github.com:hyperpolymath/error-lang.git
@@ -43,3 +43,4 @@
 [submodule "me-dialect"]
 	path = me-dialect
 	url = git@github.com:hyperpolymath/me-dialect.git
+
