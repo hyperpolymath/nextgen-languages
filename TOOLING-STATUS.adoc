@@ -1,0 +1,209 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+= Nextgen Languages — Tooling & Integration Status
+:toc:
+:toclevels: 2
+
+Last verified: 2026-03-21
+
+== Overview
+
+This monorepo contains 12 programming languages + 2 meta-projects. All 12 languages
+are registered in the BoJ Server `lang-mcp` cartridge with session management, type-checking,
+and evaluation via V-lang adapter + Zig FFI.
+
+== Language Tooling Matrix
+
+[cols="<2,^1,^1,^1,^1,^1,^1,^1,^1,^1", options="header"]
+|===
+| Language | Compiler | LSP | DAP | Linter | Formatter | Tree-sitter | Doc Gen | Pkg Mgr | Conformance
+
+| **Eclexia**
+| 25 crates (Rust)
+| eclexia-lsp
+| eclexia-dap
+| eclexia-lint
+| eclexia-fmt
+| —
+| eclexia-doc
+| —
+| ✓ + fuzz
+
+| **Betlang**
+| 7 crates (Rust)
+| bet-lsp (Gleam)
+| bet-dap
+| —
+| —
+| — (LALRPOP)
+| —
+| —
+| ✓ + fuzz
+
+| **AffineScript**
+| OCaml
+| affine-lsp (Rust)
+| affine-dap (Rust)
+| linter.ml
+| stub
+| tree-sitter
+| affine-doc
+| affine-pkg
+| ✓
+
+| **Ephapax**
+| Idris2-based
+| planned
+| planned
+| —
+| —
+| —
+| —
+| —
+| —
+
+| **Wokelang**
+| Rust
+| planned
+| planned
+| —
+| —
+| —
+| —
+| —
+| ✓
+
+| **My-Lang**
+| 7 components
+| ✓
+| planned
+| —
+| —
+| —
+| —
+| —
+| —
+
+| **Julia-the-Viper**
+| Idris2 ABI
+| planned
+| planned
+| —
+| —
+| —
+| —
+| —
+| ✓ + benchmarks
+
+| **Tangle**
+| Rust
+| tangle-lsp
+| planned
+| —
+| —
+| — (EBNF)
+| —
+| —
+| —
+
+| **Phronesis**
+| Rust
+| planned
+| planned
+| —
+| —
+| — (tmLanguage)
+| —
+| —
+| ✓
+
+| **Oblibeny**
+| OCaml
+| ✓
+| ✓
+| —
+| —
+| —
+| —
+| —
+| —
+
+| **Error-lang**
+| Rust
+| error-lang-lsp
+| planned
+| —
+| —
+| — (tmLanguage)
+| —
+| —
+| ✓
+
+| **Me-dialect**
+| Rust
+| planned
+| planned
+| —
+| —
+| —
+| —
+| —
+| —
+|===
+
+== BoJ Server Integration
+
+All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
+
+[cols="<2,^1,<4", options="header"]
+|===
+| Language | ID | BoJ Features
+
+| Eclexia       | 1  | Session, typecheck, eval, compile
+| AffineScript  | 2  | Session, typecheck, eval, compile
+| Betlang       | 3  | Session, typecheck, eval, compile
+| Ephapax       | 4  | Session, typecheck, eval, compile
+| My-Lang       | 5  | Session, typecheck, eval, compile
+| Wokelang      | 6  | Session, typecheck, eval, compile
+| Anvomidav     | 7  | Session (stub)
+| Phronesis     | 8  | Session, typecheck, eval
+| Error-lang    | 9  | Session, typecheck, eval
+| Julia-the-Viper | 10 | Session, typecheck, eval, dialect injection
+| Me-dialect    | 11 | Session, typecheck
+| Oblibeny      | 12 | Session, typecheck, eval
+|===
+
+=== Related BoJ Cartridges
+
+* **lang-mcp** — Language sessions (V-lang adapter, Zig FFI, PanLL panels)
+* **lsp-mcp** — Generic LSP proxy (ABI/FFI/adapter/panels)
+* **dap-mcp** — Generic DAP proxy (ABI/FFI/adapter/panels)
+
+=== Julia-the-Viper Dialect Injection
+
+Any language can be augmented with JtV by requesting dialect `jtv`:
+
+* API: `lang_session_start_dialect(lang_id, 1, name)` where `1` = JtV
+* Shorthand: `"eclexia+jtv"`, `"betlang+jtv"`, `"affinescript+jtv"`, etc.
+
+== ABI/FFI Standard (Idris2 + Zig)
+
+[cols="<2,^1,^1,^1", options="header"]
+|===
+| Language | Idris2 ABI | Zig FFI | Status
+
+| AffineScript      | `src/abi/` (Types, Layout, Foreign) | planned     | In progress
+| Julia-the-Viper   | `src/abi/` (Types, Layout, Foreign) | planned     | In progress
+| Ephapax           | ephapax-proven (3 crates)           | proven-ffi  | Complete
+| Others            | —                                    | —           | Not started
+|===
+
+== Formal Verification
+
+* **Ephapax** — Linear type proofs via Idris2
+* **AffineScript** — Affine type proofs (linear subset)
+* **Eclexia** — Effect system proofs (`eclexia-effects` crate)
+
+== Meta-Projects
+
+* **7-Tentacles** — Game development curriculum using nextgen languages
+* **Anvomidav** — Stub (19 files, minimal)
