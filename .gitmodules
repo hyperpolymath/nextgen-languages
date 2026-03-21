@@ -34,3 +34,6 @@
 [submodule "language-playgrounds"]
 	path = language-playgrounds
 	url = https://github.com/hyperpolymath/language-playgrounds.git
+[submodule "error-lang"]
+	path = error-lang
+	url = git@github.com:hyperpolymath/error-lang.git
