@@ -155,6 +155,57 @@ Each language has its own dedicated repository for implementation:
 
 |===
 
+== Languages vs. -iser Tools: What Lives Where
+
+**This repository and its satellite repos contain the actual programming languages** — full compilers, parsers, type checkers, interpreters, and standard libraries. If you want to write code _in_ Ephapax, WokeLang, Eclexia, or any other nextgen language, you are in the right place.
+
+The **-iser repos** (in link:https://github.com/hyperpolymath/developer-ecosystem[developer-ecosystem]) are a _different thing entirely_. They let you use a language's unique power **without learning the full language**, extending what you already do in your own language.
+
+[cols="1,1,3,1"]
+|===
+| -iser Tool | Based On | What It Does | Location
+
+| `ephapaxiser`
+| Ephapax
+| Linear type checking for your existing Rust/ReScript code — use Ephapax's linear types without writing Ephapax
+| developer-ecosystem
+
+| `wokelangiser`
+| WokeLang
+| Consent annotations and well-being checks for any codebase — use WokeLang's consent semantics in your language
+| developer-ecosystem
+
+| `eclexiaiser`
+| Eclexia
+| Resource budget analysis for any project — use Eclexia's energy/resource constraints without rewriting
+| developer-ecosystem
+
+| `anvomidaviser`
+| Anvomidav
+| Formal verification harness for real-time code — use Anvomidav's verification without its syntax
+| developer-ecosystem
+
+| `oblibenyiser`
+| Oblibeny
+| Security hardening for deployed code — apply Oblibeny's obfuscation/Turing-incompleteness guarantees externally
+| developer-ecosystem
+
+| `affinescriptiser`
+| AffineScript
+| Affine type linting for WASM projects — AffineScript's type discipline as a linter
+| developer-ecosystem
+
+| `phronesiser`
+| Phronesis
+| AI ethics audit for any agent codebase — Phronesis safety checks without learning the specification language
+| developer-ecosystem
+|===
+
+**Rule of thumb:**
+
+* _"I want to write a program in Ephapax"_ → go to the satellite repo (ephapax)
+* _"I want Ephapax's linear type safety in my Rust project"_ → use ephapaxiser (developer-ecosystem)
+
 == Design Spectrum
 
 The eight languages span a complete spectrum of concerns:
