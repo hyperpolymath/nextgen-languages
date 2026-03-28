@@ -7,30 +7,30 @@
 
 ### General-Purpose Programming Languages (12)
 
-1. **Phronesis** - `/var/mnt/eclipse/repos/phronesis` ✅ 100% + Phronesis-level tooling
-2. **Eclexia** - `/var/mnt/eclipse/repos/eclexia` ✅ 100% (Green Tick complete 2026-01-31!)
-3. **WokeLang** - `/var/mnt/eclipse/repos/wokelang` ✅ 85% (Green Tick complete 2026-01-31!)
-4. **AffineScript** - `/var/mnt/eclipse/repos/affinescript` ⚠️ 85% spec
-5. **Ephapax** - `/var/mnt/eclipse/repos/ephapax` ⚠️ 70%
-6. **My-Lang** - `/var/mnt/eclipse/repos/my-lang` ⚠️ 65%
-7. **Julia-the-Viper** - `/var/mnt/eclipse/repos/julia-the-viper` ⚠️ 60%
-8. **Error-Lang** - `/var/mnt/eclipse/repos/error-lang` ⚠️ 45%
-9. **Oblibeny** - `/var/mnt/eclipse/repos/oblibeny` ⚠️ 20%
+1. **Phronesis** - `/var$REPOS_DIR/phronesis` ✅ 100% + Phronesis-level tooling
+2. **Eclexia** - `/var$REPOS_DIR/eclexia` ✅ 100% (Green Tick complete 2026-01-31!)
+3. **WokeLang** - `/var$REPOS_DIR/wokelang` ✅ 85% (Green Tick complete 2026-01-31!)
+4. **AffineScript** - `/var$REPOS_DIR/affinescript` ⚠️ 85% spec
+5. **Ephapax** - `/var$REPOS_DIR/ephapax` ⚠️ 70%
+6. **My-Lang** - `/var$REPOS_DIR/my-lang` ⚠️ 65%
+7. **Julia-the-Viper** - `/var$REPOS_DIR/julia-the-viper` ⚠️ 60%
+8. **Error-Lang** - `/var$REPOS_DIR/error-lang` ⚠️ 45%
+9. **Oblibeny** - `/var$REPOS_DIR/oblibeny` ⚠️ 20%
 
 ### Database Query Languages (3)
 
-10. **VQL** (Verification Query Language) - `/var/mnt/eclipse/repos/verisimdb/src/vql/` ⚠️ ~40%
+10. **VQL** (Verification Query Language) - `/var$REPOS_DIR/verisimdb/src/vql/` ⚠️ ~40%
     - Part of VeriSimDB multimodal database
     - ReScript implementation
     - Parser, AST, Error handling exist
     - Query language for 6 modalities (Graph, Vector, Tensor, Semantic, Document, Temporal)
 
-11. **KQL** (Knot Query Language) - `/var/mnt/eclipse/repos/quandledb/` (in development)
+11. **KQL** (Knot Query Language) - `/var$REPOS_DIR/quandledb/` (in development)
     - Query language for QuandleDB knot-theory database
     - Wraps Skein.jl engine (Julia)
     - Topological queries: crossing number, writhe, genus, Jones polynomial
 
-12. **FBQL-DT** (FormDB Query Language - Dependent Types) - `/var/mnt/eclipse/repos/fbql-dt/` ⚠️ ~50%
+12. **FBQL-DT** (FormDB Query Language - Dependent Types) - `/var$REPOS_DIR/fbql-dt/` ⚠️ ~50%
     - Lean 4 implementation
     - Dependent types for compile-time DB constraint verification
     - Zig FFI bridge to Forth core
@@ -38,12 +38,12 @@
 
 ### Domain-Specific Languages (2)
 
-12. **Betlang** - `/var/mnt/eclipse/repos/betlang` ✅ 100%
+12. **Betlang** - `/var$REPOS_DIR/betlang` ✅ 100%
     - Probabilistic bet DSL (Racket + Rust)
     - Complete and working
     - **NOT a general-purpose language** - specialized DSL
 
-13. **Anvomidav** - `/var/mnt/eclipse/repos/anvomidav` ⚠️ ~75%
+13. **Anvomidav** - `/var$REPOS_DIR/anvomidav` ⚠️ ~75%
     - Figure skating choreography language
     - Rust implementation (8 crates)
     - Validates ISU rules for Singles, Pairs, Ice Dance
