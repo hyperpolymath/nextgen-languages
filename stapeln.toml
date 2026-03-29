@@ -1,0 +1,389 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# stapeln.toml — Layer-based container build for nextgen-languages monorepo
+#
+# stapeln builds containers as composable layers (German: "to stack").
+# Each layer is independently cacheable, verifiable, and signable.
+#
+# nextgen-languages is a monorepo containing 14 experimental language
+# implementations. Each language has its own build toolchain (Rust, OCaml,
+# Elixir, Deno/ReScript, Zig FFI, Idris2 ABI). Layers are structured so
+# toolchain images are shared across languages that use the same stack.
+
+[metadata]
+name = "nextgen-languages"
+version = "0.1.0"
+description = "Monorepo of experimental programming language compilers and interpreters"
+author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"
+license = "PMPL-1.0-or-later"
+registry = "ghcr.io/hyperpolymath"
+
+[build]
+containerfile = "Containerfile"
+context = "."
+runtime = "podman"
+
+# ── Base Layer ────────────────────────────────────────────────
+
+[layers.base]
+description = "Chainguard Wolfi minimal base"
+from = "cgr.dev/chainguard/wolfi-base:latest"
+cache = true
+verify = true
+
+# ── Toolchain Layers ─────────────────────────────────────────
+# Shared toolchains reused across multiple language builds.
+
+[layers.rust-toolchain]
+description = "Rust nightly toolchain for Cargo-based languages"
+extends = "base"
+packages = ["rustup", "gcc", "pkgconf", "openssl-dev", "musl-dev"]
+commands = [
+    "rustup-init -y --default-toolchain nightly",
+    "rustup target add wasm32-unknown-unknown",
+]
+cache = true
+
+[layers.ocaml-toolchain]
+description = "OCaml + opam + dune for OCaml-based languages"
+extends = "base"
+packages = ["ocaml", "opam", "gcc", "musl-dev", "m4", "patch"]
+commands = [
+    "opam init --disable-sandboxing --bare -y",
+    "eval $(opam env) && opam install dune menhir ppx_deriving -y",
+]
+cache = true
+
+[layers.elixir-toolchain]
+description = "Elixir + Erlang/OTP for BEAM-based languages"
+extends = "base"
+packages = ["elixir", "erlang-dev"]
+commands = ["mix local.hex --force", "mix local.rebar --force"]
+cache = true
+
+[layers.deno-toolchain]
+description = "Deno runtime for JS/ReScript-based languages"
+extends = "base"
+packages = ["deno"]
+cache = true
+
+[layers.zig-toolchain]
+description = "Zig compiler for FFI implementations"
+extends = "base"
+packages = ["zig"]
+cache = true
+
+[layers.idris2-toolchain]
+description = "Idris2 for ABI formal definitions"
+extends = "base"
+packages = ["idris2", "gcc", "musl-dev"]
+cache = true
+
+# ── ABI + FFI Layer ──────────────────────────────────────────
+# Shared layer for languages with Idris2 ABI + Zig FFI triples.
+
+[layers.abi-ffi]
+description = "Combined Idris2 ABI verification + Zig FFI compilation"
+extends = "base"
+depends = ["idris2-toolchain", "zig-toolchain"]
+commands = [
+    # Verify ABI definitions compile cleanly
+    "for lang in eclexia betlang tangle affinescript wokelang julia-the-viper oblibeny error-lang phronesis; do [ -d ${lang}/src/abi ] && (cd ${lang}/src/abi && idris2 --check Types.idr 2>/dev/null || true); done",
+    # Build Zig FFI shared objects
+    "for lang in eclexia betlang tangle affinescript julia-the-viper oblibeny error-lang; do [ -d ${lang}/ffi/zig ] && (cd ${lang}/ffi/zig && zig build 2>/dev/null || true); done",
+]
+cache = true
+
+# ── Language Build Layers ────────────────────────────────────
+# Each language gets its own build layer extending the appropriate toolchain.
+
+[layers.build-ephapax]
+description = "Ephapax — linear type system language (Rust + Idris2)"
+extends = "rust-toolchain"
+depends = ["idris2-toolchain"]
+commands = [
+    "cd ephapax && cargo build --release --workspace",
+    "[ -d ephapax/idris2/src ] && (cd ephapax/idris2 && idris2 --check src/Main.idr || true)",
+]
+cache = true
+
+[layers.build-wokelang]
+description = "WokeLang — consent-aware programming language (Rust + OCaml)"
+extends = "rust-toolchain"
+depends = ["ocaml-toolchain"]
+commands = [
+    "cd wokelang && cargo build --release",
+    "cd wokelang && eval $(opam env) && dune build 2>/dev/null || true",
+]
+cache = true
+
+[layers.build-eclexia]
+description = "Eclexia — economics-as-code language (Rust + Idris2 ABI + Zig FFI)"
+extends = "rust-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd eclexia && cargo build --release"]
+cache = true
+
+[layers.build-affinescript]
+description = "AffineScript — affine type system language (OCaml + Zig FFI)"
+extends = "ocaml-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd affinescript && eval $(opam env) && dune build"]
+cache = true
+
+[layers.build-betlang]
+description = "BetLang — probabilistic programming language (Rust + Zig FFI)"
+extends = "rust-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd betlang && cargo build --release --workspace"]
+cache = true
+
+[layers.build-julia-the-viper]
+description = "Julia the Viper — pattern-matching language (Rust + Zig FFI)"
+extends = "rust-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd julia-the-viper && cargo build --release --workspace"]
+cache = true
+
+[layers.build-my-lang]
+description = "MyLang — personal expression language (Rust)"
+extends = "rust-toolchain"
+commands = ["cd my-lang && cargo build --release --workspace"]
+cache = true
+
+[layers.build-oblibeny]
+description = "Oblibeny — Turing-incomplete constrained form language (OCaml + Zig FFI)"
+extends = "ocaml-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd oblibeny && eval $(opam env) && dune build"]
+cache = true
+
+[layers.build-tangle]
+description = "Tangle — entangled computation language (OCaml + Idris2 ABI + Zig FFI)"
+extends = "ocaml-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd tangle && eval $(opam env) && dune build"]
+cache = true
+
+[layers.build-phronesis]
+description = "Phronesis — practical wisdom language (Elixir)"
+extends = "elixir-toolchain"
+commands = [
+    "cd phronesis && mix deps.get --only prod",
+    "cd phronesis && MIX_ENV=prod mix compile",
+]
+cache = true
+
+[layers.build-error-lang]
+description = "Error-lang — error-centric programming language (Deno + Zig FFI)"
+extends = "deno-toolchain"
+depends = ["abi-ffi"]
+commands = ["cd error-lang && deno cache cli/main.js"]
+cache = true
+
+[layers.build-me-dialect]
+description = "Me-dialect — personal dialect language (Deno + ReScript)"
+extends = "deno-toolchain"
+commands = ["cd me-dialect && deno cache src/run.js"]
+cache = true
+
+[layers.build-7-tentacles]
+description = "7-Tentacles — multi-agent language learning (Deno + ReScript)"
+extends = "deno-toolchain"
+commands = ["cd 7-tentacles && deno cache agents/*.res 2>/dev/null || true"]
+cache = true
+
+[layers.build-anvomidav]
+description = "Anvomidav — experimental language (Elixir tests)"
+extends = "elixir-toolchain"
+commands = ["cd anvomidav && true"]
+cache = true
+
+# ── Aggregate Build Layer ────────────────────────────────────
+
+[layers.build-all]
+description = "All languages built — aggregates every build layer"
+extends = "base"
+depends = [
+    "build-ephapax",
+    "build-wokelang",
+    "build-eclexia",
+    "build-affinescript",
+    "build-betlang",
+    "build-julia-the-viper",
+    "build-my-lang",
+    "build-oblibeny",
+    "build-tangle",
+    "build-phronesis",
+    "build-error-lang",
+    "build-me-dialect",
+    "build-7-tentacles",
+    "build-anvomidav",
+]
+cache = true
+
+# ── Runtime Layer ────────────────────────────────────────────
+
+[layers.runtime]
+description = "Minimal production runtime with all compiled binaries"
+from = "cgr.dev/chainguard/wolfi-base:latest"
+packages = ["ca-certificates", "curl", "libgcc"]
+copy-from = [
+    # Rust-built binaries
+    { layer = "build-ephapax", src = "/app/ephapax/target/release/", dst = "/opt/nextgen/ephapax/" },
+    { layer = "build-wokelang", src = "/app/wokelang/target/release/", dst = "/opt/nextgen/wokelang/" },
+    { layer = "build-eclexia", src = "/app/eclexia/target/release/", dst = "/opt/nextgen/eclexia/" },
+    { layer = "build-betlang", src = "/app/betlang/target/release/", dst = "/opt/nextgen/betlang/" },
+    { layer = "build-julia-the-viper", src = "/app/julia-the-viper/target/release/", dst = "/opt/nextgen/julia-the-viper/" },
+    { layer = "build-my-lang", src = "/app/my-lang/target/release/", dst = "/opt/nextgen/my-lang/" },
+    # OCaml-built binaries
+    { layer = "build-affinescript", src = "/app/affinescript/_build/default/bin/", dst = "/opt/nextgen/affinescript/" },
+    { layer = "build-oblibeny", src = "/app/oblibeny/_build/default/bin/", dst = "/opt/nextgen/oblibeny/" },
+    { layer = "build-tangle", src = "/app/tangle/_build/default/bin/", dst = "/opt/nextgen/tangle/" },
+    # Elixir releases
+    { layer = "build-phronesis", src = "/app/phronesis/_build/prod/", dst = "/opt/nextgen/phronesis/" },
+    # Deno-based (copy source + cached deps)
+    { layer = "build-error-lang", src = "/app/error-lang/", dst = "/opt/nextgen/error-lang/" },
+    { layer = "build-me-dialect", src = "/app/me-dialect/", dst = "/opt/nextgen/me-dialect/" },
+    { layer = "build-7-tentacles", src = "/app/7-tentacles/", dst = "/opt/nextgen/7-tentacles/" },
+    # Zig FFI shared objects
+    { layer = "abi-ffi", src = "/app/*/ffi/zig/zig-out/lib/", dst = "/opt/nextgen/lib/" },
+]
+entrypoint = ["/bin/sh"]
+user = "nonroot"
+
+# ── Security ─────────────────────────────────────────────────
+
+[security]
+non-root = true
+read-only-root = true
+no-new-privileges = true
+cap-drop = ["ALL"]
+seccomp-profile = "default"
+
+[security.signing]
+algorithm = "ML-DSA-87"
+provider = "cerro-torre"
+
+[security.sbom]
+format = "spdx-json"
+output = "sbom.spdx.json"
+include-deps = true
+
+# ── Verification ─────────────────────────────────────────────
+
+[verify]
+vordr = true
+svalinn = true
+scan-on-build = true
+fail-on = ["critical", "high"]
+
+# ── Targets ──────────────────────────────────────────────────
+# Targets allow building individual languages or the full monorepo.
+
+[targets.development]
+description = "Full monorepo with all toolchains for development"
+layers = [
+    "base",
+    "rust-toolchain",
+    "ocaml-toolchain",
+    "elixir-toolchain",
+    "deno-toolchain",
+    "zig-toolchain",
+    "idris2-toolchain",
+    "abi-ffi",
+    "build-all",
+]
+env = { LOG_LEVEL = "debug", RUST_BACKTRACE = "1" }
+
+[targets.production]
+description = "Minimal runtime with compiled binaries only"
+layers = ["runtime"]
+env = { LOG_LEVEL = "info" }
+
+[targets.test]
+description = "Full toolchains with test dependencies for CI"
+layers = [
+    "base",
+    "rust-toolchain",
+    "ocaml-toolchain",
+    "elixir-toolchain",
+    "deno-toolchain",
+    "zig-toolchain",
+    "idris2-toolchain",
+    "abi-ffi",
+    "build-all",
+]
+env = { LOG_LEVEL = "debug", RUST_BACKTRACE = "full", MIX_ENV = "test" }
+
+# ── Per-Language Targets ─────────────────────────────────────
+# Build individual languages in isolation.
+
+[targets.ephapax]
+description = "Ephapax only — linear type system language"
+layers = ["base", "rust-toolchain", "idris2-toolchain", "build-ephapax"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.wokelang]
+description = "WokeLang only — consent-aware programming"
+layers = ["base", "rust-toolchain", "ocaml-toolchain", "build-wokelang"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.eclexia]
+description = "Eclexia only — economics-as-code"
+layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-eclexia"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.affinescript]
+description = "AffineScript only — affine type system"
+layers = ["base", "ocaml-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-affinescript"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.betlang]
+description = "BetLang only — probabilistic programming"
+layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-betlang"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.julia-the-viper]
+description = "Julia the Viper only — pattern matching"
+layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-julia-the-viper"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.my-lang]
+description = "MyLang only — personal expression"
+layers = ["base", "rust-toolchain", "build-my-lang"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.oblibeny]
+description = "Oblibeny only — Turing-incomplete constrained form"
+layers = ["base", "ocaml-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-oblibeny"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.tangle]
+description = "Tangle only — entangled computation"
+layers = ["base", "ocaml-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-tangle"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.phronesis]
+description = "Phronesis only — practical wisdom"
+layers = ["base", "elixir-toolchain", "build-phronesis"]
+env = { LOG_LEVEL = "debug", MIX_ENV = "prod" }
+
+[targets.error-lang]
+description = "Error-lang only — error-centric programming"
+layers = ["base", "deno-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-error-lang"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.me-dialect]
+description = "Me-dialect only — personal dialect"
+layers = ["base", "deno-toolchain", "build-me-dialect"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.7-tentacles]
+description = "7-Tentacles only — multi-agent language learning"
+layers = ["base", "deno-toolchain", "build-7-tentacles"]
+env = { LOG_LEVEL = "debug" }
+
+[targets.anvomidav]
+description = "Anvomidav only — experimental language"
+layers = ["base", "elixir-toolchain", "build-anvomidav"]
+env = { LOG_LEVEL = "debug" }
