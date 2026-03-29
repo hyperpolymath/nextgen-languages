@@ -33,6 +33,7 @@ The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
 3. **No stale metadata** - If root SCMs exist, they are OUT OF DATE and must be removed
 4. **Submodule integrity** - All 10 core languages + 7-tentacles must be checked out (not empty directories)
 5. **License consistency** - All code PMPL-1.0-or-later unless platform requires MPL-2.0 fallback
+6. **7-Tentacles is NOT a language** - It is an educational/pedagogical framework that uses My-Lang's four dialects (Me, Solo, Duet, Ensemble) as a curriculum vehicle. NEVER audit it as a language. NEVER look for grammar/AST/parser/type-system in it. When reviewing languages, SKIP the 7-tentacles/ directory entirely.
 
 ### Session Startup Checklist
 

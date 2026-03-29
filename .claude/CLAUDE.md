@@ -1,3 +1,12 @@
+## CRITICAL: 7-Tentacles is NOT a Language
+
+`7-tentacles/` is an educational/pedagogical framework — NOT a programming language.
+It uses My-Lang's four dialects (Me, Solo, Duet, Ensemble) as a curriculum vehicle
+to teach compiler architecture across a 10-year learning trajectory.
+
+**NEVER** audit 7-tentacles as a language. **NEVER** look for grammar/AST/parser/type-system in it.
+When reviewing or auditing languages in this monorepo, **SKIP** the `7-tentacles/` directory.
+
 ## Machine-Readable Artefacts
 
 The following files in `.machine_readable/` contain structured project metadata:
