@@ -1,24 +1,321 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = Next-Gen Languages — Show Me The Receipts
 :toc:
+:toclevels: 3
 :icons: font
+:author: Jonathan D.A. Jewell
 
-The README makes claims. This file backs them up.
+The README makes claims. This file backs them up with architectural context,
+honest status per language, and enough structural detail for an external
+reviewer to understand the relationship between the languages, their -iser
+counterparts, and the rest of the hyperpolymath ecosystem.
+
+IMPORTANT: This is a *parent tracking repository* — no implementation code
+lives here at the repo root. All language implementations live in
+subdirectories (`ephapax/`, `wokelang/`, `eclexia/`, etc.) which are also
+maintained as standalone canonical repos.
+
+NOTE: `7-tentacles/` is NOT a programming language. It is an educational
+framework using My-Lang's dialects as a curriculum vehicle. Never audit it
+as a language implementation.
+
+== Claim 1: "Ten languages that cover the full spectrum of modern software challenges"
 
 [quote, README]
 ____
-This repository serves as the central tracking hub for the Next-Gen Languages initiative—a coordinated effort to design and develop ten programming languages that collectively cover the full spectrum of modern software challenges, from AI-native development to formally verified real-time systems.
+A coordinated effort to design and develop ten programming languages that
+collectively cover the full spectrum of modern software challenges, from
+AI-native development to formally verified real-time systems.
 ____
+
+=== How it works
+
+The eight core languages plus two specialised languages are designed to
+complement each other, not compete. They occupy distinct cells in the design
+space:
+
+[cols="1,1,2,1"]
+|===
+| Language | Primary Paradigm | Key Technical Mechanism | Implementation Language
+
+| *Solo/Duet/Ensemble* (my-lang)
+| Imperative → AI-assisted → AI-native
+| Progressive dialect family: Me → Solo → Duet → Ensemble. `@synth` and
+`@verify` annotations in Duet. `AI<T>` effect type in Ensemble.
+| Rust compiler, ReScript frontend
+
+| *Phronesis*
+| Declarative, logic-based agent ethics
+| `Agent.`, `Values:`, `EVALUATE(...)` spec constructs. Formal AI ethics
+specification language.
+| Rust (per roadmap)
+
+| *Eclexia*
+| Declarative, constraint-driven
+| `(energy budget ...)`, `(resource ...)` constraints propagated through
+type system. Green computing / IoT.
+| Rust
+
+| *Oblíbený*
+| Turing-incomplete for deployment, metaprogramming for authoring
+| `(forbid recursion)`, `(bounded-for ...)`. Designed for HSMs and secure
+enclaves where non-termination is a security violation.
+| OCaml (per language design conventions)
+
+| *Anvomidav*
+| Functional, concurrent, formal (linear/session types)
+| `task @sched(EDF)`, `Linear<T>`, `Π (...) . T`. Hard real-time: avionics,
+autonomous vehicles, robotics.
+| Rust + Idris2 proofs
+
+| *WokeLang*
+| Imperative, natural-language
+| `only if okay "..."`, `attempt ... or reassure`. Human consent as a
+first-class language primitive.
+| OCaml parser, Rust evaluator
+
+| *AffineScript*
+| Affine types targeting WASM
+| Affine type system (use at most once) for WebAssembly. Companion to
+Ephapax (which is dyadic: affine + linear).
+| OCaml compiler
+
+| *Ephapax*
+| Dyadic linear type system
+| `let x = ...` (affine) vs `let! x = ...` (linear). Targets WebAssembly.
+Gossamer backend. Rust compiler, Coq proofs.
+| Rust (17 crates), Coq proofs
+|===
+
+=== Most mature: Ephapax
+
+`ephapax/` is the most advanced implementation. It is a Cargo workspace with
+17 crates:
+
+* `ephapax-lexer` — tokeniser
+* `ephapax-parser` — AST construction
+* `ephapax-analysis` — type-checking and linearity analysis
+* `ephapax-desugar` — surface → IR desugaring
+* `ephapax-ir` — intermediate representation
+* `ephapax-interp` — interpreter
+* `ephapax-cli` — command-line entry point (`ephapax run`, `ephapax check`)
+* `ephapax-lsp` — Language Server Protocol implementation
+* `ephapax-repl` — REPL
+* `ephapax-package` — package management
+
+`ephapax/` also contains two arXiv paper sources:
+`arcvix-code-as-matter.tex` and `arcvix-dyadic-language-design.tex`.
+
+=== Honest caveat
+
+The language family is at different stages. Ephapax has a working type
+checker, interpreter, LSP, and REPL with ~307 tests. WokeLang has a parser
+and evaluator but is pre-production. Anvomidav has its type system designed
+but the compiler is early. Oblíbený and the my-lang dialect family are active.
+An external reviewer should consult each language's CHANGELOG for current
+implementation completeness rather than assuming the table above means
+"production ready."
+
+== Claim 2: "Languages vs. -iser tools — implementations here, extractions in developer-ecosystem"
+
+[quote, README]
+____
+This repository contains the actual programming languages — full compilers,
+parsers, type checkers, interpreters. The -iser repos in developer-ecosystem
+let you use each language's unique power without learning the full language.
+____
+
+=== How it works
+
+Each language in `nextgen-languages/` has a corresponding `-iser` tool in
+`developer-ecosystem/`:
+
+[cols="1,1,2"]
+|===
+| -iser Tool | Based On | What It Extracts
+
+| `ephapaxiser`
+| Ephapax
+| Linear type checking for Rust/ReScript code — Ephapax's linear types as
+an external linter
+
+| `wokelangiser`
+| WokeLang
+| Consent annotations and well-being checks for any codebase
+
+| `eclexiaiser`
+| Eclexia
+| Resource budget analysis for any project
+
+| `anvomidaviser`
+| Anvomidav
+| Formal verification harness for real-time code
+
+| `oblibenyiser`
+| Oblíbený
+| Security hardening — Turing-incompleteness guarantees as an external tool
+
+| `affinescriptiser`
+| AffineScript
+| Affine type linting for WASM projects
+
+| `phronesiser`
+| Phronesis
+| AI ethics audit for agent codebases
+|===
+
+The design principle: learn the language when you want its full power;
+use the -iser when you want one specific guarantee applied to existing code.
+This means the languages can be adopted incrementally without requiring a
+full rewrite of existing codebases.
+
+=== Honest caveat
+
+Most -iser tools are earlier stage than their parent languages. The split
+between "here" and `developer-ecosystem` is architectural policy, not
+evidence that either side is complete. An external reviewer should check
+`developer-ecosystem/` for the current status of each -iser before assuming
+it is deployable.
+
+== Dogfooded Across The Account
+
+[cols="1,2,2"]
+|===
+| Technology | Role in Next-Gen Languages | Also Used In
+
+| *Rust*
+| Primary compiler implementation language for Ephapax (17 crates), WokeLang
+evaluator, Eclexia, Anvomidav. `#![forbid(unsafe_code)]` policy enforced.
+| gossamer, verisimdb, gitbot-fleet, maa-framework
+
+| *OCaml*
+| AffineScript compiler, WokeLang parser (per language design convention:
+OCaml is the allowed language for compiler front-ends)
+| `developer-ecosystem/ocaml-ecosystem/`
+
+| *Idris2 ABI* (per ABI/FFI Universal Standard)
+| Anvomidav type proofs; Ephapax has `ephapax-proven` and `ephapax-proven-ffi`
+crates with Coq proofs
+| Gossamer, Groove, Stapeln, VeriSimDB
+
+| *Coq proofs*
+| Ephapax linearity and termination proofs in `ephapax/` (arXiv paper backed)
+| maa-framework/absolute-zero, echidna (Coq is one of echidna's prover targets)
+
+| *Ephapax itself*
+| Gossamer backend language — the primary consumer of the Ephapax compiler
+| Gossamer; `nextgen-languages/ephapax` is the upstream
+
+| *Julia*
+| `language-status-tracker.jl` — batch script tracking implementation
+progress across all languages
+| developer-ecosystem batch processing, data analysis
+
+| *Hypatia scanning*
+| `.hypatia/` CI workflows for each language subdirectory
+| Every RSR repo in the account
+
+| *Stapeln containers*
+| `stapeln.toml` — compiler toolchain containers
+| All containerised services in the account
+|===
 
 == File Map
 
-[cols="1,2"]
+[cols="1,3"]
 |===
-| Path | What's There
+| Path | What It Proves
 
-| `test(s)/` | Test suite
+| `ephapax/`
+| Most mature language. 17 Rust crates (lexer → parser → analysis → desugar
+→ IR → interp → cli → lsp → repl → package). Coq proofs of linear type
+soundness. Two arXiv paper sources. `ephapax-proven/` and
+`ephapax-proven-ffi/` contain formally verified components. WASM target.
+The Gossamer upstream.
+
+| `wokelang/`
+| Human-centric language. OCaml parser. Rust evaluator. `compiler/` subdirectory.
+`bench/` benchmarks. `arxiv-consent-aware-programming.tex` — research basis.
+
+| `eclexia/`
+| Sustainable computing language. Rust implementation. Resource budget
+constraint propagation through the type system.
+
+| `affinescript/`
+| Affine types for WASM. OCaml compiler. `AI.a2ml` and `AI.djot` — AI
+manifest and documentation. Full RSR Gold tier claimed.
+
+| `anvomidav/`
+| Hard real-time systems language. Linear + session types. `Π-types` in
+the syntax. Rust + Idris2 proofs.
+
+| `oblibeny/`
+| Turing-incomplete secure enclave language. `(forbid recursion)` and
+`(bounded-for ...)` are first-class syntax. OCaml implementation.
+
+| `phronesis/`
+| AI ethics specification language. `Agent.`, `Values:`, `EVALUATE(...)`.
+Rust implementation. Design targeted at formal AI alignment auditing.
+
+| `my-lang/`
+| Progressive dialect family: Me → Solo → Duet → Ensemble. Single Rust
+compiler that handles all four dialects via dialect-specific parse modes.
+
+| `betlang/`
+| Foundational experiment — the language that preceded the full family.
+Full Cargo workspace.
+
+| `julia-the-viper/`
+| Systems language with Harvard Architecture memory model. Named separately
+from Julia the data language to avoid confusion.
+
+| `error-lang/`
+| Pedagogical language for teaching systems thinking via error conditions.
+
+| `tangle/`
+| Literate programming / tangling tool shared across the language ecosystem.
+
+| `me-dialect/`
+| The "Me" beginner dialect of my-lang. Separated for pedagogical clarity.
+
+| `7-tentacles/`
+| NOT a language. Educational framework using my-lang's dialects as
+curriculum across a 10-year trajectory. Skip when auditing languages.
+
+| `languages/`
+| Cross-language shared utilities and type definitions.
+
+| `language-status-tracker.jl`
+| Julia script tracking implementation completeness across all languages.
+Authoritative source for "what is actually done."
+
+| `scripts/`
+| Batch tooling for cross-language operations.
+
+| `wiki/`
+| Language design documentation — grammars, syntax decisions, type system
+rationale.
+
+| `hooks/`
+| Git hooks enforcing language-specific invariants (e.g. no TypeScript,
+no Python).
+
+| `.machine_readable/`
+| A2ML checkpoint files (STATE, META, ECOSYSTEM, AGENTIC, NEUROSYM, PLAYBOOK).
+Canonical AI session state.
+
+| `TOOLING-STATUS.adoc`
+| Current tooling readiness for each language. The honest "what compiles,
+what does not" document.
+
+| `TOPOLOGY.md`
+| Visual map of all language satellites and their relationships.
 |===
 
 == Questions?
 
-Open an issue or reach out directly — happy to explain anything in more detail.
+Start with `TOOLING-STATUS.adoc` for the current state of each language.
+For the most complete implementation, start with `ephapax/README.adoc`.
+For the language design philosophy, see `wiki/` and the individual arXiv
+paper sources in `ephapax/` and `wokelang/`.
