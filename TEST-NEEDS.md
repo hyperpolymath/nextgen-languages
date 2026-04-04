@@ -2,6 +2,19 @@
 
 > Generated 2026-03-29 by punishing audit.
 
+## CRG Grade: C — ACHIEVED 2026-04-04
+
+| Sub-project | Tests | Status |
+|-------------|-------|--------|
+| ephapax (Rust workspace) | 330 | CRG C complete 2026-04-04 |
+| tangle (OCaml) | 94 | Existing coverage adequate |
+| affinescript (OCaml) | 64 tested (22 pre-existing failures) | Pre-existing, not regressions |
+
+Added test categories for ephapax-linear and ephapax-lexer:
+- P2P property tests: loop-based invariant checks (20+ iterations each)
+- E2E tests: full pipeline tests (lexer->tokens, module->discipline check)
+- Aspect tests: robustness, statelessness, edge cases, crash resistance
+
 ## Current State
 
 | Category     | Count | Notes |

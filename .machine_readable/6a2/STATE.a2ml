@@ -5,10 +5,29 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-03-15"
+last-updated = "2026-04-04"
 status = "active"
 
 [project-context]
 name = "nextgen-languages"
-completion-percentage = 0
-phase = "accurate-state-tracking"
+completion-percentage = 15
+phase = "CRG C achieved for ephapax workspace (2026-04-04)"
+
+[crg-status]
+overall = "CRG C achieved 2026-04-04"
+ephapax-rust-workspace = "CRG C: 330 tests across 17 crates, all passing"
+tangle-ocaml = "94 tests passing (adequate coverage)"
+affinescript-ocaml = "64 tests (22 pre-existing failures, not regressions)"
+
+[test-coverage]
+# Rust (ephapax workspace) — workspace total
+ephapax-workspace-total = "330 tests, 100% pass rate"
+
+# New test additions (2026-04-04)
+ephapax-linear-new = "17 new tests: 5 P2P property, 4 E2E, 6 aspect, 2 unit"
+ephapax-lexer-new = "9 new tests: 4 P2P property, 2 E2E, 3 aspect"
+
+# Test categories added
+p2p-property-tests = "Loop-based invariant checks (10-20 iterations each)"
+e2e-tests = "Full pipeline: lexer->tokens, module->discipline check"
+aspect-tests = "Robustness: empty inputs, stateless checkers, edge cases"
