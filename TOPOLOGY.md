@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: PMPL-1.0-or-later -->
 <!-- TOPOLOGY.md — Project architecture map and completion dashboard -->
-<!-- Last updated: 2026-02-19 -->
+<!-- Last updated: 2026-04-04 -->
 
 # Next-Gen Languages — Project Topology
 
@@ -67,6 +67,7 @@ SATELLITE PROGRESS
   Oblibeny (Secure)                 ██████████ 100%    Turing-incomplete mode stable
   Ephapax (Linear)                  ██████████ 100%    Dyadic type system active
   betlang (Foundational)            ██████████ 100%    Core experiments verified
+  Groove Manifests                  ██████████ 100%    Service discovery active (affinescript, julia-the-viper)
 
 REPO INFRASTRUCTURE
   6SCM Documentation Hub            ██████████ 100%    Canonical specs active
