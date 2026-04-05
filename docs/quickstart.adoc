@@ -27,9 +27,9 @@ toc::[]
 
 * **Parallel Development Plan**: link:~/Documents/hyperpolymath-repos/FORMBD-VERISIMDB-PARALLEL-DEV.adoc[FORMBD-VERISIMDB-PARALLEL-DEV.adoc]
 * **FormBD STATE**: link:~/Documents/hyperpolymath-repos/formbd/STATE.scm[formbd/STATE.scm]
-* **VeriSimDB STATE**: link:~/Documents/hyperpolymath-repos/verisimdb/STATE.scm[verisimdb/STATE.scm]
+* **VeriSimDB STATE**: link:~/Documents/hyperpolymath-repos/verisim/STATE.scm[verisim/STATE.scm]
 * **FormBD ECOSYSTEM**: link:~/Documents/hyperpolymath-repos/formbd/ECOSYSTEM.scm[formbd/ECOSYSTEM.scm]
-* **VeriSimDB ECOSYSTEM**: link:~/Documents/hyperpolymath-repos/verisimdb/ECOSYSTEM.scm[verisimdb/ECOSYSTEM.scm]
+* **VeriSimDB ECOSYSTEM**: link:~/Documents/hyperpolymath-repos/verisim/ECOSYSTEM.scm[verisim/ECOSYSTEM.scm]
 
 === FormBD Associated Repos
 
@@ -81,7 +81,7 @@ rustc --version  # Should be 1.80+
 # Elixir
 elixir --version  # Should be 1.17+
 
-# ReScript (for VQL parser)
+# ReScript (for VCL parser)
 npm install -g rescript  # Or use deno
 
 # FormBD tools
@@ -96,10 +96,10 @@ zig version      # Zig compiler
 ----
 # Verify repos are in canonical location (symlink to Eclipse drive)
 ls -la ~/Documents/hyperpolymath-repos/formbd
-ls -la ~/Documents/hyperpolymath-repos/verisimdb
+ls -la ~/Documents/hyperpolymath-repos/verisim
 
 # Navigate to VeriSimDB
-cd ~/Documents/hyperpolymath-repos/verisimdb
+cd ~/Documents/hyperpolymath-repos/verisim
 
 # Build Rust workspace
 cargo build
@@ -116,7 +116,7 @@ cargo test
 
 [source,bash]
 ----
-cd ~/Documents/hyperpolymath-repos/verisimdb/rust-core/verisim-document
+cd ~/Documents/hyperpolymath-repos/verisim/rust-core/verisim-document
 
 # Check existing code
 cat src/lib.rs
@@ -250,7 +250,7 @@ proptest! {
 
 [source,bash]
 ----
-cd ~/Documents/hyperpolymath-repos/verisimdb/rust-core/verisim-document
+cd ~/Documents/hyperpolymath-repos/verisim/rust-core/verisim-document
 cargo test
 
 # Expected: All tests pass
@@ -261,7 +261,7 @@ cargo test
 
 [source,bash]
 ----
-cd ~/Documents/hyperpolymath-repos/verisimdb
+cd ~/Documents/hyperpolymath-repos/verisim
 
 # Update STATE.scm
 # Change verisim-document items from "pending" to "complete"
@@ -324,14 +324,14 @@ While implementing VeriSimDB modalities, FormBD team works on:
 
 [source,scm]
 ----
-;; Add to verisimdb/STATE.scm session-history every Friday
+;; Add to verisim/STATE.scm session-history every Friday
 (snapshot (date "2026-02-XX") (session "week-N-sync")
   (accomplishments
     "Completed verisim-document CRUD operations"
     "Added property-based tests (10 passing)"
     "Integrated Tantivy for full-text search")
   (blockers
-    "VQL parser → execution engine integration needs design")
+    "VCL parser → execution engine integration needs design")
   (formbd-synergy
     "Reviewed FormBD's journal format for verisim-temporal inspiration"))
 ----
@@ -360,8 +360,8 @@ Both projects use ClusterFuzzLite:
 # FormBD fuzz testing
 cat ~/Documents/hyperpolymath-repos/formbd/tests/fuzz/*.res
 
-# Add similar fuzz targets for VQL parser
-# Example: Generate random VQL queries, ensure parser doesn't crash
+# Add similar fuzz targets for VCL parser
+# Example: Generate random VCL queries, ensure parser doesn't crash
 ----
 
 == Integration Testing
@@ -372,7 +372,7 @@ Once Milestone V2 (Hexad layer) is complete, test cross-modal queries:
 
 [source,sql]
 ----
--- VQL query spanning document + vector modalities
+-- VCL query spanning document + vector modalities
 SELECT hexad.title, hexad.embedding
 FROM hexads
 WHERE
@@ -386,7 +386,7 @@ Test drift between modalities:
 
 [source,sql]
 ----
--- VQL drift query
+-- VCL drift query
 SELECT hexad_id, drift_score
 FROM hexads
 WHERE DRIFT BETWEEN (document, vector) > 0.3;
@@ -426,7 +426,7 @@ As you implement, update:
 
 === Week 11 Checkpoint
 
-- [ ] VQL execution engine complete
+- [ ] VCL execution engine complete
 - [ ] EXPLAIN functionality working
 - [ ] Query planner operational
 - [ ] STATE.scm updated (completion: 55% → 65%)
@@ -446,7 +446,7 @@ As you implement, update:
 **Issue**: Rust compilation errors in verisim-* crates
 **Solution**: Check Rust edition in Cargo.toml (should be `edition = "2024"`)
 
-**Issue**: VQL parser (ReScript) → execution engine (Rust) integration unclear
+**Issue**: VCL parser (ReScript) → execution engine (Rust) integration unclear
 **Solution**: Review FormBD's Factor → Zig integration (`formbd/core-zig/src/bridge.zig`)
 
 **Issue**: Testing framework setup time-consuming
@@ -455,8 +455,8 @@ As you implement, update:
 == Resources
 
 * **FormBD Documentation**: link:~/Documents/hyperpolymath-repos/formbd/README.adoc[formbd/README.adoc]
-* **VeriSimDB Whitepaper**: link:~/Documents/hyperpolymath-repos/verisimdb/WHITEPAPER.md[verisimdb/WHITEPAPER.md]
-* **VQL Grammar**: link:~/Documents/hyperpolymath-repos/verisimdb/docs/vql-grammar.ebnf[verisimdb/docs/vql-grammar.ebnf]
+* **VeriSimDB Whitepaper**: link:~/Documents/hyperpolymath-repos/verisim/WHITEPAPER.md[verisim/WHITEPAPER.md]
+* **VCL Grammar**: link:~/Documents/hyperpolymath-repos/verisim/docs/vcl-grammar.ebnf[verisim/docs/vcl-grammar.ebnf]
 * **FormBD FBQL Spec**: link:~/Documents/hyperpolymath-repos/formbd/spec/fbql.adoc[formbd/spec/fbql.adoc]
 * **ABI/FFI Standard**: link:~/ffi-migration-guide.md[FFI Migration Guide]
 

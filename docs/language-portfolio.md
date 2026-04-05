@@ -19,7 +19,7 @@
 
 ### Database Query Languages (3)
 
-10. **VQL** (Verification Query Language) - `/var$REPOS_DIR/verisimdb/src/vql/` ⚠️ ~40%
+10. **VCL** (Verification Query Language) - `/var$REPOS_DIR/verisim/src/vcl/` ⚠️ ~40%
     - Part of VeriSimDB multimodal database
     - ReScript implementation
     - Parser, AST, Error handling exist
@@ -65,7 +65,7 @@
 | **Error-Lang** | ReScript+Deno | 45% | ⚠️⚠️✅❌ | ~7 |
 | **Julia-Viper** | Rust | 60% | ⚠️⚠️⚠️❌ | ~11 |
 | **My-Lang** | Rust (11 crates) | 65% | ⚠️✅⚠️⚠️ | ~12 |
-| **VQL** | ReScript | 40% | ⚠️⚠️⚠️❌ | ~12 |
+| **VCL** | ReScript | 40% | ⚠️⚠️⚠️❌ | ~12 |
 | **AffineScript** | OCaml | 85% spec | ⚠️⚠️⚠️❌ | ~14 |
 | **FBQL-DT** | Lean 4 + Zig | 50% | ⚠️⚠️⚠️❌ | ~15 |
 | **Oblibeny** | Spec only | 20% | ❌❌❌❌ | ~38 |
@@ -90,7 +90,7 @@
 **⚡ Medium Effort (11-15 hours):**
 4. **Julia-Viper** (~11 hours) - Harvard architecture, solid base
 5. **My-Lang** (~12 hours) - 11-crate workspace, needs integration
-6. **VQL** (~12 hours) - ReScript query DSL
+6. **VCL** (~12 hours) - ReScript query DSL
 7. **AffineScript** (~14 hours) - Spec complete, needs impl
 8. **FBQL-DT** (~15 hours) - Lean 4 proofs required
 
@@ -109,7 +109,7 @@
 5. Error-Lang (~28 hours) - Pedagogical focus
 6. My-Lang (~34 hours)
 7. Julia-Viper (~32 hours)
-8. VQL (~30 hours)
+8. VCL (~30 hours)
 9. AffineScript (~32 hours)
 10. FBQL-DT (~34 hours)
 11. Oblibeny (~36 hours)
@@ -149,7 +149,7 @@
    - Verify stdlib integration
    - Implement worker message passing
 
-6. **VQL** (~12 hours)
+6. **VCL** (~12 hours)
    - Add field access for query results
    - Add stdlib (aggregations, filters)
    - Add error hints for query optimization
@@ -181,7 +181,7 @@
 
 **By week (assuming ~10 hours/week):**
 - Week 1: Anvomidav, Ephapax, Error-Lang (16 hours)
-- Week 2-3: Julia-Viper, My-Lang, VQL (35 hours)
+- Week 2-3: Julia-Viper, My-Lang, VCL (35 hours)
 - Week 4-5: AffineScript, FBQL-DT (29 hours)
 - Week 6-9: Oblibeny (38 hours)
 
@@ -244,8 +244,8 @@ program competition_2025 {
 
 ### Database Query Languages
 
-#### VQL (Verification Query Language)
-**Location:** `verisimdb/src/vql/`
+#### VCL (Verification Query Language)
+**Location:** `verisim/src/vcl/`
 **Tech:** ReScript
 **Purpose:** Query language for VeriSimDB's 6 modalities
 **Status:** ~40% complete
@@ -310,7 +310,7 @@ program competition_2025 {
 ### Query Language & DSL Caveat
 
 **Workers feature N/A for:**
-- VQL and FBQL-DT (query languages)
+- VCL and FBQL-DT (query languages)
 - Betlang (probabilistic DSL)
 - Anvomidav (choreography DSL)
 - Error-Lang (pedagogical, sequential)

@@ -1,260 +1,96 @@
-= Next-Gen Languages
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 
-image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
-image:[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-license"]
+= Next-Generation Languages
+Jonathan Jewell (hyperpolymath)
+:toc: left
+:toc-title: Contents
+:doctype: article
+:icons: font
 
-
-*Parent repository for tracking and coordinating experimental language development*
-
-**IMPORTANT:** This is a **PARENT REPOSITORY ONLY** - it contains documentation and tracking but NO implementation code.
+link:../tangle/docs/krl_map.html[→ KRL architecture map (HTML)]
 
 == Overview
 
-This repository serves as the central tracking hub for the Next-Gen Languages initiative—a coordinated effort to design and develop ten programming languages that collectively cover the full spectrum of modern software challenges, from AI-native development to formally verified real-time systems.
+This category contains programming and specification languages built on
+formal foundations: type theory, category theory, knot theory, and
+domain-specific algebraic structures.
 
-**All language implementations are in their respective canonical repositories.**
+Each language is designed around a specific set of guarantees that existing
+languages cannot provide — not as extensions, but as structural properties.
 
-== Language Comparison
+== Projects
 
-[cols="1,2,2,2,2"]
-|===
-| Language | Core Philosophy | Primary Paradigms | Key Features | Target Domain
+=== KRL — Knot Resolution Language
+Surface language for constructing, transforming, resolving, and retrieving
+topological objects (tangles, knots, links).
 
-| *Solo*
-| Dependable foundation for systems programming
-| Imperative, Concurrent, Contract-Based
-| `effect`, `go`, `where { pre: ..., post: ... }`
-| General Systems Programming
+KRL spans four operations grounded in knot theory:
 
-| *Duet*
-| AI-assisted development (Neuro-Symbolic) for verifiable software
-| Imperative, Contract-Based, Neuro-Symbolic
-| `@synth`, `@verify`, `intent("...")`
-| High-Assurance, AI-Assisted Systems
+* *Construct* — compositional tangle building (Tangle PL compiler module)
+* *Transform* — Reidemeister-style rewriting (KnotTheory.jl engine)
+* *Resolve* — isotopy equivalence and quandle-based classification (QuandleDB)
+* *Retrieve* — invariant-indexed query (Skein.jl)
 
-| *Ensemble*
-| AI as a first-class, native component of the language
-| Imperative, AI-as-Effect
-| `ai_model {}`, `prompt {}`, `AI<T>` effect type
-| AI-Native Applications, AI Agents
+link:../tangle-pl/README.adoc[→ KRL / Tangle PL documentation]
 
-| *Phronesis*
-| Formal, auditable specification of an agent's ethical framework
-| Declarative, Logic-Based, Agent-Oriented
-| `Agent.`, `Values:`, `EVALUATE(...)`
-| AI Safety, Alignment, and Auditing
+=== Oblíbený
+Phase-separated language: Turing-complete development phase,
+Turing-incomplete deployment phase. Targets secure edge/IoT environments.
+EBNF v0.6 complete; formal proofs in progress.
 
-| *Eclexia*
-| Sustainable Software Engineering through resource-first constraints
-| Declarative, Constraint-Driven
-| `(energy budget ...)`, `(resource ...)`
-| Green Computing, IoT/Embedded, FinOps
+=== Eclexia
+Economics-as-Code. Resource constraints as first-class language citizens.
+EBNF finalised. Targets formally verified resource allocation systems.
 
-| *Oblíbený*
-| Provably secure, obfuscated code for hostile environments
-| Turing-Incomplete (Deploy), Metaprogramming
-| `(forbid recursion)`, `(bounded-for ...)`
-| Secure Enclaves (HSMs), Critical Embedded
+=== Betlang
+Hard real-time systems language. Dependent, session, and linear types.
+DO-178C alignment. Zig compiler recommended.
 
-| *Anvomidav*
-| Maximalist formal verification for hard real-time systems
-| Functional, Concurrent, Formal (Linear/Session Types)
-| `task @sched(EDF)`, `Linear<T>`, `Π (...) . T`
-| Avionics, Autonomous Vehicles, Robotics
+=== Phronesis
+Ethical DSL for multi-agent systems. 40-line EBNF. IRTF submission planned.
 
-| *WokeLang*
-| Human-centric programming focused on consent and well-being
-| Imperative, Natural-Language
-| `only if okay "..."`, `attempt ... or reassure`
-| Education, Personal Scripting, Accessibility
+=== My Language (Me/Solo/Duet/Ensemble dialects)
+Four-dialect language family. Me: playground (ReScript). Solo: OCaml compiler ~60%.
+Duet/Ensemble: specified.
 
-|===
+=== JtV — Julia the Viper
+Harvard architecture separation. Addition-only Turing-completeness.
 
-== Database & Specialized Languages
+== Common Principles
 
-In addition to the core eight languages, the ecosystem includes specialized languages for database queries and markup:
+* Every language targets a class of _structural guarantees_, not just features
+* Formal semantics before implementation
+* Compiler targets are canonical IRs, not direct code generation
+* Each language pairs with a database or verification system in `nextgen-databases`
 
-[cols="1,1,2,1"]
-|===
-| Language | Repository | Description | Status
+== The KRL Stack
 
-| GQL-dt
-| link:https://github.com/hyperpolymath/fqldt[fqldt]
-| FormDB Query Language with Dependent Types
-| Active
-
-| A2ML
-| link:https://github.com/hyperpolymath/standards/tree/main/a2ml[a2ml]
-| Attested Markup Language
-| Active
-
-|===
-
-== Satellite Repositories
-
-Each language has its own dedicated repository for implementation:
-
-[cols="1,1,2,1"]
-|===
-| Language | Repository | Description | Status
-
-| betlang
-| link:https://github.com/hyperpolymath/betlang[betlang]
-| Bet programming language (foundational experiment)
-| Active
-
-| Solo/Duet/Ensemble
-| link:https://github.com/hyperpolymath/my-lang[my-lang]
-| Progressive language family (me → solo → duet → ensemble)
-| Active
-
-| Phronesis
-| link:https://github.com/hyperpolymath/phronesis[phronesis]
-| AI ethics and safety specification
-| Active
-
-| Eclexia
-| link:https://github.com/hyperpolymath/eclexia[eclexia]
-| Sustainable computing language
-| Active
-
-| Oblíbený
-| link:https://github.com/hyperpolymath/oblibeny[oblibeny]
-| Security-critical embedded language
-| Active
-
-| Anvomidav
-| link:https://github.com/hyperpolymath/anvomidav[anvomidav]
-| Formally verified real-time systems
-| Active
-
-| WokeLang
-| link:https://github.com/hyperpolymath/wokelang[wokelang]
-| Human-centric programming
-| Active
-
-| AffineScript
-| link:https://github.com/hyperpolymath/affinescript[affinescript]
-| Affine types for WASM
-| Active
-
-| Ephapax
-| link:https://github.com/hyperpolymath/ephapax[ephapax]
-| Dyadic linear type system (affine + linear modes) for WebAssembly
-| Active
-
-| Julia-the-Viper
-| link:https://github.com/hyperpolymath/julia-the-viper[julia-the-viper]
-| Systems programming, Harvard Architecture
-| Active
-
-| Error-Lang
-| link:https://github.com/hyperpolymath/error-lang[error-lang]
-| Pedagogical language for systems thinking
-| Active
-
-|===
-
-== Languages vs. -iser Tools: What Lives Where
-
-**This repository and its satellite repos contain the actual programming languages** — full compilers, parsers, type checkers, interpreters, and standard libraries. If you want to write code _in_ Ephapax, WokeLang, Eclexia, or any other nextgen language, you are in the right place.
-
-The **-iser repos** (in link:https://github.com/hyperpolymath/developer-ecosystem[developer-ecosystem]) are a _different thing entirely_. They let you use a language's unique power **without learning the full language**, extending what you already do in your own language.
-
-[cols="1,1,3,1"]
-|===
-| -iser Tool | Based On | What It Does | Location
-
-| `ephapaxiser`
-| Ephapax
-| Linear type checking for your existing Rust/ReScript code — use Ephapax's linear types without writing Ephapax
-| developer-ecosystem
-
-| `wokelangiser`
-| WokeLang
-| Consent annotations and well-being checks for any codebase — use WokeLang's consent semantics in your language
-| developer-ecosystem
-
-| `eclexiaiser`
-| Eclexia
-| Resource budget analysis for any project — use Eclexia's energy/resource constraints without rewriting
-| developer-ecosystem
-
-| `anvomidaviser`
-| Anvomidav
-| Formal verification harness for real-time code — use Anvomidav's verification without its syntax
-| developer-ecosystem
-
-| `oblibenyiser`
-| Oblibeny
-| Security hardening for deployed code — apply Oblibeny's obfuscation/Turing-incompleteness guarantees externally
-| developer-ecosystem
-
-| `affinescriptiser`
-| AffineScript
-| Affine type linting for WASM projects — AffineScript's type discipline as a linter
-| developer-ecosystem
-
-| `phronesiser`
-| Phronesis
-| AI ethics audit for any agent codebase — Phronesis safety checks without learning the specification language
-| developer-ecosystem
-|===
-
-**Rule of thumb:**
-
-* _"I want to write a program in Ephapax"_ → go to the satellite repo (ephapax)
-* _"I want Ephapax's linear type safety in my Rust project"_ → use ephapaxiser (developer-ecosystem)
-
-== Design Spectrum
-
-The eight languages span a complete spectrum of concerns:
+The most developed system in this category is the KRL stack:
 
 ----
-Abstraction Level:     Low ←————————————————→ High
-                       Solo                   WokeLang
-
-Verification Rigor:    Minimal ←——————————→ Maximal
-                       WokeLang              Anvomidav
-
-AI Integration:        None ←——————————————→ Native
-                       Oblíbený              Ensemble
-
-Target Audience:       Expert ←————————————→ Beginner
-                       Anvomidav             WokeLang
+KRL surface syntax
+  ↓ compiled by TanglePL module
+TangleIR (canonical interchange)
+  ↓ abstracted by VerisimCore
+VerisimMorphism (categorical view)
+  ↓ persisted by Skein.jl
+  ↓ fingerprinted by QuandleDB
 ----
 
-== Documentation
+`TangleIR` is the spine. Everything else is a view over it or a service to it.
 
-* `LANGUAGES.scm` — Detailed language specifications and comparison
-* `.machine_readable/6a2/META.a2ml` — Architecture decisions and development practices
-* `.machine_readable/6a2/STATE.a2ml` — Project checkpoint and session history
-* `.machine_readable/6a2/ECOSYSTEM.a2ml` — Project ecosystem relationships
-* `.machine_readable/6a2/PLAYBOOK.a2ml` — Operational playbook and workflows
-* `.machine_readable/6a2/AGENTIC.a2ml` — Agent-oriented language specifications
-* `.machine_readable/6a2/NEUROSYM.a2ml` — Neuro-symbolic integration specifications
-* `MANIFEST.md` — Quick reference with status and run commands
-* `languages/` — Per-language READMEs with core invariants
+== Status
 
-== Playgrounds
+[cols="1,1,2"]
+|===
+|Language |Status |Notes
 
-Interactive experimentation sandboxes are now integrated into each language's canonical repository under a `playground/` directory. This consolidation ensures all language-related code (implementation, examples, and experiments) lives in one place.
-
-== Quick Start
-
-```bash
-git clone --recursive https://github.com/hyperpolymath/nextgen-languages.git
-```
-
-== Contributing
-
-Each language welcomes contributions. See individual satellite repositories for language-specific contribution guidelines.
-
-== License
-
-MIT OR PMPL-1.0-or-later
-
-
-== Architecture
-
-See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
+|KRL / Tangle PL |Active — compiler in progress |Grammar defined; AST → IR compiler in development
+|Oblíbený |Active — EBNF stable |Formal proofs and BOINC verification planned
+|Eclexia |Specified |EBNF finalised; implementation not started
+|Betlang |Specified |Compiler not started; Zig recommended
+|Phronesis |Active — early |40-line EBNF; IRTF submission planned
+|My Language |Active — Solo 60% |Me dialect working; Solo OCaml compiler in progress
+|JtV |Design phase |Architecture specified
+|===

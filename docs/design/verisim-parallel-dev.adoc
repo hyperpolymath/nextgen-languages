@@ -70,7 +70,7 @@ toc::[]
 └─────────────────────────────────────────────────────────────┘
 ----
 
-**Query Language**: VQL (VeriSim Query Language)
+**Query Language**: VCL (VeriSim Consonance Language)
 
 == Shared Elements
 
@@ -135,19 +135,19 @@ Priority order (based on FormBD's document-first approach):
 
 **Deliverable**: Hexad layer complete with cross-modal queries
 
-=== Milestone V3: VQL Execution Engine (Weeks 9-11)
+=== Milestone V3: VCL Execution Engine (Weeks 9-11)
 
-* VQL parser integration (ReScript → Rust)
+* VCL parser integration (ReScript → Rust)
 * Query planner (using existing planner design docs)
 * Execution engine with multi-modal routing
 * EXPLAIN functionality (like FormBD's FBQL EXPLAIN)
 
-**Deliverable**: VQL queries execute across all modalities
+**Deliverable**: VCL queries execute across all modalities
 
 === Milestone V4: Testing & Stability (Weeks 12-14)
 
 * Property-based tests (inspired by FormBD's test suite)
-* Fuzz testing for VQL parser
+* Fuzz testing for VCL parser
 * Integration tests for all modalities
 * E2E test suite for federated scenarios
 
@@ -199,13 +199,13 @@ Priority order (based on FormBD's document-first approach):
 
 === Query Language Integration Study
 
-**Research Question**: Can VQL and FBQL interoperate?
+**Research Question**: Can VCL and FBQL interoperate?
 
-* **Hypothesis**: VQL as multi-modal routing layer, FBQL as document/graph sublanguage
-* **PoC**: Translate FBQL queries to VQL document+graph modality queries
+* **Hypothesis**: VCL as multi-modal routing layer, FBQL as document/graph sublanguage
+* **PoC**: Translate FBQL queries to VCL document+graph modality queries
 * **Evaluation**: Performance, expressiveness, backward compatibility
 
-**Deliverable**: Technical report on FBQL/VQL unification feasibility
+**Deliverable**: Technical report on FBQL/VCL unification feasibility
 
 == Development Workflow
 
@@ -216,7 +216,7 @@ Priority order (based on FormBD's document-first approach):
 |Week |FormBD Focus |VeriSimDB Focus
 
 |1-6 |M11 HTTP API design, Form.Normalizer planning |Rust modality stores implementation
-|7-11 |HTTP API implementation, normalizer scaffolding |Hexad layer + VQL execution engine
+|7-11 |HTTP API implementation, normalizer scaffolding |Hexad layer + VCL execution engine
 |12-16 |Testing, documentation, performance tuning |Testing, documentation, performance tuning
 |17-24 |Production hardening, M3 migration artefacts |Federation layer, ReScript registry
 |25-32 |Integrate drift detection, federated FormBD PoC |Integrate self-normalization, reversibility
@@ -252,7 +252,7 @@ Both projects maintain synchronized checkpoint files:
 **VeriSimDB**:
 - [ ] All 6 modality stores operational
 - [ ] Hexad layer complete
-- [ ] VQL execution engine functional
+- [ ] VCL execution engine functional
 - [ ] Test coverage > 80%
 - [ ] QUICKSTART guide complete
 
@@ -293,7 +293,7 @@ Both projects maintain synchronized checkpoint files:
 |VeriSimDB Rust implementation slower than expected |High
 |Start with verisim-document only; defer tensor/semantic if needed
 
-|FBQL/VQL integration infeasible |Medium
+|FBQL/VCL integration infeasible |Medium
 |Keep as separate query languages; add translation layer in Phase 3
 
 |Elixir/OTP integration complexity |Medium
@@ -338,7 +338,7 @@ All located in `~/Documents/hyperpolymath-repos/`:
 
 === VeriSimDB Ecosystem (1 repo, 10 crates)
 
-* `verisimdb` - Main repo with 10 Rust crates:
+* `verisim` - Main repo with 10 Rust crates:
   - `verisim-graph` - Graph modality (Oxigraph)
   - `verisim-vector` - Vector modality (HNSW)
   - `verisim-tensor` - Tensor modality (ndarray)
@@ -371,7 +371,7 @@ All located in `~/Documents/hyperpolymath-repos/`:
 
 **VeriSimDB**:
 * `cargo` - Rust workspace build
-* `rescript` - Registry and VQL parser
+* `rescript` - Registry and VCL parser
 * `mix` - Elixir orchestration layer
 
 == References
@@ -379,9 +379,9 @@ All located in `~/Documents/hyperpolymath-repos/`:
 * link:~/Documents/hyperpolymath-repos/formbd/README.adoc[FormBD README]
 * link:~/Documents/hyperpolymath-repos/formbd/STATE.scm[FormBD STATE.scm]
 * link:~/Documents/hyperpolymath-repos/formbd/ECOSYSTEM.scm[FormBD ECOSYSTEM.scm]
-* link:~/Documents/hyperpolymath-repos/verisimdb/README.adoc[VeriSimDB README]
-* link:~/Documents/hyperpolymath-repos/verisimdb/STATE.scm[VeriSimDB STATE.scm]
-* link:~/Documents/hyperpolymath-repos/verisimdb/ECOSYSTEM.scm[VeriSimDB ECOSYSTEM.scm]
+* link:~/Documents/hyperpolymath-repos/verisim/README.adoc[VeriSimDB README]
+* link:~/Documents/hyperpolymath-repos/verisim/STATE.scm[VeriSimDB STATE.scm]
+* link:~/Documents/hyperpolymath-repos/verisim/ECOSYSTEM.scm[VeriSimDB ECOSYSTEM.scm]
 * link:~/ffi-migration-guide.md[FFI Migration Guide] - ABI/FFI Universal Standard (Idris2 + Zig)
 
 == Next Steps
@@ -418,7 +418,7 @@ INTROSPECT SCHEMA papers;
 
 **Philosophy**: Narrative-first, explainable, document+graph
 
-=== VQL (VeriSim Query Language)
+=== VCL (VeriSim Consonance Language)
 
 [source,sql]
 ----
@@ -448,17 +448,17 @@ WHERE modality = 'document';
 
 === Potential Unification
 
-**Hypothesis**: VQL as routing layer, FBQL as document/graph sublanguage
+**Hypothesis**: VCL as routing layer, FBQL as document/graph sublanguage
 
 [source,sql]
 ----
--- VQL wrapping FBQL
+-- VCL wrapping FBQL
 SELECT verisim.route(
   FBQL("SELECT * FROM papers WHERE year > 2020"),
   modalities: ['document', 'graph']
 );
 
--- FBQL with VQL modality hints
+-- FBQL with VCL modality hints
 SELECT * FROM papers
 WHERE year > 2020
 WITH MODALITY HINT vector_similarity(embedding, threshold: 0.8);

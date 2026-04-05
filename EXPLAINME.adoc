@@ -187,7 +187,7 @@ it is deployable.
 | *Rust*
 | Primary compiler implementation language for Ephapax (17 crates), WokeLang
 evaluator, Eclexia, Anvomidav. `#![forbid(unsafe_code)]` policy enforced.
-| gossamer, verisimdb, gitbot-fleet, maa-framework
+| gossamer, verisim, gitbot-fleet, maa-framework
 
 | *OCaml*
 | AffineScript compiler, WokeLang parser (per language design convention:
