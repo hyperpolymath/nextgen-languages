@@ -1,96 +1,129 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
-// Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
-
-= Next-Generation Languages
-Jonathan Jewell (hyperpolymath)
-:toc: left
-:toc-title: Contents
-:doctype: article
-:icons: font
-
-link:../tangle/docs/krl_map.html[→ KRL architecture map (HTML)]
+= Next-Generation Languages — Research Overview
 
 == Overview
 
-This category contains programming and specification languages built on
-formal foundations: type theory, category theory, knot theory, and
-domain-specific algebraic structures.
+This repository contains exploratory work on a family of programming and specification languages built around a shared principle:
 
-Each language is designed around a specific set of guarantees that existing
-languages cannot provide — not as extensions, but as structural properties.
+*computation and meaning are determined by structured equivalence, not just raw values.*
+
+Across different domains (topology, resource systems, ethics, computation), these languages investigate how formal guarantees can be built into the structure of a language itself rather than added as tooling or conventions.
+
+This is research-stage work: some components are partially implemented or formally specified, others remain conceptual.
+
+== Core Idea
+
+The central idea underlying these languages is:
+
+*identity is defined by equivalence under transformation.*
+
+This appears in different forms:
+
+* *Computation*: values arise from construction paths, and meaning depends on those paths
+* *Topology*: objects are equivalent under isotopy (continuous deformation)
+* *Type systems*: structure constrains what transformations are valid
+* *Execution*: guarantees (termination, purity, resource bounds) are encoded in the language design
+
+These languages explore different instances of this idea.
 
 == Projects
 
-=== KRL — Knot Resolution Language
-Surface language for constructing, transforming, resolving, and retrieving
-topological objects (tangles, knots, links).
+=== JtV — Julia the Viper
 
-KRL spans four operations grounded in knot theory:
+A foundational language exploring computation as *additive construction from neutral anchors (CNO)*.
 
-* *Construct* — compositional tangle building (Tangle PL compiler module)
-* *Transform* — Reidemeister-style rewriting (KnotTheory.jl engine)
-* *Resolve* — isotopy equivalence and quandle-based classification (QuandleDB)
-* *Retrieve* — invariant-indexed query (Skein.jl)
+* Identity is determined by equivalence of construction paths
+* Inversion is treated as retraction of construction, not primitive subtraction
+* Strong separation between data and control (Harvard-style architecture)
 
-link:../tangle-pl/README.adoc[→ KRL / Tangle PL documentation]
+Status: design-stage, with partial specifications and experimental implementations.
+
+---
+
+=== KRL — Knot Resolution Language (Tangle)
+
+A topologically inspired language where programs are represented as tangles (braids), and equivalence is defined by isotopy.
+
+* Composition and tensor operations correspond to braid structure
+* Formal semantics specified
+* Core type system mechanised in Lean (see `Tangle.lean`)
+
+Status: compiler and tooling in progress; formal core partially verified.
+
+---
 
 === Oblíbený
-Phase-separated language: Turing-complete development phase,
-Turing-incomplete deployment phase. Targets secure edge/IoT environments.
-EBNF v0.6 complete; formal proofs in progress.
+
+A phase-separated language with:
+
+* Turing-complete development phase
+* Turing-incomplete deployment phase
+
+Designed for secure and constrained environments.
+
+Status: grammar stable; formal verification in progress.
+
+---
 
 === Eclexia
-Economics-as-Code. Resource constraints as first-class language citizens.
-EBNF finalised. Targets formally verified resource allocation systems.
+
+An “economics-as-code” language where resource constraints are first-class.
+
+Status: specified; implementation not started.
+
+---
 
 === Betlang
-Hard real-time systems language. Dependent, session, and linear types.
-DO-178C alignment. Zig compiler recommended.
+
+A language for hard real-time systems using dependent, session, and linear types.
+
+Status: specified.
+
+---
 
 === Phronesis
-Ethical DSL for multi-agent systems. 40-line EBNF. IRTF submission planned.
 
-=== My Language (Me/Solo/Duet/Ensemble dialects)
-Four-dialect language family. Me: playground (ReScript). Solo: OCaml compiler ~60%.
-Duet/Ensemble: specified.
+A domain-specific language for expressing ethical constraints in multi-agent systems.
 
-=== JtV — Julia the Viper
-Harvard architecture separation. Addition-only Turing-completeness.
+Status: early-stage.
+
+---
+
+=== My Language (Me / Solo / Duet / Ensemble)
+
+A multi-dialect experimental language family exploring different levels of abstraction and composition.
+
+Status: partially implemented.
 
 == Common Principles
 
-* Every language targets a class of _structural guarantees_, not just features
-* Formal semantics before implementation
-* Compiler targets are canonical IRs, not direct code generation
-* Each language pairs with a database or verification system in `nextgen-databases`
+Across these languages:
 
-== The KRL Stack
+* Formal semantics precede implementation
+* Each language targets a *specific structural guarantee*
+* Canonical intermediate representations (IRs) are preferred over direct compilation
+* Languages are paired with database or verification systems (see `nextgen-databases`)
 
-The most developed system in this category is the KRL stack:
+== Relationship to Databases
 
-----
-KRL surface syntax
-  ↓ compiled by TanglePL module
-TangleIR (canonical interchange)
-  ↓ abstracted by VerisimCore
-VerisimMorphism (categorical view)
-  ↓ persisted by Skein.jl
-  ↓ fingerprinted by QuandleDB
-----
+These languages are designed to work with systems that treat equivalence as a first-class concept:
 
-`TangleIR` is the spine. Everything else is a view over it or a service to it.
+* KRL ↔ QuandleDB / Skein
+* JtV ↔ future equivalence-aware runtime and storage models
+
+See the `nextgen-databases` repository for details.
 
 == Status
 
-[cols="1,1,2"]
-|===
-|Language |Status |Notes
+This repository should be read as a *research exploration* rather than a production system.
 
-|KRL / Tangle PL |Active — compiler in progress |Grammar defined; AST → IR compiler in development
-|Oblíbený |Active — EBNF stable |Formal proofs and BOINC verification planned
-|Eclexia |Specified |EBNF finalised; implementation not started
-|Betlang |Specified |Compiler not started; Zig recommended
-|Phronesis |Active — early |40-line EBNF; IRTF submission planned
-|My Language |Active — Solo 60% |Me dialect working; Solo OCaml compiler in progress
-|JtV |Design phase |Architecture specified
-|===
+Some components include:
+
+* formal proofs (e.g. Tangle core)
+* partial compilers and grammars
+* design documents and specifications
+
+== Suggested Entry Points
+
+* `Tangle.lean` — mechanised type safety proof for the Tangle core
+* KRL / Tangle documentation — topological language design
+* JtV documentation — emerging model of computation as path-based construction
