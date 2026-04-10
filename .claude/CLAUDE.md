@@ -1,11 +1,24 @@
-## CRITICAL: 7-Tentacles is NOT a Language
+## CRITICAL: Pedagogy Lives Outside This Repo
 
-`7-tentacles/` is an educational/pedagogical framework — NOT a programming language.
-It uses My-Lang's four dialects (Me, Solo, Duet, Ensemble) as a curriculum vehicle
-to teach compiler architecture across a 10-year learning trajectory.
+Curriculum, syllabus, aspect-agents, kin framework, and the Me runtime projector all live
+in the top-level `tentacles-agentic-syllabus` repo (previously `hyperpolymath/7-tentacles`,
+which was a submodule of this repo until it was pulled out to the top level). **Do not
+audit it as a language.** Do not look for grammar / AST / parser / type system inside it.
 
-**NEVER** audit 7-tentacles as a language. **NEVER** look for grammar/AST/parser/type-system in it.
-When reviewing or auditing languages in this monorepo, **SKIP** the `7-tentacles/` directory.
+**Per-language applied learner materials** for my-lang live in `my-lang/frontier-practices/`
+(previously `my-lang/7-tentacles/`). That directory is the my-lang-specific applied layer
+that consumes the common curriculum — *not* a language, *not* a dialect. Skip it in
+language audits.
+
+**My-Lang dialects are three, nested**: `Solo ⊂ Duet ⊂ Ensemble`. **Me is not a fourth
+dialect** — it is an on-the-fly agent-generated projection over the dialect hierarchy,
+specified in `tentacles-agentic-syllabus/me/README.adoc`. Do not audit Me as a static
+compiler. Two earlier exploratory attempts to build Me as a static dialect have been
+retired:
+
+- `hyperpolymath/me-dialect` on GitHub — archived.
+- `my-lang/dialects/me/` in-tree — sidelined to `my-lang/_exploratory/me-scaffolding/`
+  with a `SIDELINED.adoc` explaining the architectural pivot.
 
 ## Machine-Readable Artefacts
 

@@ -127,3 +127,36 @@ Some components include:
 * `Tangle.lean` — mechanised type safety proof for the Tangle core
 * KRL / Tangle documentation — topological language design
 * JtV documentation — emerging model of computation as path-based construction
+
+== Pedagogy and Learner Materials
+
+Teaching and learning materials for the languages in this monorepo are *not* hosted in
+this repo. They live in two distinct layers:
+
+* **Curriculum source of truth** — link:https://github.com/hyperpolymath/tentacles-agentic-syllabus[`tentacles-agentic-syllabus`] (top-level
+  repo; previously `hyperpolymath/7-tentacles`). This is the aspect-agent-driven curriculum
+  framework that defines the syllabus, the agents, the kin framework, and the (to-be-built)
+  Me runtime projector that generates per-learner, per-task scoped views over the real
+  language. **Me is not a fourth dialect of any language here** — it is an on-the-fly
+  projection over whichever base dialect a learner picks, produced from an A2ML task spec
+  by the aspect-agents.
+
+* **Per-language applied layers** — my-lang's applied learner & teacher materials live in
+  `my-lang/frontier-practices/` (previously `my-lang/7-tentacles/`). This parallels the
+  pattern of `~/Desktop/Frontier_Programming_Practices_AffineScript/` for AffineScript.
+  Other languages may grow their own `frontier-practices/` subdirectories as their applied
+  learning surface matures.
+
+This repo focuses on the *language implementations* themselves — compilers, grammars,
+type systems, semantics. If you are looking for lessons, exercises, worked examples, or
+curriculum content, start in `tentacles-agentic-syllabus` and the relevant language's
+`frontier-practices/` directory.
+
+=== Historical Note — Me Pivot
+
+A standalone exploratory attempt to build Me as a static dialect compiler
+(`hyperpolymath/me-dialect` on GitHub) has been archived. The earlier in-tree scaffolding
+at `my-lang/dialects/me/` has been sidelined to `my-lang/_exploratory/me-scaffolding/`.
+See that directory's `SIDELINED.adoc` and the `tentacles-agentic-syllabus/me/README.adoc`
+design document for the architectural pivot: Me is an agent-generated runtime projection,
+not a static dialect compiler.
