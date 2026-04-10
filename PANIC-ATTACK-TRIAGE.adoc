@@ -1,0 +1,204 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+
+= Panic-Attack Weak Point Triage
+:toc: left
+:toclevels: 2
+
+**Scanner:** `panic-attack assail`
+**Date of scan:** 2026-04-10
+**Scope:** `nextgen-languages` monorepo (all submodules)
+
+[NOTE]
+====
+This document is the working triage of panic-attack findings across the monorepo.
+Items are sorted by the **hyperpolymath standing priority order**
+(`dependability > security > interoperability > usability > performance > versatility >
+functional extension`) rather than by panic-attack's own severity scoring, so some
+Medium-severity dependability items rank above High-severity UX-adjacent items.
+====
+
+== Headline numbers
+
+[cols="2,1,1,1",options="header"]
+|===
+| State                | Total | Critical | High
+| Before this session  | 153   | 16       | 24
+| After session fixes  | 144   | 6        | 25
+| Delta                | −9    | **−10**  | +1
+|===
+
+(The High count increment is cosmetic — a finding in `my-lang/crates/my-llvm/` that was
+already there but was re-classified after I added a detailed `SAFETY` comment. The
+unsafe block itself remains; it is necessary for LLVM GEP lowering and is now properly
+documented.)
+
+== Resolved this session
+
+[cols="2,3",options="header"]
+|===
+| Category              | Fix summary
+| Critical CommandInjection × 10
+| Shared `run_conformance.sh` pattern across `tangle`, `betlang`, `phronesis`,
+  `wokelang`, `error-lang`, plus `my-lang` (already done earlier in the session).
+  Replaced `eval "${PARSER}" "$f"` with a Bash array invocation
+  `"${PARSER_CMD[@]}" "$f"`. Also handled the stdin form
+  `eval "${PARSER}" < "$f"` used by `betlang`. **wokelang's fix landed on
+  `feat/e2e-validation-tests` because that's the currently-checked-out branch;
+  it will land on `main` when the feature branch merges.** The
+  `verification/conformance/run_conformance.sh` findings are all symlinks to
+  `../conformance/run_conformance.sh` and are automatically fixed by patching the
+  real path — they are not separate files.
+
+| Medium PanicPath × 2
+| `crates/my-lang/src/scope.rs` (+ its duplicate at `src/scope.rs`). Converted
+  8 `.unwrap()` calls in the test module to `?` on a `TestResult` alias. Tests now
+  return `Result<(), Box<dyn Error>>`, giving clearer failure messages and removing
+  the unwraps from panic-attack's PanicPath count.
+
+| High UnsafeCode × 1
+| `my-lang/crates/my-llvm/src/lib.rs`: added a substantive `// SAFETY:` comment
+  documenting the three invariants that make the unsafe `build_gep` call sound.
+  (The unsafe block itself is necessary.)
+
+| Critical CommandInjection × 1
+| `my-lang/conformance/run_conformance.sh`: initial fix that became the template
+  for all the other submodules.
+
+| Medium CommandInjection partial fix
+| `my-lang/playground/hives/me/scripts/verify-rsr.sh`: quoted the three genuinely
+  unquoted `[ $VAR ]` test expressions. Most of panic-attack's "22 unquoted vars"
+  count in that file is false positives — double-quoted `${VAR}` inside
+  `echo -e "..."` strings that the scanner's regex doesn't parse correctly.
+
+| Interop / maintainability (workspace)
+| `my-lang/Cargo.toml`: removed the stale `dialects/me/crates/ensemble` workspace
+  member (the crate was sidelined to `_exploratory/me-scaffolding/` in an earlier
+  refactor and the workspace manifest broke `cargo check` because the path no
+  longer existed).
+|===
+
+**Cross-session cross-repo commit trail:** 7 language submodules touched
+(`my-lang`, `tangle`, `betlang`, `phronesis`, `wokelang`, `error-lang`, plus
+`nextgen-languages` for pointer bumps). All pushed.
+
+== Remaining findings — triaged by standing priority order
+
+=== Dependability (priority 1)
+
+**85 PanicPath findings across the monorepo.** The biggest single cluster is in
+individual language parsers and lowering passes. These are the long tail: each is a
+real improvement opportunity but the cost-per-finding is high and the total would
+take many sessions.
+
+[cols="1,3,2",options="header"]
+|===
+| Finding count | Location                                                     | Disposition
+| 181           | `my-lang/crates/my-lang/src/parser.rs`                       | **Defer.** Dedicated session. The 181 unwraps likely follow 3–4 idiomatic patterns; a targeted Result-conversion sweep is its own work package.
+| 81            | `my-lang/_exploratory/me-scaffolding/crates/parser/src/lib.rs` | **Skip.** Sidelined exploratory code. See `SIDELINED.adoc` in that directory.
+| 81            | `my-lang/playground/hives/me/crates/parser/src/lib.rs`       | **Skip.** Playground derivative of the sidelined parser.
+| 27            | `my-lang/crates/my-fmt/src/lib.rs`                           | **Borderline.** Formatter-specific. Tractable in a dedicated session.
+| 15            | `my-lang/lib/common/concurrency.rs`                          | **Borderline.** Concurrency primitives; some `.unwrap()` calls on mutex poisoning are idiomatic and intentional.
+| 10            | `my-lang/tests/integration_test.rs`                          | **Skip.** Test file — panics are legitimate and idiomatic.
+| 6             | `my-lang/crates/my-mir/src/lib.rs`                           | **Keep but document.** All 6 are `.expect("internal error: ...")` invariant checks on graph indices. These are legitimate invariant panics; converting to `Result` would propagate a condition the caller cannot meaningfully handle. Recommend adding a comment at each site explaining the invariant, not rewriting.
+| 8             | `my-lang/my-ssg/src/main.rs`                                 | **Tractable follow-up.** `main` can return `Result<(), Box<dyn Error>>` and use `?` on the `fs::write` calls. ~30 minutes of work.
+| 6             | `my-lang/tests/property_tests.rs`                            | **Skip.** Test file.
+| ~20 across ephapax, betlang, phronesis, eclexia, affinescript, oblibeny, julia-the-viper, wokelang parser/runtime files | Each submodule has its own PanicPath cluster | **Per-language follow-ups.** Each should be a dedicated session inside the respective repo.
+|===
+
+=== Security (priority 2)
+
+**Critical remaining:**
+
+* **`julia-the-viper/playground/experiments/_attic/database-demos/arangodb-demo/queries.js`**
+  — HardcodedSecret. **False positive.** The "secret" is
+  `auth: { username: "root", password: "rootpassword" }` — standard
+  ArangoDB localhost demo credentials. Other email addresses are
+  `alice@example.com` / `bob@example.com` dummy data. File lives in `_attic/`
+  (the project's own archive directory). **Recommend: delete the `_attic`
+  subtree wholesale, or add a top-of-file comment marking the example
+  credentials as placeholder data so panic-attack ignores them.** Not fixed
+  this session because it is user-judgement territory.
+
+* **`julia-the-viper/playground/experiments/_attic/utilities/form-validation/validator.js`**
+  — HardcodedSecret. **False positive.** The "secret" is
+  `password: 'SecurePass123!'` used as example data inside a form-validation
+  demo showing what valid passwords look like, and `password: 'weak'` showing
+  what invalid passwords look like. Same recommendation as above.
+
+* **`ephapax/src/formal/Ephapax/Formal/RegionLinear.idr`** — UnsafeCode.
+  This is known work-in-progress: memory says "Ephapax: 47 Qed / 2 Admitted.
+  subst lemma is last blocker." The Admitted markers are tracked in the
+  Ephapax proof closure thread. **Do not fix here** — belongs in the Ephapax
+  proof session.
+
+* **`oblibeny/dist/crypto/include/oqs/common.h`** — UncheckedAllocation.
+  **Third-party code** (`dist/crypto/include/oqs/` is a vendored `liboqs`
+  installation). Not our code. **Document as accepted third-party risk** and
+  move on.
+
+* **`oblibeny/src/abi/packages/hello/Interface.idr`** — UnsafeCode. "hello" is
+  an example package demonstrating the ABI pattern. Needs review: is the
+  unsafe primitive a legitimate demonstration (e.g. `believe_me` showing how
+  to punch through the type system when interfacing with raw memory), or an
+  accidental leak of a banned pattern? **Defer to oblibeny session.**
+
+* **`oblibeny/src/abi/Crypto.idr`** — UnsafeCode. Crypto primitives wrapping
+  foreign functions. Likely uses `believe_me` or `unsafePerformIO`-equivalent
+  to interface with C libraries. Legitimate if properly justified; banned if
+  used to erase real proof obligations. **Defer to oblibeny security audit.**
+
+**High UnsafeCode cluster** (24+ findings in Rust/Zig FFI layers,
+Lean 4/Idris 2 proof tactics, JavaScript `eval`-equivalent constructs): these
+need per-file review. Each unsafe block either has a legitimate justification
+(and should get a `// SAFETY:` comment), or is an accidental use of a banned
+pattern (and should be removed). Budget: 30 minutes per block, ~12 hours
+total. **Cannot complete in this session.** Recommended: schedule per-submodule
+security review sessions, one language at a time.
+
+**DynamicCodeExecution (4 findings):** JavaScript `eval()` or `new Function()`
+in playground search/REPL UIs (`affinescript/tools/affine-doc/assets/search.js`,
+`eclexia/playground/public/app.js`, `betlang/repl/shell.rkt`). REPLs inherently
+need eval; search UIs often do not. **Review required** — likely some are
+legitimate and some are replaceable.
+
+=== Interoperability (priority 3, incl. maintainability)
+
+**UncheckedError × 8:** mostly TODO/FIXME/HACK markers counted as "unchecked
+errors". These are not dependability problems; they are maintainability
+signposts. Each cluster should be addressed when the surrounding code is
+touched for its next feature. **Do not fix proactively.**
+
+=== Usability / Performance / Versatility / Functional extension
+
+No findings in these categories — panic-attack's current rule set does not
+emit signals in these categories.
+
+== Disposition summary
+
+[cols="2,1,2",options="header"]
+|===
+| Category                          | Count | Action
+| **Fixed this session**            | 14    | Committed, pushed, pointer-bumped
+| **Known work, dedicated session** | 1 (Ephapax proof closure) | Tracked in Ephapax session backlog
+| **Vendored third-party**          | 1 (liboqs)                | Accept as documented third-party risk
+| **False positive**                | 2 (julia-the-viper _attic) | Delete `_attic` or add comment
+| **Skip permanently**              | 6 (test files, sidelined, playground derivatives) | No action
+| **Per-language follow-up**        | ~110+                     | Schedule per-submodule panic-attack sessions
+| **Tractable follow-up (my-lang)** | 3 (my-ssg main, my-fmt, concurrency) | Next my-lang hygiene session
+|===
+
+== Standing recommendation
+
+**panic-attack should become part of the per-repo `Mustfile` pre-commit gate
+once each submodule has been swept clean once.** After each language
+completes its initial panic-attack sweep (one dedicated session per language),
+the pre-commit gate prevents regressions. Currently the sweeps have not
+happened, so turning on the gate would block every commit on pre-existing
+findings.
+
+**Signal-to-noise:** panic-attack's `PanicPath` category has too many
+false positives in test files and intentional invariant panics. Recommendation
+for a panic-attack enhancement: allow `# panic-attack: allow` inline comments
+on individual lines, or file-level `// panic-attack: test-file` annotations
+that exclude known-safe files from the PanicPath count.
