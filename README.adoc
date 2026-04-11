@@ -112,6 +112,25 @@ These languages are designed to work with systems that treat equivalence as a fi
 
 See the `nextgen-databases` repository for details.
 
+== WasmGC Compilation Infrastructure
+
+Several languages in this monorepo (AffineScript, Ephapax) compile to typed WebAssembly
+(WasmGC).  Their shared compilation target and binary convention infrastructure lives in
+a separate repository:
+
+* link:https://github.com/hyperpolymath/typed-wasm[`typed-wasm`] — TypeLL progressive type
+  safety for WasmGC linear memory, and the *aggregate library* that defines shared type
+  layout and ABI conventions for WasmGC-targeting languages.  AffineScript and Ephapax
+  reference `typed-wasm` as their binary convergence point.
+
+`typed-wasm` is not a language in the `nextgen-languages` sense — it is a compilation target
+and a library.  It lives in `nextgen-typing`'s scope (the type theory pipeline) but is
+documented here for discoverability.
+
+See also:
+* `nextgen-languages/affinescript/` — affine type discipline, compiles to WasmGC
+* `nextgen-languages/ephapax/` — dyadic linear/affine type system, compiles to WasmGC
+
 == Status
 
 This repository should be read as a *research exploration* rather than a production system.
