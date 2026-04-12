@@ -31,6 +31,40 @@ check: lint test
 release VERSION:
     @echo "Releasing {{VERSION}}..."
 
+# ============================================================
+# OPSM — native package management for nextgen-languages
+# ============================================================
+
+# Install all workspace dependencies via OPSM
+deps:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found — install from https://github.com/hyperpolymath/odds-and-sods-package-manager" && exit 1)
+    opsm install --workspace
+
+# Install pinned tool versions from [runtime] section in opsm.toml
+runtime-install:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
+    opsm runtime install --from opsm.toml
+
+# Publish all workspace members to the Hyperpolymath Forge Registry
+publish:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
+    opsm publish --workspace --registry hf
+
+# Search OPSM for a package across all nextgen-languages registries
+search QUERY:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
+    opsm search "{{QUERY}}" --registry hf
+
+# List installed OPSM runtime tools
+runtime-list:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
+    opsm runtime list
+
+# Audit workspace packages (license + sustainability)
+audit:
+    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
+    opsm audit --workspace
+
 
 # Run panic-attacker pre-commit scan
 assail:

@@ -1,0 +1,59 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# nextgen-languages workspace manifest.
+# OPSM is the native package manager for all nextgen languages.
+#
+# Usage:
+#   opsm install              # install workspace deps
+#   opsm publish --registry hf  # publish all member packages
+#   opsm runtime install      # install pinned tool versions below
+
+[workspace]
+# All language sub-projects in this monorepo
+members = [
+  "affinescript",
+  "betlang",
+  "eclexia",
+  "ephapax",
+  "error-lang",
+  "julia-the-viper",
+  "my-lang",
+  "oblibeny",
+  "phronesis",
+  "tangle",
+  "wokelang",
+]
+
+# Workspace-level default registry — all members publish here unless overridden
+default_registry = "hf"
+
+[workspace.opsm]
+trust_level = "hyperpolymath"
+
+[workspace.dependencies]
+# Shared dependencies available to all members
+proven = { git = "https://github.com/hyperpolymath/proven", registry = "hf" }
+groove = { git = "https://github.com/hyperpolymath/groove", registry = "hf" }
+verisimdb = { registry = "hf", version = "latest" }
+
+[runtime]
+# Tool versions for the full nextgen-languages toolchain.
+# OPSM runtime extension manages all of these — no asdf needed.
+#
+# Compilers
+ocaml = "5.1.0"         # AffineScript compiler
+rust = "nightly"        # Betlang, KRL, tools
+haskell = "9.8.1"       # k9-haskell, pandoc-k9
+
+# BEAM
+erlang = "26.2.0"
+elixir = "1.16.0"
+
+# Core build tools
+just = "1.46.0"
+zig = "0.14.0"          # ABI/FFI layer
+deno = "2.6.10"         # JS build scripts
+
+# Language-specific toolchains (installed via OPSM runtime)
+# julia is managed by the julia-the-viper sub-project directly

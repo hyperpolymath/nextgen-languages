@@ -1,0 +1,122 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+
+= JTV v2 / 007 Reversibility: Designed Fork
+:toc: macro
+
+[.lead]
+A portfolio-level note on the deliberate divergence between JTV v2's canonical
+reversibility model and 007's Phase 1 implementation. This is a designed
+experiment — two languages in this portfolio exploring adjacent points in the
+reversible computation design space, with shared foundations and a clear
+convergence point.
+
+toc::[]
+
+== Context
+
+JTV (Julia the Viper) is the heritage language from which 007 descends.
+JTV v1 (Alpha stage) established the addition-only Data Language — a single
+arithmetic primitive with the thesis that all other arithmetic operations
+are derivable. JTV v2 (Gamma stage) extends this to the Control Language:
+subtraction is not a primitive, it is the inverse of addition, expressed
+as `reverse { x += v }`.
+
+In April 2026, 007's JTV v2 reversibility implementation underwent a
+comprehensive design session closing five open questions about `reversible { }`,
+`reverse { }`, `irreversible { }`, and the `ReversalToken` mechanism. In
+resolving those questions, a deliberate fork from JTV v2's canonical model
+was identified and documented. This file records that fork at the portfolio
+level.
+
+== The Shared Foundation
+
+Both JTV v2 and 007 (all phases) share the following:
+
+[options="header"]
+|===
+| Mechanism | Description
+| *Linear `ReversalToken`* | Produced by `reversible { }`, consumed by `reverse tok` or `abandon tok`. Pairing is type-enforced, not runtime stack or label lookup.
+| *`ReversalToken<S>` type parameter* | `S` encodes what was captured. Typechecker infers `S` from mutations inside the block.
+| *`Option<ReversalToken>` at branch joins* | Path-sensitive typing at `branch` join points. Asymmetric branches produce `Option<ReversalToken<S>>` automatically. `match` forces exhaustive handling. No lint needed.
+| *`ExternalHandle` static error* | Sending to an external agent inside `reversible { }` without `irreversible { }` wrapping is a compile-time error. Local reversibility only — distributed reversibility is a protocol-level concern.
+| *`irreversible { }` escape* | Explicit annotation for operations with no defined inverse.
+| *Structural sugar* | `reversible { ... } reverse { ... }` desugars to the token form.
+|===
+
+== The Fork
+
+The divergence is in what the token carries and what `reverse tok` does.
+
+=== JTV v2 Canonical Model
+
+Per-operation reversal. The `ReversalToken` carries a reversal *log* —
+a sequence of `(op, inv(op))` pairs recorded as operations execute.
+`reverse tok` replays the inverse operations in reverse order.
+
+Subtraction is genuinely `reverse { x += v }` at the operation level.
+Each step of the forward computation has a corresponding inverse step.
+This is the Janus tradition: step-by-step invertibility, theoretical
+alignment with Landauer's principle.
+
+=== 007 Phase 1
+
+Whole-block snapshot restore. The `ReversalToken` carries the pre-block
+values of `@state` fields declared in `reversible_state { }` (or inferred
+by the typechecker from mutations). `reverse tok` restores those field values.
+
+In a purely functional language, local bindings need no snapshotting —
+lexical scope provides this for free. Only `@state` fields need capturing.
+The snapshot approach delivers correct semantics with minimal machinery
+and is statically verified via token linearity. It is not per-operation.
+
+=== 007 Phase 2 (Planned)
+
+Per-operation reversal via `ref T`. Mutable references within `reversible`
+blocks, with a per-operation inverse log. Converges toward JTV v2's model.
+`ref T` is introduced as a deliberate later addition once Phase 1 has been
+proven in use.
+
+== The Experiment Design
+
+[options="header"]
+|===
+| Question | Evidenced by
+| Is per-operation inversion required to honour the "subtraction as inverse" claim? | JTV v2 usage
+| Is whole-block snapshot sufficient for agent programming in practice? | 007 Phase 1 usage
+| Does `ref T` at Phase 2 feel natural or forced? | 007 Phase 2 implementation
+| Is snapshot a useful pedagogical stage or merely a stepping stone? | Comparison of learning curves
+| Does the convergence hypothesis hold? | 007 Phase 2 vs JTV v2 canonical — if they agree, yes
+|===
+
+== Comparison with the Reversible Computation Literature
+
+The shared foundation (linear token, type-parameter-encoded state,
+Option-lifting at branches) represents three mechanisms not present in any
+existing reversible programming system:
+
+. *Linear token as unified pairing + snapshot/log carrier* — no existing
+  reversible language (Janus, R, Theseus, STM, algebraic effects) uses a
+  linear value as both the pairing mechanism and the typed state carrier.
+
+. *Type-parameter-encoded captured state* — `ReversalToken<S>` encodes
+  statically what was captured. STM logs are untyped. Janus has no type
+  system. Koka's effect rows do not encode captured values.
+
+. *Option-lifting at branch joins* — Janus and R require syntactically
+  symmetric branches. STM retries. Effect handlers require explicit
+  continuation management. This portfolio's solution falls out of existing
+  linear typing rules with zero new machinery.
+
+These are believed to constitute a novel contribution to the reversible
+computation literature, publishable alongside the 007 or JTV v2 language
+papers.
+
+== Cross-References
+
+* `julia-the-viper/docs/language/DESIGN-JTV-V2-REVERSIBILITY.md` — JTV v2
+  canonical model in full
+* `007/docs/session-2026-04-12-jtv-v2-reversibility-design.adoc` — 007's
+  five closed design decisions and Phase 1/Phase 2 plan
+* `typell/docs/decisions/0002-reversibility-as-typing-case-study.md` — the
+  three type-system collapses as a TypeLL case study
