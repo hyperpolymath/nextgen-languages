@@ -57,6 +57,10 @@ work.
 | `decisions/`
 | Architecture Decision Records (ADRs). One per material decision on
   how KitchenSpeak lowers, tools, or targets other systems.
+
+| `proofs/`
+| Proof-assistant lowerings of the worked examples. Agda is the v1.0
+  target (see ADR 0001). Room for a future `lean/` subdirectory.
 |===
 
 == The seven types

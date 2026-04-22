@@ -1,0 +1,80 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= KitchenSpeak Proofs
+:toc:
+:icons: font
+
+Proof-assistant lowerings of the worked examples in
+`kitchenspeak/examples/`.
+
+The target proof assistant is Agda (per
+`kitchenspeak/decisions/0001-proof-assistant.adoc`). The directory
+layout leaves room for a future Lean 4 port.
+
+== Layout
+
+[cols="1,3"]
+|===
+| Path | Contents
+
+| `agda/`
+| Agda 2.6.x + stdlib 2.0+ proofs. Current target.
+
+| `lean/` _(future)_
+| Lean 4 ports, after the Agda proofs stabilise. Not present at v1.0.
+|===
+
+== Current proofs
+
+[cols="1,1,2"]
+|===
+| File | Corresponding example | What's proved
+
+| `agda/Dough.agda`
+| `examples/` (dough is specified in `SPEC.adoc`; no `.ks` yet)
+| Termination, safety (on_fail totality), echo-witness extraction for
+  the dough-kneading program.
+|===
+
+== Running the proofs
+
+At v1.0, Agda is not yet part of the repository's environment flake.
+To check these files locally:
+
+[source,bash]
+----
+# Install Agda 2.6.4+ with stdlib 2.0+ via your package manager or Nix.
+# Point AGDA_DIR at the stdlib include.
+
+agda --library-file=libraries kitchenspeak/proofs/agda/Dough.agda
+----
+
+A future ADR may add Agda to the repository's `flake.nix` once the
+class-project scope settles. Until then, installation is
+student-local per ADR 0001's "Open questions" §2.
+
+[NOTE]
+====
+The proofs in this directory have not been run in the session that
+authored them — Agda is not installed in the authoring environment.
+They are written against Agda 2.6.x + stdlib 2.0+ conventions and
+verified by careful reading. When Agda becomes available to the
+class, running the type-checker should be the first exercise.
+====
+
+== Why each proof files earns its keep
+
+=== `Dough.agda`
+
+Exercises the Linear + Dyadic + Choreographic + Echo quadrant. Shows
+how the three production-mandatory constructs (`max_duration`,
+`on_fail`, `proving @w`) lower to, respectively:
+
+* structural recursion on a fuel parameter (termination),
+* exhaustive pattern match (safety / `on_fail ABORT`),
+* an existential `Σ`-type bundling the classifier's time-stamped
+  event (echo witness).
+
+Linearity is enforced by inspection of signatures, with a note
+explaining the discipline; a QTT-Agda port would elevate this to a
+compile-time check without changing the proof shape.
