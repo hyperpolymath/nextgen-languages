@@ -1,0 +1,146 @@
+(* SPDX-License-Identifier: PMPL-1.0-or-later *)
+(* Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> *)
+
+(* ========================================================================= *)
+(* KitchenSpeak Grammar                                                      *)
+(*                                                                           *)
+(* Section A reproduces the class's v1.0 grammar verbatim, as delivered in   *)
+(* SPEC.adoc.                                                                *)
+(*                                                                           *)
+(* Section B contains three minimal PATCHES closing productions that Section *)
+(* A names but does not define, or constructs illustrated in worked examples *)
+(* (dough, soup) that had no production at all. Patches are additive; they   *)
+(* do not rewrite the class's grammar.                                       *)
+(* ========================================================================= *)
+
+
+(* ========================================================================= *)
+(* SECTION A — Class v1.0 (verbatim)                                          *)
+(* ========================================================================= *)
+
+program             = { decl } , "orchestrate", [ "under", ceremony_id ], "{", { block }, "}" ;
+
+decl                = resource_decl | chef_decl | ceremony_decl | echo_decl ;
+
+block               = "sync", "(", actors, ")", [ "proving", echo_id ], "{", { step }, "}" ;
+
+step                = actor, ".", action, "(", params, ")",
+                      "until", condition,
+                      "max_duration", time,
+                      "on_fail", error_handle ;
+
+condition           = tropical_threshold | echo_witness ;
+tropical_threshold  = "~", metric, comparison, value ;
+echo_witness        = "@", metric, comparison, value ;
+
+
+(* ========================================================================= *)
+(* SECTION B — Minimal patches                                                *)
+(*                                                                           *)
+(* Three additive patches, each motivated by a gap between the class's       *)
+(* grammar (Section A) and either the class's type table or a worked         *)
+(* example elsewhere in the spec family.                                     *)
+(* ========================================================================= *)
+
+(* ------------------------------------------------------------------------- *)
+(* Patch 1 — Define `ceremony_decl`.                                          *)
+(*                                                                           *)
+(* Motivation: Section A's `decl` rule lists `ceremony_decl` but does not    *)
+(* define it. The soup example in the spec family uses the form shown below. *)
+(* `setting_key` is left open (plain identifier) rather than fixed to        *)
+(* { pace, alert_level, priority }, so future ceremonies can add new keys    *)
+(* without grammar churn.                                                    *)
+(* ------------------------------------------------------------------------- *)
+
+ceremony_decl       = "ceremony", ceremony_id, "{",
+                      ceremony_setting, { ",", ceremony_setting },
+                      "}" ;
+ceremony_setting    = setting_key, ":", setting_value ;
+setting_key         = identifier ;
+setting_value       = identifier | integer ;
+
+
+(* ------------------------------------------------------------------------- *)
+(* Patch 2 — Introduce `bind_step` for the dyadic operator `<~>`.             *)
+(*                                                                           *)
+(* Motivation: the Dyadic row of the class's type table, and the dough       *)
+(* example, both rely on `(X, Y) <~> Actor`. Section A's grammar has no      *)
+(* production for this operator at all.                                      *)
+(*                                                                           *)
+(* Design choice: binding is a *logical* re-typing of linear resources       *)
+(* (two resources become one product). It does not require a physical       *)
+(* coordination barrier. We therefore place `bind_step` as a top-level       *)
+(* construct inside `orchestrate`, parallel to `sync_block`, rather than     *)
+(* inside a `sync(...)` body. Slogan: *binding is algebra; sync is physics.* *)
+(*                                                                           *)
+(* `block` in Section A is renamed to `sync_block`, and `block` is widened   *)
+(* to branch. This is additive: every Section-A program remains accepted.    *)
+(* ------------------------------------------------------------------------- *)
+
+sync_block          = "sync", "(", actors, ")",
+                      [ "proving", echo_id ],
+                      "{", { step }, "}" ;
+
+bind_step           = "(", resource_id, { ",", resource_id }, ")",
+                      "<~>", actor_id, ";" ;
+
+(* block is widened: *)
+(* block = sync_block | bind_step | resource_decl ;                          *)
+(* See Patch 3 for the `resource_decl` branch.                               *)
+
+
+(* ------------------------------------------------------------------------- *)
+(* Patch 3 — Allow mission-scoped resource declarations inside orchestrate.   *)
+(*                                                                           *)
+(* Motivation: the soup example declares `resource Stock state LIQUID;` and  *)
+(* `resource Veg state CHOPPED;` *inside* the `orchestrate` body. Section A  *)
+(* only permits resources as top-level `decl`s.                              *)
+(*                                                                           *)
+(* Reading: a top-level `resource_decl` is *ambient* (shared across          *)
+(* missions); an in-body `resource_decl` is *mission-scoped* (born and       *)
+(* consumed within this orchestrate). This is a scoping distinction the     *)
+(* class already intuited in their worked examples.                         *)
+(* ------------------------------------------------------------------------- *)
+
+(* block = sync_block | bind_step | resource_decl ;                          *)
+(* The `resource_decl` branch is the Patch-3 addition. The consolidated     *)
+(* widened rule is stated once in the Consolidated View below.              *)
+
+
+(* ========================================================================= *)
+(* Consolidated view (Section A + Section B, applied)                         *)
+(* ========================================================================= *)
+
+(* program, decl, step, condition, tropical_threshold, echo_witness unchanged
+   from Section A.
+
+   block widens to:                                                          *)
+
+block'              = sync_block | bind_step | resource_decl ;
+
+(* where sync_block, bind_step, ceremony_decl, ceremony_setting, setting_key,
+   and setting_value are defined in Section B above.
+
+   The prime on `block'` is a local notation to signal "widened block"; in   *)
+(* a future revision we would simply rename Section A's `block` to          *)
+(* `sync_block` and let `block` name the widened sum.                       *)
+
+
+(* ========================================================================= *)
+(* Open items flagged for later (not patched in v1.0)                         *)
+(* ========================================================================= *)
+
+(* O1.  Nested sync_block / bind_step inside a sync_block body are currently *)
+(*      not permitted: `step` is the only thing a sync_block may contain.   *)
+(*      Fine for the Poached Egg. Likely wrong long-term.                   *)
+(*                                                                           *)
+(* O2.  `resource_decl`, `chef_decl`, `echo_decl` are named by Section A but *)
+(*      not defined. They are not required by the Poached Egg example, and  *)
+(*      are deliberately left to the class. Suggested shapes appear in      *)
+(*      COMMENTARY.adoc so the class can choose.                            *)
+(*                                                                           *)
+(* O3.  `actors`, `actor`, `action`, `params`, `metric`, `comparison`,      *)
+(*      `value`, `time`, `error_handle`, `identifier`, `integer`,           *)
+(*      `ceremony_id`, `echo_id`, `resource_id`, `actor_id` are lexical /   *)
+(*      sub-grammar placeholders. Formal definitions are out of scope for   *)
+(*      v1.0 and will appear in a lexer spec.                               *)
