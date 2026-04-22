@@ -1,0 +1,375 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= ADR 0001 — Proof Assistant Choice for KitchenSpeak
+:toc:
+:toclevels: 2
+:icons: font
+
+== Status
+
+*Proposed.* Awaiting instructor sign-off, to be ratified with the class.
+
+== Context
+
+KitchenSpeak's v1.0 specification (`SPEC.adoc`) is explicit that the DSL
+"must compile to Cook (Gallina) for formal proof" while also requiring
+"Zero 'Yellow' unproven goals" in the core library. The first phrase is
+Coq/Rocq terminology; the second is Agda terminology. The spec is
+therefore *implicitly undecided* on which proof assistant is the target.
+
+Before the class begins discharging proof obligations against Dough,
+Emulsion, Sear, and the Poached Egg examples, a choice must be made.
+This ADR records the alternatives, the decision drivers, and the
+recommendation.
+
+Historical note: the instructor's original instinct was *Isabelle/HOL*.
+That instinct is taken seriously in the analysis below.
+
+== Decision drivers
+
+Ranked from most to least important for *this* context — an
+undergraduate-ish cohort where advanced type theory was, until this
+term, widely perceived as irrelevant. Pedagogy dominates.
+
+. *Pedagogical clarity.* Does the construct-to-proof mapping feel like
+  programming or like a separate skill? Can students see the Curry-Howard
+  correspondence concretely?
+. *Match to the KitchenSpeak type zoo.* Linear, refinement, session /
+  choreographic, postulated oracles, units of measure, termination by
+  measure, total failure handlers. Which system encodes these most
+  naturally?
+. *Teaching materials specifically aligned with this curriculum.*
+  Textbook availability, freeness, coverage of the types in §1.
+. *Tooling friction for the student.* Install-to-first-green-goal time.
+  IDE integration. Platform support.
+. *Postulate / axiom ergonomics.* Echo-types are oracles. How cleanly
+  does the system support "I assume this; proceed."?
+. *Transferable skill after the term.* If a student continues into
+  formal methods work — research, industry, or graduate study — which
+  system keeps earning dividends?
+. *Industrial credibility.* Least important for *this* course, but worth
+  naming because KitchenSpeak has an external audience (SE teacher,
+  hypothetical Miele pitch).
+
+== Considered options
+
+=== Option A — Agda
+
+*What it is.* Dependently-typed functional language and proof assistant
+in the Martin-Löf tradition. Proofs are programs; the term-mode style
+dominates.
+
+*Against the drivers.*
+
+* *Pedagogical clarity.* Highest of the four. Every proof is a
+  term-construction exercise. The Curry-Howard correspondence is not
+  taught on top of Agda — it *is* Agda.
+* *Type zoo match.* Native refinement via dependent types; native
+  `postulate` keyword for oracles (echo-types); native termination
+  checker with visible "yellow" unsolved goals (already the class's
+  vocabulary, per `SPEC.adoc` §6). Linearity is *not* native: it must be
+  encoded, either manually (linear monads / typed-channel encodings) or
+  via a Quantitative Type Theory (QTT) extension. Units of measure are
+  a straightforward dependent-type exercise. Session types: there is a
+  solid body of Agda work (Thiemann, Gay & Vasconcelos encodings).
+* *Teaching materials.* *Programming Language Foundations in Agda*
+  (PLFA, Wadler) is free online and covers dependent types, lambda
+  calculi, inference, and linearity. It is the single best-aligned
+  textbook available for any of the four options.
+* *Tooling friction.* Emacs-centric by culture, though VS Code support
+  via `agda-mode` is improving. Unicode-heavy (a feature for experts,
+  a barrier for beginners). Installation is straightforward via Nix or
+  a package manager.
+* *Postulate ergonomics.* First-class keyword. Cleaner than any
+  alternative.
+* *Transferable skill.* Agda is the language of working type theorists
+  and a subset of dependent-type-aware PL researchers. Narrower than
+  Lean or Coq in the broader formal-methods job market.
+* *Industrial credibility.* Modest — Agda is more academic than
+  industrial.
+
+=== Option B — Lean 4
+
+*What it is.* Modern dependently-typed proof assistant and programming
+language. Tactic-mode and term-mode both first-class. Native
+compilation to machine code. Mathlib is the world's largest machine-
+checked mathematics library.
+
+*Against the drivers.*
+
+* *Pedagogical clarity.* High. Tactic-mode *looks like* how mathematical
+  proofs are written, which reduces the "I have to learn a new style of
+  writing" barrier. Term-mode is available when needed. The mental
+  model is less purely Curry-Howard than Agda's, which is a feature
+  pedagogically: students see both views.
+* *Type zoo match.* Refinement via subtype / dependent types: strong.
+  Postulates exist (`axiom` keyword) but feel less idiomatic than
+  Agda's. Termination: native, with `decreasing_by` hints. Linearity:
+  *experimental support* in Lean 4; not yet mainstream. Mathlib does
+  not rely on linearity. Session types: community work exists but is
+  not canonical. Units of measure: straightforward, but no
+  canonical library (unlike F#).
+* *Teaching materials.* *Theorem Proving in Lean 4* and *Mathematics in
+  Lean* are free, excellent, and current. *Logical Verification* (VU
+  Amsterdam) is a full undergraduate course. Coverage is stronger on
+  pure mathematics than on PL-specific content (linearity, session
+  types, refinement for programs).
+* *Tooling friction.* Lowest of the four. Native VS Code support, fast
+  feedback, cross-platform installers, `elan` version manager.
+* *Postulate ergonomics.* Usable but less clean than Agda.
+* *Transferable skill.* Highest. Lean 4 is currently the most rapidly
+  growing proof assistant, especially in mathematics, and is seeing
+  industrial adoption for formal methods.
+* *Industrial credibility.* High and rising.
+
+*Caveat.* Lean 3 → Lean 4 was a hard break within recent memory.
+Material older than about 2022 is generally Lean 3 and needs
+translation. This is a real hazard for mining internet resources.
+
+=== Option C — Coq / Rocq
+
+*What it is.* The classical dependently-typed proof assistant. Tactic-
+based (Ltac / Ltac2). Inductive types. Extraction to OCaml, Haskell,
+Scheme. Recently renamed from Coq to Rocq (2024–2025).
+
+*Against the drivers.*
+
+* *Pedagogical clarity.* Moderate. The tactic language adds a *second*
+  skill students must learn alongside the type theory. Term-mode exists
+  (`refine`, `exact`) but is not the primary idiom. Students can make
+  progress without deeply understanding the underlying type theory,
+  which is sometimes a pedagogical bug rather than a feature.
+* *Type zoo match.* Strong for refinement, postulates (`Axiom`
+  keyword), termination (structural + `Program Fixpoint` +
+  `Function`). Linearity: no native support, but there are libraries
+  (Iris, LinearCoq, and a body of literature). Session types: mature
+  ecosystem (e.g. Metacoq-adjacent work, and session-type embeddings).
+  Units of measure: encodable.
+* *Teaching materials.* *Software Foundations* (Pierce et al.) is the
+  gold standard for PL teaching in Coq, free, and covers linear types
+  in a later volume. *Certified Programming with Dependent Types* (CPDT,
+  Chlipala) is advanced.
+* *Tooling friction.* Moderate. `vscoq` is adequate, CoqIDE is
+  functional, and the tactic language has good feedback. Installation
+  via opam is standard but is one more thing.
+* *Postulate ergonomics.* Good (`Axiom`), though slightly less idiomatic
+  than Agda's `postulate`.
+* *Transferable skill.* High. Widely used in PL research, formal
+  verification industry (seL4 precursors, CompCert, hacspec). Declining
+  relative to Lean in the mathematics community.
+* *Industrial credibility.* High.
+
+=== Option D — Isabelle/HOL
+
+*What it is.* Higher-order logic proof assistant, classical rather than
+constructive. Excellent proof automation (Sledgehammer), the Archive of
+Formal Proofs, and a long industrial track record (seL4, Amazon's
+s2n-tls, Unified Modeling Language semantics).
+
+*Against the drivers.*
+
+* *Pedagogical clarity.* Different in kind from the other three.
+  Proofs are written in Isar, a structured proof language that reads
+  more like a mathematics textbook. This is excellent for learning
+  *proof writing*, but the mapping from KitchenSpeak constructs to
+  HOL obligations is less direct than in a dependently-typed system —
+  there is no Curry-Howard programming-as-proof story to lean on.
+* *Type zoo match.* Here Isabelle's classical logic starts to work
+  against us. HOL does not natively support linear / substructural
+  reasoning. *Separation logic* is available (and is how seL4-class
+  work is done), but teaching separation logic on top of HOL adds a
+  full additional layer the class does not need this term. Session
+  types: not a native concept, though encodings exist. Postulates:
+  axioms are well-supported. Units of measure: encodable. Refinement:
+  Isabelle has excellent *refinement calculus* support, but in a
+  different (program-refinement) sense than KitchenSpeak's type-level
+  refinement.
+* *Teaching materials.* *Concrete Semantics* (Nipkow & Klein) is
+  excellent but targeted at semantics of imperative languages rather
+  than dependent / linear type theory. *Programming and Proving in
+  Isabelle/HOL* is a good introduction.
+* *Tooling friction.* Isabelle/jEdit is a mature bespoke IDE.
+  Installation is one download. Sledgehammer often lets students
+  finish proofs they could not finish by hand, which is *either* a
+  godsend (morale, pedagogical encouragement) *or* a crutch
+  (students never learn what the proof actually looks like).
+* *Postulate ergonomics.* Good (`axiomatization`).
+* *Transferable skill.* High in industrial formal methods (avionics,
+  microkernels, cryptography). Narrower in PL-theory research and
+  narrower still in the modern type-theory community.
+* *Industrial credibility.* Highest of the four. This is the system
+  that *actually ships* real verified software in hostile industries.
+
+*Why the instructor's original instinct toward Isabelle deserves
+respect.* If the deliverable were a verified kitchen-hardware controller
+to be shown to a regulator, Isabelle would be the right tool. The
+deliverable is not that. The deliverable is *students who have felt
+type theory*.
+
+== Comparison against drivers
+
+[cols="3,1,1,1,1"]
+|===
+| Driver | Agda | Lean 4 | Coq/Rocq | Isabelle
+
+| Pedagogical clarity (programs = proofs)
+| High
+| High
+| Moderate
+| Different paradigm (Isar)
+
+| Type zoo match (linear, refinement, session, postulates, units)
+| Strong
+| Good, some experimental
+| Strong
+| Weaker without separation logic
+
+| Teaching materials aligned with this curriculum
+| PLFA — best-in-class
+| TPiL + Maths-in-Lean
+| Software Foundations
+| Concrete Semantics (adjacent)
+
+| Tooling friction
+| Moderate (Emacs-ish)
+| Lowest (VS Code-native)
+| Moderate (vscoq)
+| Low (Isabelle/jEdit)
+
+| Postulate ergonomics
+| Best (native keyword)
+| Good (`axiom`)
+| Good (`Axiom`)
+| Good (`axiomatization`)
+
+| Transferable skill
+| Narrow
+| Broadest and growing
+| Broad (declining share)
+| Broad within industrial FM
+
+| Industrial credibility
+| Low
+| Rising
+| High
+| Highest
+|===
+
+== Decision
+
+*Recommendation: Option A — Agda — for KitchenSpeak's v1.0 term
+deliverables, with Option B — Lean 4 — reserved as the explicit
+successor target.*
+
+The rationale in one paragraph: the class's primary deliverable is
+understanding, not shipping. Agda's Curry-Howard immediacy makes each
+load-bearing KitchenSpeak construct (`max_duration`, `on_fail`,
+`proving @w`, linear consumption, units) map onto a term-level proof
+obligation the student can see and manipulate directly. Wadler's PLFA
+covers the exact territory KitchenSpeak sits in (linear types, session
+types, lambda calculi, inference) and is free. The `postulate` keyword
+is the cleanest fit for echo-oracles. Termination checking is built in
+and speaks the vocabulary the spec already uses ("yellow" goals).
+Linearity is the single weak spot, addressed by either a taught
+encoding (which teaches the students what linearity *is*, not just that
+it exists) or by reaching for a QTT-enabled Agda build.
+
+Lean 4 is a close second and a better *next* investment. Students who
+continue into formal methods after this term should be encouraged to
+port their KitchenSpeak proofs to Lean 4 as a second-semester or
+summer project. The lift is non-trivial but mostly mechanical once the
+shape of the proof is already understood in Agda.
+
+Isabelle is correctly the instructor's instinct for industrial
+verification work, and should be the chosen tool if the class's
+trajectory shifts toward kitchen-hardware regulatory compliance. It is
+the wrong tool for teaching type theory itself, because HOL lacks the
+dependent-type machinery the KitchenSpeak type zoo wants.
+
+Coq/Rocq is a reasonable third choice but offers no clear advantage
+over Agda for this curriculum while adding tactic-language overhead.
+Choose it only if the instructor personally has a strong Coq/Rocq
+preference and correspondingly faster lecture-prep time.
+
+== Consequences
+
+=== For teaching materials
+
+* Primary textbook: *Programming Language Foundations in Agda* (PLFA).
+* Primary reference: Ulf Norell's *Dependently Typed Programming in
+  Agda* tutorial.
+* Supplementary: Conor McBride's lecture notes on linear types and
+  quantitative type theory, for the linearity chapter.
+
+=== For tooling setup
+
+Students will need:
+
+* A working Agda installation (Nix or distro package).
+* `agda-mode` for either Emacs or VS Code. Recommend VS Code for this
+  cohort unless an Emacs user is already present.
+* The Agda standard library.
+* A Unicode-capable terminal and font.
+
+Expected install-to-first-green-goal time: 30–60 minutes, with the
+instructor present for the first session.
+
+=== For the KitchenSpeak lowering
+
+* Each `sync_block` lowers to an Agda function returning
+  `{success @w} ⊎ {aborted, recovered, warmed}`, with the `proving @w`
+  existential witness supplied by a `postulate`.
+* Each `step`'s `max_duration` lowers to a well-founded-recursion
+  measure on elapsed wall-clock time.
+* Each `Linear` resource lowers to a value in a linearity-tracking
+  monad (taught encoding for v1.0; swap for QTT-Agda later).
+* Each `Tropical` refinement lowers to a `Σ`-type pairing a
+  dimensioned quantity with a proof that its trajectory stays within
+  the safe envelope.
+* Each `Echo` witness lowers to a `postulate`-ed proposition indexed
+  by a time-stamped classifier output.
+* Each `Ceremony` context lowers to a reader-monad-style parameter on
+  the `orchestrate` body.
+
+`SPEC.adoc` §4 is left untouched — the "Cook (Gallina)" phrase is the
+class's artefact. The `COMMENTARY.adoc` document already notes that the
+companion analysis uses Agda; this ADR promotes that note to a decision.
+
+=== For the eventual Lean 4 migration
+
+* Preserve the Agda proof *shape* (which introduction rules, which
+  elimination rules, which witnesses) even if tactics would have
+  finished the proof faster in Lean.
+* Record each `postulate` as a candidate `axiom` in the Lean port.
+* The tensor-product shape of Dyadic bind maps cleanly to a Lean 4
+  structure with two linear fields, should Lean 4's experimental
+  linearity support mature.
+
+== Reversibility
+
+*High.* Nothing in `SPEC.adoc`, `grammar.ebnf`, or any of the `.ks`
+worked examples commits to a specific proof assistant. The spec is
+proof-assistant-agnostic; the lowering is what this ADR fixes.
+
+A future ADR can swap the target. The cost is re-proving the core
+library (Dough, Emulsion, Sear, Poached Egg), which is the students'
+pedagogical work anyway — not a sunk-cost problem.
+
+== Open questions
+
+. *Linearity encoding.* Teach the class to encode linearity by hand
+  (monadic or channel-based), or reach for a QTT-Agda fork? Hand-
+  encoding is more pedagogical; QTT is less friction. Proposal: hand-
+  encode in weeks 3–5, mention QTT as extension reading.
+. *Installation strategy.* Provide a Nix flake for the class, or let
+  students use distro packages? Nix is reproducible but adds a
+  dependency. Proposal: Nix flake for the instructor, distro packages
+  documented for students, fallback to a web-based Agda if anyone is
+  blocked.
+. *Dual-proving Poached Egg.* After Agda is working, optionally port
+  Poached Egg to Lean 4 as a single end-of-term exercise so the class
+  sees the same proof in two systems. This is high-value pedagogy if
+  time allows.
+. *What to tell the SE teacher.* "We chose Agda because the class is
+  learning type theory, and Isabelle, while industrially stronger, is
+  not a teaching tool for type theory." Direct.

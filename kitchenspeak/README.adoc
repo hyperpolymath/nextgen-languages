@@ -53,6 +53,10 @@ work.
 | Worked example. The minimum KitchenSpeak program that exercises all
   three of Linear (the egg), Tropical (the water temperature), and Echo
   (the visual witness). Heavily commented as a teaching artefact.
+
+| `decisions/`
+| Architecture Decision Records (ADRs). One per material decision on
+  how KitchenSpeak lowers, tools, or targets other systems.
 |===
 
 == The seven types
