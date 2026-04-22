@@ -1,0 +1,257 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= KitchenSpeak — Type-Theoretic Commentary
+:toc:
+:toclevels: 3
+:icons: font
+
+[NOTE]
+====
+This is a *companion* to `SPEC.adoc`, not an edit of it. The class's
+specification is authoritative for the term. This document maps each of the
+class's seven types onto standard type-theoretic foundations, names the
+terminological overlaps with existing mathematical usage, and marks the
+load-bearing proof obligations the class will need to discharge.
+
+It is written to support teaching — not to correct the spec.
+====
+
+== How to read this document
+
+For each of the seven types, we give four things:
+
+. *What the class said* — the informal description from `SPEC.adoc`.
+. *Formal foundation* — the standard type-theoretic construct it lines up
+  with.
+. *Proof obligation* — what the target proof assistant (Agda, in this
+  curriculum) actually needs to discharge.
+. *Terminological note* — where the class's vocabulary overlaps with
+  pre-existing mathematical usage, so nobody is ambushed later.
+
+A final section treats the three production-mandatory syntactic constructs
+(`max_duration`, `on_fail`, `proving`) as what they structurally are:
+well-founded recursion witnesses, total case-splits on failure, and named
+existential witnesses.
+
+== The seven types
+
+=== Tropical ( `~` )
+
+*What the class said.* Handles range and gradients (temperature, power).
+Prevents "binary overheat." Carries a `slope` and a `threshold`.
+
+*Formal foundation.* A refinement type over a physical quantity with units,
+equipped with a rate-of-change bound. In mainstream terminology: *units of
+measure* (à la F#) plus a *bounded-derivative refinement*. The setpoint
+operator `~` is best read as "approach value `v` with slope at most `s`,"
+not as a propositional equality.
+
+*Proof obligation.* Given a setpoint `~ v slope s`, the emitted control
+trajectory must remain inside a safe envelope: at no time `t` does the
+quantity exceed a forbidden threshold. In Agda, this is a refinement proof
+on a time-indexed stream, typically discharged by a termination-with-measure
+argument on a bounded integrator.
+
+*Terminological note.* "Tropical" already names a real field of mathematics:
+the *tropical semiring* (min, +) and *tropical geometry*. The class's usage
+is metaphorical — tropical climate, ramping temperature — and has nothing
+to do with min-plus algebra. Worth saying once in class so nobody gets
+ambushed when they meet the other tropical.
+
+=== Linear ( `<-` )
+
+*What the class said.* Handles resource consumption. Prevents ingredient
+duplication or hallucination. Tracks state via "consumption arrows."
+
+*Formal foundation.* *Girard's linear logic*, specifically the multiplicative
+fragment. Each linear resource inhabits a type that must be used exactly
+once. Operationally: a linear variable is consumed on use. The state
+transitions `Egg[State:Raw] -> Egg[State:Cracked]` are a typestate
+refinement on top of linearity.
+
+*Proof obligation.* For every program point, the linear context contains
+exactly the resources not yet consumed. A resource used twice is a type
+error; a resource left unused at the end of `orchestrate` is a leak. Agda's
+standard way of expressing this is a linear monad or a quantitative type
+theory encoding.
+
+*Terminological note.* The class writes the formal domain as "Affordance."
+That is *Donald Norman's HCI term* for what an object invites the user to
+do, not linear logic's formal content. The poetic bridge — an egg *affords*
+being cracked — is lovely, but keep the linear-logic sense in mind for the
+proofs.
+
+=== Choreographic ( `sync` )
+
+*What the class said.* Handles concurrency and sequencing. Orchestrates
+multiple Chef Actors (Oven, Hob, Robot) without deadlocks.
+
+*Formal foundation.* *Session types* / *choreographic programming* (Honda,
+Yoshida, Carbone; Montesi). A `sync(A, B)` block is a multiparty session
+barrier: the global choreography specifies what each actor does, and the
+local projections are what each hardware persona actually executes. The
+optional `proving @witness_id` clause names the *barrier-release witness*.
+
+*Proof obligation.* Deadlock-freedom and progress. In the session-typed
+setting: every actor's local projection is compatible with the global
+choreography, and the projection is well-typed.
+
+*Terminological note.* None significant. The class's "Process Calculus"
+entry in the type table is correct territory.
+
+=== Echo ( `@` )
+
+*What the class said.* Handles sensor feedback — the witness. Acoustic,
+visual, thermal sensor streams that confirm the physical world matches the
+instruction.
+
+*Formal foundation.* A *postulated oracle* that inhabits a proposition
+about the physical world. `@acoustic_signature == "rolling_boil"` is not
+derivable inside the proof system; it is a hypothesis supplied by a sensor
+pipeline. Formally, each echo-type comes with a *soundness postulate* that
+says "if the classifier emits `rolling_boil`, the pot is in fact at a
+rolling boil." Agda represents this as a `postulate`, Coq as an `Axiom`.
+
+*Proof obligation.* The proof *assumes* the classifier is sound and
+discharges the surrounding control flow. The classifier itself is
+*unverified* — an honest teaching moment about the boundary between proven
+and postulated. Separate, higher-assurance work (out of scope for
+KitchenSpeak v1.0) would replace each echo-postulate with a verified
+classifier or an empirical soundness bound.
+
+*Terminological note.* The class's "Witness / Predicate" entry is right.
+Emphasise the *postulated* nature in class.
+
+=== Dyadic ( `<~>` )
+
+*What the class said.* Handles explicit binding. Locks two resources into a
+single logical unit (e.g. Flour + Water become Dough).
+
+*Formal foundation.* *Tensor product* in a linear / monoidal type theory:
+`Flour ⊗ Water` is a new linear resource that the binding actor consumes to
+produce `Dough`. In linear-logic notation:
+
+  Flour ⊗ Water  ⊢  Baridi_Robot : Dough
+
+where the two inputs on the left are consumed and the single output on the
+right is emitted. Dyadic binding is therefore an ordinary rule in linear
+logic, not a new formalism.
+
+*Proof obligation.* The tensor's two factors are both consumed (linearity),
+and the Dough resource now carries the union of their relevant typestate
+metadata (provenance).
+
+*Terminological note.* The class writes the formal domain as "Binary
+Relation." In standard usage, a binary relation is a subset of A×B — a
+*predicate*, not a *constructor*. Tensor product is closer to a
+*constructor*: given `a : A` and `b : B`, it builds a new value `a ⊗ b :
+A ⊗ B`. The distinction is a clean teaching moment: relations observe,
+constructors build.
+
+=== Ceremonial ( `ceremony` )
+
+*What the class said.* Handles social context and pacing. Overrides
+hardware aggression based on occasion. Declared at the `orchestrate` block
+level.
+
+*Formal foundation.* An *ambient effect context* — most naturally encoded
+as a *reader monad* over the choreography, or as a *row of effect labels*
+in an algebraic-effects system. A ceremony *does not* change the linear
+resource count; it changes the *pace*, *alert level*, and *priority* with
+which the underlying choreography executes.
+
+*Proof obligation.* Ceremonies must be *separated* from linearity: they are
+permitted to tighten termination bounds and re-prioritise, but not to
+duplicate or discard linear resources. In effect-system terms, ceremony
+effects commute with linear-resource effects.
+
+*Terminological note.* "Contextual Logic" in the class's table is a fair
+informal gloss on reader / ambient-effect.
+
+=== Primitive
+
+*What the class said.* Raw SI units that talk to the hardware APIs. Mass
+(g), Temp (°C), Torque (Nm), Viscosity (Pa·s), Time (s).
+
+*Formal foundation.* *Units of measure* as in F# / Fortress / Frink — a
+phantom type per physical dimension, with multiplicative combinators. An
+expression of type `°C` cannot be compared for equality with an expression
+of type `s`.
+
+*Proof obligation.* All arithmetic on primitives preserves dimension. The
+Agda encoding is straightforward with indexed types; the subtlety is
+choosing a numeric carrier — rationals (with units) are usually enough and
+avoid the constructive-reals rabbit hole.
+
+*Terminological note.* "Primitive type" in everyday PL usage means `int`,
+`bool`, etc. Here it means something closer to "dimension-indexed physical
+quantity." Not wrong — worth naming.
+
+== The three production-mandatory constructs
+
+=== `max_duration` — termination witness
+
+Every `step` carries a `max_duration`. Structurally this is a *well-founded
+measure* on the implicit `until`-loop: the controller cannot run forever,
+because wall-clock time is a decreasing measure under a fixed bound. In
+Agda, this is the standard argument that makes `until` total.
+
+=== `on_fail { ABORT | RECOVER | WARM }` — total failure handler
+
+Every `step` specifies an `on_fail` behaviour. Structurally this is a
+*total case-split* on the failure branch: no step can get *stuck*, because
+every failure branch is inhabited by a named recovery mode. This makes the
+`sync_block` a total function into `{success} ⊎ {aborted, recovered,
+warmed}`.
+
+=== `proving @witness_id` — named existential witness
+
+The optional `proving` clause on a `sync_block` names the echo-postulate
+that certifies block completion. Structurally this is an *existential
+witness binder*: the block is total iff there exists a sensor event
+satisfying `@witness_id` within the block's `max_duration`. The postulate
+supplies the witness; the grammar makes its name explicit.
+
+== Why each type earns its keep in the curriculum
+
+A single sentence per type, for use in class:
+
+* *Tropical.* You can feel the difference between a refinement type and a
+  raw numeric when you watch a chocolate tempering curve go wrong.
+* *Linear.* You cannot uncrack an egg.
+* *Choreographic.* The oven and the hob have to coordinate or the eggs
+  scramble before the bacon crisps.
+* *Echo.* The proof that cooking is happening is that the pot is making
+  the right noise.
+* *Dyadic.* Once flour and water have met, neither exists any more; dough
+  does.
+* *Ceremonial.* Sunday lunch is paced differently from combat rations, and
+  both are valid modes of the same choreography.
+* *Primitive.* 180 is not a temperature until you know what unit it's in.
+
+== Deliberately out of scope for v1.0
+
+* A formal lexer specification (`actors`, `action`, `params`, `metric`,
+  `comparison`, `value`, `time`, `error_handle` are placeholder
+  nonterminals).
+* A verified classifier story for echo-types. v1.0 treats every `@witness`
+  as postulated.
+* Nested `sync_block` / `bind_step` inside a `sync_block`.
+* A committed choice between Agda and Coq as the proof target. `SPEC.adoc`
+  §4 names both ("Cook (Gallina)") but §6 uses Agda-specific terminology
+  ("Yellow unproven goals"). This document uses Agda throughout for
+  pedagogical tractability; the decision can be revisited.
+* A committed wire protocol. `SPEC.adoc` §5 names HomeConnect, SmartThings,
+  and Tuya; Matter and MQTT are candidates for a later HAL revision.
+
+== Recommended reading for the class
+
+* Philip Wadler, _Linear Types can Change the World_ (1990) — the
+  original motivation for linear logic in programming.
+* Kohei Honda, Nobuko Yoshida, Marco Carbone, _Multiparty Asynchronous
+  Session Types_ (POPL 2008) — the choreographic type-theory baseline.
+* Conor McBride, _I Got Plenty o' Nuttin'_ — quantitative type theory, a
+  modern treatment of linearity that generalises cleanly.
+* Andrej Bauer, _What is algebraic about algebraic effects and handlers?_
+  — effect systems without category theory prerequisites, for the
+  ceremonial chapter.

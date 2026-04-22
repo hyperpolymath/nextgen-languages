@@ -1,0 +1,132 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= KitchenSpeak
+:toc:
+:icons: font
+
+A formally-verified, hardware-agnostic orchestration DSL for the domestic
+kitchen. Translates culinary expert intent (Chef Personas) into
+machine-executable actions for MQTT/Matter-class appliances, while
+maintaining physical and digital safety through a multi-layered type
+system.
+
+*Status:* CLASS PROJECT. Specification stable at v1.0; grammar and worked
+examples are in active development. Not intended for deployment on actual
+kitchen hardware. Experimental companion to the other languages in this
+repository.
+
+== Origin
+
+KitchenSpeak is an experimental DSL designed as a teaching vehicle for
+advanced type theory (linearity, session types, refinement types, effect
+systems, dependent types) in an applied, tangible domain. The v1.0
+specification was written by the student cohort themselves as a
+requirements-engineering exercise under a second instructor, and offered
+to the type-theory stream as the target language for the term's proof
+work.
+
+== What's in this directory
+
+[cols="1,3"]
+|===
+| File | What it is
+
+| `SPEC.adoc`
+| The class's v1.0 specification, reproduced verbatim. Authoritative
+  requirements artefact for the term.
+
+| `grammar.ebnf`
+| The class's grammar (Section A) plus three minimal additive patches
+  (Section B) closing productions that the class referenced but did not
+  define, and constructs illustrated in worked examples that had no
+  production at all. Every patch is marked; nothing rewrites the class's
+  work.
+
+| `COMMENTARY.adoc`
+| Type-theoretic companion. Maps each of the class's seven types onto
+  standard foundations (linear logic, session types, refinement types,
+  effect systems, units of measure, postulated oracles) and names each
+  load-bearing proof obligation. Separate from `SPEC.adoc` by design — the
+  class's vocabulary is not overwritten.
+
+| `examples/poached-egg.ks`
+| Worked example. The minimum KitchenSpeak program that exercises all
+  three of Linear (the egg), Tropical (the water temperature), and Echo
+  (the visual witness). Heavily commented as a teaching artefact.
+|===
+
+== The seven types
+
+From `SPEC.adoc` §2, with formal foundations elaborated in `COMMENTARY.adoc`:
+
+* *Tropical* (`~`) — range and gradient. Refinement type over a quantity
+  with a bounded derivative.
+* *Linear* (`<-`) — resource consumption. Linear logic; an egg cannot be
+  used twice.
+* *Choreographic* (`sync`) — concurrency and sequencing. Session-typed
+  multiparty barriers.
+* *Echo* (`@`) — sensor feedback. Postulated oracle that witnesses the
+  physical world.
+* *Dyadic* (`<~>`) — irreversible binding. Tensor product in linear
+  logic; flour and water become dough.
+* *Ceremonial* (`ceremony`) — social context. Ambient effect /
+  reader-monad-style pacing and priority.
+* *Primitive* — SI-unit-indexed physical quantities.
+
+== The three production-mandatory constructs
+
+Every `step` in a KitchenSpeak program carries:
+
+* `max_duration` — a wall-clock timeout. Termination witness.
+* `on_fail` — one of `ABORT`, `RECOVER`, `WARM`. Total failure handler.
+* `proving` (on the enclosing `sync`) — names the echo witness that
+  certifies block completion. Existential witness binder.
+
+Together these make every `sync_block` a total function into
+`{success} ⊎ {aborted, recovered, warmed}`, with termination discharged
+by a well-founded measure on the timeout.
+
+== Mission invariants (SPEC.adoc §6)
+
+* *Zero Scams* — all echoes resolve against local sensors; no cloud
+  round-trips for safety-critical witnesses.
+* *Chef Orchestration* — multi-actor `sync` across heterogeneous hardware.
+* *Agda-Proven* — zero unresolved goals in the core proof library for
+  the canonical recipes (Dough, Emulsion, Sear).
+
+== Quick tour
+
+Read in this order for a 20-minute orientation:
+
+. `SPEC.adoc` §1–§3 — what the class built and why.
+. `examples/poached-egg.ks` — the smallest program that exercises
+  Linear + Tropical + Echo together.
+. `grammar.ebnf` — Sections A then B.
+. `COMMENTARY.adoc` §The seven types — formal foundations, one per type.
+
+== Deliberately out of scope for v1.0
+
+* A lexer specification (the placeholder nonterminals in `grammar.ebnf` §O3
+  are deferred to a later revision).
+* A verified classifier story for echo-types — v1.0 treats them as
+  postulated.
+* A committed choice between Agda and Coq. `SPEC.adoc` §4 names both;
+  `COMMENTARY.adoc` uses Agda throughout for pedagogical tractability.
+* A committed wire protocol. `SPEC.adoc` §5 names HomeConnect, SmartThings,
+  Tuya; Matter and MQTT are candidates for a later HAL revision.
+
+== Relationship to other languages in this repository
+
+KitchenSpeak is *experimental* and not part of the core ten-language
+portfolio described in `EXPLAINME.adoc`. It shares design DNA with
+several siblings:
+
+* Linear semantics are related to `affinescript/` and `ephapax/`.
+* Session-typed choreography overlaps with `anvomidav/`'s real-time
+  model.
+* Effect / ceremony separation echoes `eclexia/`'s constraint-propagation
+  approach.
+* Resource-counting discipline is cousin to `contractiles/`.
+
+None of these dependencies are hard — KitchenSpeak is a self-contained
+teaching DSL.

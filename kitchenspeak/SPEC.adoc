@@ -1,0 +1,144 @@
+// SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= KitchenSpeak DSL — Specification v1.0
+:toc:
+:toclevels: 3
+:icons: font
+
+[NOTE]
+====
+This document is the *class's v1.0 specification as written*, reproduced here
+verbatim. It is the authoritative requirements artefact for the term.
+
+Type-theoretic commentary, terminological notes, and implementation caveats
+are kept in a separate companion document: `COMMENTARY.adoc`.
+
+Grammar patches (three minimal completions that fill productions referenced
+but not defined in this document) live in `grammar.ebnf` and are marked there
+as patches, not as edits to this spec.
+====
+
+== Mission Statement
+
+To provide a formally verified, hardware-agnostic orchestration layer for the
+domestic kitchen. This system translates culinary expert intent (Chef Personas)
+into machine-executable actions while maintaining total physical and digital
+safety through a rigorous, multi-layered type system.
+
+== Core Type System (Non-Negotiable)
+
+[cols="1,2,4"]
+|===
+| Type | Formal Domain | Requirement / Purpose
+
+| Tropical
+| (range / gradient)
+| Range & Gradients. Manages thermal/kinetic ramps. Prevents "Binary
+  Overheat."
+
+| Linear
+| Affordance
+| Resource Consumption. Prevents ingredient duplication/hallucination. Tracks
+  state.
+
+| Choreographic
+| Process Calculus
+| Concurrency. Orchestrates multiple "Chef Actors" (Oven/Hob/Robot) without
+  deadlocks.
+
+| Echo
+| Witness / Predicate
+| Sensor Fusion. Validates that the physical world matches the instruction
+  (Acoustic/Visual).
+
+| Dyadic
+| Binary Relation
+| Irreversible Binding. Explicitly locks resources (e.g. Flour + Water) into
+  a new unit.
+
+| Ceremonial
+| Contextual Logic
+| Social Pacing. Overrides hardware aggression based on context (e.g. "Dinner
+  Party").
+
+| Primitive
+| SI Unit Grounding
+| Hardware Base. Raw mapping for Mass (g), Temp (C), Torque (Nm), and
+  Viscosity (Pa·s), Time (s).
+|===
+
+== Syntax Requirements (Production)
+
+=== Termination & Safety
+
+* *Mandatory Guard:* Every loop/action must contain a `max_duration` to
+  satisfy Totality requirements (Agda/Coq).
+* *Fallback Logic:* Every block must define an `on_fail` state (`ABORT`,
+  `RECOVER`, or `WARM`).
+
+=== Actor Model (Chef Personas)
+
+* *Encapsulation:* Hardware is wrapped in "Personas" (Nigella, Delia, Jamie).
+* *Logic:* Personas dictate the _style_ of execution (e.g., Jamie = High
+  Slope/Torque; Delia = Low Jitter/High Precision).
+
+=== Ambient Telemetry
+
+* *Observation:* The system operates in "Nan-Ambient" mode.
+* *Interaction:* No-screen feedback via audio (Acoustic Echo) and light
+  (Visual State).
+
+== Formal Verification (the "Cook" Proof)
+
+* *Total Functions:* The DSL must compile to Cook (Gallina) for formal proof.
+* *Invariant Safety:* Proof must exist that:
+** Resources are never consumed twice (Linearity).
+** Temperature never enters the forbidden state (Tropical).
+** Physical state matches intent via sensor witnesses (Echo).
+
+== Hardware Abstraction Layer (HAL)
+
+* *Target Agnosticism:* One script must run on a Miele Oven, a Samsung
+  Fridge, and a Baridi Robot simultaneously.
+* *API Interface:* Translates KitchenSpeak JSON into native device commands
+  (HomeConnect, SmartThings, Tuya).
+
+== Mission Success Criteria
+
+* *Zero Scams:* No reliance on cloud-only "Smart" features; 100% local
+  execution.
+* *Chef Orchestration:* Successful "Bacon & Egg" Dyadic sync between
+  disparate hardware.
+* *Agda-Proven:* Zero "Yellow" unproven goals in the core library for Dough,
+  Emulsion, and Sear.
+
+== Production Grammar Summary (Class v1.0)
+
+[source,ebnf]
+----
+(* The Final KitchenSpeak Spec *)
+program      = { decl } , "orchestrate", [ "under", ceremony_id ], "{", { block }, "}" ;
+
+decl         = resource_decl | chef_decl | ceremony_decl | echo_decl ;
+
+block        = "sync", "(", actors, ")", [ "proving", echo_id ], "{", { step }, "}" ;
+
+step         = actor "." action "(" params ")"
+               "until", condition
+               "max_duration", time
+               "on_fail", error_handle ;
+
+condition    = tropical_threshold | echo_witness ;
+tropical_threshold = "~", metric, comparison, value ;
+echo_witness       = "@", metric, comparison, value ;
+----
+
+[NOTE]
+====
+The grammar above is reproduced as the class delivered it. Three productions
+are named (`resource_decl`, `chef_decl`, `ceremony_decl`, `echo_decl`) but
+not defined here, and two constructs illustrated in worked examples (the
+dyadic bind `(X, Y) <~> Actor`, and `resource` declarations *inside*
+`orchestrate`) do not yet have productions. These gaps are closed by minimal
+patches in `grammar.ebnf`, clearly marked as patches.
+====
