@@ -134,4 +134,4 @@ If My-Lang is actually at 75%, the missing stdlib work on Eclexia becomes **even
 
 **Maintainer:** Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 **Date:** 2026-02-07
-**License:** PMPL-1.0-or-later
+**License:** MPL-2.0

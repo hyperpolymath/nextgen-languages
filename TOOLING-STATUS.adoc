@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 = Nextgen Languages — Tooling & Integration Status
 :toc:
 :toclevels: 2
@@ -9,7 +9,7 @@ Last verified: 2026-03-21
 
 This monorepo contains 12 programming languages + 2 meta-projects. All 12 languages
 are registered in the BoJ Server `lang-mcp` cartridge with session management, type-checking,
-and evaluation via V-lang adapter + Zig FFI.
+and evaluation via zig adapter + Zig FFI.
 
 == Language Tooling Matrix
 
@@ -174,7 +174,7 @@ All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
 
 === Related BoJ Cartridges
 
-* **lang-mcp** — Language sessions (V-lang adapter, Zig FFI, PanLL panels)
+* **lang-mcp** — Language sessions (zig adapter, Zig FFI, PanLL panels)
 * **lsp-mcp** — Generic LSP proxy (ABI/FFI/adapter/panels)
 * **dap-mcp** — Generic DAP proxy (ABI/FFI/adapter/panels)
 

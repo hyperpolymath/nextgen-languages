@@ -2,7 +2,7 @@
 :toc:
 :toc-placement!:
 
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 
 [.lead]
 **Co-developing two complementary database systems to the same maturity level**
