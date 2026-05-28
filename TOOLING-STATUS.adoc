@@ -11,6 +11,64 @@ This monorepo contains 12 programming languages + 2 meta-projects. All 12 langua
 are registered in the BoJ Server `lang-mcp` cartridge with session management, type-checking,
 and evaluation via zig adapter + Zig FFI.
 
+== Language Grades Matrix
+
+Per-language grades against the five hyperpolymath language-grade standards:
+
+* *CRG* (Component Readiness Grades) — worst-of any released component
+* *TRG* (Toolchain Readiness Grades) — language toolchain (parser, type checker, codegen…)
+* *ARG* (Adoption Readiness Grades) — language as adoptable artefact
+* *FRG* (Foundations Readiness Grades) — mathematical foundations
+* *RSR* (Rhodium Standard Repositories) — repository hygiene compliance level
+
+All graders use `X | F | E | D | C | B | A`. The grade source of truth lives in each
+language's repo at `spec/{ARG,FRG,TRG}-PROFILE.adoc`; the values below are mirrored
+here for at-a-glance comparison and are refreshed by `language-status-tracker.jl`.
+
+Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
+
+[cols="<2,^1,^1,^1,^1,^1,<3", options="header"]
+|===
+| Language | CRG | TRG | ARG | FRG | RSR | Notes
+
+| **AffineScript**
+| TBD | TBD | D | E | FULL
+| ARG-D leaning; CLI gates programs. FRG-E pragmatic / X strict (no `formal/`).
+
+| **Ephapax**
+| TBD | TBD | E | D | FULL
+| Strong FRG narrative (preservation stated, layered redesign committed). Adoption surface sparse.
+
+| **My**
+| TBD | TBD | D-leaning-E | X | FULL
+| 11 crates, 4 dialects. PROOF-NEEDS.md honestly records template-ABI removal (FRG-X discipline).
+
+| **Eclexia** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Betlang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Phronesis** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Wokelang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Anvomidav** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Julia-the-viper** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Oblibeny** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Error-lang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Tangle** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Me-dialect** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **VCL-total (vcl-ut)** | TBD | TBD | TBD | TBD | TBD | Database/identity language; per ARG §1.1 tightening applies.
+| **KRL** | TBD | TBD | TBD | TBD | TBD | Database/resolution language; canonical READINESS.md template lives here.
+| **Quandledb** | TBD | TBD | TBD | TBD | TBD | Database language.
+| **TypeLL** | TBD | TBD | TBD | TBD | TBD | Type-theory foundation, feeds VCL-total levels.
+| **PanLL** | TBD | TBD | TBD | TBD | TBD | Type-theory foundation.
+|===
+
+Standards specs:
+
+* `standards/component-readiness-grades/`
+* `standards/toolchain-readiness-grades/`
+* `standards/adoption-readiness-grades/`
+* `standards/foundations-readiness-grades/`
+* `standards/rhodium-standard-repositories/`
+
 == Language Tooling Matrix
 
 [cols="<2,^1,^1,^1,^1,^1,^1,^1,^1,^1", options="header"]
