@@ -101,6 +101,66 @@ function language_type(status)
     end
 end
 
+# --- Grade extraction (ARG / FRG / TRG / CRG / RSR) -------------------------
+#
+# Each language's per-grade profile lives at `spec/{ARG,FRG,TRG}-PROFILE.adoc`
+# in the language's own repo. The "Current X Grade:" line is the source of
+# truth for the language's grade against that standard. We extract by regex
+# rather than parsing AsciiDoc, because the profile format is stable.
+
+struct LanguageGrades
+    arg::String
+    trg::String
+    frg::String
+    crg::String
+    rsr::String
+end
+
+const GRADE_LINE_RE = Dict(
+    :arg => r"Current ARG Grade\s*\|\s*\*?\*?([XFEDCBA][^*|]*)"i,
+    :trg => r"Current TRG Grade\s*\|\s*\*?\*?([XFEDCBA][^*|]*)"i,
+    :frg => r"Current FRG Grade\s*\|\s*\*?\*?([XFEDCBA][^*|]*)"i,
+    :crg => r"Current CRG Grade\s*\|\s*\*?\*?([XFEDCBA][^*|]*)"i,
+    :rsr => r"RSR Compliance\s*\|\s*([A-Z]+)"i,
+)
+
+function extract_grade(path::String, kind::Symbol)
+    isfile(path) || return "TBD"
+    try
+        text = read(path, String)
+        m = match(GRADE_LINE_RE[kind], text)
+        return m === nothing ? "TBD" : strip(m.captures[1])
+    catch
+        return "TBD"
+    end
+end
+
+function get_language_grades(name::String)
+    path = joinpath(REPOS_DIR, name)
+    isdir(path) || return LanguageGrades("—", "—", "—", "—", "—")
+
+    arg_file = joinpath(path, "spec", "ARG-PROFILE.adoc")
+    frg_file = joinpath(path, "spec", "FRG-PROFILE.adoc")
+    trg_file = joinpath(path, "spec", "TRG-PROFILE.adoc")
+
+    arg = extract_grade(arg_file, :arg)
+    trg = extract_grade(trg_file, :trg)
+    frg = extract_grade(frg_file, :frg)
+    # CRG and RSR may appear in any of the three profile files; first hit wins.
+    crg = "TBD"
+    rsr = "TBD"
+    for f in (arg_file, frg_file, trg_file)
+        if crg == "TBD"
+            crg = extract_grade(f, :crg)
+        end
+        if rsr == "TBD"
+            rsr = extract_grade(f, :rsr)
+        end
+    end
+
+    return LanguageGrades(arg, trg, frg, crg, rsr)
+end
+
 function status_emoji(status)
     if !status.exists
         return "❌"
@@ -155,6 +215,24 @@ for status in sort(statuses, by=s->(-s.src_files, s.name))
     println("| $(status.name) | $emoji | $type_str | $files | $commits | $last |")
 end
 
+println()
+println("=" ^ 80)
+println()
+
+# Grade matrix — sources from spec/{ARG,FRG,TRG}-PROFILE.adoc in each repo.
+# Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
+println("LANGUAGE GRADE MATRIX (CRG / TRG / ARG / FRG / RSR)")
+println("-" ^ 60)
+println("| Language | CRG | TRG | ARG | FRG | RSR |")
+println("|----------|-----|-----|-----|-----|-----|")
+for status in sort(statuses, by=s->s.name)
+    status.exists || continue
+    g = get_language_grades(status.name)
+    println("| $(status.name) | $(g.crg) | $(g.trg) | $(g.arg) | $(g.frg) | $(g.rsr) |")
+end
+println()
+println("Grade source of truth: each language repo's `spec/{ARG,FRG,TRG}-PROFILE.adoc`.")
+println("Missing/unparsed entries surface as TBD; '—' means repo not on disk.")
 println()
 println("=" ^ 80)
 println()
