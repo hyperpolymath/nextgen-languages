@@ -10,6 +10,23 @@ Declared intent and purpose for Nextgen Languages.
 
 Nextgen Languages — *Parent repository for tracking and coordinating experimental language development*
 
+Current language family:
+
+| Language / DSL | Kind | Proof status |
+|---|---|---|
+| AffineScript (Solo / Duet / Ensemble) | General-purpose, affine-typed | Concept v0.1 |
+| KitchenSpeak | Orchestration DSL, 7 types, Agda-proven | Proofs-first (Phase 1) |
+| Betlang | Experimental | Concept |
+| Ephapax | Experimental | Concept |
+| Phronesis | Ethical AI specification DSL | Concept v0.1 |
+| Eclexia | Resource-first DSL | Concept v0.1 |
+| Oblíbený | Secure-enclave DSL | Concept v0.1 |
+| Anvomidav | Hard real-time DSL | Concept v0.1 |
+| WokeLang | Human-centric DSL | Concept v0.1 |
+
+KitchenSpeak is the only member of the family with active Agda proof work
+(proofs lead implementation — the Agda-Proven invariant per ADR 0001).
+
 ## Anti-Purpose
 
 This project is NOT:

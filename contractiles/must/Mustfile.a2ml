@@ -24,6 +24,33 @@ that MUST hold at all times.
 - run: test -f README.adoc || test -f README.md
 - severity: critical
 
+## KitchenSpeak
+
+### agda-proven-invariant
+- description: KitchenSpeak proofs directory must exist (proofs lead implementation)
+- run: test -d kitchenspeak/proofs/agda
+- severity: critical
+
+### kitchenspeak-lib-declared
+- description: kitchenspeak.agda-lib must declare echo-types dependency
+- run: grep -q 'echo-types' kitchenspeak/proofs/agda/kitchenspeak.agda-lib
+- severity: critical
+
+### kitchenspeak-postulates-annotated
+- description: All Agda postulates must be preceded by -- AXIOM: comment (trusted-base governance)
+- run: "! grep -n '^postulate' kitchenspeak/proofs/agda/*.agda | grep -v 'AXIOM' || true"
+- severity: warning
+
+### kitchenspeak-proof-needs-present
+- description: PROOF-NEEDS.md must enumerate postulate trusted base
+- run: test -f kitchenspeak/proofs/PROOF-NEEDS.md
+- severity: critical
+
+### kitchenspeak-adr-echo-attachment
+- description: ADR 0004 (Echo attaches to Linear/Dyadic) must be present
+- run: test -f kitchenspeak/decisions/0004-echo-attaches-to-linear-dyadic.adoc
+- severity: critical
+
 ## Banned
 
 ### no-hardcoded-paths
