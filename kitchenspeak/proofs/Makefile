@@ -7,12 +7,15 @@
 #
 # Requirements:
 #   - Agda 2.6.4+            (e.g. `nix shell nixpkgs#agda`, or distro pkg)
-#   - agda-stdlib 2.0+       (registered in your ~/.agda/libraries)
+#   - agda-stdlib 2.3+       (registered in your ~/.agda/libraries)
+#   - echo-types + absolute-zero (registered in ~/.agda/libraries) for
+#     EchoBridge.agda — see proofs/README.adoc and ../decisions/0003.
 #
 # Usage:
 #   make            # type-check the whole core proof library
 #   make dough      # type-check Dough.agda only
 #   make poachedegg # type-check PoachedEgg.agda only
+#   make echobridge # type-check EchoBridge.agda only (needs echo-types)
 #   make clean      # remove Agda interface files
 
 AGDA        ?= agda
@@ -21,8 +24,8 @@ SRC_DIR     := agda
 
 # The core proof library, in dependency-free order. Emulsion and Sear
 # are tracked in ../ROADMAP.adoc Phase 1c and join this list as they
-# land.
-MODULES := Dough PoachedEgg
+# land. EchoBridge wires the @ witness onto hyperpolymath/echo-types.
+MODULES := Dough PoachedEgg EchoBridge
 
 .PHONY: all clean $(MODULES)
 
@@ -31,6 +34,7 @@ all: $(MODULES)
 # Per-module targets (lower-cased) so `make poachedegg` works.
 dough: Dough
 poachedegg: PoachedEgg
+echobridge: EchoBridge
 
 $(MODULES):
 	cd $(SRC_DIR) && $(AGDA) $(AGDA_FLAGS) $@.agda
