@@ -86,7 +86,20 @@ Ephapax (which is dyadic: affine + linear).
 | `let x = ...` (affine) vs `let! x = ...` (linear). Targets WebAssembly.
 Gossamer backend. Rust compiler, Coq proofs.
 | Rust (17 crates), Coq proofs
+
+| *KitchenSpeak* _(experimental DSL)_
+| Applied type-theory teaching DSL
+| Seven-type kitchen-orchestration DSL: Tropical (refinement), Linear,
+Choreographic (session), Echo (postulated oracle), Dyadic (tensor),
+Ceremonial (effect), Primitive (units). `max_duration` / `on_fail` /
+`proving @w` make every block a total, witnessed function. Proofs-first.
+| Agda proofs (OCaml front end planned)
 |===
+
+NOTE: *KitchenSpeak* is an experimental teaching DSL, not one of the ten
+core languages. It is maintained as the standalone `hyperpolymath/kitchenspeak`
+repository and develops proofs-first (see its `ROADMAP.adoc`); the canonical
+recipes (Dough, Poached Egg) already have Agda lowerings.
 
 === Most mature: Ephapax
 
@@ -272,6 +285,12 @@ from Julia the data language to avoid confusion.
 
 | `error-lang/`
 | Pedagogical language for teaching systems thinking via error conditions.
+
+| `kitchenspeak/`
+| Experimental, formally-verified kitchen-orchestration DSL (submodule:
+`hyperpolymath/kitchenspeak`). Seven-type system; proofs-first. Agda
+lowerings of the Dough and Poached Egg recipes; `ROADMAP.adoc` targets
+AffineScript-level toolchain parity, leading with the proof library.
 
 | `tangle/`
 | Literate programming / tangling tool shared across the language ecosystem.

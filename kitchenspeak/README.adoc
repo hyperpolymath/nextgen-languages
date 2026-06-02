@@ -10,10 +10,15 @@ machine-executable actions for MQTT/Matter-class appliances, while
 maintaining physical and digital safety through a multi-layered type
 system.
 
-*Status:* CLASS PROJECT. Specification stable at v1.0; grammar and worked
-examples are in active development. Not intended for deployment on actual
-kitchen hardware. Experimental companion to the other languages in this
-repository.
+*Invariant:* every ingredient is consumed exactly once, every loop
+terminates on a wall-clock bound, and every physical step is witnessed by
+a local sensor.
+
+*Status:* CLASS PROJECT. Specification stable at v1.0; the proof library
+and toolchain are in active development per `ROADMAP.adoc`. Not intended
+for deployment on actual kitchen hardware. Experimental member of the
+link:https://github.com/hyperpolymath/nextgen-languages[`nextgen-languages`]
+family, into which this repository is wired as a submodule.
 
 == Origin
 
@@ -25,7 +30,7 @@ requirements-engineering exercise under a second instructor, and offered
 to the type-theory stream as the target language for the term's proof
 work.
 
-== What's in this directory
+== What's in this repository
 
 [cols="1,3"]
 |===
@@ -38,16 +43,13 @@ work.
 | `grammar.ebnf`
 | The class's grammar (Section A) plus three minimal additive patches
   (Section B) closing productions that the class referenced but did not
-  define, and constructs illustrated in worked examples that had no
-  production at all. Every patch is marked; nothing rewrites the class's
-  work.
+  define. Every patch is marked; nothing rewrites the class's work.
 
 | `COMMENTARY.adoc`
 | Type-theoretic companion. Maps each of the class's seven types onto
   standard foundations (linear logic, session types, refinement types,
   effect systems, units of measure, postulated oracles) and names each
-  load-bearing proof obligation. Separate from `SPEC.adoc` by design — the
-  class's vocabulary is not overwritten.
+  load-bearing proof obligation.
 
 | `examples/poached-egg.ks`
 | Worked example. The minimum KitchenSpeak program that exercises all
@@ -55,12 +57,16 @@ work.
   (the visual witness). Heavily commented as a teaching artefact.
 
 | `decisions/`
-| Architecture Decision Records (ADRs). One per material decision on
-  how KitchenSpeak lowers, tools, or targets other systems.
+| Architecture Decision Records (ADRs). 0001 selects the proof
+  assistant; 0002 records this repository's elevation.
 
 | `proofs/`
 | Proof-assistant lowerings of the worked examples. Agda is the v1.0
-  target (see ADR 0001). Room for a future `lean/` subdirectory.
+  target (see ADR 0001). Build with `make -C proofs`.
+
+| `ROADMAP.adoc`
+| The proofs-first plan taking KitchenSpeak from specification to
+  AffineScript-level toolchain parity.
 |===
 
 == The seven types
@@ -94,6 +100,22 @@ Together these make every `sync_block` a total function into
 `{success} ⊎ {aborted, recovered, warmed}`, with termination discharged
 by a well-founded measure on the timeout.
 
+== Building the proofs
+
+The `Agda-Proven` mission criterion (SPEC.adoc §6) is the language's
+acceptance test, so the proofs lead. To type-check the core library:
+
+[source,bash]
+----
+# Requires Agda 2.6.4+ and agda-stdlib 2.0+ (registered in ~/.agda/libraries).
+make -C proofs          # type-check the whole core library
+make -C proofs poachedegg   # just the Poached Egg proof
+----
+
+A green run means zero unsolved goals. See `proofs/README.adoc` for the
+current contents of the library and `ROADMAP.adoc` Phase 1 for what is
+landing next (Emulsion, Sear, and a QTT-Agda linearity port).
+
 == Mission invariants (SPEC.adoc §6)
 
 * *Zero Scams* — all echoes resolve against local sensors; no cloud
@@ -102,39 +124,21 @@ by a well-founded measure on the timeout.
 * *Agda-Proven* — zero unresolved goals in the core proof library for
   the canonical recipes (Dough, Emulsion, Sear).
 
-== Quick tour
-
-Read in this order for a 20-minute orientation:
-
-. `SPEC.adoc` §1–§3 — what the class built and why.
-. `examples/poached-egg.ks` — the smallest program that exercises
-  Linear + Tropical + Echo together.
-. `grammar.ebnf` — Sections A then B.
-. `COMMENTARY.adoc` §The seven types — formal foundations, one per type.
-
-== Deliberately out of scope for v1.0
-
-* A lexer specification (the placeholder nonterminals in `grammar.ebnf` §O3
-  are deferred to a later revision).
-* A verified classifier story for echo-types — v1.0 treats them as
-  postulated.
-* A committed choice between Agda and Coq. `SPEC.adoc` §4 names both;
-  `COMMENTARY.adoc` uses Agda throughout for pedagogical tractability.
-* A committed wire protocol. `SPEC.adoc` §5 names HomeConnect, SmartThings,
-  Tuya; Matter and MQTT are candidates for a later HAL revision.
-
-== Relationship to other languages in this repository
+== Relationship to the other nextgen languages
 
 KitchenSpeak is *experimental* and not part of the core ten-language
-portfolio described in `EXPLAINME.adoc`. It shares design DNA with
-several siblings:
+portfolio described in the monorepo's `EXPLAINME.adoc`. It shares design
+DNA with several siblings:
 
-* Linear semantics are related to `affinescript/` and `ephapax/`.
-* Session-typed choreography overlaps with `anvomidav/`'s real-time
-  model.
-* Effect / ceremony separation echoes `eclexia/`'s constraint-propagation
+* Linear semantics are related to `affinescript` and `ephapax`.
+* Session-typed choreography overlaps with `anvomidav`'s real-time model.
+* Effect / ceremony separation echoes `eclexia`'s constraint-propagation
   approach.
-* Resource-counting discipline is cousin to `contractiles/`.
 
 None of these dependencies are hard — KitchenSpeak is a self-contained
 teaching DSL.
+
+== Licence
+
+Palimpsest License (MPL-2.0), with the Mozilla Public License 2.0 as the
+OSI-recognised fallback. See `LICENSE`.

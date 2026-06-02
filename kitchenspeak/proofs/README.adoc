@@ -33,25 +33,35 @@ layout leaves room for a future Lean 4 port.
 | `agda/Dough.agda`
 | `examples/` (dough is specified in `SPEC.adoc`; no `.ks` yet)
 | Termination, safety (on_fail totality), echo-witness extraction for
-  the dough-kneading program.
+  the dough-kneading program. Linear + Dyadic + Choreographic + Echo.
+
+| `agda/PoachedEgg.agda`
+| `examples/poached-egg.ks`
+| Termination, safety (`on_fail ABORT` / `on_fail RECOVER` totality),
+  echo-witness extraction for both sync blocks, *and* the first
+  Tropical refinement obligation: the GENTLE controller never crosses
+  the boil envelope. Linear + Tropical + Echo.
 |===
+
+Per `../ROADMAP.adoc` Phase 1c, `Emulsion.agda` (Tropical + Linear) and
+`Sear.agda` (Tropical + Echo + Primitive) join this list next, completing
+the Dough / Emulsion / Sear core named in `SPEC.adoc` §6.
 
 == Running the proofs
 
-At v1.0, Agda is not yet part of the repository's environment flake.
-To check these files locally:
+A build harness now lives alongside the proofs. Install Agda 2.6.4+ with
+stdlib 2.0+ (registered in `~/.agda/libraries`), then:
 
 [source,bash]
 ----
-# Install Agda 2.6.4+ with stdlib 2.0+ via your package manager or Nix.
-# Point AGDA_DIR at the stdlib include.
-
-agda --library-file=libraries kitchenspeak/proofs/agda/Dough.agda
+make -C proofs              # type-check the whole core library
+make -C proofs poachedegg   # type-check PoachedEgg.agda only
+make -C proofs dough        # type-check Dough.agda only
 ----
 
-A future ADR may add Agda to the repository's `flake.nix` once the
-class-project scope settles. Until then, installation is
-student-local per ADR 0001's "Open questions" §2.
+The `kitchenspeak.agda-lib` file declares the `standard-library`
+dependency and treats warnings as errors. A future ADR may add Agda to a
+`flake.nix` so CI runs `make -C proofs` on every push (ROADMAP Phase 1a).
 
 [NOTE]
 ====

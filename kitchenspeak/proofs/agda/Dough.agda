@@ -175,7 +175,12 @@ bind-dough _ _ = mkDough KNEADABLE
 -- *assumes* its values exist and discharges the surrounding control
 -- flow. See COMMENTARY.adoc §Echo for the discussion of postulated
 -- oracles and the proven/postulated boundary.
-
+--
+-- AXIOM: postulated echo-oracle (the torque sensor stream) — the
+-- physical world, not a derivable term. The proof trusts the sensor
+-- and discharges the surrounding control flow; a production lowering
+-- replaces it with a verified HAL binding (§8(a)). Trusted base
+-- contribution: 1 sensor postulate.
 postulate
   viscosity-at : Minutes → Torque-dNm
 

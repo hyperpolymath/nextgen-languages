@@ -94,6 +94,26 @@ A multi-dialect experimental language family exploring different levels of abstr
 
 Status: partially implemented.
 
+---
+
+=== KitchenSpeak (DSL)
+
+An experimental, formally-verified orchestration *DSL* for the domestic
+kitchen, used as a teaching vehicle for advanced type theory (linearity,
+session/choreographic types, refinement types, effect systems, postulated
+oracles). Programs translate culinary expert intent into machine-executable
+appliance actions while a seven-type system keeps them physically and
+digitally safe.
+
+Its invariant: every ingredient is consumed exactly once, every loop
+terminates on a wall-clock bound, and every physical step is witnessed by a
+local sensor. Development leads with proofs (Agda) per the language's
+`ROADMAP.adoc`.
+
+Status: specification stable at v1.0; proof library commenced (Dough,
+Poached Egg), toolchain in progress. Maintained as the standalone
+`hyperpolymath/kitchenspeak` repository.
+
 == Common Principles
 
 Across these languages:
