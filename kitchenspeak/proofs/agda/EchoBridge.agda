@@ -5,6 +5,19 @@
 -- KitchenSpeak — Echo Bridge to the echo-types library
 -- =====================================================================
 --
+-- STATUS (per decisions/0004-echo-attaches-to-linear-dyadic.adoc):
+-- TEMPORARY SMOKE-TEST BRIDGE — not the canonical Echo attachment.
+-- Q1 is decided B-now / C-later / A-shim: echo-types attaches *primarily*
+-- to KitchenSpeak's Linear/Dyadic consumption types (irreversible
+-- transformation with retained provenance: Flour ⊗ Water → Dough), with
+-- the @/sensor-witness demoted to a secondary adapter/example. The Boolean
+-- classifier below is the degenerate fiber the global Echo principle warns
+-- against (a yes/no tag, not retained-loss lineage); it stands only as a
+-- smoke-test until the real lineage/residue attachment is built against
+-- echo-types' decorated modules (EchoLinear / EchoResidue /
+-- EchoResidueTaxonomy), which requires the echo-types repo in scope.
+-- Do NOT treat this Bool/@ bridge as canon.
+--
 -- KitchenSpeak's Echo (@) type is a *postulated-oracle witness*: a
 -- dependent pair of a sensor sample time and a proof the sensor met its
 -- threshold there (Dough.agda's `Witness`, PoachedEgg.agda's
