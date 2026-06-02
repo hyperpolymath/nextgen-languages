@@ -1,0 +1,92 @@
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= ADR 0003 — Base the Echo Type on the echo-types Library
+:toc:
+:toclevels: 2
+:icons: font
+
+== Status
+
+*Accepted — bridge landed; full in-proof adoption staged.*
+
+== Context
+
+KitchenSpeak's *Echo* type (`@`) models a postulated-oracle witness: a
+sensor sample together with a proof the physical world matched intent.
+Until now this was an ad-hoc dependent pair in each proof — e.g.
+`Witness = Σ[ t ∈ Minutes ] viscosity-at t ≥ threshold` (Dough.agda) and
+`ShimmerWitness = Σ[ t ] temp-at t ≥ threshold` (PoachedEgg.agda).
+
+A standalone, mechanised formalisation of exactly this structure already
+exists in the ecosystem: link:https://github.com/hyperpolymath/echo-types[`hyperpolymath/echo-types`],
+a constructive Agda library whose core type is the *fiber*:
+
+[source,agda]
+----
+Echo : ∀ {a b} {A : Set a} {B : Set b} (f : A → B) → B → Set (a ⊔ b)
+Echo f y = Σ A (λ x → f x ≡ y)
+----
+
+`Echo f y` records *which inputs map to `y`* — the proof-relevant
+residue of a non-injective ("lossy") function. echo-types develops this
+as an orthogonal factorization system with a thermodynamic (Landauer /
+Bennett) layer and a residue taxonomy that includes an *epistemic*
+residue form. The runnable, finite-domain companion is
+link:https://github.com/hyperpolymath/EchoTypes.jl[`EchoTypes.jl`] (a
+model, not a proof).
+
+KitchenSpeak's `@` witness is a special case of this fiber: the sensor
+is a (non-injective, lossy) classifier and the witness is the Echo over
+its "fired" value. Re-using echo-types gives KitchenSpeak's Echo a
+single mechanised definition shared between the proofs and the planned
+type checker, and aligns the cooking-irreversibility / thermodynamic
+themes (you cannot un-cook; structured, non-total loss) with an existing
+formal account.
+
+== Decision
+
+Adopt echo-types as the canonical foundation for KitchenSpeak's Echo
+type, and depend on it from the proof library.
+
+. *Dependency.* `kitchenspeak.agda-lib` now declares
+  `depend: standard-library echo-types`. echo-types itself declares
+  `depend: standard-library absolute-zero`, so both `echo-types` and
+  `absolute-zero` must be registered in `~/.agda/libraries`, and
+  agda-stdlib is raised to 2.3+ (echo-types' floor).
+. *Bridge.* A new `proofs/agda/EchoBridge.agda` imports echo-types'
+  `Echo` and proves KitchenSpeak's threshold witness interconvertible
+  with `Echo (fired sensor thr) true`, where
+  `fired s thr t = ⌊ s t ≥? thr ⌋` views the oracle as a Boolean
+  classifier. This isolates the cross-library integration in one file.
+. *Proofs unchanged for now.* Dough.agda and PoachedEgg.agda keep their
+  inline `Σ` witnesses (so their structural-recursion proofs are
+  untouched) and expose them as echo-types Echoes via the bridge.
+  Migrating the inline witnesses to `SensorEcho` directly is staged for
+  a later step once the dependency type-checks in CI.
+. *Type checker.* The planned KitchenSpeak checker (ROADMAP Phase 3)
+  takes `Echo (fired sensor thr) true` as the canonical typing of an `@`
+  witness, with EchoTypes.jl as the finite-domain runtime / HAL model.
+
+== Consequences
+
+* KitchenSpeak's Echo is no longer ad-hoc: it is the echo-types fiber,
+  with the structured-loss / epistemic-residue reading made explicit.
+* New build burden: contributors must register `echo-types` and
+  `absolute-zero` (documented in `proofs/README.adoc`). CI (ROADMAP
+  Phase 1a) must fetch both before `make -C proofs`.
+* Flag stance: echo-types' `Echo` is `--safe --without-K`; KitchenSpeak's
+  proofs are deliberately non-`--safe` (they postulate sensor streams).
+  Importing a safe/without-K module from non-safe code is permitted; the
+  bridge is left at default discipline and this is to be confirmed when
+  Agda is available.
+* The "verified classifier story for echo-types" previously listed as
+  out of scope (COMMENTARY §Deliberately out of scope) is now partially
+  addressed: the *type* of the witness is mechanised; the sensor
+  *reading* remains postulated.
+
+== Reversibility
+
+*Moderate.* The bridge and the `depend` line are removable, restoring the
+self-contained `Σ` witnesses, without touching the recipe proofs (which
+were intentionally left unmodified). Reverting only loses the shared
+definition and the documented alignment.
