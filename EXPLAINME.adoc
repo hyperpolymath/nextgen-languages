@@ -99,7 +99,11 @@ Ceremonial (effect), Primitive (units). `max_duration` / `on_fail` /
 NOTE: *KitchenSpeak* is an experimental teaching DSL, not one of the ten
 core languages. It is maintained as the standalone `hyperpolymath/kitchenspeak`
 repository and develops proofs-first (see its `ROADMAP.adoc`); the canonical
-recipes (Dough, Poached Egg) already have Agda lowerings.
+recipes (Dough, Poached Egg) already have Agda lowerings. Per ADR 0004 its
+Echo type is being anchored on the link:https://github.com/hyperpolymath/echo-types[`echo-types`]
+library (structured-loss residue), attaching to the *Linear/Dyadic* consumption
+types rather than the narrow `@` sensor witness — the current Boolean
+`EchoBridge` is a temporary smoke-test, not the canonical attachment.
 
 === Most mature: Ephapax
 
@@ -331,6 +335,24 @@ what does not" document.
 | `TOPOLOGY.md`
 | Visual map of all language satellites and their relationships.
 |===
+
+== Governance & CI Posture
+
+CI governance (the `governance/*` jobs) and the Hypatia neurosymbolic scan are
+consumed from `hyperpolymath/standards` as *pinned reusable workflows* — the
+enforcing rulesets live there, not in this repo. Two consequences for readers
+and for automated agents:
+
+* The *Hypatia Security Scan* comment on PRs is *advisory and non-blocking*.
+  The blocking gates are the `governance/*`, `scan/*`, `analyze`, `semgrep`,
+  validator, and dogfood checks.
+* Recurring advisory findings that have been triaged and accepted (reusable-
+  workflow-caller timeout false positives, by-design Agda trusted-base
+  postulates, etc.) are recorded once in
+  `.machine_readable/6a2/NEUROSYM.a2ml` under `[waivers]`. Agents consult that
+  registry (per `AGENTIC.a2ml` / `PLAYBOOK.a2ml`) and do not re-fix accepted
+  findings on every PR. Changing the enforcing ruleset itself must be done in
+  `standards`.
 
 == Questions?
 

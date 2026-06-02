@@ -2,11 +2,14 @@
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
 # NEUROSYM.a2ml — Neurosymbolic integration metadata
-# Configuration for Hypatia scanning and symbolic reasoning.
+# Configuration for Hypatia scanning and symbolic reasoning, plus the
+# repo-local registry of accepted/triaged Hypatia findings (waivers) that
+# Hypatia and the gitbots consult so the same advisories are not
+# re-litigated on every PR.
 
 [metadata]
-version = "0.1.0"
-last-updated = "2026-03-16"
+version = "0.2.0"
+last-updated = "2026-06-02"
 
 [hypatia-config]
 scan-enabled = true
@@ -24,3 +27,69 @@ report-format = "logtalk"
 # - Output guaranteed to satisfy constraints by construction
 # - Value constraints in types
 # - SMT solver backed
+
+# ---------------------------------------------------------------------------
+# Accepted-findings registry (waivers).
+#
+# Hypatia's enforcing ruleset lives in hyperpolymath/standards
+# (hypatia-scan-reusable.yml / governance-reusable.yml), NOT in this repo,
+# so this registry is the repo-local source of truth for findings that have
+# been triaged and accepted. The Hypatia scan is advisory (non-blocking);
+# the governance gates are the blocking checks and already pass.
+#
+# Gitbot / agent contract (see AGENTIC.a2ml, PLAYBOOK.a2ml):
+#   - Before acting on a Hypatia advisory finding, look it up here by `rule`
+#     + `file`. If present, DO NOT attempt a fix — the finding is accepted.
+#   - Only act on findings NOT listed here, or whose `disposition` is
+#     "track" with an open `action`.
+#
+# disposition values:
+#   false-positive    — the rule does not apply (acting on it would break CI)
+#   by-design         — intentional, documented; not a defect
+#   addressed         — fixed in-repo; detector still fires (pattern mismatch)
+#   track             — accepted for now; carries a follow-up `action`
+# ---------------------------------------------------------------------------
+
+[accepted-findings]
+policy = "Findings listed below are triaged and accepted; do not auto-fix."
+ruleset-location = "hyperpolymath/standards (external to this repo)"
+scan-is-blocking = false
+
+[waivers.reusable-caller-timeout]
+rule = "missing_timeout_minutes"
+files = "governance.yml, hypatia-scan.yml, mirror.yml, scorecard.yml, secret-scanner.yml"
+severity = "medium"
+disposition = "false-positive"
+justification = "These jobs call reusable workflows (jobs.<id>.uses). GitHub Actions rejects timeout-minutes on reusable-workflow caller jobs, so adding it would break the workflow."
+
+[waivers.governance-reusable-pin]
+rule = "unpinned_action"
+files = "governance.yml"
+severity = "medium"
+disposition = "track"
+justification = "hyperpolymath/standards governance-reusable.yml is referenced at @main. The standards repo is outside this session's scope and the SHA could not be resolved here; the check is green at @main."
+action = "Pin to a commit SHA via an authenticated lookup of standards governance-reusable.yml on main."
+
+[waivers.scorecard-publish-split]
+rule = "scorecard_publish_with_run_step"
+files = "scorecard-enforcer.yml"
+severity = "high"
+disposition = "addressed"
+justification = "The privileged publish job (id-token: write) was split from a separate unprivileged score-gate job; the publish job has no run steps. Detector may want the publish in a separate workflow file rather than a separate job in the same file."
+action = "If suppression is required, confirm the detector's exact shape with standards, or move the publish step to its own workflow file."
+
+[waivers.instant-sync-secret-gate]
+rule = "secret_action_without_presence_gate"
+files = "instant-sync.yml"
+severity = "high"
+disposition = "addressed"
+justification = "The repository-dispatch step is gated on FARM_DISPATCH_TOKEN presence via a job-level env plus a step-level `if`. Detector may expect a job-level gate."
+action = "If suppression is required, confirm the detector's expected gate shape with standards."
+
+[waivers.agda-postulate-trusted-base]
+rule = "agda_postulate"
+files = "kitchenspeak/proofs/agda/Dough.agda, kitchenspeak/proofs/agda/PoachedEgg.agda"
+severity = "critical"
+disposition = "by-design"
+justification = "These postulates are KitchenSpeak's deliberate trusted base: postulated echo-oracle sensor streams and the GENTLE controller spec. Each is annotated inline (AXIOM:) and enumerated in PROOF-NEEDS.md; they are documented trust boundaries, not undocumented soundness holes. The blocking Trusted-base reduction policy passes."
+action = "Replaced by verified HAL bindings in a production lowering; tracked in PROOF-NEEDS.md."

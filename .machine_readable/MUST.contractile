@@ -78,11 +78,16 @@
     ; ABI/FFI (if applicable)
     (must "no modification of ABI contracts without proof update")
     (must "no removal of formal verification proofs")
-  )
 
-  ; === Project-Specific Invariants ===
-  ; *REMINDER: Add invariants specific to this repo*
-  ; (must "# Add project-specific invariants here")
+    ; === Project-Specific Invariants (nextgen-languages) ===
+    ; Proofs and trusted base
+    (must "KitchenSpeak Agda postulates are documented as trusted base (inline AXIOM + PROOF-NEEDS.md)")
+    (must "KitchenSpeak proofs lead implementation — the Agda-Proven invariant")
+    (must "KitchenSpeak Echo type attaches to Linear/Dyadic per ADR 0004; the Bool bridge is non-canonical")
+    ; Governance and cross-repo rulesets
+    (must "recurring Hypatia advisories are triaged in NEUROSYM.a2ml waivers, not silently suppressed")
+    (must "echo-types and Hypatia rulesets are changed in their source repos, not vendored here")
+  )
 
   (enforcement
     (k9-validator "contractiles/k9/must-check.k9.ncl")

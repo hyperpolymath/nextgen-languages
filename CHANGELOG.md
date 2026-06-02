@@ -3,6 +3,38 @@
 
 All notable changes to the nextgen-languages parent repository.
 
+## 2026-06-02
+
+### Added
+
+- KitchenSpeak elevated to standalone-repo-ready and listed as a DSL in
+  `README.adoc` / `EXPLAINME.adoc`; `scripts/elevate-kitchenspeak.sh` performs
+  the repo split + submodule conversion.
+- KitchenSpeak proofs commenced: `PoachedEgg.agda` (Linear+Tropical+Echo),
+  `EchoBridge.agda`, and a proof harness (`proofs/Makefile`,
+  `kitchenspeak.agda-lib`).
+- KitchenSpeak ADRs 0002–0004: standalone elevation; `echo-types` dependency;
+  Echo attaches to Linear/Dyadic (B-now / C-later / A-shim).
+- Hypatia accepted-findings registry in `.machine_readable/6a2/NEUROSYM.a2ml`
+  `[waivers]`, with gitbot runbook in `PLAYBOOK.a2ml` and agent contract in
+  `AGENTIC.a2ml`.
+- `6a2` machine-readable state refreshed (STATE/META/ECOSYSTEM/NEUROSYM/
+  PLAYBOOK/AGENTIC); `MUST.contractile` project-specific invariants.
+
+### Changed
+
+- CI hygiene: `timeout-minutes` on all real jobs; CodeQL matrix
+  `javascript-typescript` → `actions`; scorecard publish job split from an
+  unprivileged score-gate; `instant-sync` dispatch gated on secret presence;
+  fixed pre-existing invalid YAML in `instant-sync.yml`.
+- `Trustfile` reconciled: deleting merged PR branches is permitted
+  (force-push, CI-secret modification, and publish remain denied).
+
+### Removed
+
+- Spurious `nuget` ecosystem from `.github/dependabot.yml` (no .NET projects).
+- Stale merged feature branches.
+
 ## 2026-03-15
 
 ### Changed

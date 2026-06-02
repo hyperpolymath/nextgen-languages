@@ -8,3 +8,15 @@ ecosystem = "hyperpolymath"
 
 [position]
 type = "component"
+
+[related-projects]
+# Projects this repo coordinates with directly.
+echo-types = "hyperpolymath/echo-types — Agda formal model of structured loss (Echo fiber); KitchenSpeak's Echo substrate"
+echotypes-jl = "hyperpolymath/EchoTypes.jl — executable finite-domain companion to echo-types (runtime model, not a proof)"
+standards = "hyperpolymath/standards — governance + Hypatia reusable workflows (pinned)"
+typed-wasm = "hyperpolymath/typed-wasm — WasmGC compilation target for AffineScript/Ephapax"
+tentacles = "hyperpolymath/tentacles-agentic-syllabus — curriculum (NOT a language; do not audit as one)"
+
+[language-repos]
+note = "Each language is a standalone canonical repo, wired in as a submodule (see .gitmodules)."
+kitchenspeak = "in-tree, standalone-repo-ready; elevate via scripts/elevate-kitchenspeak.sh"
