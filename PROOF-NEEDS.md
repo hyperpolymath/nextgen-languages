@@ -21,6 +21,21 @@
 | Tangle Lean proofs | Extend Tangle.lean coverage | Existing Lean proofs are partial |
 | Oblibeny ABI | Extend Interface.idr with full package proofs | Current ABI is minimal |
 
+## KitchenSpeak Trusted Base (Agda postulates)
+
+KitchenSpeak's proofs are deliberately built on a small, explicit trusted
+base: the *postulated echo-oracles* (sensors) and the GENTLE *controller
+spec*. These are not soundness gaps to close but documented trust
+boundaries (see each proof's final section and `COMMENTARY.adoc §Echo`).
+A production lowering replaces each with a verified HAL binding.
+
+| Postulate | File | What it trusts | Production replacement |
+|-----------|------|----------------|------------------------|
+| `viscosity-at` | `kitchenspeak/proofs/agda/Dough.agda` | Torque sensor stream | Verified HAL torque binding |
+| `temp-at` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | Hob thermometer stream | Verified HAL thermal binding |
+| `white-set-at` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | Visual albumen classifier | Verified/empirically-bounded classifier |
+| `gentle-bounded` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | GENTLE controller never overshoots target cap | Integrator bound on the slope |
+
 ## Recommended Prover
 
 **Coq** for Ephapax (existing proof infrastructure). **Lean4** for Tangle (existing). **Idris2** for ABI layers. **OCaml** extraction from Coq for AffineScript type checker verification.

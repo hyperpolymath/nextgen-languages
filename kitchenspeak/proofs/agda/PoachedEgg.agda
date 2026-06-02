@@ -163,7 +163,13 @@ record Vinegar : Set where
 --   temp-at        — the hob thermometer, in °C, sampled per minute.
 --   white-set-at   — the visual albumen-coagulation classifier; reports
 --                    a coagulation score, "set" once it crosses 1.
-
+--
+-- AXIOM: these are postulated echo-oracle sensor streams — the physical
+-- world, not derivable terms. The proof trusts the classifier pipeline
+-- and discharges the surrounding control flow; a production lowering
+-- replaces each with a verified HAL binding. This is the deliberate
+-- proven/postulated trusted-base boundary (COMMENTARY.adoc §Echo; §9(a)
+-- below). Trusted base contribution: 2 sensor postulates.
 postulate
   temp-at      : Minutes → Celsius
   white-set-at : Minutes → ℕ
@@ -234,7 +240,11 @@ poach e v (suc n) t with white-set-at t ≥? set-threshold
 -- analogue of the sensor postulate — it is the controller's contract,
 -- supplied by the HAL, not derived here. A production lowering proves
 -- it from an integrator bound on the slope.
-
+--
+-- AXIOM: the GENTLE controller's specification, supplied by the HAL and
+-- trusted here rather than derived. A production lowering discharges it
+-- from an integrator bound on the slope (§9(b)). Trusted base
+-- contribution: 1 controller postulate.
 postulate
   gentle-bounded : ∀ (t : Minutes) → temp-at t ≤ target-cap
 
