@@ -15,8 +15,14 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      FARM_DISPATCH_TOKEN: ${{ secrets.FARM_DISPATCH_TOKEN }}
     steps:
       - name: Trigger Propagation
+        # Presence gate: only dispatch when the secret is configured (e.g.
+        # skip on forks / environments without FARM_DISPATCH_TOKEN) rather
+        # than failing the action with an empty token.
+        if: ${{ env.FARM_DISPATCH_TOKEN != '' }}
         uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v3
         with:
           token: ${{ secrets.FARM_DISPATCH_TOKEN }}

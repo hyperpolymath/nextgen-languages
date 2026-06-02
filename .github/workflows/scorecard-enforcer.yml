@@ -44,6 +44,29 @@ jobs:
         with:
           sarif_file: results.sarif
 
+  # Unprivileged enforcement gate. Re-derives the score read-only (no
+  # publish, no id-token) and fails on a low score. Kept separate from the
+  # privileged `scorecard` publish job above so that arbitrary run: steps
+  # never execute in a job that holds id-token: write
+  # (Hypatia: scorecard_publish_with_run_step). publish_results does not
+  # affect the computed score, so the gate behaviour is unchanged.
+  score-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Run Scorecard (analysis only)
+        uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: false
+
       - name: Check minimum score
         run: |
           # Parse score from results
