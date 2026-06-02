@@ -1,0 +1,78 @@
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= ADR 0002 — Elevation of KitchenSpeak to a Standalone Repository
+:toc:
+:toclevels: 2
+:icons: font
+
+== Status
+
+*Accepted — content prepared; remote wiring pending.*
+
+The decision is accepted and all content is in place (standalone scaffolding,
+roadmap, proof harness, and the PoachedEgg proof). The final mechanical step —
+creating `github.com/hyperpolymath/kitchenspeak` and converting the
+`kitchenspeak/` directory into a submodule — is performed by
+`scripts/elevate-kitchenspeak.sh`. It is split out because it requires network
+access and a credential allowed to create repositories, which the automated
+session that prepared this branch lacked (repo creation returned HTTP 403,
+"Resource not accessible by integration"). Until that script runs, the content
+lives in-tree in the monorepo.
+
+== Context
+
+KitchenSpeak began life as an in-tree directory, `kitchenspeak/`, inside
+the `nextgen-languages` monorepo — the only language there held as plain
+tracked files rather than as a submodule of its own canonical repo. Every
+sibling language (`affinescript`, `ephapax`, `betlang`, `eclexia`,
+`oblibeny`, …) is a standalone `hyperpolymath/<lang>` repository wired
+into the monorepo as a git submodule.
+
+KitchenSpeak having matured to a stable v1.0 specification, a patched
+grammar, a type-theoretic commentary, a worked example, and a first
+proof, it is ready to take its place alongside the others. Two things
+prompted the elevation:
+
+. *Consistency.* The monorepo's own `EXPLAINME.adoc` states that "no
+  implementation code lives [at the repo root]. All language
+  implementations live in subdirectories … which are also maintained as
+  standalone canonical repos." KitchenSpeak was the exception.
+. *Trajectory.* KitchenSpeak now has a development roadmap of its own
+  (`ROADMAP.adoc`) aiming at AffineScript-level toolchain parity. That
+  work wants its own issue tracker, CI, and release cadence — i.e. its
+  own repo.
+
+== Decision
+
+Elevate KitchenSpeak to `hyperpolymath/kitchenspeak`, a standalone
+public repository, and reference it from `nextgen-languages` as a git
+submodule (`git@github.com:hyperpolymath/kitchenspeak.git`), exactly as
+the sibling languages are referenced.
+
+The elevation carries the existing artefacts verbatim (`SPEC.adoc`,
+`COMMENTARY.adoc`, `grammar.ebnf`, the worked example, ADR 0001, the
+Dough proof) and adds standalone-repo scaffolding: `README.adoc`,
+`LICENSE`, `.gitignore`, `CHANGELOG.adoc`, `ROADMAP.adoc`, a proof build
+harness (`proofs/Makefile`, `proofs/agda/kitchenspeak.agda-lib`), and a
+second proof (`proofs/agda/PoachedEgg.agda`) that commences Phase 1 of
+the roadmap.
+
+== Consequences
+
+* The monorepo no longer holds KitchenSpeak's files directly; it holds a
+  submodule gitlink and a `.gitmodules` entry.
+* KitchenSpeak is listed as a DSL in the monorepo `README.adoc` Projects
+  list and `EXPLAINME.adoc` language tables.
+* Development now leads with **proofs** (`ROADMAP.adoc` Phase 1), in
+  keeping with the `Agda-Proven` mission criterion (SPEC.adoc §6) and in
+  deliberate contrast to AffineScript, whose foundations are its weakest
+  axis.
+* The `SPEC.adoc` class artefact is untouched by the move — elevation is
+  a packaging decision, not a specification change.
+
+== Reversibility
+
+*High.* The submodule pointer can be inlined again, or the repo
+re-absorbed, without touching any specification or proof content. Nothing
+in `SPEC.adoc`, `grammar.ebnf`, or the proofs depends on the repository
+boundary.

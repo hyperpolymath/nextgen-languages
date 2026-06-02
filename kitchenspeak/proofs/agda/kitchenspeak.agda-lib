@@ -1,0 +1,6 @@
+-- SPDX-License-Identifier: MPL-2.0
+-- KitchenSpeak core proof library.
+-- Agda 2.6.4+ with standard-library 2.0+.
+name: kitchenspeak
+include: .
+depend: standard-library
