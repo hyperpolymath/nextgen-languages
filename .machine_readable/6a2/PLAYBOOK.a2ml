@@ -2,18 +2,19 @@
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
 # PLAYBOOK.a2ml — Operational playbook
-# Runbooks, incident response, deployment procedures.
+# Runbooks, incident response, deployment procedures, and the standing
+# operating contract for automated agents (gitbots) on this repo.
 
 [metadata]
-version = "0.1.0"
-last-updated = "2026-03-16"
+version = "0.2.0"
+last-updated = "2026-06-02"
 
 [deployment]
 # method = "gitops"
 # target = "container"
 
 [incident-response]
-# 1. Check .machine_readable/STATE.a2ml for current status
+# 1. Check .machine_readable/6a2/STATE.a2ml for current status
 # 2. Review recent commits and CI results
 # 3. Run just validate to check compliance
 
@@ -24,3 +25,35 @@ last-updated = "2026-03-16"
 
 [operational-flows]
 # - Adding a new language to the ecosystem
+
+# ---------------------------------------------------------------------------
+# Recurring CI advisories — gitbot runbook.
+#
+# The Hypatia neurosymbolic scan posts an advisory comment on every PR. It
+# is NON-BLOCKING; the blocking gates are the governance/* and scan/* checks.
+# Most advisory findings are already triaged and recorded in
+# .machine_readable/6a2/NEUROSYM.a2ml [waivers].
+# ---------------------------------------------------------------------------
+
+[recurring-ci-advisories]
+source = "Hypatia Security Scan advisory comment"
+blocking = false
+registry = ".machine_readable/6a2/NEUROSYM.a2ml"
+step-1 = "For each finding, look it up in NEUROSYM [waivers] by rule + file."
+step-2 = "If present, skip it — it is accepted; do NOT open a fix."
+step-3 = "Act only on findings NOT in the registry, or with disposition = track and an open action."
+step-4 = "If a genuinely new finding appears, triage it; if accepted, add a waiver entry rather than re-fixing each PR."
+
+[branch-hygiene]
+# Permitted per the Trustfile carve-out (contractiles/trust/Trustfile.a2ml).
+delete-merged-branches = "allowed — feature branches whose PR is merged may be deleted (local + remote)"
+never-delete = "main, and any open/active branch"
+never = "force-push; modify CI secrets; publish"
+note = "GitHub auto-deletes PR branches on merge; prune local tracking refs with `git remote prune origin`."
+
+[merge-gating]
+# When self-merging (per maintainer authorization), gate on:
+rule-1 = "All required (blocking) checks green: governance/*, scan/*, analyze, semgrep, dogfood, validators."
+rule-2 = "Hypatia advisory is non-blocking and MUST NOT gate the merge."
+rule-3 = "Draft/WIP PRs are never merged; mark ready first."
+rule-4 = "Architecture-decision PRs (ADRs) and implementation PRs are kept at separate granularity."

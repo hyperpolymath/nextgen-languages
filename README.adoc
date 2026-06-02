@@ -151,6 +151,23 @@ See also:
 * `nextgen-languages/affinescript/` — affine type discipline, compiles to WasmGC
 * `nextgen-languages/ephapax/` — dyadic linear/affine type system, compiles to WasmGC
 
+== Shared Formal Substrate — echo-types
+
+Several languages here reason about *irreversible transformation with retained
+residue* — an egg cannot be uncracked, flour and water become dough. The
+formal account of that idea lives in a separate repository:
+
+* link:https://github.com/hyperpolymath/echo-types[`echo-types`] — a
+  constructive Agda library for *Echo types*: the proof-relevant residue of
+  structured (non-total) loss, `Echo f y := Σ (x : A), f x ≡ y`. Its
+  link:https://github.com/hyperpolymath/EchoTypes.jl[`EchoTypes.jl`] companion
+  is an executable finite-domain model.
+
+KitchenSpeak is the first consumer: per ADR 0004 its Echo type attaches to the
+*Linear/Dyadic* consumption types (where irreversible transformation and
+provenance live), with `echo-types` as the substrate. `echo-types` is not a
+language in the `nextgen-languages` sense — it is a shared formal library.
+
 == Status
 
 This repository should be read as a *research exploration* rather than a production system.

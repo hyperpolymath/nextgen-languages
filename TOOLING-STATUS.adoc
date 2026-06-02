@@ -51,7 +51,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | **Julia-the-viper** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Oblibeny** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Error-lang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
-| **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
 | **Tangle** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Me-dialect** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **VCL-total (vcl-ut)** | TBD | TBD | TBD | TBD | TBD | Database/identity language; per ARG §1.1 tightening applies.

@@ -9,8 +9,11 @@ Maximal trust by default — LLM may read, build, test, lint, format.
 
 @trust-level: maximal
 @trust-boundary: repo
-@trust-actions: [read, build, test, lint, format]
-@trust-deny: [delete-branch, force-push, modify-ci-secrets, publish]
+@trust-actions: [read, build, test, lint, format, delete-merged-branch]
+@trust-deny: [force-push, modify-ci-secrets, publish]
+# Branch-hygiene carve-out (2026-06-02): deleting MERGED PR branches is
+# permitted (local + remote). `main` and any open/active branch must never be
+# deleted, and force-push stays denied. See PLAYBOOK.a2ml [branch-hygiene].
 
 ## Integrity
 

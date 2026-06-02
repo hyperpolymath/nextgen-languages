@@ -5,13 +5,13 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-04-04"
+last-updated = "2026-06-02"
 status = "active"
 
 [project-context]
 name = "nextgen-languages"
 completion-percentage = 15
-phase = "CRG C achieved for ephapax workspace (2026-04-04)"
+phase = "CRG C achieved for ephapax workspace (2026-04-04); KitchenSpeak elevated + proofs commenced (2026-06)"
 
 [crg-status]
 overall = "CRG C achieved 2026-04-04"
@@ -31,3 +31,23 @@ ephapax-lexer-new = "9 new tests: 4 P2P property, 2 E2E, 3 aspect"
 p2p-property-tests = "Loop-based invariant checks (10-20 iterations each)"
 e2e-tests = "Full pipeline: lexer->tokens, module->discipline check"
 aspect-tests = "Robustness: empty inputs, stateless checkers, edge cases"
+
+[kitchenspeak]
+# KitchenSpeak: experimental, formally-verified kitchen-orchestration DSL.
+status = "elevated to standalone-repo-ready; proofs-first development commenced"
+listed-as = "DSL in README.adoc and EXPLAINME.adoc"
+elevation = "scripts/elevate-kitchenspeak.sh creates hyperpolymath/kitchenspeak + submodule (needs repo-create rights)"
+proofs = "Dough.agda, PoachedEgg.agda (Linear+Tropical+Echo), EchoBridge.agda; harness: proofs/Makefile + kitchenspeak.agda-lib"
+proofs-status = "hand-verified, not yet machine-checked (Agda not in CI yet; ROADMAP Phase 1a)"
+decisions = "ADR 0001 (Agda), 0002 (elevation), 0003 (echo-types dependency), 0004 (Echo attaches to Linear/Dyadic: B-now/C-later/A-shim)"
+echo-types = "Echo type bound to hyperpolymath/echo-types fiber; canonical attachment is Linear/Dyadic per ADR 0004; Bool bridge is a temporary smoke-test"
+gated = "B-implementation gated on echo-types repo in scope (read EchoLinear/EchoTropical/EchoChoreo/EchoEpistemic/EchoResidueTaxonomy first)"
+
+[ci-governance]
+# Outcome of the 2026-06 CI hygiene pass.
+timeouts = "timeout-minutes added to all real runs-on+steps jobs (reusable-caller jobs intentionally excluded)"
+codeql = "matrix switched javascript-typescript -> actions (repo has no JS/TS sources)"
+nuget = "spurious nuget dependabot ecosystem removed (no .NET projects)"
+scorecard = "publish job split from unprivileged score-gate job"
+instant-sync = "repository-dispatch gated on FARM_DISPATCH_TOKEN presence"
+hypatia-waivers = "recurring advisory findings triaged in .machine_readable/6a2/NEUROSYM.a2ml [waivers]"
