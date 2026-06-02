@@ -1,0 +1,110 @@
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= ADR 0004 — Echo Attaches to Linear/Dyadic Consumption (Q1)
+:toc:
+:toclevels: 2
+:icons: font
+
+== Status
+
+*Accepted (design). Implementation gated and staged.*
+
+This ADR records the answer to the standing design question "Q1": where, in
+KitchenSpeak's type system, does the `hyperpolymath/echo-types` notion of
+*structured, proof-relevant loss* attach? It is a design decision only — no
+consumption-model code is changed here. The implementation is gated on the
+echo-types repository being in scope so its decorated modules can be read
+first (see Consequences).
+
+== Context
+
+ADR 0003 wired KitchenSpeak's Echo (`@`) type onto echo-types' core fiber
+`Echo f y = Σ (x : A), f x ≡ y` via a bridge that treats each sensor as a
+Boolean classifier (`fired s thr t = ⌊ s t ≥? thr ⌋`) and takes the Echo over
+`true`. That bridge is merged as a checkpoint, but it is the *degenerate*
+fiber: a yes/no tag, which is precisely the "generic Σ / Boolean collapse"
+the project's global Echo principle warns against (Echo must carry
+*retained-loss lineage*, not a decorative wrapper).
+
+Three candidate attachment points were considered:
+
+* *A — Echo (`@`) sensor-witness type.* Name- and shape-match; smallest
+  change. But a single sensor witness is one Echo, not a lineage chain; it
+  never exercises map-over / degrade-compose, and risks reducing Echo to a
+  yes/no tag.
+* *B — Linear / Dyadic consumption types.* Concept-exact: consuming an egg,
+  or `Flour ⊗ Water → Dough`, is non-total erasure with retained
+  residue/provenance — echo-types' literal subject. The dyadic bind is a
+  non-injective map whose fiber is provenance; cooking stages
+  (`raw → seared → charred`) are degrade-compose chains.
+* *C — a shared substrate beneath several KitchenSpeak types.* echo-types
+  ships `EchoLinear`, `EchoTropical`, `EchoChoreo`, `EchoEpistemic`,
+  `EchoGraded` — a decoration for most of KitchenSpeak's type zoo, hinting
+  Echo is the substrate, not one type.
+
+=== Weighted assessment
+
+Drivers and weights (sum 100); option scores 1–5; weighted total out of 500.
+
+[cols="<3,^1,^1,^1,^1", options="header"]
+|===
+| Driver | Weight | A | B | C
+
+| Semantic fidelity — retained-loss lineage, not generic Σ/Bool | 35 | 2 | 5 | 5
+| KitchenSpeak identity — irreversible transform with provenance | 25 | 2 | 5 | 4
+| Effort / blast-radius safety (lower risk scores higher)        | 15 | 5 | 2 | 1
+| Pedagogical clarity (distinct teaching lenses)                 | 15 | 4 | 3 | 2
+| Reversibility / avoids premature lock-in                       | 10 | 5 | 3 | 2
+| *Weighted total*                                               | *100* | *305* | *405* | *340*
+|===
+
+B wins cleanly. The framing is deliberate: this is a "where does the concept
+belong?" decision, not a minimal-patch decision, so fidelity and identity
+dominate the weighting.
+
+== Decision
+
+*B-now / C-later / A-shim.*
+
+. *Primary attachment (B):* echo-types attaches first to KitchenSpeak's
+  *Linear* and *Dyadic* consumption types. That is where KitchenSpeak
+  naturally speaks about irreversible transformation, residue, provenance,
+  and degradation chains. KitchenSpeak's core identity is not "a sensor
+  fired and we kept a witness" — that is one instance — but *irreversible
+  transformation with retained provenance* (`Flour ⊗ Water → Dough`: you
+  cannot unmix the dough, but you may retain structured residue of the
+  transformation).
+. *Substrate hypothesis (C), reserved:* `EchoLinear` / `EchoTropical` /
+  `EchoChoreo` / `EchoEpistemic` may eventually explain several KitchenSpeak
+  types. This is kept open as an architecture hypothesis and is *not*
+  implemented wholesale until the echo-types repo is in scope and those
+  modules are inspected properly.
+. *Sensor witness (A), demoted to a shim:* the `@` / sensor-witness Echo may
+  remain as a secondary adapter/example, but is *not* the core attachment.
+  The current Boolean `EchoBridge` is a *temporary smoke-test bridge only*
+  (so annotated in `proofs/agda/EchoBridge.agda`), not the canonical Echo.
+
+== Consequences
+
+* The next real KitchenSpeak pass attaches echo-types to Linear/Dyadic, and
+  *replaces the Boolean classifier with genuine retained-loss
+  lineage/residue* — but only *after* inspecting the relevant echo-types
+  modules (`EchoLinear`, `EchoResidue`, `EchoResidueTaxonomy`, and the
+  decoration variants). That inspection requires `hyperpolymath/echo-types`
+  to be in this session's scope; until then, no consumption-model code is
+  written.
+* Work lands on a *fresh branch* as follow-up commits; the merged
+  ADR-0003 / EchoBridge checkpoint is preserved, not rewritten.
+* `Dough.agda` (the dyadic `bind-dough` + linear consumption) becomes the
+  natural first proof to carry a real provenance/residue Echo; the degrade
+  chain (`raw → … → over`) becomes the canonical lineage example — which
+  also feeds the echo-types benchmark work-stream (lineage chains drawn
+  from recipes).
+* ROADMAP Phase 3 (type checker): the Echo typing rule is rooted in the
+  Linear/Dyadic residue, with `@` as an adapter, not the root.
+
+== Reversibility
+
+*High.* This is a recorded decision plus a one-paragraph status annotation on
+the smoke-test bridge. No consumption-model code is committed, so nothing
+needs unwinding if the substrate inspection (C) reshapes the plan.
