@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # My-Language Family
 
 The My-Language family is a progressive series of programming languages designed to grow with learners from age 8 through age 18.

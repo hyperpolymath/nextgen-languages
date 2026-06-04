@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Compiler Pipeline
 
 The NextGen Languages share a common compiler architecture with language-specific frontends and multiple backend targets.

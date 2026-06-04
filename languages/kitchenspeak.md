@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # KitchenSpeak
 
 > Formally-verified, hardware-agnostic orchestration for the domestic kitchen.
