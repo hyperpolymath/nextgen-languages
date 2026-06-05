@@ -27,4 +27,4 @@ See `README.adoc` for the full list of canonical repositories.
 
 == Tracking
 
-Progress tracked in `.machine_readable/STATE.scm`.
+Progress tracked in `.machine_readable/6a2/STATE.a2ml`.

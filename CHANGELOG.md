@@ -66,4 +66,4 @@ All notable changes to the nextgen-languages parent repository.
 ### Added
 
 - Consolidation of scattered language repos into canonical locations.
-- Updated STATE.scm with verified completion percentages.
+- Updated .machine_readable/6a2/STATE.a2ml with verified completion percentages.
