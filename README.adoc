@@ -114,6 +114,34 @@ Status: specification stable at v1.0; proof library commenced (Dough,
 Poached Egg), toolchain in progress. Maintained as the standalone
 `hyperpolymath/kitchenspeak` repository.
 
+TypeFix Zero / TF0
+
+A deliberately minimal typed core language exploring the smallest useful boundary between mathematical typehood and Turing-complete computation.
+
+TypeFix Zero is a universe-stratified simply typed lambda calculus with natural numbers and one explicit fixed-point primitive. It asks: what is the smallest language that still has ordinary mathematical types, standard metaset/universe machinery, and enough computation to be Turing complete?
+
+Core ingredients:
+
+stratified universes / metasets: Type i : Type (i + 1)
+function types: A -> B
+natural numbers: Nat, zero, succ, and primitive recursion/case analysis
+lambda abstraction and application
+one explicit fixed-point primitive: fix : (A -> A) -> A
+
+The design intentionally separates:
+
+the total mathematical fragment, where terms can be read proof-theoretically
+the partial computational fragment, where fix admits nontermination and therefore Turing completeness
+
+Status: proposed standalone repository; foundational design stage.
+
+Relationship to the rest of the language estate:
+
+Kategoria/Katagoria: research source for the type-theoretic and universe-level design
+TypeLL: possible downstream verifier for the safe/total fragment and explicit partiality boundary
+nextgen-language-evangeliser: possible future teaching target for explaining “minimum typed Turing completeness”
+nextgen-databases: no primary database dependency; possible later storage of typed traces, evaluation derivations, and equivalence classes of core programs
+
 == Common Principles
 
 Across these languages:
