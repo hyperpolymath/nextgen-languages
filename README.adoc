@@ -217,15 +217,4 @@ See that directory's `SIDELINED.adoc` and the `tentacles-agentic-syllabus/me/REA
 design document for the architectural pivot: Me is an agent-generated runtime projection,
 not a static dialect compiler.
 
-=Supported targets (future research directions)
-
-Target	Status	Pitch
-TypeFix Zero / TF0	Future theory target	Minimal typed Turing-complete calculus: universes, functions, natural numbers, and one explicit fixed-point primitive. Useful for teaching where mathematical typehood ends and general computation begins.
-
-Add under Roadmap.
-
-❏ Phase N: Add TypeFix Zero teaching target — examples that translate JavaScript recursion, loops, and nontermination into a minimal typed calculus with an explicit fix boundary.
-
-Add under Features or Pattern Catalogue.
-
 The TypeFix Zero target should not be treated as an ergonomic production recommendation. It is a teaching target for explaining minimal typed computation, fixed points, nontermination, and the distinction between total proof-like fragments and Turing-complete execution.
