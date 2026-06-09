@@ -118,10 +118,12 @@ Poached Egg), toolchain in progress. Maintained as the standalone
 
 Across these languages:
 
-* Formal semantics precede implementation
-* Each language targets a *specific structural guarantee*
-* Canonical intermediate representations (IRs) are preferred over direct compilation
-* Languages are paired with database or verification systems (see `nextgen-databases`)
+Formal semantics precede implementation
+Each language targets a specific structural guarantee
+Canonical intermediate representations (IRs) are preferred over direct compilation
+Languages are paired with database or verification systems where identity, provenance, or equivalence matter
+Type-theoretic boundaries are made explicit: total proof-like fragments are distinguished from partial or Turing-complete execution fragments
+Minimal calculi such as TypeFix Zero are used as calibration points for larger language designs
 
 == Relationship to Databases
 
