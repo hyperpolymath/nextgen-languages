@@ -125,12 +125,15 @@ Across these languages:
 
 == Relationship to Databases
 
-These languages are designed to work with systems that treat equivalence as a first-class concept:
+These languages are designed to work with systems that treat equivalence, provenance, and semantic identity as first-class concepts:
 
-* KRL ↔ QuandleDB / Skein
-* JtV ↔ future equivalence-aware runtime and storage models
+KRL ↔ QuandleDB / Skein
+JtV ↔ future equivalence-aware runtime and storage models
+TypeFix Zero / TF0 ↔ optional typed-trace storage, derivation indexing, and equivalence analysis for minimal core programs
 
-See the `nextgen-databases` repository for details.
+TypeFix Zero does not require a database backend. Its primary role is foundational: it provides a minimal typed, Turing-complete calculus whose syntax, typing derivations, and evaluation traces can later be stored or compared by database systems where that is useful.
+
+See the nextgen-databases repository for details.
 
 == WasmGC Compilation Infrastructure
 
