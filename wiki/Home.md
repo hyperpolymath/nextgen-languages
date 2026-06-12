@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # NextGen Languages Wiki
 
 Welcome to the NextGen Languages ecosystem documentation.
@@ -12,10 +16,10 @@ Welcome to the NextGen Languages ecosystem documentation.
 
 ### Languages
 - [[My-Language Family]]
-  - [[Me Language]] - Ages 8-10, visual and playful
   - [[Solo Language]] - Ages 8-10, first text-based programming
   - [[Duet Language]] - Ages 11-14, collaborative programming
   - [[Ensemble Language]] - Ages 15-18, full-featured
+  - [[Me Language]] - not a fourth dialect: an agent-generated projection over the Solo / Duet / Ensemble hierarchy
 - [[Foundational Languages]]
   - [[betlang]] - Probabilistic programming
   - [[julia-the-viper]] - Systems programming, Harvard Architecture
@@ -83,10 +87,11 @@ NextGen Languages is a family of programming languages designed to grow with lea
 nextgen-languages/          # This hub repository
 ├── betlang/                # Submodule: Probabilistic language
 ├── julia-the-viper/        # Submodule: Systems language
+├── kitchenspeak/           # In-tree DSL: kitchen orchestration, Agda proofs-first
 ├── wiki/                   # Documentation (you are here)
 ├── scripts/                # Utility scripts
-├── ROADMAP.md              # Development roadmap
-├── LANGUAGES.scm           # Language specifications
+├── ROADMAP.adoc            # Development roadmap
+├── .machine_readable/LANGUAGES.a2ml  # Language registry
 └── README.adoc             # Project overview
 ```
 
@@ -102,6 +107,20 @@ nextgen-languages/          # This hub repository
 | [oblibeny](https://github.com/hyperpolymath/oblibeny) | Oblíbený language |
 | [anvomidav](https://github.com/hyperpolymath/anvomidav) | Anvomidav language |
 | [wokelang](https://github.com/hyperpolymath/wokelang) | WokeLang |
+
+## Project Status (2026-06-12)
+
+- **KitchenSpeak** (in-tree kitchen-orchestration DSL) is developing proofs-first:
+  Agda proofs (`Dough.agda`, `PoachedEgg.agda`, `EchoBridge.agda`) lead the
+  implementation (ADR 0001), the Echo type attaches to Linear/Dyadic (ADR 0004),
+  and the language is registered in `.machine_readable/LANGUAGES.a2ml` (PR #68).
+- **ReScript banned estate-wide** per the Hyperpolymath Standard (PR #69).
+- **Estate standardization merged** (2026-06-12): flat contractiles under
+  `.machine_readable/contractiles/` are now canonical (root `contractiles/` and
+  `.machine_readable/*.contractile` retired, content ported), governance docs
+  (GOVERNANCE.adoc, MAINTAINERS.adoc, CODEOWNERS) added, `agent_instructions/`
+  renamed `bot_directives/`, `flake.nix` removed (Guix is the package manifest).
+- **CodeQL cron** reduced weekly → monthly (standards#288).
 
 ## Getting Help
 

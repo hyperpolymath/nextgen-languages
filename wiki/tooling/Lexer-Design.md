@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Lexer Design
 
 The lexer (lexical analyzer) is the first stage of the language processing pipeline, converting source code into a stream of tokens.

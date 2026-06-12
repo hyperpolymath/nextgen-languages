@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Complete Hyperpolymath Language Portfolio
 
 **Generated:** 2026-01-31 (Updated after Eclexia completion)

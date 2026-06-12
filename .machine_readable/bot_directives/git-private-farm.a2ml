@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MPL-2.0
+# git-private-farm.a2ml — propagation directives for .git-private-farm.
+# Precedence: maintainer > these directives > bot defaults.
+
+[metadata]
+repo = "nextgen-languages"
+last-updated = "2026-06-12"
+owner = "hyperpolymath"
+
+[propagation]
+workflow = ".github/workflows/instant-sync.yml"
+enabled = true
+target = "hyperpolymath/.git-private-farm"
+event-type = "propagate"
+# Secret NAME only — the value lives in GitHub repo secrets, never here.
+secret-name = "FARM_DISPATCH_TOKEN"
+# The dispatch step is gated on token presence (job-level env + step-level
+# `if`), so forks / environments without the secret skip cleanly instead of
+# failing with an empty token.
+presence-gated = true
+triggers = ["push to main/master", "release published"]
+
+[never-propagate]
+items = ["secrets", "unmerged branches", "work-in-progress"]
+
+[on-token-rotation]
+command = "gh secret set FARM_DISPATCH_TOKEN --repo hyperpolymath/nextgen-languages"
+note = "name only — paste the new value interactively; never commit it"

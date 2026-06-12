@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Solo
 
 > Dependable foundation for systems programming
@@ -43,7 +47,7 @@ cargo run --bin solo
 Solo is part of the [[My-Language Family]] progression:
 
 ```
-Me (ages 6-8) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
+Me (projection) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
 ```
 
 ## See Also

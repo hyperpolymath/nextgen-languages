@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Clone the repository
 git clone https://github.com/hyperpolymath/nextgen-languages.git
 cd nextgen-languages
@@ -41,7 +45,6 @@ nextgen-languages/
 ├── MAINTAINERS.md
 ├── README.adoc
 ├── SECURITY.md
-├── flake.nix            # Nix flake (Perimeter 1)
 └── Justfile             # Task runner (Perimeter 1)
 ```
 

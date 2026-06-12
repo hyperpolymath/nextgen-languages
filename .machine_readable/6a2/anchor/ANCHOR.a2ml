@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: MPL-2.0
+# ANCHOR.a2ml — canonical authority record for the nextgen-languages repository.
+# Converted 2026-06-12 from the previous YAML-style anchor (content preserved;
+# format aligned to the estate TOML-A2ML anchor shape).
+
+[metadata]
+version = "1.0.1"
+last-updated = "2026-06-12"
+
+[anchor]
+id = "org.hyperpolymath.nextgen-languages"
+schema = "hyperpolymath.anchor/1"
+repo = "hyperpolymath/nextgen-languages"
+clade = "unknown"
+status = "active"
+
+[ssg]
+# SSG Configuration (Unified boj-server build)
+engine = "casket"
+output_dir = "public"
+boj_trigger = true
+cartridge = "ssg-mcp"
+
+[relationships]
+parents = ["org.hyperpolymath.boj-server"]
+
+# Dated realignment entries (most recent last).
+
+[[realignments]]
+date = "2026-06-12"
+what = "Estate standardization merge + governance checkpoint"
+why = "Adopt the estate-standardization-20260607 layout and refresh machine-readable metadata to current reality"
+evidence = "Merge of origin/estate-standardization-20260607 (conflicts on .claude/CLAUDE.md, casket-pages.yml, instant-sync.yml resolved to main's versions); flat contractiles populated with repo-true content ported from the retired root contractiles/{intend,must,trust}/ and .machine_readable/*.contractile files; flat Dustfile/Bustfile added; codeql cron weekly->monthly cherry-pick (standards#288); 6a2/STATE bumped to 2026-06-12; bot_directives trio (hypatia, gitbot-fleet, git-private-farm) added; anchors/ relocated to 6a2/anchor/ and this file converted to TOML-A2ML"
