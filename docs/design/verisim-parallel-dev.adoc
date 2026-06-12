@@ -1,8 +1,9 @@
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = FormBD & VeriSimDB Parallel Development Plan
 :toc:
 :toc-placement!:
 
-// SPDX-License-Identifier: MPL-2.0
 
 [.lead]
 **Co-developing two complementary database systems to the same maturity level**

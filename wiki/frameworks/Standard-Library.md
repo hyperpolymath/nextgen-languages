@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Standard Library
 
 The NextGen Languages share a common standard library design with language-specific implementations and age-appropriate APIs.

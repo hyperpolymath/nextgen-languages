@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Eclexia Next Steps: Stdlib Implementation
 **Date:** 2026-02-07
 **Current Status:** 90% → 95% (after parser improvements)

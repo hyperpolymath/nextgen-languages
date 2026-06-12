@@ -1,0 +1,113 @@
+# SPDX-License-Identifier: MPL-2.0
+# Adjustfile — accessibility contractile for nextgen-languages
+#
+# ADJUST = Accessibility & Digital Justice for Universal Software &
+# Technology. Defines how software must adapt to serve all users
+# regardless of ability, device, or context. ADJUST invariants are a
+# subset of MUST — violating ADJUST is a MUST violation. They get their
+# own file because accessibility rules are numerous and easily forgotten.
+# Applies to all user-facing interfaces: GUI, TUI, CLI, web, docs, error
+# messages, and installation flows, plus assistive technologies.
+#
+# Standard: WCAG 2.2 Level AA (minimum) —
+# https://www.w3.org/WAI/WCAG22/quickref/?levels=aaa
+#
+# Content ported 2026-06-12 from .machine_readable/ADJUST.contractile
+# (retired by the estate standardization; this flat file is now canonical).
+
+[metadata]
+repo = "nextgen-languages"
+version = "2.0.0"
+last-updated = "2026-06-12"
+full-name = "Accessibility & Digital Justice for Universal Software & Technology"
+standard = "WCAG-2.2-AA"
+supersedes = [".machine_readable/ADJUST.contractile"]
+
+[invariants.visual]
+rules = [
+  "colour-contrast-ratio >= 4.5:1 for normal text",
+  "colour-contrast-ratio >= 3:1 for large text (18pt+ or 14pt+ bold)",
+  "no information conveyed by colour alone",
+  "no flashing or strobing content (3 flashes/second max)",
+  "text resizable to 200% without loss of content or function",
+  "focus indicators visible on all interactive elements",
+]
+
+[invariants.keyboard]
+rules = [
+  "all interactive elements reachable via keyboard (Tab/Shift+Tab)",
+  "no keyboard traps — user can always Tab away",
+  "skip navigation link present on pages with repeated blocks",
+  "logical focus order follows visual reading order",
+]
+
+[invariants.screen-reader]
+rules = [
+  "all images have meaningful alt text (or alt='' if decorative)",
+  "all form inputs have associated labels",
+  "ARIA landmarks used for page regions (main, nav, banner, etc.)",
+  "dynamic content updates announced via aria-live regions",
+  "semantic HTML used (headings, lists, tables) — not div soup",
+]
+
+[invariants.interactive]
+rules = [
+  "touch targets minimum 44x44px on mobile/touch interfaces",
+  "error messages identify the field and describe the error",
+  "error messages not conveyed by colour or position alone",
+  "form validation provides suggestions for correction",
+]
+
+[invariants.media]
+rules = [
+  "video has captions (closed or open)",
+  "audio-only content has text transcript",
+  "no autoplay of media with sound",
+]
+
+[invariants.motion]
+rules = [
+  "animations respect prefers-reduced-motion media query",
+  "no content depends on motion to convey meaning",
+]
+
+[invariants.cli-tui]
+rules = [
+  "CLI output must not rely solely on colour (use symbols: [OK] [FAIL])",
+  "TUI must support high-contrast mode",
+  "all CLI commands support --help with plain-text output",
+  "error messages written in plain language, not jargon or codes alone",
+]
+
+[invariants.documentation]
+rules = [
+  "docs use clear language, short sentences, logical structure",
+  "code examples include comments explaining non-obvious steps",
+  "diagrams have text descriptions or alt text",
+]
+
+[invariants.i18n]
+rules = [
+  "all user-facing strings externalisable for translation",
+  "no hardcoded English in error messages — use message keys",
+  "date/time/number formats locale-aware",
+  "RTL (right-to-left) layout support where applicable",
+  "Unicode handled correctly throughout (UTF-8 everywhere)",
+]
+
+[related-resources]
+lol = "standards/lol — super-parallel multilingual NLP corpus crawler (1500+ languages); use for linguistic data, translation coverage, and i18n validation"
+polyglot-i18n = "polyglot-i18n — i18n framework and WASM translation engine"
+
+[enforcement]
+ci = "accessibility linting in quality workflow"
+pr-block = "PR blocked if accessibility regression detected"
+tools = ["axe-core or pa11y for automated checks on web UI", "CLI output inspected for colour-only signalling"]
+manual = "manual screen reader test before major releases"
+
+[notes]
+text = [
+  "These are MINIMUM requirements. Exceeding them (AAA) is encouraged.",
+  "When in doubt about an accessibility decision, ask — don't guess.",
+  "Accessibility is not optional polish — it is a structural requirement.",
+]
