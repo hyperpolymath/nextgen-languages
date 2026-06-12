@@ -44,15 +44,22 @@
 -- function; the Echo is its structured-loss witness.
 --
 -- ---------------------------------------------------------------------
--- NOTE (hand-verified, not machine-checked here). Agda is not installed
--- in the authoring environment, and echo-types (plus its own
--- `depend: absolute-zero`) is not registered here, so the cross-library
--- import below is verified by careful reading against the echo-types
--- source (module `Echo`, definition quoted above, confirmed verbatim).
--- When echo-types + absolute-zero + agda-stdlib 2.3+ are registered,
--- `make -C proofs echobridge` should be the first check. The flag stance
--- (this module is left at Agda's default discipline, importing the
--- `--safe --without-K` `Echo`) is also to be confirmed there.
+-- STATUS: MACHINE-CHECKED (2026-06-12). This module now typechecks against
+-- the real echo-types library (module `Echo`), with echo-types +
+-- absolute-zero + agda-stdlib v2.3 registered, under Agda 2.6.3. The
+-- earlier "hand-verified by careful reading" caveat is retired: the
+-- `Echo` import and the witness⇔echo bridge below are confirmed by the
+-- type checker, not by eye. The flag stance (this module is left at
+-- Agda's default discipline, importing the `--safe --without-K` `Echo`)
+-- is confirmed: a default-discipline module may import the `--safe
+-- --without-K` `Echo`.
+--
+-- Reproduce (matching echo-types' own CI toolchain, Agda 2.6.3):
+--   LC_ALL=C.UTF-8 agda --no-libraries \
+--     -i . -i <echo-types>/proofs/agda -i <agda-stdlib>/src EchoBridge.agda
+-- (The `make echobridge` target uses kitchenspeak.agda-lib, whose `--`
+-- comments require Agda ≥ 2.6.4; on the 2.6.3 CI toolchain use the
+-- explicit `-i` form above. See proofs/README.adoc.)
 -- ---------------------------------------------------------------------
 
 module EchoBridge where
