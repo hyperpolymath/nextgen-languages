@@ -122,7 +122,7 @@ poach-budget = 4
 -- configuration fact about the chosen setpoint, computed by the
 -- decision procedure rather than postulated.
 cap<boil : target-cap < boil-envelope
-cap<boil = toWitness {Q = target-cap <? boil-envelope} _
+cap<boil = toWitness {a? = target-cap <? boil-envelope} _
 
 
 -- =====================================================================
