@@ -6,6 +6,25 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 All notable changes to the nextgen-languages parent repository.
 
+## 2026-06-12
+
+### Changed
+
+- *KitchenSpeak Echo bridge is now MACHINE-CHECKED against the real
+  `hyperpolymath/echo-types` library.* `kitchenspeak/proofs/agda/EchoBridge.agda`
+  previously carried a "hand-verified, not machine-checked" caveat; it now
+  typechecks against the real `Echo` (the `@` sensor witness IS
+  `Echo (fired sensor thr) true`). The wider echo-types ↔ typesystem
+  integration is recorded in echo-types'
+  `docs/bridges/cross-repo-bridge-status.md`.
+
+### Fixed
+
+- `kitchenspeak/proofs/agda/PoachedEgg.agda`: stdlib v2.3 API drift
+  (`toWitness {Q = …}` → `{a? = …}`) so the KitchenSpeak proof suite
+  (Dough + PoachedEgg + EchoBridge) type-checks on the echo-types CI
+  toolchain (Agda 2.6.3 + stdlib v2.3).
+
 ## 2026-06-02
 
 ### Added
