@@ -13,7 +13,7 @@ enabled = true
 target = "hyperpolymath/.git-private-farm"
 event-type = "propagate"
 # Secret NAME only — the value lives in GitHub repo secrets, never here.
-secret = "FARM_DISPATCH_TOKEN"
+secret-name = "FARM_DISPATCH_TOKEN"
 # The dispatch step is gated on token presence (job-level env + step-level
 # `if`), so forks / environments without the secret skip cleanly instead of
 # failing with an empty token.
