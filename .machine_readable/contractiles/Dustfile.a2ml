@@ -39,4 +39,3 @@ me-static-dialect = "Me as a static dialect retired; Me is an agent-generated pr
 seven-tentacles-submodule = "7-tentacles pedagogy submodule pulled out to top-level tentacles-agentic-syllabus repo"
 root-contractiles = "root contractiles/{intend,must,trust}/ and .machine_readable/*.contractile retired 2026-06-12 by estate standardization; content ported into .machine_readable/contractiles/*.a2ml flat files"
 flake-nix = "flake.nix removed by the 2026-06 estate-standardization wave (Guix guix.scm is the primary package manifest)"
-scorecard-enforcer = "scorecard-enforcer.yml retired by estate standardization (scorecard.yml remains)"

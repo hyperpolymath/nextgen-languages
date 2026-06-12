@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: MPL-2.0
+# hypatia.a2ml — per-repo directives for the Hypatia scanner.
+# Precedence: maintainer > these directives > bot defaults.
+
+[metadata]
+repo = "nextgen-languages"
+last-updated = "2026-06-12"
+owner = "hyperpolymath"
+
+[scanner]
+ignore-file = ".hypatia-ignore"
+ignore-file-present = false
+workflow = ".github/workflows/hypatia-scan.yml"
+ruleset-location = "hyperpolymath/standards (hypatia-scan-reusable.yml) — change rules there, not here"
+scan-is-blocking = false
+
+[accepted-findings]
+# Canonical registry: .machine_readable/6a2/NEUROSYM.a2ml [waivers].
+# Look findings up there by rule + file BEFORE acting; if listed, do not
+# auto-fix. Summary of the current entries:
+registry = ".machine_readable/6a2/NEUROSYM.a2ml"
+reusable-caller-timeout = "missing_timeout_minutes on governance/hypatia-scan/mirror/scorecard/secret-scanner.yml — false-positive: these jobs call reusable workflows and GitHub Actions rejects timeout-minutes on reusable-workflow caller jobs"
+governance-reusable-pin = "unpinned_action on governance.yml — tracked: standards governance-reusable.yml referenced at @main pending SHA pin via authenticated lookup"
+scorecard-publish-split = "scorecard_publish_with_run_step on scorecard-enforcer.yml — addressed: privileged publish job split from unprivileged score-gate job; detector pattern mismatch"
+instant-sync-secret-gate = "secret_action_without_presence_gate on instant-sync.yml — addressed: dispatch step IS gated on FARM_DISPATCH_TOKEN presence (job-level env + step-level if)"
+agda-postulate-trusted-base = "agda_postulate on kitchenspeak/proofs/agda/{Dough,PoachedEgg}.agda — by-design: KitchenSpeak's documented trusted base, annotated inline (AXIOM:) and enumerated in PROOF-NEEDS.md"
+
+[prohibited-actions]
+auto-delete-branches = false
+auto-merge = false
+modify-workflows = false
+escalation = "open an issue, do not spam PR comments"

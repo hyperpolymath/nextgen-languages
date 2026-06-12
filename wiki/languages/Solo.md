@@ -47,7 +47,7 @@ cargo run --bin solo
 Solo is part of the [[My-Language Family]] progression:
 
 ```
-Me (ages 6-8) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
+Me (projection) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
 ```
 
 ## See Also

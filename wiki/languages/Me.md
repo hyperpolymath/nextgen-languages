@@ -8,9 +8,18 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 **Status:** 📝 Placeholder - contributions welcome
 
+> **Note (2026-06):** Me is **not** a fourth static dialect of the my-lang
+> family. The dialects are three and nested: Solo ⊂ Duet ⊂ Ensemble. Me is an
+> on-the-fly, **agent-generated projection** over that dialect hierarchy,
+> specified in `tentacles-agentic-syllabus/me/README.adoc`. Two earlier
+> attempts to build Me as a static dialect were retired
+> (`hyperpolymath/me-dialect` archived; the in-tree `my-lang/dialects/me/`
+> scaffolding sidelined). The block-language sketch below predates that
+> pivot and is kept for historical context.
+
 ## Overview
 
-Me is the entry point to the my-lang family, designed for ages 6-8. It uses visual/block-based programming to introduce computational thinking without text-based syntax.
+Me is the learner-facing entry point of the my-lang family. It introduces computational thinking through visual/playful interaction, generated as a projection rather than implemented as a standalone compiler.
 
 ## Core Invariant
 
@@ -55,7 +64,7 @@ https://github.com/hyperpolymath/language-playgrounds
 Me is the first step in the [[My-Language Family]] progression:
 
 ```
-Me (ages 6-8) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
+Me (projection) → Solo (ages 8-10) → Duet (ages 11-14) → Ensemble (ages 15-18)
 ```
 
 ## See Also

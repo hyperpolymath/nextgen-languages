@@ -60,8 +60,9 @@ make -C proofs dough        # type-check Dough.agda only
 ----
 
 The `kitchenspeak.agda-lib` file declares the `standard-library`
-dependency and treats warnings as errors. A future ADR may add Agda to a
-`flake.nix` so CI runs `make -C proofs` on every push (ROADMAP Phase 1a).
+dependency and treats warnings as errors. A future ADR may add Agda to the
+development environment (Guix `guix.scm`) so CI runs `make -C proofs` on
+every push (ROADMAP Phase 1a).
 
 [NOTE]
 ====

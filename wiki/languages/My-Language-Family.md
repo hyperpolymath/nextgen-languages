@@ -18,9 +18,14 @@ The family follows a **progressive disclosure** model:
 
 ## The Languages
 
+> **Note (2026-06):** the dialects are three and **nested**:
+> Solo ⊂ Duet ⊂ Ensemble. Me is not a fourth dialect — it is an on-the-fly,
+> agent-generated projection over the dialect hierarchy (see
+> `tentacles-agentic-syllabus/me/README.adoc`).
+
 ```
-Me (ages 6-8)
- │  Visual, block-based, purely exploratory
+Me (agent-generated projection)
+ │  Visual, playful, purely exploratory
  │
  ▼
 Solo (ages 8-10)
@@ -132,7 +137,7 @@ Module imports             → Package management
 | [me-dialect-playground](https://github.com/hyperpolymath/me-dialect-playground) | Experimental dialect features |
 | [my-newsroom](https://github.com/hyperpolymath/my-newsroom) | Content pipeline |
 | [my-ssg](https://github.com/hyperpolymath/my-ssg) | Static site generator |
-| [7-tentacles](https://github.com/hyperpolymath/7-tentacles) | Orchestration |
+| [tentacles-agentic-syllabus](https://github.com/hyperpolymath/tentacles-agentic-syllabus) | Pedagogy: curriculum, syllabus, Me projector (previously `7-tentacles`) |
 
 ## Migration Between Languages
 

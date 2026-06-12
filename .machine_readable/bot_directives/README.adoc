@@ -1,10 +1,19 @@
 // SPDX-License-Identifier: MPL-2.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-= Agent Instructions
+= Bot Directives
 :toc: preamble
 
-Methodology-aware configuration for AI agents. Read by any AI agent
-(Claude, Gemini, Copilot, etc.) at session start.
+Per-repo directives for automated agents, plus methodology-aware
+configuration read by any AI agent (Claude, Gemini, Copilot, etc.) at
+session start.
+
+*Precedence:* maintainer > these directives > bot defaults.
+
+*Scope:* applies to the Hypatia scanner, the gitbot fleet, and
+.git-private-farm propagation, as well as interactive AI sessions.
+
+(Directory renamed from `agent_instructions/` to `bot_directives/`
+by the 2026-06 estate standardization.)
 
 == Files
 
@@ -20,6 +29,15 @@ Methodology-aware configuration for AI agents. Read by any AI agent
 
 | `debt.a2ml`
 | Meander debt — things found but not fixed, carried between sessions
+
+| `hypatia.a2ml`
+| Hypatia scanner directives — accepted findings (waiver summary), prohibited actions
+
+| `gitbot-fleet.a2ml`
+| Gitbot fleet roster, branch policy, per-bot allow/deny
+
+| `git-private-farm.a2ml`
+| .git-private-farm propagation: workflow, presence-gated secret (name only), rotation
 |===
 
 == How Agents Use These
