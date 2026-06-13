@@ -291,8 +291,8 @@ from Julia the data language to avoid confusion.
 | Pedagogical language for teaching systems thinking via error conditions.
 
 | `kitchenspeak/`
-| Experimental, formally-verified kitchen-orchestration DSL (submodule:
-`hyperpolymath/kitchenspeak`). Seven-type system; proofs-first. Agda
+| Experimental, formally-verified kitchen-orchestration DSL (in-tree,
+standalone-repo-ready — `hyperpolymath/kitchenspeak`). Seven-type system; proofs-first. Agda
 lowerings of the Dough and Poached Egg recipes; `ROADMAP.adoc` targets
 AffineScript-level toolchain parity, leading with the proof library.
 

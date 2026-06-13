@@ -36,7 +36,9 @@ This installs:
 ```bash
 git clone https://github.com/hyperpolymath/nextgen-languages.git
 cd nextgen-languages
-git submodule update --init --recursive
+# Each language is its own standalone repo — this hub coordinates them, it no
+# longer vendors them as submodules. Clone any you need separately, e.g.:
+#   git clone https://github.com/hyperpolymath/affinescript.git
 ```
 
 #### 2. Build Tools
