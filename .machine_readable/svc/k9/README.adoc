@@ -1,0 +1,71 @@
+// SPDX-License-Identifier: MPL-2.0
+= K9 Contractiles — nextgen-languages self-validation
+:toc: left
+:icons: font
+
+== Why K9 lives here
+
+Per **ADR-001 (2026-04-18)** (see `../README.adoc`), K9 self-validating
+components live under `.machine_readable/svc/k9/` rather than under
+`contractiles/`, so the contractile directory stays a pure six-verb set
+(intend, trust, must, bust, adjust, dust). The verb contractiles *declare*
+invariants; the K9 validators here *machine-check* them.
+
+NOTE: `../../MUST.contractile` historically points its `enforcement` at
+`contractiles/k9/must-check.k9.ncl`. The canonical location is here
+(`svc/k9/must-check.k9.ncl`) per ADR-001; the stale path in MUST.contractile
+is a known doc gap (it lives outside this sweep's write-scope and is left as
+a TODO for a future MUST.contractile refresh).
+
+== The Leash — three security levels
+
+K9 components declare their trust requirements:
+
+[horizontal]
+`'Kennel`:: Pure data, no execution (safest; no signature)
+`'Yard`:: Nickel evaluation with contracts (medium trust; signature recommended)
+`'Hunt`:: Full execution with Just recipes (signature *required*)
+
+== Components in this directory
+
+`must-check.k9.ncl`:: **Yard.** The runnable surface of the hard invariants
+declared in `../../MUST.contractile` and
+`../../contractiles/must/Mustfile.a2ml`. CI runs it on every PR
+(`quality.yml`); violations of `error`-severity checks block merge.
+
+`methodology-guard.k9.ncl`:: **Yard.** Checks that agent work respects the
+methodology constraints in `../../agent_instructions/methodology.a2ml`
+(believe_me / assert_total ceilings, state-file template-placeholder
+rejection, coverage staleness).
+
+`template-kennel.k9.ncl`:: **Kennel.** Starting point for new pure-data K9
+components.
+
+== Validate / run
+
+[source,bash]
+----
+# Typecheck a Yard/Kennel component (no I/O)
+nickel typecheck svc/k9/must-check.k9.ncl
+
+# Evaluate a Yard component (validation, no side effects)
+nickel eval svc/k9/methodology-guard.k9.ncl
+
+# Export Kennel data
+nickel export svc/k9/template-kennel.k9.ncl > out.json
+----
+
+== Dependencies
+
+* **Nickel** — configuration language and contract evaluator.
+* **k9-svc** (https://github.com/hyperpolymath/k9-svc) — the `must` shim,
+  signing, and the full SPEC. IANA media type `application/vnd.k9+nickel`.
+
+== Adding a K9 component
+
+1. Pick the lowest sufficient leash (Kennel > Yard > Hunt).
+2. Document what it does in the `pedigree.metadata.description`.
+3. Put real contracts in Yard/Hunt components — a Yard file with no
+   contracts is just a Kennel file in disguise.
+4. Sign Hunt components before committing; never run unsigned Hunt.
+5. Wire `error`-severity validators into `quality.yml`.
