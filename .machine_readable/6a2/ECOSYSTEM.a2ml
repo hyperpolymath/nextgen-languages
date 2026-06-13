@@ -18,5 +18,21 @@ typed-wasm = "hyperpolymath/typed-wasm — WasmGC compilation target for AffineS
 tentacles = "hyperpolymath/tentacles-agentic-syllabus — curriculum (NOT a language; do not audit as one)"
 
 [language-repos]
-note = "Each language is a standalone canonical repo, wired in as a submodule (see .gitmodules)."
+# nextgen-languages is a PURE COORDINATOR: each language is its own standalone
+# top-level hyperpolymath repo, referenced here (not embedded). The submodule
+# pointers were removed 2026-06-13 — this repo coordinates/contextualises the
+# family, it does not vendor it.
+note = "Each language is a standalone canonical hyperpolymath repo, referenced (not vendored as a submodule)."
+affinescript = "hyperpolymath/affinescript"
+anvomidav = "hyperpolymath/anvomidav"
+betlang = "hyperpolymath/betlang"
+eclexia = "hyperpolymath/eclexia"
+ephapax = "hyperpolymath/ephapax"
+error-lang = "hyperpolymath/error-lang"
+julia-the-viper = "hyperpolymath/julia-the-viper"
+my-lang = "hyperpolymath/my-lang"
+oblibeny = "hyperpolymath/oblibeny"
+phronesis = "hyperpolymath/phronesis"
+tangle = "hyperpolymath/tangle"
+wokelang = "hyperpolymath/wokelang"
 kitchenspeak = "in-tree, standalone-repo-ready; elevate via scripts/elevate-kitchenspeak.sh"
