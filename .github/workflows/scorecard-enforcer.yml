@@ -21,6 +21,12 @@ permissions:
   contents: read
 
 jobs:
+  # Publish job. The OSSF attestation flow requires that a job invoking
+  # ossf/scorecard-action with publish_results: true contain ONLY `uses:`
+  # steps (no `run:`). A `run:` step in this job makes the OSSF publish
+  # endpoint reject the upload with HTTP 400 ("scorecard job must only have
+  # steps with `uses`"), failing the whole workflow. Score enforcement is
+  # therefore split into the separate unprivileged `score-gate` job below.
   scorecard:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -45,11 +51,13 @@ jobs:
           sarif_file: results.sarif
 
   # Unprivileged enforcement gate. Re-derives the score read-only (no
-  # publish, no id-token) and fails on a low score. Kept separate from the
-  # privileged `scorecard` publish job above so that arbitrary run: steps
-  # never execute in a job that holds id-token: write
-  # (Hypatia: scorecard_publish_with_run_step). publish_results does not
-  # affect the computed score, so the gate behaviour is unchanged.
+  # publish, no id-token), so it may legally contain a `run:` step.
+  # NOTE: uses JSON output deliberately. The SARIF format does NOT carry the
+  # aggregate score at .runs[0].tool.driver.properties.score (it is absent
+  # there, so a SARIF-based gate reads the `// 0` fallback and ALWAYS fails
+  # the < MIN_SCORE check); the JSON format exposes the aggregate at the
+  # top-level `.score`. publish_results is false here and does not affect the
+  # computed score, so enforcement behaviour is unchanged.
   score-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -63,14 +71,14 @@ jobs:
       - name: Run Scorecard (analysis only)
         uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
         with:
-          results_file: results.sarif
-          results_format: sarif
+          results_file: results.json
+          results_format: json
           publish_results: false
 
       - name: Check minimum score
         run: |
-          # Parse score from results
-          SCORE=$(jq -r '.runs[0].tool.driver.properties.score // 0' results.sarif 2>/dev/null || echo "0")
+          # JSON output carries the aggregate score at the top-level `.score`.
+          SCORE=$(jq -r '.score // 0' results.json 2>/dev/null || echo "0")
 
           echo "OpenSSF Scorecard Score: $SCORE"
 
