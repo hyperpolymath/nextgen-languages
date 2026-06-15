@@ -1,0 +1,50 @@
+// SPDX-License-Identifier: MPL-2.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= KitchenSpeak has moved — this is a frozen snapshot
+:icons: font
+
+[IMPORTANT]
+====
+*The canonical home of KitchenSpeak is now the standalone repository
+https://github.com/hyperpolymath/kitchenspeak[hyperpolymath/kitchenspeak].*
+
+This `kitchenspeak/` subtree inside the `nextgen-languages` monorepo is a
+*frozen v1.0 snapshot* kept only for monorepo cross-references and history.
+*Do not develop here.* All active work — including the *v2.0 elevation*
+(physics-in-the-types: materials carry thermal/mechanical/chemical envelopes,
+appliances carry capability envelopes, so curdle-the-milk / bake-the-spatula /
+over-torque-the-arm are *compile errors*) — lives in the standalone repo.
+====
+
+== Why the split
+
+KitchenSpeak outgrew its teaching-vehicle role. The standalone repo now carries:
+
+* the *v2.0 design blueprint* (`docs/spec/` + `docs/design/`, with
+  `0001-v2-constitution.adoc` as the binding contract);
+* a *reference compiler* (`src/compiler/`, dependency-free OCaml:
+  lexer -> parser -> typed AST -> physical-safety checker -> HAL lowering to
+  Matter / MQTT / ROS 2);
+* an *example corpus* with machine-asserted accept/reject expectations; and
+* *machine-checked Agda proofs* (the v2 flagship `NoCurdle.agda`, plus
+  `Dough`, `PoachedEgg`, `EchoBridge`).
+
+Everything in this snapshot is a strict subset of, and superseded by, the
+standalone repository.
+
+== If you landed here from a monorepo reference
+
+Read the canonical sources instead:
+
+[cols="1,1"]
+|===
+| This snapshot | Canonical (hyperpolymath/kitchenspeak)
+
+| `kitchenspeak/SPEC.adoc`          | `SPEC.adoc` + `docs/spec/`
+| `kitchenspeak/grammar.ebnf`       | `grammar.ebnf` + `docs/spec/0002-concrete-grammar.adoc`
+| `kitchenspeak/proofs/`            | `proofs/` (adds `NoCurdle.agda`)
+| `kitchenspeak/ROADMAP.adoc`       | `ROADMAP.adoc`
+|===
+
+_Retired 2026-06-15. Full removal of this subtree (and its ~15 monorepo
+cross-references) is deferred to a deliberate monorepo-structure pass._

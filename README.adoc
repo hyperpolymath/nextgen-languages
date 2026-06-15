@@ -114,9 +114,13 @@ terminates on a wall-clock bound, and every physical step is witnessed by a
 local sensor. Development leads with proofs (Agda) per the language's
 `ROADMAP.adoc`.
 
-Status: specification stable at v1.0; proof library commenced (Dough,
-Poached Egg), toolchain in progress. Maintained as the standalone
-`hyperpolymath/kitchenspeak` repository.
+Status: *extracted to the standalone `hyperpolymath/kitchenspeak` repository,
+which is now canonical.* That repo carries the *v2.0 elevation* — physics in
+the types (materials carry thermal/mechanical/chemical envelopes, appliances
+carry capability envelopes, so curdle / scorch / bake-the-spatula / over-torque
+are compile errors), a reference OCaml compiler, and machine-checked Agda
+proofs. The `kitchenspeak/` subtree here is a frozen v1.0 snapshot; see
+`kitchenspeak/MOVED.adoc`.
 
 TypeFix Zero / TF0
 

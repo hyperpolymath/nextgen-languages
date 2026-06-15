@@ -28,9 +28,15 @@ postulated visual witness; `max_duration` is the termination measure;
 ## Run
 
 ```bash
-# Specification-only at v1.0. See kitchenspeak/README.adoc for scope.
+# This snapshot is specification-only at v1.0.
+# Canonical home + runnable v2.0 toolchain: https://github.com/hyperpolymath/kitchenspeak
 ```
 
 ## Status
 
-CLASS PROJECT — experimental, specification at v1.0.
+**EXTRACTED — canonical home is the standalone repository
+[`hyperpolymath/kitchenspeak`](https://github.com/hyperpolymath/kitchenspeak).**
+The `kitchenspeak/` subtree in this monorepo is a frozen v1.0 snapshot (see
+`kitchenspeak/MOVED.adoc`); the **v2.0 elevation** (physics-in-the-types — curdle,
+scorch, bake-the-spatula and over-torque are compile errors — plus a reference
+OCaml compiler and machine-checked proofs) lives in the standalone repo.
