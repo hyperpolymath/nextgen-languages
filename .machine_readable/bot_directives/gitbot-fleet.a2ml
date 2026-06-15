@@ -1,0 +1,58 @@
+# SPDX-License-Identifier: MPL-2.0
+# gitbot-fleet.a2ml — per-repo directives for the gitbot fleet.
+# Precedence: maintainer > these directives > bot defaults.
+
+[metadata]
+repo = "nextgen-languages"
+last-updated = "2026-06-12"
+owner = "hyperpolymath"
+
+[fleet]
+bots = ["rhodibot", "echidnabot", "sustainabot", "glambot", "seambot", "finishbot"]
+rhodibot = "git operations"
+echidnabot = "code quality"
+sustainabot = "dependency updates"
+glambot = "documentation"
+seambot = "integration"
+finishbot = "task completion"
+
+[branch-policy]
+working-branch-pattern = "claude/* or bot/<botname>/*"
+draft-PRs-only = true
+ci-green-before-merge = true
+# Per 6a2/PLAYBOOK.a2ml [merge-gating]: blocking checks are governance/*,
+# scan/*, analyze, semgrep, dogfood, validators; the Hypatia advisory is
+# non-blocking and MUST NOT gate the merge.
+never-touch = [
+  ".claude/CLAUDE.md",
+  "kitchenspeak/proofs/",
+  "LICENSE",
+  ".github/workflows/ (without explicit maintainer approval)",
+]
+# Branch hygiene per 6a2/PLAYBOOK.a2ml [branch-hygiene] and the Trustfile
+# carve-out: merged PR branches may be deleted; main and any open/active
+# branch never; force-push always denied.
+
+[per-bot.rhodibot]
+allow = ["branch create", "commit", "open draft PR", "delete merged PR branches"]
+deny = ["force-push", "push to main", "delete main or open branches"]
+
+[per-bot.echidnabot]
+allow = ["lint", "format", "report"]
+deny = ["weaken or delete tests", "edit kitchenspeak/proofs/ (proofs lead implementation, ADR 0001)"]
+
+[per-bot.sustainabot]
+allow = ["dependency bump PRs (SHA-pinned actions only)"]
+deny = ["unpinned action references", "npm/bun/yarn/pnpm dependencies (Deno only)"]
+
+[per-bot.glambot]
+allow = ["docs and wiki edits (AsciiDoc stays AsciiDoc, MD stays MD)"]
+deny = ["rewriting governance docs wholesale"]
+
+[per-bot.seambot]
+allow = ["integration wiring under .machine_readable/integrations/"]
+deny = ["vendoring echo-types or Hypatia rulesets here (change them in their source repos)"]
+
+[per-bot.finishbot]
+allow = ["close out task checklists; mark PRs ready when CI is green"]
+deny = ["merging draft/WIP PRs"]

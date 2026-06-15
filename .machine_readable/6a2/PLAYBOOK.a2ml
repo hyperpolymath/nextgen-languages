@@ -7,7 +7,7 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-06-02"
+last-updated = "2026-06-12"
 
 [deployment]
 # method = "gitops"
@@ -45,7 +45,7 @@ step-3 = "Act only on findings NOT in the registry, or with disposition = track 
 step-4 = "If a genuinely new finding appears, triage it; if accepted, add a waiver entry rather than re-fixing each PR."
 
 [branch-hygiene]
-# Permitted per the Trustfile carve-out (contractiles/trust/Trustfile.a2ml).
+# Permitted per the Trustfile carve-out (.machine_readable/contractiles/Trustfile.a2ml [trust.branch-hygiene]).
 delete-merged-branches = "allowed — feature branches whose PR is merged may be deleted (local + remote)"
 never-delete = "main, and any open/active branch"
 never = "force-push; modify CI secrets; publish"

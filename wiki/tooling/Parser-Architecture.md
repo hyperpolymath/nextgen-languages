@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Parser Architecture
 
 The parser transforms a token stream into an Abstract Syntax Tree (AST), representing the grammatical structure of the program.

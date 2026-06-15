@@ -1,3 +1,7 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # Testing Framework
 
 The NextGen Languages ecosystem uses a multi-layered testing approach, integrated with the Echidna neurosymbolic theorem proving platform for formal verification.

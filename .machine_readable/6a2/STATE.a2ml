@@ -5,7 +5,7 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-06-02"
+last-updated = "2026-06-12"
 status = "active"
 
 [project-context]
@@ -51,3 +51,24 @@ nuget = "spurious nuget dependabot ecosystem removed (no .NET projects)"
 scorecard = "publish job split from unprivileged score-gate job"
 instant-sync = "repository-dispatch gated on FARM_DISPATCH_TOKEN presence"
 hypatia-waivers = "recurring advisory findings triaged in .machine_readable/6a2/NEUROSYM.a2ml [waivers]"
+codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
+
+[recent-work]
+# Landed since the 2026-06-02 STATE refresh (witness: git log).
+pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml, Intentfile, Mustfile"
+pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + policy tables updated"
+scm-pointer-fix = "stale .scm state-location pointers fixed in ROADMAP and CHANGELOG (196e0ad)"
+gitmodules-cleanup = "orphan language-playgrounds submodule entry dropped from .gitmodules (c089dfe)"
+readme-updates = "five README.adoc touch-ups on main (91571be..f758d05)"
+estate-standardization = "2026-06-12: origin/estate-standardization-20260607 merged — flat contractiles now canonical (content ported from root contractiles/ and .machine_readable/*.contractile, both retired), 6a2/0-AI-MANIFEST + README + anchor/ landed, agent_instructions/ renamed bot_directives/, GOVERNANCE.adoc + MAINTAINERS.adoc + CODEOWNERS added, flake.nix removed (Guix primary), LICENSE normalized to MPL-2.0 text"
+governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet, git-private-farm), flat Dustfile/Bustfile added, STATE bumped, wiki status note"
+
+[blockers]
+kitchenspeak-ci = "Agda proofs hand-verified but not yet machine-checked in CI (ROADMAP Phase 1a)"
+kitchenspeak-elevation = "standalone-repo elevation needs repo-create rights (scripts/elevate-kitchenspeak.sh)"
+governance-pin = "governance-reusable.yml referenced at @main; SHA pin pending authenticated lookup (NEUROSYM [waivers.governance-reusable-pin])"
+
+[next-actions]
+machine-check-proofs = "wire Agda check of kitchenspeak/proofs into CI (Phase 1a)"
+claude-md-paths = "maintainer edit needed: .claude/CLAUDE.md references my-lang/frontier-practices/ and my-lang/_exploratory/me-scaffolding/, which are not visible in-tree (paths live inside the my-lang submodule); proposed as issue at the 2026-06-12 checkpoint"
+verisim-naming = "integrations/verisim.a2ml vs siblings' verisimdb.a2ml — naming alignment proposed as issue, not renamed unilaterally"

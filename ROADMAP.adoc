@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MPL-2.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = Roadmap
 :toc:
 
@@ -27,4 +28,4 @@ See `README.adoc` for the full list of canonical repositories.
 
 == Tracking
 
-Progress tracked in `.machine_readable/STATE.scm`.
+Progress tracked in `.machine_readable/6a2/STATE.a2ml`.

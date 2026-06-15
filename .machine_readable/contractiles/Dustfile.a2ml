@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: MPL-2.0
+# Dustfile — cleanup and hygiene contractile for nextgen-languages
+#
+# DUST governs deprecation, cleanup, and reversibility: how stale things
+# are removed, how long artefacts are retained, and how destructive
+# operations are kept reversible. When a feature enters DUST
+# (deprecation), its MUST constraints remain active until the feature is
+# fully removed.
+#
+# Content ported 2026-06-12 from
+# .machine_readable/contractiles/dust/Dustfile.a2ml (retired by the
+# estate standardization; this flat file is now canonical).
+
+[metadata]
+repo = "nextgen-languages"
+version = "2.0.0"
+last-updated = "2026-06-12"
+supersedes = [".machine_readable/contractiles/dust/Dustfile.a2ml"]
+
+[cleanup]
+stale-branch-policy = "delete-after-merge"
+artifact-retention = "90-days"
+cache-policy = "clear-on-release"
+
+[hygiene]
+linting = "required"
+formatting = "required"
+dead-code-removal = "encouraged"
+todo-tracking = "tracked-in-issues"
+
+[reversibility]
+backup-before-destructive = true
+rollback-mechanism = "git-revert"
+data-retention-policy = "preserve-30-days"
+
+[deprecations]
+# Live deprecation ledger — what has been retired and where it went.
+me-static-dialect = "Me as a static dialect retired; Me is an agent-generated projection (see .claude/CLAUDE.md); my-lang/dialects/me/ sidelined to my-lang/_exploratory/me-scaffolding/ in the my-lang repo"
+seven-tentacles-submodule = "7-tentacles pedagogy submodule pulled out to top-level tentacles-agentic-syllabus repo"
+root-contractiles = "root contractiles/{intend,must,trust}/ and .machine_readable/*.contractile retired 2026-06-12 by estate standardization; content ported into .machine_readable/contractiles/*.a2ml flat files"
+flake-nix = "flake.nix removed by the 2026-06 estate-standardization wave (Guix guix.scm is the primary package manifest)"

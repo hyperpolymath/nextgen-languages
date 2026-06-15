@@ -60,12 +60,13 @@ The following files in `.machine_readable/` contain structured project metadata:
 | Banned | Replacement |
 |--------|-------------|
 | TypeScript | AffineScript |
+| ReScript | AffineScript |
 | Node.js | Deno |
 | npm | Deno |
 | Bun | Deno |
 | pnpm/yarn | Deno |
 | Go | Rust |
-| Python | Julia/Rust/ReScript |
+| Python | Julia/Rust |
 | Java/Kotlin | Rust/Tauri/Dioxus |
 | Swift | Tauri/Dioxus |
 | React Native | Tauri/Dioxus |
@@ -82,7 +83,7 @@ Both are FOSS with independent governance (no Big Tech).
 
 ### Enforcement Rules
 
-1. **No new TypeScript files** - Convert existing TS to AffineScript
+1. **No new TypeScript or ReScript files** - Convert existing TS/ReScript (`.ts`/`.tsx`/`.res`/`.resi`) to AffineScript
 2. **No package.json for runtime deps** - Use deno.json imports
 3. **No node_modules in production** - Deno caches deps automatically
 4. **No Go code** - Use Rust instead
