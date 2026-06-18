@@ -49,7 +49,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | **Phronesis** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Wokelang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Anvomidav** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
-| **Julia-the-viper** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **JtV** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Oblibeny** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Error-lang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
@@ -142,7 +142,7 @@ Standards specs:
 | —
 | —
 
-| **Julia-the-Viper**
+| **JtV**
 | Idris2 ABI
 | planned
 | planned
@@ -226,7 +226,7 @@ All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
 | Anvomidav     | 7  | Session (stub)
 | Phronesis     | 8  | Session, typecheck, eval
 | Error-lang    | 9  | Session, typecheck, eval
-| Julia-the-Viper | 10 | Session, typecheck, eval, dialect injection
+| JtV | 10 | Session, typecheck, eval, dialect injection
 | Me-dialect    | 11 | Session, typecheck
 | Oblibeny      | 12 | Session, typecheck, eval
 |===
@@ -237,7 +237,7 @@ All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
 * **lsp-mcp** — Generic LSP proxy (ABI/FFI/adapter/panels)
 * **dap-mcp** — Generic DAP proxy (ABI/FFI/adapter/panels)
 
-=== Julia-the-Viper Dialect Injection
+=== JtV Dialect Injection
 
 Any language can be augmented with JtV by requesting dialect `jtv`:
 
@@ -251,7 +251,7 @@ Any language can be augmented with JtV by requesting dialect `jtv`:
 | Language | Idris2 ABI | Zig FFI | Status
 
 | AffineScript      | `src/abi/` (Types, Layout, Foreign) | planned     | In progress
-| Julia-the-Viper   | `src/abi/` (Types, Layout, Foreign) | planned     | In progress
+| JtV   | `src/abi/` (Types, Layout, Foreign) | planned     | In progress
 | Ephapax           | ephapax-proven (3 crates)           | proven-ffi  | Complete
 | Others            | —                                    | —           | Not started
 |===

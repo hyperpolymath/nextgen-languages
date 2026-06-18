@@ -2,7 +2,7 @@
 SPDX-License-Identifier: MPL-2.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# julia-the-viper
+# jtv
 
 > Systems programming with Harvard Architecture
 
@@ -10,7 +10,7 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 ## Overview
 
-julia-the-viper is a systems programming language that enforces Harvard Architecture principles: strict separation between code and data memory spaces.
+jtv is a systems programming language that enforces Harvard Architecture principles: strict separation between code and data memory spaces.
 
 ## Core Invariant
 
@@ -63,7 +63,7 @@ code {
 ## Getting Started
 
 ```bash
-cd julia-the-viper
+cd jtv
 cargo run
 ```
 

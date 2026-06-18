@@ -2,7 +2,7 @@
 SPDX-License-Identifier: MPL-2.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# julia-the-viper
+# jtv
 
 > Systems programming with Harvard Architecture separation.
 

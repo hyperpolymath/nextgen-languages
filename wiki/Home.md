@@ -22,7 +22,7 @@ Welcome to the NextGen Languages ecosystem documentation.
   - [[Me Language]] - not a fourth dialect: an agent-generated projection over the Solo / Duet / Ensemble hierarchy
 - [[Foundational Languages]]
   - [[betlang]] - Probabilistic programming
-  - [[julia-the-viper]] - Systems programming, Harvard Architecture
+  - [[jtv]] - Systems programming, Harvard Architecture
 - [[Specialized Languages]]
   - [[Phronesis]] - Practical wisdom
   - [[Eclexia]] - Creative synthesis
@@ -86,7 +86,7 @@ NextGen Languages is a family of programming languages designed to grow with lea
 ```
 nextgen-languages/          # This hub repository
 ├── betlang/                # Submodule: Probabilistic language
-├── julia-the-viper/        # Submodule: Systems language
+├── jtv/        # Submodule: Systems language
 ├── kitchenspeak/           # In-tree DSL: kitchen orchestration, Agda proofs-first
 ├── wiki/                   # Documentation (you are here)
 ├── scripts/                # Utility scripts

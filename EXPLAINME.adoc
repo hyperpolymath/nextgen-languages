@@ -283,7 +283,7 @@ compiler that handles all four dialects via dialect-specific parse modes.
 | Foundational experiment — the language that preceded the full family.
 Full Cargo workspace.
 
-| `julia-the-viper/`
+| `jtv/`
 | Systems language with Harvard Architecture memory model. Named separately
 from Julia the data language to avoid confusion.
 

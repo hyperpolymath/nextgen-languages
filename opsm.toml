@@ -17,7 +17,7 @@ members = [
   "eclexia",
   "ephapax",
   "error-lang",
-  "julia-the-viper",
+  "jtv",
   "my-lang",
   "oblibeny",
   "phronesis",
@@ -56,4 +56,4 @@ zig = "0.14.0"          # ABI/FFI layer
 deno = "2.6.10"         # JS build scripts
 
 # Language-specific toolchains (installed via OPSM runtime)
-# julia is managed by the julia-the-viper sub-project directly
+# julia is managed by the jtv sub-project directly

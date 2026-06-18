@@ -17,7 +17,7 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 4. **AffineScript** - `/var$REPOS_DIR/affinescript` ⚠️ 85% spec
 5. **Ephapax** - `/var$REPOS_DIR/ephapax` ⚠️ 70%
 6. **My-Lang** - `/var$REPOS_DIR/my-lang` ⚠️ 65%
-7. **Julia-the-Viper** - `/var$REPOS_DIR/julia-the-viper` ⚠️ 60%
+7. **JtV** - `/var$REPOS_DIR/jtv` ⚠️ 60%
 8. **Error-Lang** - `/var$REPOS_DIR/error-lang` ⚠️ 45%
 9. **Oblibeny** - `/var$REPOS_DIR/oblibeny` ⚠️ 20%
 

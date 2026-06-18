@@ -463,7 +463,7 @@ impl VM {
 | Duet | Bytecode VM | WASM |
 | Ensemble | LLVM | WASM, JVM |
 | betlang | Racket | - |
-| julia-the-viper | LLVM | Native |
+| jtv | LLVM | Native |
 | Phronesis | BEAM VM | - |
 | Eclexia | LLVM | WASM |
 | Oblíbený | LLVM | Native |

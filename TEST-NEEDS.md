@@ -28,7 +28,7 @@ Added test categories for ephapax-linear and ephapax-lexer:
 | E2E          | ~3    | affinescript test_e2e.ml + integration tests |
 | Benchmarks   | 4     | tangle: bench_lexer.ml, bench_lexer.rs, bench_parser.ml, bench_parser_rust.rs. betlang: bench_lexer.rs |
 
-**Source modules:** ~772 across 14+ language implementations. Major: affinescript (~87 ML), ephapax (~488 Rust across 19 crates), tangle, eclexia, betlang, anvomidav, wokelang, 7-tentacles, error-lang, julia-the-viper.
+**Source modules:** ~772 across 14+ language implementations. Major: affinescript (~87 ML), ephapax (~488 Rust across 19 crates), tangle, eclexia, betlang, anvomidav, wokelang, 7-tentacles, error-lang, jtv.
 
 ## What's Missing
 
@@ -81,7 +81,7 @@ Added test categories for ephapax-linear and ephapax-lexer:
 | wokelang | unknown | 0 | **Untested** |
 | 7-tentacles | unknown | 1 | Minimal |
 | error-lang | unknown | 0 | **Untested** |
-| julia-the-viper | unknown | 0 | **Untested** |
+| jtv | unknown | 0 | **Untested** |
 
 ## Priority
 

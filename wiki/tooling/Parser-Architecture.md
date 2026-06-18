@@ -368,7 +368,7 @@ fn parse_sexpr(tokens: &mut TokenStream) -> Result<SExpr, Error> {
 }
 ```
 
-### julia-the-viper
+### jtv
 
 Dual-grammar parser:
 ```rust

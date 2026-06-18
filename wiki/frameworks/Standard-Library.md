@@ -343,7 +343,7 @@ fn parse_float(s: String) -> Result<Float, ParseError>
 (percentile samples p)
 ```
 
-### julia-the-viper: Security
+### jtv: Security
 
 ```
 // Control channel functions

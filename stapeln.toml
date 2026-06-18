@@ -87,9 +87,9 @@ extends = "base"
 depends = ["idris2-toolchain", "zig-toolchain"]
 commands = [
     # Verify ABI definitions compile cleanly
-    "for lang in eclexia betlang tangle affinescript wokelang julia-the-viper oblibeny error-lang phronesis; do [ -d ${lang}/src/abi ] && (cd ${lang}/src/abi && idris2 --check Types.idr 2>/dev/null || true); done",
+    "for lang in eclexia betlang tangle affinescript wokelang jtv oblibeny error-lang phronesis; do [ -d ${lang}/src/abi ] && (cd ${lang}/src/abi && idris2 --check Types.idr 2>/dev/null || true); done",
     # Build Zig FFI shared objects
-    "for lang in eclexia betlang tangle affinescript julia-the-viper oblibeny error-lang; do [ -d ${lang}/ffi/zig ] && (cd ${lang}/ffi/zig && zig build 2>/dev/null || true); done",
+    "for lang in eclexia betlang tangle affinescript jtv oblibeny error-lang; do [ -d ${lang}/ffi/zig ] && (cd ${lang}/ffi/zig && zig build 2>/dev/null || true); done",
 ]
 cache = true
 
@@ -137,11 +137,11 @@ depends = ["abi-ffi"]
 commands = ["cd betlang && cargo build --release --workspace"]
 cache = true
 
-[layers.build-julia-the-viper]
-description = "Julia the Viper — pattern-matching language (Rust + Zig FFI)"
+[layers.build-jtv]
+description = "JtV — pattern-matching language (Rust + Zig FFI)"
 extends = "rust-toolchain"
 depends = ["abi-ffi"]
-commands = ["cd julia-the-viper && cargo build --release --workspace"]
+commands = ["cd jtv && cargo build --release --workspace"]
 cache = true
 
 [layers.build-my-lang]
@@ -209,7 +209,7 @@ depends = [
     "build-eclexia",
     "build-affinescript",
     "build-betlang",
-    "build-julia-the-viper",
+    "build-jtv",
     "build-my-lang",
     "build-oblibeny",
     "build-tangle",
@@ -233,7 +233,7 @@ copy-from = [
     { layer = "build-wokelang", src = "/app/wokelang/target/release/", dst = "/opt/nextgen/wokelang/" },
     { layer = "build-eclexia", src = "/app/eclexia/target/release/", dst = "/opt/nextgen/eclexia/" },
     { layer = "build-betlang", src = "/app/betlang/target/release/", dst = "/opt/nextgen/betlang/" },
-    { layer = "build-julia-the-viper", src = "/app/julia-the-viper/target/release/", dst = "/opt/nextgen/julia-the-viper/" },
+    { layer = "build-jtv", src = "/app/jtv/target/release/", dst = "/opt/nextgen/jtv/" },
     { layer = "build-my-lang", src = "/app/my-lang/target/release/", dst = "/opt/nextgen/my-lang/" },
     # OCaml-built binaries
     { layer = "build-affinescript", src = "/app/affinescript/_build/default/bin/", dst = "/opt/nextgen/affinescript/" },
@@ -343,9 +343,9 @@ description = "BetLang only — probabilistic programming"
 layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-betlang"]
 env = { LOG_LEVEL = "debug" }
 
-[targets.julia-the-viper]
-description = "Julia the Viper only — pattern matching"
-layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-julia-the-viper"]
+[targets.jtv]
+description = "JtV only — pattern matching"
+layers = ["base", "rust-toolchain", "zig-toolchain", "idris2-toolchain", "abi-ffi", "build-jtv"]
 env = { LOG_LEVEL = "debug" }
 
 [targets.my-lang]
