@@ -93,10 +93,10 @@ Requires Racket:
 nextgen install betlang
 ```
 
-### julia-the-viper
+### jtv
 
 ```bash
-nextgen install julia-the-viper
+nextgen install jtv
 ```
 
 ### Phronesis

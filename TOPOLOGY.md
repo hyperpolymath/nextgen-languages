@@ -70,7 +70,7 @@ SATELLITE PROGRESS
   Oblibeny (Secure)                 ██████████ 100%    Turing-incomplete mode stable
   Ephapax (Linear)                  ██████████ 100%    Dyadic type system active
   betlang (Foundational)            ██████████ 100%    Core experiments verified
-  Groove Manifests                  ██████████ 100%    Service discovery active (affinescript, julia-the-viper)
+  Groove Manifests                  ██████████ 100%    Service discovery active (affinescript, jtv)
 
 REPO INFRASTRUCTURE
   6SCM Documentation Hub            ██████████ 100%    Canonical specs active

@@ -14,7 +14,7 @@ toc::[]
 
 == Context
 
-JTV (Julia the Viper) is the heritage language from which 007 descends.
+JtV is the heritage language from which 007 descends.
 JTV v1 (Alpha stage) established the addition-only Data Language — a single
 arithmetic primitive with the thesis that all other arithmetic operations
 are derivable. JTV v2 (Gamma stage) extends this to the Control Language:
@@ -113,7 +113,7 @@ papers.
 
 == Cross-References
 
-* `julia-the-viper/docs/language/DESIGN-JTV-V2-REVERSIBILITY.md` — JTV v2
+* `jtv/docs/language/DESIGN-JTV-V2-REVERSIBILITY.md` — JTV v2
   canonical model in full
 * `007/docs/session-2026-04-12-jtv-v2-reversibility-design.adoc` — 007's
   five closed design decisions and Phase 1/Phase 2 plan

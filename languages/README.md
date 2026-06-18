@@ -15,7 +15,7 @@ Each language has one core invariant that defines its design philosophy.
 | [anvomidav](anvomidav.md) | Every deadline is statically guaranteed |
 | [wokelang](wokelang.md) | No operation without explicit consent |
 | [betlang](betlang.md) | All uncertainty must be explicitly modeled |
-| [julia-the-viper](julia-the-viper.md) | Data and code are strictly separated |
+| [jtv](jtv.md) | Data and code are strictly separated |
 | [affinescript](affinescript.md) | Every resource is used at most once |
 | [ephapax](ephapax.md) | Every value can be consumed exactly once |
 

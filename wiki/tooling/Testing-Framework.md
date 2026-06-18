@@ -133,7 +133,7 @@ def binary_search(arr, target):
 | Duet | ✓ | ✓ | ✓ | ○ |
 | Ensemble | ✓ | ✓ | ✓ | ✓ |
 | betlang | ✓ | ✓* | - | - |
-| julia-the-viper | ✓ | ✓ | - | ✓ |
+| jtv | ✓ | ✓ | - | ✓ |
 | Phronesis | ✓ | ✓ | - | ✓ |
 | Eclexia | ✓ | ✓ | - | - |
 | Oblíbený | ✓ | - | - | ✓ |
@@ -157,7 +157,7 @@ def binary_search(arr, target):
   #:tolerance 0.05)
 ```
 
-### julia-the-viper: Security Property Testing
+### jtv: Security Property Testing
 
 ```
 // Test that data channel cannot execute

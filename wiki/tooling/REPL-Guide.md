@@ -196,7 +196,7 @@ betlang> (run-simulation my-coin 10000)
 Results: heads=3342 (33.4%) tails=3318 (33.2%) edge=3340 (33.4%)
 ```
 
-### julia-the-viper
+### jtv
 
 Dual-channel REPL:
 

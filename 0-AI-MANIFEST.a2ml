@@ -56,7 +56,7 @@ This is a **monorepo** containing:
 4. WokeLang - 100% complete (production) ✨ VERIFIED 2026-02-07
 5. AffineScript - 80% (near-complete, borrow checker 20%)
 6. My-Lang - 75% (solo dialect complete, 4 dialects: me/solo/duet/ensemble)
-7. Julia-the-Viper - 60% (active development)
+7. JtV - 60% (active development)
 8. Ephapax - 55% (dyadic: linear/affine forms)
 9. Anvomidav - 55% (developer experience)
 10. betlang - 35% (development)

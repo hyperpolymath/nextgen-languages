@@ -102,14 +102,14 @@ take many sessions.
 | 6             | `my-lang/crates/my-mir/src/lib.rs`                           | **Keep but document.** All 6 are `.expect("internal error: ...")` invariant checks on graph indices. These are legitimate invariant panics; converting to `Result` would propagate a condition the caller cannot meaningfully handle. Recommend adding a comment at each site explaining the invariant, not rewriting.
 | 8             | `my-lang/my-ssg/src/main.rs`                                 | **Tractable follow-up.** `main` can return `Result<(), Box<dyn Error>>` and use `?` on the `fs::write` calls. ~30 minutes of work.
 | 6             | `my-lang/tests/property_tests.rs`                            | **Skip.** Test file.
-| ~20 across ephapax, betlang, phronesis, eclexia, affinescript, oblibeny, julia-the-viper, wokelang parser/runtime files | Each submodule has its own PanicPath cluster | **Per-language follow-ups.** Each should be a dedicated session inside the respective repo.
+| ~20 across ephapax, betlang, phronesis, eclexia, affinescript, oblibeny, jtv, wokelang parser/runtime files | Each submodule has its own PanicPath cluster | **Per-language follow-ups.** Each should be a dedicated session inside the respective repo.
 |===
 
 === Security (priority 2)
 
 **Critical remaining:**
 
-* **`julia-the-viper/playground/experiments/_attic/database-demos/arangodb-demo/queries.js`**
+* **`jtv/playground/experiments/_attic/database-demos/arangodb-demo/queries.js`**
   — HardcodedSecret. **False positive.** The "secret" is
   `auth: { username: "root", password: "rootpassword" }` — standard
   ArangoDB localhost demo credentials. Other email addresses are
@@ -119,7 +119,7 @@ take many sessions.
   credentials as placeholder data so panic-attack ignores them.** Not fixed
   this session because it is user-judgement territory.
 
-* **`julia-the-viper/playground/experiments/_attic/utilities/form-validation/validator.js`**
+* **`jtv/playground/experiments/_attic/utilities/form-validation/validator.js`**
   — HardcodedSecret. **False positive.** The "secret" is
   `password: 'SecurePass123!'` used as example data inside a form-validation
   demo showing what valid passwords look like, and `password: 'weak'` showing
@@ -181,7 +181,7 @@ emit signals in these categories.
 | **Fixed this session**            | 14    | Committed, pushed, pointer-bumped
 | **Known work, dedicated session** | 1 (Ephapax proof closure) | Tracked in Ephapax session backlog
 | **Vendored third-party**          | 1 (liboqs)                | Accept as documented third-party risk
-| **False positive**                | 2 (julia-the-viper _attic) | Delete `_attic` or add comment
+| **False positive**                | 2 (jtv _attic) | Delete `_attic` or add comment
 | **Skip permanently**              | 6 (test files, sidelined, playground derivatives) | No action
 | **Per-language follow-up**        | ~110+                     | Schedule per-submodule panic-attack sessions
 | **Tractable follow-up (my-lang)** | 3 (my-ssg main, my-fmt, concurrency) | Next my-lang hygiene session

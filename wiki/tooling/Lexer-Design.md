@@ -166,7 +166,7 @@ Racket-based S-expression lexer:
 
 Tokens: parentheses, symbols, numbers, quoted atoms
 
-### julia-the-viper
+### jtv
 
 Dual-channel lexer (Control + Data):
 

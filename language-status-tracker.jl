@@ -11,7 +11,7 @@ const REPOS_DIR = joinpath(homedir(), "Documents/hyperpolymath-repos")
 const LANGUAGES = [
     # Core 8 nextgen languages
     "affinescript", "anvomidav", "betlang", "eclexia", "ephapax",
-    "julia-the-viper", "my-lang", "oblibeny", "phronesis", "wokelang",
+    "jtv", "my-lang", "oblibeny", "phronesis", "wokelang",
 
     # Database/specialized
     "fqldt", "a2ml", "k9-svc",

@@ -31,7 +31,7 @@ These languages explore different instances of this idea.
 
 == Projects
 
-=== JtV — Julia the Viper
+=== JtV
 
 A foundational language exploring computation as *additive construction from neutral anchors (CNO)*.
 
