@@ -15,20 +15,12 @@ Welcome to the NextGen Languages ecosystem documentation.
 - [[IDE Setup]]
 
 ### Languages
-- [[My-Language Family]]
-  - [[Solo Language]] - Ages 8-10, first text-based programming
-  - [[Duet Language]] - Ages 11-14, collaborative programming
-  - [[Ensemble Language]] - Ages 15-18, full-featured
-  - [[Me Language]] - not a fourth dialect: an agent-generated projection over the Solo / Duet / Ensemble hierarchy
-- [[Foundational Languages]]
-  - [[betlang]] - Probabilistic programming
-  - [[jtv]] - Systems programming, Harvard Architecture
-- [[Specialized Languages]]
-  - [[Phronesis]] - Practical wisdom
-  - [[Eclexia]] - Creative synthesis
-  - [[Oblíbený]] - Preference modeling
-  - [[Anvomidav]] - Real-time systems
-  - [[WokeLang]] - Social awareness
+Per-language guides live in each language's **own repo** — this coordinator no longer hosts
+them (see [External Repositories](#external-repositories) below). Quick map:
+- **My-Lang family** (`hyperpolymath/my-lang`): Solo → Duet → Ensemble. *Me* is not a fourth
+  dialect — it is an agent-generated projection over that hierarchy.
+- **Foundational**: betlang (probabilistic), jtv (systems / Harvard architecture)
+- **Specialized**: Phronesis, Eclexia, Oblíbený, Anvomidav, WokeLang, AffineScript, Ephapax
 
 ### Tooling
 - [[Lexer Design]]
@@ -84,36 +76,44 @@ NextGen Languages is a family of programming languages designed to grow with lea
 ## Repository Structure
 
 ```
-nextgen-languages/          # This hub repository
-├── betlang/                # Submodule: Probabilistic language
-├── jtv/        # Submodule: Systems language
-├── kitchenspeak/           # In-tree DSL: kitchen orchestration, Agda proofs-first
-├── wiki/                   # Documentation (you are here)
-├── scripts/                # Utility scripts
-├── ROADMAP.adoc            # Development roadmap
-├── .machine_readable/LANGUAGES.a2ml  # Language registry
+nextgen-languages/          # This coordinator (references languages; contains none)
+├── wiki/                   # Cross-language, language-agnostic docs (you are here)
+├── docs/                   # Cross-language design & disambiguation notes
+├── scripts/                # Coordinator utility scripts
+├── language-status-tracker.jl     # Cross-language status tracker
+├── ROADMAP.adoc            # Coordinator roadmap
+├── .machine_readable/LANGUAGES.a2ml  # Language registry (points at the repos)
 └── README.adoc             # Project overview
 ```
+
+Each language is its own standalone repo — see **External Repositories** below. The
+coordinator boundary (no language code in-tree) is enforced by
+`hooks/validate-coordinator-boundary.sh`.
 
 ## External Repositories
 
 | Repository | Description |
 |------------|-------------|
-| [solo](https://github.com/hyperpolymath/solo) | Solo language implementation |
-| [duet](https://github.com/hyperpolymath/duet) | Duet language implementation |
-| [ensemble](https://github.com/hyperpolymath/ensemble) | Ensemble language implementation |
-| [phronesis](https://github.com/hyperpolymath/phronesis) | Phronesis language |
-| [eclexia](https://github.com/hyperpolymath/eclexia) | Eclexia language |
-| [oblibeny](https://github.com/hyperpolymath/oblibeny) | Oblíbený language |
-| [anvomidav](https://github.com/hyperpolymath/anvomidav) | Anvomidav language |
-| [wokelang](https://github.com/hyperpolymath/wokelang) | WokeLang |
+| [my-lang](https://github.com/hyperpolymath/my-lang) | My-Lang — Solo / Duet / Ensemble dialect family |
+| [affinescript](https://github.com/hyperpolymath/affinescript) | AffineScript — affine types → WASM |
+| [ephapax](https://github.com/hyperpolymath/ephapax) | Ephapax — dyadic linear/affine types |
+| [phronesis](https://github.com/hyperpolymath/phronesis) | Phronesis — agent ethics |
+| [eclexia](https://github.com/hyperpolymath/eclexia) | Eclexia — resource-first computing |
+| [oblibeny](https://github.com/hyperpolymath/oblibeny) | Oblíbený — Turing-incomplete deployment |
+| [anvomidav](https://github.com/hyperpolymath/anvomidav) | Anvomidav — hard real-time |
+| [wokelang](https://github.com/hyperpolymath/wokelang) | WokeLang — consent-first |
+| [betlang](https://github.com/hyperpolymath/betlang) | betlang — probabilistic |
+| [jtv](https://github.com/hyperpolymath/jtv) | JtV — systems, Harvard architecture |
+| [error-lang](https://github.com/hyperpolymath/error-lang) | error-lang — pedagogical |
+| [tangle](https://github.com/hyperpolymath/tangle) | Tangle (KRL) — topological |
+| [kitchenspeak](https://github.com/hyperpolymath/kitchenspeak) | KitchenSpeak — experimental DSL |
 
 ## Project Status (2026-06-12)
 
-- **KitchenSpeak** (in-tree kitchen-orchestration DSL) is developing proofs-first:
-  Agda proofs (`Dough.agda`, `PoachedEgg.agda`, `EchoBridge.agda`) lead the
-  implementation (ADR 0001), the Echo type attaches to Linear/Dyadic (ADR 0004),
-  and the language is registered in `.machine_readable/LANGUAGES.a2ml` (PR #68).
+- **KitchenSpeak** (experimental kitchen-orchestration DSL) was extracted to its own canonical
+  repo [hyperpolymath/kitchenspeak](https://github.com/hyperpolymath/kitchenspeak); the in-tree
+  snapshot has been removed. Per-language content now lives in each language's own repo
+  (enforced by `hooks/validate-coordinator-boundary.sh`).
 - **ReScript banned estate-wide** per the Hyperpolymath Standard (PR #69).
 - **Estate standardization merged** (2026-06-12): flat contractiles under
   `.machine_readable/contractiles/` are now canonical (root `contractiles/` and

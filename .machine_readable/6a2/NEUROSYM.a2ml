@@ -51,6 +51,7 @@ report-format = "logtalk"
 # ---------------------------------------------------------------------------
 
 [accepted-findings]
+# (kitchenspeak agda-postulate waivers removed — subtree extracted 2026-06-19)
 policy = "Findings listed below are triaged and accepted; do not auto-fix."
 ruleset-location = "hyperpolymath/standards (external to this repo)"
 scan-is-blocking = false
@@ -85,11 +86,3 @@ severity = "high"
 disposition = "addressed"
 justification = "The repository-dispatch step is gated on FARM_DISPATCH_TOKEN presence via a job-level env plus a step-level `if`. Detector may expect a job-level gate."
 action = "If suppression is required, confirm the detector's expected gate shape with standards."
-
-[waivers.agda-postulate-trusted-base]
-rule = "agda_postulate"
-files = "kitchenspeak/proofs/agda/Dough.agda, kitchenspeak/proofs/agda/PoachedEgg.agda"
-severity = "critical"
-disposition = "by-design"
-justification = "These postulates are KitchenSpeak's deliberate trusted base: postulated echo-oracle sensor streams and the GENTLE controller spec. Each is annotated inline (AXIOM:) and enumerated in PROOF-NEEDS.md; they are documented trust boundaries, not undocumented soundness holes. The blocking Trusted-base reduction policy passes."
-action = "Replaced by verified HAL bindings in a production lowering; tracked in PROOF-NEEDS.md."

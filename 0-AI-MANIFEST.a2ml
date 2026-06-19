@@ -4,6 +4,28 @@
 
 **READ THIS FIRST - EVERY SESSION - NO EXCEPTIONS**
 
+### COORDINATOR BOUNDARY — this is a PURE COORDINATOR, not a monorepo
+
+`nextgen-languages` *coordinates* a family of programming languages. It does **NOT
+contain them.** Each language is its own standalone `hyperpolymath/<lang>` repo,
+*referenced* here — never vendored, never embedded, never a submodule. (The
+submodule pointers were removed 2026-06-13; there is no `.gitmodules`.)
+
+**DO NOT add language-specific content to this repo.** That includes:
+
+- compilers, parsers, lexers, type checkers, interpreters, runtimes
+- grammars (`*.ebnf` / `*.bnf` / `*.g4`), proofs (`*.agda` / `*.lean` / `*.idr` / `*.v`),
+  or language source (`*.rs` / `*.ml` under `src/` / `grammar/` / `compiler/` …)
+- per-language specs, design documents, or wiki / tutorial pages
+- a directory named after a language (`ephapax/`, `wokelang/`, …)
+
+If you are about to create any of the above here: **STOP.** It belongs in that
+language's own repo. This boundary is mechanically enforced by
+`hooks/validate-coordinator-boundary.sh` (CI job `coordinator-boundary` in
+`.github/workflows/dogfood-gate.yml`). Content that *does* belong here:
+cross-language indexes and status trackers, governance, CI, and the
+`.machine_readable/` coordination metadata. When in doubt, see `EXTRACTION-MANIFEST.md`.
+
 ### Canonical File Locations (ONLY THESE - NO DUPLICATES)
 
 **Machine-Readable Metadata:** `.machine_readable/` directory ONLY
@@ -13,68 +35,79 @@
 - **.machine_readable/6a2/PLAYBOOK.a2ml** - Operational runbook, procedures, alerts
 - **.machine_readable/6a2/AGENTIC.a2ml** - AI agent interaction patterns and constraints
 - **.machine_readable/6a2/NEUROSYM.a2ml** - Neurosymbolic integration configuration
-- **LANGUAGES.scm** - Language portfolio status and metadata
+- **.machine_readable/LANGUAGES.a2ml** - Language portfolio registry (references the external repos)
 
-**CRITICAL:** If ANY of these 6 SCM files exist in the root directory, this is an ERROR state.
+**CRITICAL:** If any 6a2 state file (STATE/META/ECOSYSTEM/AGENTIC/NEUROSYM/PLAYBOOK)
+or a `LANGUAGES.*` file appears in the **repo root**, this is an ERROR state.
 The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
 
-**Bot Directives:** `.bot_directives/` directory
+**Bot Directives:** `.machine_readable/bot_directives/` directory
 - Bot-specific instructions and automation rules
 - Gitbot-fleet configuration (rhodibot, echidnabot, sustainabot, glambot, seambot, finishbot)
 
 **Agent-Specific Instructions:**
-- `.claude/CLAUDE.md` - Claude-specific patterns and rules (if exists)
-- `AI.a2ml` - THIS FILE - Universal bot entry point
+- `.claude/CLAUDE.md` - Claude-specific patterns and rules
+- `0-AI-MANIFEST.a2ml` - THIS FILE - Universal bot entry point
 
 ### Core Constraints That Prevent Errors
 
-1. **No SCM file duplication** - Root directory must NOT contain .machine_readable/6a2/STATE.a2ml, .machine_readable/6a2/META.a2ml, .machine_readable/6a2/ECOSYSTEM.a2ml, .machine_readable/6a2/AGENTIC.a2ml, .machine_readable/6a2/NEUROSYM.a2ml, .machine_readable/6a2/PLAYBOOK.a2ml, or LANGUAGES.scm
+1. **No SCM file duplication** - Root must NOT contain 6a2 state files or `LANGUAGES.*`
 2. **Single source of truth** - `.machine_readable/` is authoritative
-3. **No stale metadata** - If root SCMs exist, they are OUT OF DATE and must be removed
-4. **Submodule integrity** - All 10 core languages + 7-tentacles must be checked out (not empty directories)
-5. **License consistency** - All code MPL-2.0 unless platform requires MPL-2.0 fallback
-6. **7-Tentacles is NOT a language** - It is an educational/pedagogical framework that uses My-Lang's four dialects (Me, Solo, Duet, Ensemble) as a curriculum vehicle. NEVER audit it as a language. NEVER look for grammar/AST/parser/type-system in it. When reviewing languages, SKIP the 7-tentacles/ directory entirely.
+3. **No stale metadata** - If root state files exist, they are OUT OF DATE; remove them
+4. **Coordinator boundary** - NO language implementation / spec / grammar / proof / per-language
+   doc content in-tree. Languages live in their own `hyperpolymath/<lang>` repos (see top).
+5. **License consistency** - All files MPL-2.0
+6. **tentacles-agentic-syllabus is NOT a language** - It is the educational/pedagogical
+   curriculum framework that uses My-Lang's dialects (Solo, Duet, Ensemble) as a vehicle, and
+   the agent-generated "Me" projection over them. NEVER audit it as a language; NEVER look for
+   grammar/AST/parser/type-system in it. It lives at `hyperpolymath/tentacles-agentic-syllabus`.
 
 ### Session Startup Checklist
 
-✅ Read THIS file (AI.a2ml) first
+✅ Read THIS file (0-AI-MANIFEST.a2ml) first
 ✅ Read `.machine_readable/6a2/STATE.a2ml` for current status
 ✅ Check `.machine_readable/6a2/AGENTIC.a2ml` for interaction constraints
-✅ Verify no duplicate SCM files exist in root
-✅ Check git submodule status (must not be empty)
+✅ Verify no duplicate state files exist in root
+✅ Verify no language-implementation content has leaked in-tree
+   (`bash hooks/validate-coordinator-boundary.sh`)
 
 **These files are the canonical source of truth for project metadata.**
 
 ## Repository Structure
 
-This is a **monorepo** containing:
+This is a **pure coordinator** (NOT a monorepo). It references, but does not contain,
+the language family. There are no language subdirectories and no submodules.
 
-### Core Languages (10) - as Git submodules
-1. Phronesis - 100% complete (production)
-2. Eclexia - 100% complete (production) ✨ VERIFIED 2026-02-07
-3. Oblibeny - 100% complete (production) ✨ NEW 2026-02-07
-4. WokeLang - 100% complete (production) ✨ VERIFIED 2026-02-07
-5. AffineScript - 80% (near-complete, borrow checker 20%)
-6. My-Lang - 75% (solo dialect complete, 4 dialects: me/solo/duet/ensemble)
-7. JtV - 60% (active development)
-8. Ephapax - 55% (dyadic: linear/affine forms)
-9. Anvomidav - 55% (developer experience)
-10. betlang - 35% (development)
+### The language family (each a standalone `hyperpolymath/<lang>` repo)
 
-### Domain-Specific Languages (external repos, linked in docs)
+Phronesis, Eclexia, Oblíbený, WokeLang, AffineScript, My-Lang (Solo/Duet/Ensemble),
+JtV, Ephapax, Anvomidav, betlang, error-lang, Tangle. KitchenSpeak (an experimental
+kitchen-orchestration DSL) is canonical at `hyperpolymath/kitchenspeak`.
+
+Per-language paradigm, mechanism, and implementation status are tracked across the
+coordinator's cross-language files (`TOOLING-STATUS.adoc`, `language-status-tracker.jl`,
+`TEST-NEEDS.md`, `PROOF-NEEDS.md`, `.machine_readable/LANGUAGES.a2ml`) — not duplicated
+in-tree.
+
+### Shared substrate & related repos (referenced, not vendored)
+
+- **typed-wasm** → `hyperpolymath/typed-wasm` (WasmGC compilation target for AffineScript/Ephapax)
+- **echo-types** → `hyperpolymath/echo-types` (Agda structured-loss library) + `EchoTypes.jl`
+- **standards** → `hyperpolymath/standards` (governance + Hypatia reusable workflows)
+- **tentacles-agentic-syllabus** → curriculum framework (NOT a language)
+
+### Domain-specific / query languages (external repos)
+
 - **a2ml** → `hyperpolymath/a2ml` (Attestation & Manifest Language)
-- **vql/vql-dt** → `hyperpolymath/verisimdb` (VeriSim Query Language, normal + dependent types)
+- **vql/vql-dt** → `hyperpolymath/verisimdb` (VeriSim Query Language)
 - **gql/gql-dt** → `hyperpolymath/lithoglyph` + `hyperpolymath/gql-dt` (Glyph Query Language)
 - **k9-svc** → `hyperpolymath/k9-svc` (Self-Validating Components + tools)
 
-### Companion Tools
-- **7-tentacles** → Educational program for My-Lang (submodule)
-
 ## Workflow
 
-1. Read `.machine_readable/*.scm` files at session start
-2. Check .machine_readable/6a2/STATE.a2ml for current phase, blockers, next actions
-3. Update submodules if needed: `git submodule update --remote`
-4. Follow patterns and constraints from .machine_readable/6a2/AGENTIC.a2ml
-5. Update .machine_readable/6a2/STATE.a2ml after completing work
-6. Update LANGUAGE-STATUS-MASTER.md with language progress
+1. Read `.machine_readable/6a2/*.a2ml` at session start
+2. Check `.machine_readable/6a2/STATE.a2ml` for current phase, blockers, next actions
+3. Coordinate via external repo references — there are **no submodules to update**
+4. Follow patterns and constraints from `.machine_readable/6a2/AGENTIC.a2ml`
+5. Respect the COORDINATOR BOUNDARY: language-specific work goes in that language's own repo
+6. Update `.machine_readable/6a2/STATE.a2ml` after completing work

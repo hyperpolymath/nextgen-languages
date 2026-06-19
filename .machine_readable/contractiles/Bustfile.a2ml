@@ -18,7 +18,6 @@ description = "Rollback procedures when something breaks in the language-family 
 bad-governance-or-estate-merge = "git revert -m 1 <merge-commit> on the parent repo; submodule repos themselves untouched"
 submodule-pointer-points-at-missing-sha = "git submodule update --init --checkout <path> resets the child to the parent-recorded SHA; or revert the stale pointer-bump commit"
 submodule-orphan-after-local-only-commit = "git reset to before the stranded commit locally; fix the child repo's remote state before re-attempting the bump"
-kitchenspeak-proof-regression = "Agda check fails after an edit: revert the offending commit. NEVER weaken or delete proofs to make CI pass (MUST: proofs lead implementation, ADR 0001)"
 broken-workflow-change = "CI red after a workflow edit: revert the workflow commit; re-pin actions to known-good SHAs (MUST: SHA-pinned actions)"
 accidental-secret-committed = "hard-rotate the leaked secret immediately; scrub history with git-filter-repo or BFG; force-push only with explicit maintainer confirmation; re-publication only after rotation completes"
 bad-metadata-refresh = "6a2/ or contractile refresh introduced false claims: revert the docs commit; restore from origin/main history (governance files carry no build risk)"

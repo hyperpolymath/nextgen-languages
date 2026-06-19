@@ -2,31 +2,13 @@
 SPDX-License-Identifier: MPL-2.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# My-Lang Family
+# My-Lang
 
-> Progressive mastery from visual blocks to AI-native programming.
+> Each level builds exactly on the previous.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/my-lang](https://github.com/hyperpolymath/my-lang)
 
-**Each level builds exactly on the previous—no concept is introduced without foundation.**
-
-## Languages
-
-| Level | Ages | Focus |
-|-------|------|-------|
-| Me | 6-8 | Visual/block-based |
-| Solo | 8-10 | First text-based, explicit effects |
-| Duet | 11-14 | AI-assisted, collaborative |
-| Ensemble | 15-18 | AI-native, professional |
-
-## Run
-
-```bash
-cargo run --bin solo
-cargo run --bin duet
-cargo run --bin ensemble
-```
-
-## Status
-
-🟡 TO VERIFY - Check sync with GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).
