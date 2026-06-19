@@ -60,10 +60,9 @@ no-removal-of-formal-verification-proofs = true
 
 # === Project-specific invariants (nextgen-languages) ===
 
-[project.kitchenspeak]
-postulates-trusted-base = "Agda postulates documented as trusted base (inline -- AXIOM: comment + PROOF-NEEDS.md)"
-agda-proven-invariant = "proofs lead implementation (ADR 0001)"
-echo-attachment = "Echo type attaches to Linear/Dyadic per ADR 0004; the Bool bridge is non-canonical"
+[project.coordinator]
+pure-coordinator = "this repo coordinates the language family; language implementations, specs, grammars, and proofs live in each hyperpolymath/<lang> repo, never in-tree"
+no-language-vendoring = "no language-named source directory at repo root; no .agda/.ebnf/.ks/.lean/.idr or compiler source trees in the hub (enforced: hooks/validate-coordinator-boundary.sh)"
 
 [project.governance]
 hypatia-advisories = "recurring Hypatia advisories are triaged in NEUROSYM.a2ml waivers, not silently suppressed"
@@ -77,12 +76,8 @@ readme-present = { description = "README must exist", run = "test -f README.adoc
 governance-docs = { description = "GOVERNANCE.adoc, MAINTAINERS.adoc, CODEOWNERS must exist", run = "test -f GOVERNANCE.adoc && test -f MAINTAINERS.adoc && test -f .github/CODEOWNERS", severity = "critical" }
 contractiles-flat = { description = "flat contractile files exist", run = "test -f .machine_readable/contractiles/Mustfile.a2ml && test -f .machine_readable/contractiles/Trustfile.a2ml && test -f .machine_readable/contractiles/Intentfile.a2ml && test -f .machine_readable/contractiles/Adjustfile.a2ml && test -f .machine_readable/contractiles/Dustfile.a2ml && test -f .machine_readable/contractiles/Bustfile.a2ml", severity = "critical" }
 
-[checks.kitchenspeak]
-agda-proven-invariant = { description = "KitchenSpeak proofs directory must exist (proofs lead implementation)", run = "test -d kitchenspeak/proofs/agda", severity = "critical" }
-kitchenspeak-lib-declared = { description = "kitchenspeak.agda-lib must declare echo-types dependency", run = "grep -q 'echo-types' kitchenspeak/proofs/agda/kitchenspeak.agda-lib", severity = "critical" }
-kitchenspeak-postulates-annotated = { description = "all Agda postulates must be preceded by -- AXIOM: comment (trusted-base governance)", run = "! grep -n '^postulate' kitchenspeak/proofs/agda/*.agda | grep -v 'AXIOM' || true", severity = "warning" }
-kitchenspeak-proof-needs-present = { description = "PROOF-NEEDS.md must enumerate postulate trusted base", run = "test -f kitchenspeak/proofs/PROOF-NEEDS.md", severity = "critical" }
-kitchenspeak-adr-echo-attachment = { description = "ADR 0004 (Echo attaches to Linear/Dyadic) must be present", run = "test -f kitchenspeak/decisions/0004-echo-attaches-to-linear-dyadic.adoc", severity = "critical" }
+[checks.boundary]
+coordinator-only = { description = "no language-implementation content leaks into the coordinator (proofs/grammars/compilers/specs belong in hyperpolymath/<lang>)", run = "bash hooks/validate-coordinator-boundary.sh", severity = "critical" }
 
 [checks.banned]
 no-hardcoded-paths = { description = "no hardcoded developer paths", run = "! grep -rn '/home/hyper\\|/mnt/eclipse' --include='*.rs' --include='*.res' --include='*.ex' --include='*.gleam' --include='*.zig' --include='*.sh' . 2>/dev/null | grep -v '.git/' | grep -v 'ux-rollout.jl' | head -1", severity = "critical" }

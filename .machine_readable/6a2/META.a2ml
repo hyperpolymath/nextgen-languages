@@ -9,14 +9,12 @@ license = "MPL-2.0"
 standard = "RSR 2026"
 
 [architecture-decisions]
-# Repo-level and per-language ADRs (kitchenspeak ADRs under kitchenspeak/decisions/).
-ks-0001 = "Proof assistant for KitchenSpeak: Agda (Lean 4 reserved as successor)"
-ks-0002 = "Elevate KitchenSpeak to a standalone repository + submodule"
-ks-0003 = "Base KitchenSpeak's Echo type on the hyperpolymath/echo-types library"
-ks-0004 = "Echo attaches to Linear/Dyadic consumption (B-now / C-later / A-shim)"
+# Repo-level ADRs. Per-language ADRs (including the former in-tree KitchenSpeak
+# 0001-0004 echo/proof/elevation decisions) now live in their own language
+# repos — KitchenSpeak's are canonical in hyperpolymath/kitchenspeak.
+coordinator-boundary = "nextgen-languages is a pure coordinator: languages are referenced as standalone repos, never vendored in-tree (guarded by hooks/validate-coordinator-boundary.sh + dogfood-gate coordinator-boundary)"
 
 [practices]
-proofs-first = "KitchenSpeak leads with Agda proofs (its Agda-Proven invariant) ahead of compiler work"
 ci-hygiene = "All real jobs carry timeout-minutes; actions SHA-pinned; reusable-caller jobs exempt from timeout"
 hypatia-waivers = "Recurring scan advisories are triaged once in NEUROSYM.a2ml [waivers], not re-fixed per PR"
 adr-granularity = "Architecture-decision PRs are kept separate from implementation PRs"

@@ -4,28 +4,11 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
 # AffineScript
 
-> Affine types and dependent types for WebAssembly.
+> Every resource is used at most once.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/affinescript](https://github.com/hyperpolymath/affinescript)
 
-**Every resource is used at most once—no accidental aliasing or double-free.**
-
-## Example
-
-```ocaml
-let file : File = open("data.txt")
-let contents = read(file)   (* file consumed here *)
-(* file cannot be used again *)
-close(contents.handle)
-```
-
-## Run
-
-```bash
-dune build
-dune exec affinescript
-```
-
-## Status
-
-🟡 TO VERIFY - Check sync with GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).

@@ -8,7 +8,8 @@ Last verified: 2026-03-21
 
 == Overview
 
-This monorepo contains 12 programming languages + 2 meta-projects. All 12 languages
+This coordinator tracks 12 programming languages + 2 meta-projects, each maintained as its
+own standalone `hyperpolymath/<lang>` repo (no language code lives here). All 12 languages
 are registered in the BoJ Server `lang-mcp` cartridge with session management, type-checking,
 and evaluation via zig adapter + Zig FFI.
 

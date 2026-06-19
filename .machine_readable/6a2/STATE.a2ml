@@ -5,13 +5,13 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-06-12"
+last-updated = "2026-06-19"
 status = "active"
 
 [project-context]
 name = "nextgen-languages"
 completion-percentage = 15
-phase = "CRG C achieved for ephapax workspace (2026-04-04); KitchenSpeak elevated + proofs commenced (2026-06)"
+phase = "CRG C achieved for ephapax workspace (2026-04-04); pure-coordinator pivot finalized — in-tree kitchenspeak/ snapshot removed (canonical at hyperpolymath/kitchenspeak), coordinator-boundary guard added (2026-06-19)"
 
 [crg-status]
 overall = "CRG C achieved 2026-04-04"
@@ -32,17 +32,6 @@ p2p-property-tests = "Loop-based invariant checks (10-20 iterations each)"
 e2e-tests = "Full pipeline: lexer->tokens, module->discipline check"
 aspect-tests = "Robustness: empty inputs, stateless checkers, edge cases"
 
-[kitchenspeak]
-# KitchenSpeak: experimental, formally-verified kitchen-orchestration DSL.
-status = "elevated to standalone-repo-ready; proofs-first development commenced"
-listed-as = "DSL in README.adoc and EXPLAINME.adoc"
-elevation = "scripts/elevate-kitchenspeak.sh creates hyperpolymath/kitchenspeak + submodule (needs repo-create rights)"
-proofs = "Dough.agda, PoachedEgg.agda (Linear+Tropical+Echo), EchoBridge.agda; harness: proofs/Makefile + kitchenspeak.agda-lib"
-proofs-status = "hand-verified, not yet machine-checked (Agda not in CI yet; ROADMAP Phase 1a)"
-decisions = "ADR 0001 (Agda), 0002 (elevation), 0003 (echo-types dependency), 0004 (Echo attaches to Linear/Dyadic: B-now/C-later/A-shim)"
-echo-types = "Echo type bound to hyperpolymath/echo-types fiber; canonical attachment is Linear/Dyadic per ADR 0004; Bool bridge is a temporary smoke-test"
-gated = "B-implementation gated on echo-types repo in scope (read EchoLinear/EchoTropical/EchoChoreo/EchoEpistemic/EchoResidueTaxonomy first)"
-
 [ci-governance]
 # Outcome of the 2026-06 CI hygiene pass.
 timeouts = "timeout-minutes added to all real runs-on+steps jobs (reusable-caller jobs intentionally excluded)"
@@ -55,6 +44,7 @@ codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
 # Landed since the 2026-06-02 STATE refresh (witness: git log).
+coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.md"
 pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml, Intentfile, Mustfile"
 pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + policy tables updated"
 scm-pointer-fix = "stale .scm state-location pointers fixed in ROADMAP and CHANGELOG (196e0ad)"
@@ -64,11 +54,8 @@ estate-standardization = "2026-06-12: origin/estate-standardization-20260607 mer
 governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet, git-private-farm), flat Dustfile/Bustfile added, STATE bumped, wiki status note"
 
 [blockers]
-kitchenspeak-ci = "Agda proofs hand-verified but not yet machine-checked in CI (ROADMAP Phase 1a)"
-kitchenspeak-elevation = "standalone-repo elevation needs repo-create rights (scripts/elevate-kitchenspeak.sh)"
 governance-pin = "governance-reusable.yml referenced at @main; SHA pin pending authenticated lookup (NEUROSYM [waivers.governance-reusable-pin])"
 
 [next-actions]
-machine-check-proofs = "wire Agda check of kitchenspeak/proofs into CI (Phase 1a)"
 claude-md-paths = "maintainer edit needed: .claude/CLAUDE.md references my-lang/frontier-practices/ and my-lang/_exploratory/me-scaffolding/, which are not visible in-tree (paths live inside the my-lang submodule); proposed as issue at the 2026-06-12 checkpoint"
 verisim-naming = "integrations/verisim.a2ml vs siblings' verisimdb.a2ml — naming alignment proposed as issue, not renamed unilaterally"

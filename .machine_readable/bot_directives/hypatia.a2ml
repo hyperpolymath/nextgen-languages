@@ -23,7 +23,6 @@ reusable-caller-timeout = "missing_timeout_minutes on governance/hypatia-scan/mi
 governance-reusable-pin = "unpinned_action on governance.yml — tracked: standards governance-reusable.yml referenced at @main pending SHA pin via authenticated lookup"
 scorecard-publish-split = "scorecard_publish_with_run_step on scorecard-enforcer.yml — addressed: privileged publish job split from unprivileged score-gate job; detector pattern mismatch"
 instant-sync-secret-gate = "secret_action_without_presence_gate on instant-sync.yml — addressed: dispatch step IS gated on FARM_DISPATCH_TOKEN presence (job-level env + step-level if)"
-agda-postulate-trusted-base = "agda_postulate on kitchenspeak/proofs/agda/{Dough,PoachedEgg}.agda — by-design: KitchenSpeak's documented trusted base, annotated inline (AXIOM:) and enumerated in PROOF-NEEDS.md"
 
 [prohibited-actions]
 auto-delete-branches = false

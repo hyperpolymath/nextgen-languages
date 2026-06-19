@@ -4,30 +4,11 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
 # Ephapax
 
-> Once-only evaluation with linear semantics.
+> Every value can be consumed exactly once.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/ephapax](https://github.com/hyperpolymath/ephapax)
 
-**Every value can be consumed exactly once—enforced statically.**
-
-## Example
-
-```scheme
-(define token (create-one-time-token secret))
-
-(consume token verification-service)
-;; token is now invalid - cannot be reused
-
-;; This would be a compile error:
-;; (consume token another-service)
-```
-
-## Run
-
-```bash
-# Implementation-specific - TBD
-```
-
-## Status
-
-🟡 TO VERIFY - Check sync with GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).

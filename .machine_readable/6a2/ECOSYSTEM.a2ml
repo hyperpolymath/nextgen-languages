@@ -11,7 +11,7 @@ type = "component"
 
 [related-projects]
 # Projects this repo coordinates with directly.
-echo-types = "hyperpolymath/echo-types — Agda formal model of structured loss (Echo fiber); KitchenSpeak's Echo substrate"
+echo-types = "hyperpolymath/echo-types — Agda formal model of structured loss (Echo fiber); Echo substrate consumed by the KitchenSpeak external repo"
 echotypes-jl = "hyperpolymath/EchoTypes.jl — executable finite-domain companion to echo-types (runtime model, not a proof)"
 standards = "hyperpolymath/standards — governance + Hypatia reusable workflows (pinned)"
 typed-wasm = "hyperpolymath/typed-wasm — WasmGC compilation target for AffineScript/Ephapax"
@@ -35,4 +35,4 @@ oblibeny = "hyperpolymath/oblibeny"
 phronesis = "hyperpolymath/phronesis"
 tangle = "hyperpolymath/tangle"
 wokelang = "hyperpolymath/wokelang"
-kitchenspeak = "in-tree, standalone-repo-ready; elevate via scripts/elevate-kitchenspeak.sh"
+kitchenspeak = "hyperpolymath/kitchenspeak"

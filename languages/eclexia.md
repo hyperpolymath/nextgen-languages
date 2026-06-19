@@ -4,26 +4,11 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
 # Eclexia
 
-> Sustainable Software Engineering through resource-first constraints.
+> No computation without explicit resource budget.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/eclexia](https://github.com/hyperpolymath/eclexia)
 
-**No computation proceeds without an explicit resource budget.**
-
-## Example
-
-```scheme
-(energy budget 100mJ
-  (resource memory 64KB)
-  (compute matrix-multiply A B))
-```
-
-## Run
-
-```bash
-cargo run
-```
-
-## Status
-
-🔴 NOT SYNCED (Priority 1) - 70-page white paper and Rust compiler exist only on GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).

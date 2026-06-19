@@ -4,27 +4,11 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
 # betlang
 
-> Probabilistic programming for sampling and inference.
+> All uncertainty must be explicitly modeled.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/betlang](https://github.com/hyperpolymath/betlang)
 
-**All uncertainty must be explicitly modeled—no hidden randomness.**
-
-## Example
-
-```racket
-(define coin (bernoulli 0.5))
-(define outcome (if coin 'heads 'tails))
-(observe (= outcome 'heads))
-(sample coin)
-```
-
-## Run
-
-```bash
-racket main.rkt
-```
-
-## Status
-
-🟡 TO VERIFY - Check sync with GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).
