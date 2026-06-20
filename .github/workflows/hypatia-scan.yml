@@ -30,5 +30,4 @@ permissions:
 jobs:
   hypatia:
     uses: hyperpolymath/standards/.github/workflows/hypatia-scan-reusable.yml@8e6ba7d4a0890d25425855a77404d4690d0ab4b5  # standards #380; repin from a 0-jobs stale ref (paired with actions:read above)
-    timeout-minutes: 10
     secrets: inherit
