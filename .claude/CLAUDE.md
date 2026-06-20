@@ -1,3 +1,13 @@
+## CRITICAL: This Is a Pure Coordinator, Not a Monorepo
+
+`nextgen-languages` coordinates a language family; it does **not** contain it. Each language
+is its own standalone `hyperpolymath/<lang>` repo, referenced — never vendored, never a
+submodule. **Do not add language implementations, specs, grammars, proofs, compilers, or
+per-language wiki/design docs here.** If you are about to create such content, it belongs in
+that language's own repo. This boundary is enforced by
+`hooks/validate-coordinator-boundary.sh` (CI job `coordinator-boundary`). See
+`0-AI-MANIFEST.a2ml` (COORDINATOR BOUNDARY) and `EXTRACTION-MANIFEST.md`.
+
 ## CRITICAL: Pedagogy Lives Outside This Repo
 
 Curriculum, syllabus, aspect-agents, kin framework, and the Me runtime projector all live

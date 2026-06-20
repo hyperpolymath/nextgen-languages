@@ -2,36 +2,13 @@
 SPDX-License-Identifier: MPL-2.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-# jtv
+# JtV
 
-> Systems programming with Harvard Architecture separation.
+> Data and code are strictly separated.
 
-## Invariant
+**Canonical repository:** [hyperpolymath/jtv](https://github.com/hyperpolymath/jtv)
 
-**Data and code occupy strictly separate memory spaces—no self-modifying code.**
-
-## Example
-
-```rust
-// Data segment - immutable at runtime
-data {
-  lookup_table: [u8; 256] = precomputed_values()
-}
-
-// Code segment - no data writes
-code {
-  fn transform(input: u8) -> u8 {
-    lookup_table[input]
-  }
-}
-```
-
-## Run
-
-```bash
-cargo run
-```
-
-## Status
-
-🟡 TO VERIFY - Check sync with GitLab
+This coordinator only *indexes* the language. The implementation, specification, grammar,
+examples, and live status live in the canonical repository above — not here. See also
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml) and
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc).

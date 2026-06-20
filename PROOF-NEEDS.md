@@ -25,20 +25,11 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 | Tangle Lean proofs | Extend Tangle.lean coverage | Existing Lean proofs are partial |
 | Oblibeny ABI | Extend Interface.idr with full package proofs | Current ABI is minimal |
 
-## KitchenSpeak Trusted Base (Agda postulates)
+## KitchenSpeak
 
-KitchenSpeak's proofs are deliberately built on a small, explicit trusted
-base: the *postulated echo-oracles* (sensors) and the GENTLE *controller
-spec*. These are not soundness gaps to close but documented trust
-boundaries (see each proof's final section and `COMMENTARY.adoc §Echo`).
-A production lowering replaces each with a verified HAL binding.
-
-| Postulate | File | What it trusts | Production replacement |
-|-----------|------|----------------|------------------------|
-| `viscosity-at` | `kitchenspeak/proofs/agda/Dough.agda` | Torque sensor stream | Verified HAL torque binding |
-| `temp-at` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | Hob thermometer stream | Verified HAL thermal binding |
-| `white-set-at` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | Visual albumen classifier | Verified/empirically-bounded classifier |
-| `gentle-bounded` | `kitchenspeak/proofs/agda/PoachedEgg.agda` | GENTLE controller never overshoots target cap | Integrator bound on the slope |
+KitchenSpeak is now an external standalone repo; its Agda proofs and their
+trusted base (postulated echo-oracles / sensors and the GENTLE controller
+spec) live in `hyperpolymath/kitchenspeak`, not in this coordinator.
 
 ## Recommended Prover
 

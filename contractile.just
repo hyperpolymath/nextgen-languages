@@ -33,7 +33,7 @@ intend-list:
 # Source: Mustfile.a2ml
 
 # Run all must checks
-must-check: must-license-present must-readme-present must-spdx-headers must-no-banned-files
+must-check: must-license-present must-readme-present must-spdx-headers must-no-banned-files must-no-language-leak
     @echo 'All must checks passed'
 
 # LICENSE file must exist
@@ -51,6 +51,10 @@ must-spdx-headers:
 # No Dockerfiles or Makefiles
 must-no-banned-files:
     test ! -f Dockerfile && test ! -f Makefile
+
+# Coordinator boundary: no language-implementation content leaks into the hub
+must-no-language-leak:
+    @bash hooks/validate-coordinator-boundary.sh
 
 
 # === TRUST (Integrity & Provenance Verification) ===

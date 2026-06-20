@@ -11,14 +11,16 @@ honest status per language, and enough structural detail for an external
 reviewer to understand the relationship between the languages, their -iser
 counterparts, and the rest of the hyperpolymath ecosystem.
 
-IMPORTANT: This is a *parent tracking repository* — no implementation code
-lives here at the repo root. All language implementations live in
-subdirectories (`ephapax/`, `wokelang/`, `eclexia/`, etc.) which are also
-maintained as standalone canonical repos.
+IMPORTANT: This is a *pure coordinator* repository — **no language implementation
+code lives here at all.** Each language is its own standalone canonical repo at
+`hyperpolymath/<lang>`, *referenced* from here, not vendored. (The submodule
+pointers were removed 2026-06-13; there is no `.gitmodules`.) This repo holds
+cross-language coordination only. See the COORDINATOR BOUNDARY in
+`0-AI-MANIFEST.a2ml` and `EXTRACTION-MANIFEST.md`.
 
-NOTE: `7-tentacles/` is NOT a programming language. It is an educational
-framework using My-Lang's dialects as a curriculum vehicle. Never audit it
-as a language implementation.
+NOTE: `tentacles-agentic-syllabus` is NOT a programming language. It is an
+educational framework using My-Lang's dialects as a curriculum vehicle. Never
+audit it as a language implementation.
 
 == Claim 1: "Ten languages that cover the full spectrum of modern software challenges"
 
@@ -33,7 +35,7 @@ ____
 
 The eight core languages plus two specialised languages are designed to
 complement each other, not compete. They occupy distinct cells in the design
-space:
+space (each maintained as a standalone `hyperpolymath/<lang>` repo):
 
 [cols="1,1,2,1"]
 |===
@@ -41,9 +43,9 @@ space:
 
 | *Solo/Duet/Ensemble* (my-lang)
 | Imperative → AI-assisted → AI-native
-| Progressive dialect family: Me → Solo → Duet → Ensemble. `@synth` and
+| Progressive dialect family: Solo → Duet → Ensemble. `@synth` and
 `@verify` annotations in Duet. `AI<T>` effect type in Ensemble.
-| Rust compiler, ReScript frontend
+| Rust compiler
 
 | *Phronesis*
 | Declarative, logic-based agent ethics
@@ -86,29 +88,22 @@ Ephapax (which is dyadic: affine + linear).
 | `let x = ...` (affine) vs `let! x = ...` (linear). Targets WebAssembly.
 Gossamer backend. Rust compiler, Coq proofs.
 | Rust (17 crates), Coq proofs
-
-| *KitchenSpeak* _(experimental DSL)_
-| Applied type-theory teaching DSL
-| Seven-type kitchen-orchestration DSL: Tropical (refinement), Linear,
-Choreographic (session), Echo (postulated oracle), Dyadic (tensor),
-Ceremonial (effect), Primitive (units). `max_duration` / `on_fail` /
-`proving @w` make every block a total, witnessed function. Proofs-first.
-| Agda proofs (OCaml front end planned)
 |===
 
-NOTE: *KitchenSpeak* is an experimental teaching DSL, not one of the ten
-core languages. It is maintained as the standalone `hyperpolymath/kitchenspeak`
-repository and develops proofs-first (see its `ROADMAP.adoc`); the canonical
-recipes (Dough, Poached Egg) already have Agda lowerings. Per ADR 0004 its
-Echo type is being anchored on the link:https://github.com/hyperpolymath/echo-types[`echo-types`]
-library (structured-loss residue), attaching to the *Linear/Dyadic* consumption
-types rather than the narrow `@` sensor witness — the current Boolean
-`EchoBridge` is a temporary smoke-test, not the canonical attachment.
+NOTE: *KitchenSpeak* — an experimental applied-type-theory teaching DSL
+(seven-type kitchen orchestration: Tropical, Linear, Choreographic, Echo,
+Dyadic, Ceremonial, Primitive) — is NOT one of the ten core languages and is
+no longer carried in this repo. It is canonical at the standalone
+link:https://github.com/hyperpolymath/kitchenspeak[`hyperpolymath/kitchenspeak`]
+repository (v2.0: physics-in-the-types, reference OCaml compiler, machine-checked
+Agda proofs). Per ADR 0004 its Echo type attaches to the *Linear/Dyadic*
+consumption types on the link:https://github.com/hyperpolymath/echo-types[`echo-types`]
+substrate.
 
 === Most mature: Ephapax
 
-`ephapax/` is the most advanced implementation. It is a Cargo workspace with
-17 crates:
+`hyperpolymath/ephapax` is the most advanced implementation — a Cargo workspace
+with 17 crates:
 
 * `ephapax-lexer` — tokeniser
 * `ephapax-parser` — AST construction
@@ -121,8 +116,9 @@ types rather than the narrow `@` sensor witness — the current Boolean
 * `ephapax-repl` — REPL
 * `ephapax-package` — package management
 
-`ephapax/` also contains two arXiv paper sources:
-`arcvix-code-as-matter.tex` and `arcvix-dyadic-language-design.tex`.
+It also carries two arXiv paper sources (`arcvix-code-as-matter.tex` and
+`arcvix-dyadic-language-design.tex`) and Coq soundness proofs. See that repo's
+`README.adoc` and `ROADMAP.adoc` for current status.
 
 === Honest caveat
 
@@ -130,23 +126,22 @@ The language family is at different stages. Ephapax has a working type
 checker, interpreter, LSP, and REPL with ~307 tests. WokeLang has a parser
 and evaluator but is pre-production. Anvomidav has its type system designed
 but the compiler is early. Oblíbený and the my-lang dialect family are active.
-An external reviewer should consult each language's CHANGELOG for current
-implementation completeness rather than assuming the table above means
-"production ready."
+An external reviewer should consult *each language's own repo* (its CHANGELOG
+and ROADMAP) for current implementation completeness rather than assuming the
+table above means "production ready."
 
-== Claim 2: "Languages vs. -iser tools — implementations here, extractions in developer-ecosystem"
+== Claim 2: "Languages vs. -iser tools — implementations in their repos, extractions in developer-ecosystem"
 
 [quote, README]
 ____
-This repository contains the actual programming languages — full compilers,
-parsers, type checkers, interpreters. The -iser repos in developer-ecosystem
-let you use each language's unique power without learning the full language.
+Each programming language has full compilers, parsers, type checkers, and
+interpreters in its own repo. The -iser repos in developer-ecosystem let you use
+each language's unique power without learning the full language.
 ____
 
 === How it works
 
-Each language in `nextgen-languages/` has a corresponding `-iser` tool in
-`developer-ecosystem/`:
+Each language has a corresponding `-iser` tool in `developer-ecosystem/`:
 
 [cols="1,1,2"]
 |===
@@ -154,8 +149,7 @@ Each language in `nextgen-languages/` has a corresponding `-iser` tool in
 
 | `ephapaxiser`
 | Ephapax
-| Linear type checking for Rust/ReScript code — Ephapax's linear types as
-an external linter
+| Linear type checking for Rust code — Ephapax's linear types as an external linter
 
 | `wokelangiser`
 | WokeLang
@@ -184,16 +178,13 @@ an external linter
 
 The design principle: learn the language when you want its full power;
 use the -iser when you want one specific guarantee applied to existing code.
-This means the languages can be adopted incrementally without requiring a
-full rewrite of existing codebases.
 
 === Honest caveat
 
 Most -iser tools are earlier stage than their parent languages. The split
-between "here" and `developer-ecosystem` is architectural policy, not
-evidence that either side is complete. An external reviewer should check
-`developer-ecosystem/` for the current status of each -iser before assuming
-it is deployable.
+between a language and its -iser is architectural policy, not evidence that
+either side is complete. Check `developer-ecosystem/` for the current status of
+each -iser before assuming it is deployable.
 
 == Dogfooded Across The Account
 
@@ -217,20 +208,16 @@ crates with Coq proofs
 | Gossamer, Groove, Stapeln, VeriSimDB
 
 | *Coq proofs*
-| Ephapax linearity and termination proofs in `ephapax/` (arXiv paper backed)
+| Ephapax linearity and termination proofs (arXiv paper backed)
 | maa-framework/absolute-zero, echidna (Coq is one of echidna's prover targets)
-
-| *Ephapax itself*
-| Gossamer backend language — the primary consumer of the Ephapax compiler
-| Gossamer; `nextgen-languages/ephapax` is the upstream
 
 | *Julia*
 | `language-status-tracker.jl` — batch script tracking implementation
-progress across all languages
+progress across all languages from this coordinator
 | developer-ecosystem batch processing, data analysis
 
 | *Hypatia scanning*
-| `.hypatia/` CI workflows for each language subdirectory
+| `.hypatia/` CI workflows
 | Every RSR repo in the account
 
 | *Stapeln containers*
@@ -238,102 +225,68 @@ progress across all languages
 | All containerised services in the account
 |===
 
-== File Map
+== Where Each Language Lives
+
+This coordinator does not contain language code; it references it. Each language
+is a standalone canonical repo:
+
+[cols="1,2"]
+|===
+| Language | Canonical repo
+
+| AffineScript | `hyperpolymath/affinescript`
+| Anvomidav    | `hyperpolymath/anvomidav`
+| betlang      | `hyperpolymath/betlang`
+| Eclexia      | `hyperpolymath/eclexia`
+| Ephapax      | `hyperpolymath/ephapax`
+| error-lang   | `hyperpolymath/error-lang`
+| JtV          | `hyperpolymath/jtv`
+| My-Lang (Solo/Duet/Ensemble) | `hyperpolymath/my-lang`
+| Oblíbený     | `hyperpolymath/oblibeny`
+| Phronesis    | `hyperpolymath/phronesis`
+| Tangle       | `hyperpolymath/tangle`
+| WokeLang     | `hyperpolymath/wokelang`
+| KitchenSpeak (experimental DSL) | `hyperpolymath/kitchenspeak`
+|===
+
+== What This Coordinator Holds (and what it does not)
 
 [cols="1,3"]
 |===
-| Path | What It Proves
+| Path | What it is
 
-| `ephapax/`
-| Most mature language. 17 Rust crates (lexer → parser → analysis → desugar
-→ IR → interp → cli → lsp → repl → package). Coq proofs of linear type
-soundness. Two arXiv paper sources. `ephapax-proven/` and
-`ephapax-proven-ffi/` contain formally verified components. WASM target.
-The Gossamer upstream.
-
-| `wokelang/`
-| Human-centric language. OCaml parser. Rust evaluator. `compiler/` subdirectory.
-`bench/` benchmarks. `arxiv-consent-aware-programming.tex` — research basis.
-
-| `eclexia/`
-| Sustainable computing language. Rust implementation. Resource budget
-constraint propagation through the type system.
-
-| `affinescript/`
-| Affine types for WASM. OCaml compiler. `AI.a2ml` and `AI.djot` — AI
-manifest and documentation. Full RSR Gold tier claimed.
-
-| `anvomidav/`
-| Hard real-time systems language. Linear + session types. `Π-types` in
-the syntax. Rust + Idris2 proofs.
-
-| `oblibeny/`
-| Turing-incomplete secure enclave language. `(forbid recursion)` and
-`(bounded-for ...)` are first-class syntax. OCaml implementation.
-
-| `phronesis/`
-| AI ethics specification language. `Agent.`, `Values:`, `EVALUATE(...)`.
-Rust implementation. Design targeted at formal AI alignment auditing.
-
-| `my-lang/`
-| Progressive dialect family: Me → Solo → Duet → Ensemble. Single Rust
-compiler that handles all four dialects via dialect-specific parse modes.
-
-| `betlang/`
-| Foundational experiment — the language that preceded the full family.
-Full Cargo workspace.
-
-| `jtv/`
-| Systems language with Harvard Architecture memory model. Named separately
-from Julia the data language to avoid confusion.
-
-| `error-lang/`
-| Pedagogical language for teaching systems thinking via error conditions.
-
-| `kitchenspeak/`
-| Experimental, formally-verified kitchen-orchestration DSL (in-tree,
-standalone-repo-ready — `hyperpolymath/kitchenspeak`). Seven-type system; proofs-first. Agda
-lowerings of the Dough and Poached Egg recipes; `ROADMAP.adoc` targets
-AffineScript-level toolchain parity, leading with the proof library.
-
-| `tangle/`
-| Literate programming / tangling tool shared across the language ecosystem.
-
-| `me-dialect/`
-| The "Me" beginner dialect of my-lang. Separated for pedagogical clarity.
-
-| `7-tentacles/`
-| NOT a language. Educational framework using my-lang's dialects as
-curriculum across a 10-year trajectory. Skip when auditing languages.
-
-| `languages/`
-| Cross-language shared utilities and type definitions.
+| `README.adoc`, `EXPLAINME.adoc`
+| Research overview and these receipts (cross-language, not per-language).
 
 | `language-status-tracker.jl`
 | Julia script tracking implementation completeness across all languages.
-Authoritative source for "what is actually done."
+Authoritative cross-language "what is actually done."
 
-| `scripts/`
-| Batch tooling for cross-language operations.
+| `TOOLING-STATUS.adoc`, `TEST-NEEDS.md`, `PROOF-NEEDS.md`
+| Cross-language readiness / test / proof trackers.
 
-| `wiki/`
-| Language design documentation — grammars, syntax decisions, type system
-rationale.
+| `docs/disambiguation/`
+| Cross-language anti-confusion notes (e.g. ephapax-vs-affinescript).
 
-| `hooks/`
-| Git hooks enforcing language-specific invariants (e.g. no TypeScript,
-no Python).
+| `wiki/` (overview, tooling, tutorials, frameworks)
+| Language-*agnostic* education only. Per-language pages are NOT kept here.
 
 | `.machine_readable/`
-| A2ML checkpoint files (STATE, META, ECOSYSTEM, AGENTIC, NEUROSYM, PLAYBOOK).
-Canonical AI session state.
+| A2ML coordination metadata (STATE, META, ECOSYSTEM, AGENTIC, NEUROSYM,
+PLAYBOOK; LANGUAGES registry; contractiles; bot_directives). Canonical AI
+session state.
 
-| `TOOLING-STATUS.adoc`
-| Current tooling readiness for each language. The honest "what compiles,
-what does not" document.
+| `hooks/`
+| Repo-hygiene validators, including `validate-coordinator-boundary.sh` which
+fails the build if language-implementation content leaks back in-tree.
 
-| `TOPOLOGY.md`
-| Visual map of all language satellites and their relationships.
+| `extraction-queue/`
+| Per-language docs that were pasted into this coordinator and are staged for
+relocation to their language's own repo. See `EXTRACTION-MANIFEST.md`. Temporary.
+
+| (NOT here)
+| Compilers, grammars, proofs, language source, per-language specs/design/wiki —
+those live in each `hyperpolymath/<lang>` repo.
 |===
 
 == Governance & CI Posture
@@ -345,18 +298,16 @@ and for automated agents:
 
 * The *Hypatia Security Scan* comment on PRs is *advisory and non-blocking*.
   The blocking gates are the `governance/*`, `scan/*`, `analyze`, `semgrep`,
-  validator, and dogfood checks.
-* Recurring advisory findings that have been triaged and accepted (reusable-
-  workflow-caller timeout false positives, by-design Agda trusted-base
-  postulates, etc.) are recorded once in
-  `.machine_readable/6a2/NEUROSYM.a2ml` under `[waivers]`. Agents consult that
-  registry (per `AGENTIC.a2ml` / `PLAYBOOK.a2ml`) and do not re-fix accepted
-  findings on every PR. Changing the enforcing ruleset itself must be done in
-  `standards`.
+  validator, `dogfood` (including the `coordinator-boundary` job), and dogfood
+  checks.
+* Recurring advisory findings that have been triaged and accepted are recorded
+  once in `.machine_readable/6a2/NEUROSYM.a2ml` under `[accepted-findings]`.
+  Agents consult that registry and do not re-fix accepted findings on every PR.
+  Changing the enforcing ruleset itself must be done in `standards`.
 
 == Questions?
 
-Start with `TOOLING-STATUS.adoc` for the current state of each language.
-For the most complete implementation, start with `ephapax/README.adoc`.
-For the language design philosophy, see `wiki/` and the individual arXiv
-paper sources in `ephapax/` and `wokelang/`.
+Start with `TOOLING-STATUS.adoc` for the current state of each language. For the
+most complete implementation, start with the `hyperpolymath/ephapax` repo. For
+language design philosophy, see each language's own repo and the arXiv paper
+sources carried there.

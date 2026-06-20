@@ -89,10 +89,10 @@ K9!
       predicate = "grep -q '\\[accepted-findings\\]' .machine_readable/6a2/NEUROSYM.a2ml",
     },
 
-    kitchenspeak_postulate_axiom = {
-      description = "KitchenSpeak Agda postulates remain annotated as trusted base (AXIOM marker)",
-      severity = 'warning,
-      predicate = "test ! -d kitchenspeak/proofs/agda || ! grep -rl 'postulate' kitchenspeak/proofs/agda --include='*.agda' 2>/dev/null | xargs -r grep -L 'AXIOM' 2>/dev/null | head -1 | grep -q .",
+    coordinator_boundary = {
+      description = "No language-implementation content leaks into the coordinator (proofs/grammars/compilers/specs belong in hyperpolymath/<lang>)",
+      severity = 'error,
+      predicate = "bash hooks/validate-coordinator-boundary.sh",
     },
   },
 

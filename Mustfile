@@ -11,4 +11,6 @@ checks:
     run: just test
   - name: format
     run: just fmt
+  - name: coordinator-boundary
+    run: bash hooks/validate-coordinator-boundary.sh
 

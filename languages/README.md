@@ -19,4 +19,8 @@ Each language has one core invariant that defines its design philosophy.
 | [affinescript](affinescript.md) | Every resource is used at most once |
 | [ephapax](ephapax.md) | Every value can be consumed exactly once |
 
-See also: [MANIFEST.md](../MANIFEST.md) for full status and run instructions.
+Each row links to a thin pointer; the language itself lives in its own
+`hyperpolymath/<lang>` repo. For cross-language status see
+[`../TOOLING-STATUS.adoc`](../TOOLING-STATUS.adoc),
+[`../.machine_readable/LANGUAGES.a2ml`](../.machine_readable/LANGUAGES.a2ml), and
+[`../language-status-tracker.jl`](../language-status-tracker.jl).

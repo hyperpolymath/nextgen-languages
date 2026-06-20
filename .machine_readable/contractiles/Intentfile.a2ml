@@ -18,18 +18,19 @@ last-updated = "2026-06-12"
 supersedes = ["contractiles/intend/Intentfile.a2ml", ".machine_readable/INTENT.contractile"]
 
 [purpose]
-summary = "Parent repository for tracking and coordinating experimental language development"
+summary = "Pure coordinator repository for tracking and contextualising experimental language development"
 detail = """
 nextgen-languages coordinates the hyperpolymath experimental language
-family. Most member languages live in their own repos and are wired in
-as git submodules; this repo holds the portfolio docs, governance,
-cross-language decisions, and the in-tree KitchenSpeak DSL.
+family. Each member language is its own standalone canonical hyperpolymath
+repo, referenced here (not vendored); this repo holds the portfolio docs,
+governance, and cross-language decisions. No language source lives in-tree
+(guarded by hooks/validate-coordinator-boundary.sh).
 """
 
 # Current language family (from the retired root Intentfile, 2026-06).
 [purpose.language-family]
 affinescript = { kind = "general-purpose, affine-typed (Solo / Duet / Ensemble dialects)", proof-status = "concept v0.1" }
-kitchenspeak = { kind = "orchestration DSL, 7 types, Agda-proven", proof-status = "proofs-first (Phase 1)" }
+kitchenspeak = { kind = "orchestration DSL, external — canonical at hyperpolymath/kitchenspeak", proof-status = "external repo" }
 betlang = { kind = "experimental", proof-status = "concept" }
 ephapax = { kind = "experimental (linear types for WASM memory safety)", proof-status = "concept" }
 phronesis = { kind = "ethical AI specification DSL", proof-status = "concept v0.1" }
@@ -37,7 +38,7 @@ eclexia = { kind = "resource-first DSL", proof-status = "concept v0.1" }
 oblibeny = { kind = "secure-enclave DSL", proof-status = "concept v0.1" }
 anvomidav = { kind = "hard real-time DSL", proof-status = "concept v0.1" }
 wokelang = { kind = "human-centric DSL", proof-status = "concept v0.1" }
-note = "KitchenSpeak is the only family member with active Agda proof work (proofs lead implementation — the Agda-Proven invariant per ADR 0001)."
+note = "All family members are referenced as standalone repos; none are vendored in-tree."
 
 [anti-purpose]
 not = [
@@ -47,8 +48,7 @@ not = [
 ]
 
 [architectural-invariants]
-proofs-lead-implementation = "KitchenSpeak ADR 0001 — the Agda-Proven invariant"
-echo-attachment = "KitchenSpeak ADR 0004 — Echo attaches to Linear/Dyadic; Bool bridge non-canonical"
+pure-coordinator = "languages are referenced as standalone repos, never vendored in-tree (hooks/validate-coordinator-boundary.sh + dogfood-gate coordinator-boundary)"
 my-lang-dialects = "Solo ⊂ Duet ⊂ Ensemble, nested; Me is a runtime projection, not a fourth dialect"
 
 [ask-before-touching]
@@ -56,12 +56,12 @@ sensitive-areas = [
   "ABI definitions",
   "license headers",
   "CI workflows (.github/workflows/)",
-  "kitchenspeak/proofs/ — formal proofs, changes require re-verification",
+  "hooks/validate-coordinator-boundary.sh — coordinator boundary guard",
   ".machine_readable/ — checkpoint files, format is specified",
 ]
 rule = "If you are unsure whether a change is in scope, ask."
 
 [ecosystem]
-belongs-to = "hyperpolymath estate (standalone parent repo with language submodules)"
-depends-on = ["echo-types (KitchenSpeak Agda proofs)", "tentacles-agentic-syllabus (pedagogy, external)"]
-depended-on-by = ["language submodule repos (coordination, portfolio docs)"]
+belongs-to = "hyperpolymath estate (standalone pure-coordinator repo referencing language repos)"
+depends-on = ["tentacles-agentic-syllabus (pedagogy, external)"]
+depended-on-by = ["language repos (coordination, portfolio docs)"]

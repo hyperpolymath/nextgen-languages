@@ -236,13 +236,35 @@ jobs:
           echo "| Has HTTP server code | ${{ steps.groove.outputs.has_server }} |" >> "$GITHUB_STEP_SUMMARY"
 
   # ---------------------------------------------------------------------------
-  # Job 5: Dogfooding summary
+  # Job 5: Coordinator boundary — no language-implementation content in the hub
+  # ---------------------------------------------------------------------------
+  coordinator-boundary:
+    name: Coordinator boundary (no language leakage)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Enforce pure-coordinator boundary
+        run: bash hooks/validate-coordinator-boundary.sh
+
+      - name: Write summary
+        if: always()
+        run: |
+          echo "## Coordinator Boundary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Verifies that no language-implementation content (proofs, grammars, compilers, specs, or a re-vendored language directory) has leaked into the coordinator. Language code lives in each \`hyperpolymath/<lang>\` repo, referenced here — not embedded." >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
+  # Job 6: Dogfooding summary
   # ---------------------------------------------------------------------------
   dogfood-summary:
     name: Dogfooding compliance summary
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [a2ml-validate, k9-validate, empty-lint, groove-check]
+    needs: [a2ml-validate, k9-validate, empty-lint, groove-check, coordinator-boundary]
     if: always()
 
     steps:

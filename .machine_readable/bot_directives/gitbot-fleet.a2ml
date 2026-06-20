@@ -25,7 +25,7 @@ ci-green-before-merge = true
 # non-blocking and MUST NOT gate the merge.
 never-touch = [
   ".claude/CLAUDE.md",
-  "kitchenspeak/proofs/",
+  "hooks/validate-coordinator-boundary.sh",
   "LICENSE",
   ".github/workflows/ (without explicit maintainer approval)",
 ]
@@ -39,7 +39,7 @@ deny = ["force-push", "push to main", "delete main or open branches"]
 
 [per-bot.echidnabot]
 allow = ["lint", "format", "report"]
-deny = ["weaken or delete tests", "edit kitchenspeak/proofs/ (proofs lead implementation, ADR 0001)"]
+deny = ["weaken or delete tests", "vendor language source in-tree (pure coordinator; see hooks/validate-coordinator-boundary.sh)"]
 
 [per-bot.sustainabot]
 allow = ["dependency bump PRs (SHA-pinned actions only)"]
