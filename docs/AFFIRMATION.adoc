@@ -1,0 +1,138 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= AFFIRMATION — nextgen-languages, as of 2026-06-19
+:toc: macro
+:toclevels: 2
+
+_the No-Bullshit file: what we affirm was true and checkable at this moment_
+
+[NOTE]
+====
+*Genre.* An *affirmation* is a solemn declaration of the truth of a statement,
+made by someone who _declines to swear an oath_ — our truth-as-best-believed at a
+stamped instant, binding on our honesty, not a claim of infallibility. It is not
+the README (where this is going) and not the EXPLAINME (how it is built). Every
+repo in the estate carries one, per the 2026-06-19 estate rule.
+====
+
+toc::[]
+
+== What this is, and how it works
+
+A short, dated, jointly-signed snapshot of what we can _honestly and verifiably_
+claim about the nextgen-languages repo at one exact commit. *Ground truth, not
+memory:* the gate results below were produced by running the checks this session.
+*Material caveat:* this repo is a *research-overview / catalog* for a language
+*ecosystem* whose implementations live in their own repos — so this affirms its
+*catalog structure and gate-state*, not the languages it describes. *No
+intentional overclaim;* the owner's signed commit is authoritative (the AI party
+cannot GPG-sign).
+
+== Verifiable anchor
+
+[cols="1,3"]
+|===
+| *Repo*        | `hyperpolymath/nextgen-languages` — research-overview / catalog for the Hyperpolymath language ecosystem (+ the estate language policy)
+| *Branch*      | `claude/practical-newton-9eFe2`, *based on current `origin/main`* (the prior feature-branch tip was 23 commits behind `main`; re-based to be current)
+| *Commit (HEAD)* | `87b8cc42d6e0996e4abedc6c3b69ab16adfc4820`
+| *Permalink*   | https://github.com/hyperpolymath/nextgen-languages/tree/87b8cc42d6e0996e4abedc6c3b69ab16adfc4820
+| *Verified*    | 2026-06-19 (checks run this session; date, not a claimed UTC instant)
+| *Working-tree delta* | Clean except this untracked `AFFIRMATION.adoc`.
+| *Toolchain (present)* | `git`, `Agda 2.6.3`, `rustc`. *Absent:* `just`, `deno`, `julia`.
+| *Run method*  | `contractile`/RSR gate bodies as bash. No language implementation built (they live in their own repos; toolchains absent anyway).
+| *HEAD signature* | Not signed by the AI party; the maintainer's signed commit is authoritative.
+|===
+
+[NOTE]
+The prior feature-branch tip carried an unmerged "Ban ReScript estate-wide"
+commit; it is *not* carried here because the current `main` already encodes the
+ReScript ban in the Hyperpolymath language policy. Flagged, not silently dropped.
+
+== Companion documents (cross-check)
+
+* *`README.adoc`* — `= Next-Generation Languages — Research Overview` (real).
+* *`EXPLAINME.adoc`* — `= Next-Gen Languages — Show Me The Receipts` (real).
+* *Template residue* — *3 files* with `{{PLACEHOLDER}}` tokens + *4 files*
+  referencing `rsr-template-repo`. Minor instantiation debt.
+* *GitHub description / topics* — not fetched this session.
+
+== The honest state (one breath)
+
+nextgen-languages is a *research-overview / catalog* repo for the Hyperpolymath
+language ecosystem. Under `languages/` it carries a spec-overview document for
+each language — `affinescript`, `anvomidav`, `betlang`, `eclexia`, `ephapax`,
+`jtv` (julia-the-viper), `kitchenspeak`, `my-lang`, `oblibeny`, `phronesis`,
+`wokelang`, `007` — plus `kitchenspeak/` kept in-tree as a fuller sub-project and
+a small Agda presence (3 files). The *implementations* of those languages live in
+their *own repos* (e.g. `tangle`, `ephapax`, `affinescript`). The `MUST`/`TRUST`
+gates pass and template residue is minimal. It is honestly a *catalog + policy
+hub*, not a language implementation.
+
+== What is solid (and how we checked)
+
+* *MUST/TRUST-style checks — PASS.* Run as bash: LICENSE present; no banned
+  `Dockerfile`/`Makefile`; SPDX headers on the sampled Agda files (0 unheadered);
+  LICENSE carries an SPDX/MPL identifier; no `.env` / `credentials.json`.
+* *Real catalog content.* `languages/*.md` (one overview per language) +
+  `kitchenspeak/` (`SPEC.adoc`, `ROADMAP.adoc`, `decisions/`) + the estate
+  language policy. A coherent index of the ecosystem.
+
+== Known-incomplete but honestly fenced
+
+* *It is a catalog, not an implementation.* The per-language detail and the
+  buildable code live in the languages' own repos; this repo's `languages/*.md`
+  are overviews, not compilers.
+* *Minor residue.* 3 `{{PLACEHOLDER}}` files + 4 `rsr-template-repo` references.
+* *No build / READINESS grade* at the aggregate level.
+
+== Outstanding / not-run (no spin)
+
+* *No language was built or tested here* — by design (implementations are
+  external) and because the toolchains (`deno`, language-specific compilers) are
+  absent this session. We affirm the *catalog* exists and is coherent; we do not
+  affirm the catalogued languages build.
+
+== Reproduce it yourself
+
+[source,bash]
+----
+git rev-parse HEAD          # expect 87b8cc42d6e0996e4abedc6c3b69ab16adfc4820
+test -f LICENSE; test ! -f Dockerfile -a ! -f Makefile; grep -q 'SPDX\|MPL' LICENSE
+ls languages/               # one overview .md per language
+grep -rl 'rsr-template-repo' . | grep -v '.git/' | wc -l   # ~4
+----
+
+== One-line characterisation (quote this)
+
+"nextgen-languages is the research-overview / catalog (and policy hub) for the
+Hyperpolymath language ecosystem — `languages/` carries a spec-overview per
+language (AffineScript, my-lang, betlang, ephapax, anvomidav, eclexia, phronesis,
+wokelang, julia-the-viper, oblibeny, kitchenspeak), with `kitchenspeak/` in-tree
+and a small Agda presence; the implementations live in their own repos.
+`MUST`/`TRUST` gates pass with minimal template residue (3 placeholders, 4 refs).
+A catalog + policy hub, not an implementation — nothing was built this session. No
+intentional overclaim."
+
+== Key concern + cross-repo wiring
+
+nextgen-languages's *key concern* is being the *catalog + language-policy hub* for
+the ecosystem (the allowed/banned-language standard, the my-lang dialect family
+`Solo ⊂ Duet ⊂ Ensemble`, and the index of each language's purpose). Per the
+estate rule it carries its own scope table at
+`docs/identity-fabric/musts-intends-wishes.adoc`. It catalogs, among others,
+*tangle* (the topological language whose TangleIR underpins the KRL stack) and
+*AffineScript* (the estate's primary application language, used e.g. by
+quandledb's frontend). Adjacent: *echo-types* (structured-loss theory +
+identity-fabric framing), and the KRL-stack repos (*krl*, *quandledb*, *Skein.jl*).
+
+== Joint attestation
+
+To the best of our joint belief at the timestamp above, every claim here is true
+and was checked as described — with the catalog-vs-implementation boundary stated
+plainly.
+
+* *Engineering party (AI):* ran the gate/RSR checks recorded here as bash on
+  2026-06-19; built no language (out of scope + toolchains absent).
+* *Owner / maintainer:* Jonathan D.A. Jewell — signs by committing this file with
+  `-S`; the signed commit at the SHA above is authoritative.
+* *Signed-off-date:* (fill on signing)

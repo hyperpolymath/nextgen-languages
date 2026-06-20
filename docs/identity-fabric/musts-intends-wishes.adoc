@@ -1,0 +1,62 @@
+// SPDX-License-Identifier: MPL-2.0
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= nextgen-languages — Normative Scope (Must / Intend / Wish)
+:toc: preamble
+:revdate: 2026-06-19
+
+[abstract]
+Per-repo normative-scope record for nextgen-languages (the research-overview /
+catalog + language-policy hub for the Hyperpolymath language ecosystem). Estate
+rule (2026-06-19): every repo carries its own scoped table; crossover content is
+duplicated and marked until resolved, then wired into the other relevant repos.
+`◇` marks proposals not yet canonical.
+
+== Levels
+
+* *MUST* — required to be what it is (RFC 2119 normative).
+* *INTEND* — committed direction.
+* *WISH* — aspirational.
+
+== nextgen-languages (own)
+
+[cols="1,5", options="header"]
+|===
+| Level | nextgen-languages
+
+| *MUST*
+| Be the *catalog + policy hub* for the language ecosystem — carry a faithful
+  spec-overview per language under `languages/` (AffineScript, my-lang, betlang,
+  ephapax, anvomidav, eclexia, phronesis, wokelang, julia-the-viper, oblibeny,
+  kitchenspeak); carry the *Hyperpolymath language policy* (allowed/banned
+  languages); keep the *my-lang dialect family* honest — `Solo ⊂ Duet ⊂ Ensemble`,
+  *Me is a projection not a fourth dialect*, pedagogy/frontier-practices are *not*
+  audited as languages; estate governance — LICENSE/SPDX, no banned files.
+
+| *INTEND*
+| Keep the catalog *in sync* with each language's own repo (the implementations
+  live there, not here); clear the residual template debt (3 `{{PLACEHOLDER}}`
+  files + 4 `rsr-template-repo` references); keep the policy current as the estate
+  evolves (e.g. the ReScript ban already in `main`); host shared cross-language
+  tooling/decisions where it genuinely belongs at the meta level.
+
+| *WISH*
+| A coherent, navigable map of the whole language estate with live status per
+  language ◇; shared conformance/aspect tooling across the family ◇; the my-lang
+  `Me` runtime-projector story fully cross-linked to the agentic-syllabus repo ◇.
+|===
+
+== Cross-repo wiring
+
+nextgen-languages is the *meta / catalog* node: it indexes the languages but does
+not implement them. Two of its catalogued languages are load-bearing for the rest
+of the estate: *tangle* (whose TangleIR is the canonical representation of the KRL
+stack) and *AffineScript* (the estate's primary application language — e.g.
+quandledb's TEA frontend). The confirmed KRL-stack ladder (maintainer-confirmed
+2026-06-19) is: *krl → tangle/TangleIR → VerisimCore → Skein.jl / quandledb*.
+
+Sibling repos' key concerns (keep in sync as crossover resolves): *tangle* —
+TangleIR + type-safe core (a catalogued language *and* a stack component);
+*krl* — resolution DSL surface; *quandledb* — equivalence / identity face;
+*Skein.jl* — computational engine; *nextgen-databases* — sibling research-overview
+monorepo (home of `verisim-core/`); *echo-types* — structured-loss theory + the
+identity-fabric framing (Conway·Fichte / Bruner / Ricoeur). See `../AFFIRMATION.adoc`.
