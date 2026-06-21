@@ -59,4 +59,5 @@ TangleIR + type-safe core (a catalogued language *and* a stack component);
 *krl* — resolution DSL surface; *quandledb* — equivalence / identity face;
 *Skein.jl* — computational engine; *nextgen-databases* — sibling research-overview
 monorepo (home of `verisim-core/`); *echo-types* — structured-loss theory + the
-identity-fabric framing (Conway·Fichte / Bruner / Ricoeur). See `../AFFIRMATION.adoc`.
+identity-fabric framing (Conway·Fichte / Bruner / Ricoeur); *KnotTheory.jl* — knot-theory mathematics library (Skein weak-dep);
+*nextgen-typing* — type-theory coordination monorepo. See `../AFFIRMATION.adoc`.
