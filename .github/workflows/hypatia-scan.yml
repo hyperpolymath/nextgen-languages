@@ -1,7 +1,4 @@
-# SPDX-License-Identifier: MPL-2.0
-# Thin wrapper around hyperpolymath/standards hypatia-scan-reusable.yml.
-# See standards#191 for the reusable's purpose and design.
-
+# SPDX-License-Identifier: PMPL-1.0-or-later
 name: Hypatia Security Scan
 
 on:
@@ -13,21 +10,10 @@ on:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 
-# Estate guardrail: cancel superseded runs so re-pushes don't pile up.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
   contents: read
-  security-events: write
-  pull-requests: write
-  # The standards reusable declares actions:read; a caller permissions
-  # block that omits it pins actions to `none`, so the reusable's request
-  # exceeds the grant and the run dies as `startup_failure` (no jobs).
-  actions: read
+  security-events: read
 
 jobs:
-  hypatia:
-    uses: hyperpolymath/standards/.github/workflows/hypatia-scan-reusable.yml@8e6ba7d4a0890d25425855a77404d4690d0ab4b5  # standards #380; repin from a 0-jobs stale ref (paired with actions:read above)
-    secrets: inherit
+  scan:
+    uses: hyperpolymath/standards/.github/workflows/hypatia-scan-reusable.yml@5a93d9d57cc04de4002d6d0ecd336fc7a8698910
