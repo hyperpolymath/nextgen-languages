@@ -53,6 +53,9 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | **JtV** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Oblibeny** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Error-lang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
+| **Haec**
+| TBD | TBD | TBD | TBD | FULL
+| Trope-particularity front-end (design pass: grammar + elaboration + round-tripping examples). Siblings: trope-checker (Idris2 verified core + executable checker, conformance), trope-particularity-workbench (the nine-effect vocabulary).
 | **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
 | **Tangle** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Me-dialect** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.

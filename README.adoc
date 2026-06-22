@@ -100,6 +100,21 @@ Status: partially implemented.
 
 ---
 
+=== Haec
+
+A Turing-complete language whose type discipline is *trope-particularity*: every
+operation on a property-instance carries a graded *loss-shape*, lowered to a
+language-neutral *Trope IR* and checked against a declared use-model by a separate,
+portable checker (`hyperpolymath/trope-checker`, an Idris2 verified core plus an
+executable). The named effects, residual, and verdict live in
+`hyperpolymath/trope-particularity-workbench`. Shares the loss-with-residue
+substrate with `echo-types`.
+
+Status: design (grammar + elaboration + round-tripping examples); the checker's
+verified core typechecks with no axioms.
+
+---
+
 === KitchenSpeak (experimental DSL — moved out)
 
 An experimental, formally-verified orchestration *DSL* for the domestic kitchen,

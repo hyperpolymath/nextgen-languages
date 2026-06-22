@@ -396,3 +396,13 @@ kind = "Orchestration DSL"
 status = "external"
 canonical-repo = "hyperpolymath/kitchenspeak"
 note = "extracted from this coordinator; in-tree snapshot removed"
+
+# ─── Haec (trope-particularity) — clean stanza added 2026-06-22 ───
+[[language]]
+id = "haec"
+name = "Haec"
+repo = "https://github.com/hyperpolymath/haec"
+invariant = "Every quality-loss is graded and checked against its use"
+role = "Trope-particularity: graded property-instance loss, lowered to a language-neutral Trope IR, use-checked"
+ecosystem = ["https://github.com/hyperpolymath/trope-checker", "https://github.com/hyperpolymath/trope-particularity-workbench"]
+status = "design"
