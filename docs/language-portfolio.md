@@ -28,6 +28,7 @@ live in each language's own repo and in the coordinator's canonical trackers:
 | My-Lang | `hyperpolymath/my-lang` | Solo → Duet → Ensemble dialect family |
 | JtV | `hyperpolymath/jtv` | Systems language, Harvard architecture |
 | Error-Lang | `hyperpolymath/error-lang` | Pedagogical, systems thinking via errors |
+| Haec | `hyperpolymath/haec` | Trope-particularity: graded property-instance loss, use-checked |
 | Oblíbený | `hyperpolymath/oblibeny` | Turing-incomplete secure deployment |
 | Anvomidav | `hyperpolymath/anvomidav` | Hard real-time / formal verification |
 | betlang | `hyperpolymath/betlang` | Foundational / probabilistic experiment |
