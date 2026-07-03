@@ -19,6 +19,10 @@ Each language has one core invariant that defines its design philosophy.
 | [affinescript](affinescript.md) | Every resource is used at most once |
 | [ephapax](ephapax.md) | Every value can be consumed exactly once |
 | [haec](haec.md) | Every quality-loss is graded and checked against its use |
+| [error-lang](error-lang.md) | Errors are first-class: systems thinking taught through failure |
+| [tangle](tangle.md) | Programs are braids; equivalence is topological isotopy |
+| [007](007.md) | Agents that make agents (private repo, anti-scrape; index-only) |
+| [kitchenspeak](kitchenspeak.md) | Physical-process constraints are enforced in the types |
 
 Each row links to a thin pointer; the language itself lives in its own
 `hyperpolymath/<lang>` repo. For cross-language status see
