@@ -48,7 +48,7 @@ done
 
 # 3) A directory named after one of the family languages must not reappear at the
 #    coordinator root — that is how a whole language gets re-vendored in-tree.
-LANGS="affinescript anvomidav betlang eclexia ephapax error-lang jtv my-lang oblibeny phronesis tangle wokelang kitchenspeak"
+LANGS="007 affinescript anvomidav betlang eclexia ephapax error-lang haec jtv my-lang oblibeny phronesis tangle wokelang kitchenspeak"
 for lang in $LANGS; do
   if [ -d "$lang" ]; then
     echo "ERROR: language directory re-vendored at coordinator root: $lang/"

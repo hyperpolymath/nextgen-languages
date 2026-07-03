@@ -14,7 +14,7 @@
 [metadata]
 repo = "nextgen-languages"
 version = "2.0.0"
-last-updated = "2026-06-12"
+last-updated = "2026-07-02"
 supersedes = ["contractiles/intend/Intentfile.a2ml", ".machine_readable/INTENT.contractile"]
 
 [purpose]
@@ -29,7 +29,7 @@ governance, and cross-language decisions. No language source lives in-tree
 
 # Current language family (from the retired root Intentfile, 2026-06).
 [purpose.language-family]
-affinescript = { kind = "general-purpose, affine-typed (Solo / Duet / Ensemble dialects)", proof-status = "concept v0.1" }
+affinescript = { kind = "general-purpose, affine-typed", proof-status = "concept v0.1" }
 kitchenspeak = { kind = "orchestration DSL, external — canonical at hyperpolymath/kitchenspeak", proof-status = "external repo" }
 betlang = { kind = "experimental", proof-status = "concept" }
 ephapax = { kind = "experimental (linear types for WASM memory safety)", proof-status = "concept" }
@@ -38,12 +38,18 @@ eclexia = { kind = "resource-first DSL", proof-status = "concept v0.1" }
 oblibeny = { kind = "secure-enclave DSL", proof-status = "concept v0.1" }
 anvomidav = { kind = "hard real-time DSL", proof-status = "concept v0.1" }
 wokelang = { kind = "human-centric DSL", proof-status = "concept v0.1" }
-note = "All family members are referenced as standalone repos; none are vendored in-tree."
+my-lang = { kind = "nested dialect family (Solo ⊂ Duet ⊂ Ensemble; Me is a projection, not a dialect)", proof-status = "concept v0.1" }
+jtv = { kind = "systems language, Harvard architecture", proof-status = "concept" }
+haec = { kind = "trope-particularity front-end (graded quality-loss)", proof-status = "design" }
+tangle = { kind = "topological (knot/braid) language", proof-status = "Lean core proofs (partial)" }
+error-lang = { kind = "pedagogical, systems thinking via errors", proof-status = "concept" }
+"007" = { kind = "agent meta-language, private repo (anti-training-scrape)", proof-status = "specification" }
+note = "All family members are referenced as standalone repos; none are vendored in-tree. (Solo/Duet/Ensemble are my-lang's dialects, not affinescript's.)"
 
 [anti-purpose]
 not = [
   "a fork or wrapper around another tool",
-  "a monorepo (languages live in their own repos as submodules)",
+  "a monorepo (languages live in their own standalone repos; not vendored, not submodules)",
   "the home of pedagogy — curriculum/syllabus/Me projector live in tentacles-agentic-syllabus",
 ]
 
