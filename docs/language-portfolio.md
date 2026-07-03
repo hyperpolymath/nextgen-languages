@@ -4,7 +4,7 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
 # Hyperpolymath Language Portfolio
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-02
 
 This is a cross-language index. `nextgen-languages` is a **pure coordinator**: it does not
 contain any language. Each language is its own standalone `hyperpolymath/<lang>` repo.
@@ -32,13 +32,22 @@ live in each language's own repo and in the coordinator's canonical trackers:
 | Oblíbený | `hyperpolymath/oblibeny` | Turing-incomplete secure deployment |
 | Anvomidav | `hyperpolymath/anvomidav` | Hard real-time / formal verification |
 | betlang | `hyperpolymath/betlang` | Foundational / probabilistic experiment |
-| Tangle (KRL) | `hyperpolymath/tangle` | Topological (knot/braid) language |
+| Tangle | `hyperpolymath/tangle` | Topological (knot/braid) language; TangleIR feeds the separate KRL stack |
+| 007 | `The-Metadatastician/007` (private) | Agent meta-language (anti-scrape; index-only) |
 
 ## Specialised & DSL
 
 | Language | Repo | One-line role |
 |----------|------|---------------|
 | KitchenSpeak | `hyperpolymath/kitchenspeak` | Experimental kitchen-orchestration DSL |
+
+## Proposed (repo not yet created)
+
+- **TypeFix Zero (TF0)** — proposed `hyperpolymath/typefix-zero` (not yet created). A
+  universe-stratified simply-typed lambda calculus that separates a total, proof-like
+  fragment from a partial computational fragment (a single `fix` primitive). The design
+  spec is parked at `../extraction-queue/typefix-zero/SPEC.adoc`; it is registered as
+  `status = "proposed"` in `../.machine_readable/LANGUAGES.a2ml`.
 
 ## Related query/database languages (separate scope)
 
