@@ -24,11 +24,11 @@ Added test categories for ephapax-linear and ephapax-lexer:
 | Category     | Count | Notes |
 |-------------|-------|-------|
 | Unit tests   | ~50   | affinescript: test_lexer.ml, test_golden.ml, test_e2e.ml + ~119 .as test files (borrow, codegen). tangle: test_parser.ml, test_typecheck.ml, test_eval.ml |
-| Integration  | ~5    | tangle FFI integration_test.zig, ephapax tests.rs, 7-tentacles structure_test.ts |
+| Integration  | ~5    | tangle FFI integration_test.zig, ephapax tests.rs (per-language suites live in each language's own repo) |
 | E2E          | ~3    | affinescript test_e2e.ml + integration tests |
 | Benchmarks   | 4     | tangle: bench_lexer.ml, bench_lexer.rs, bench_parser.ml, bench_parser_rust.rs. betlang: bench_lexer.rs |
 
-**Source modules:** ~772 across 14+ language implementations. Major: affinescript (~87 ML), ephapax (~488 Rust across 19 crates), tangle, eclexia, betlang, anvomidav, wokelang, 7-tentacles, error-lang, jtv.
+**Source modules:** ~772 across the family's language implementations. Major: affinescript (~87 ML), ephapax (~488 Rust across 19 crates), tangle, eclexia, betlang, anvomidav, wokelang, error-lang, jtv. (Counts predate the pure-coordinator pivot; the code now lives in each language's own repo — treat as historical.)
 
 ## What's Missing
 
@@ -79,9 +79,12 @@ Added test categories for ephapax-linear and ephapax-lexer:
 | betlang | unknown | 1 bench | **Untested** |
 | anvomidav | unknown | 0 | **Untested** |
 | wokelang | unknown | 0 | **Untested** |
-| 7-tentacles | unknown | 1 | Minimal |
 | error-lang | unknown | 0 | **Untested** |
 | jtv | unknown | 0 | **Untested** |
+
+> Note: `tentacles-agentic-syllabus` (formerly *7-tentacles*) is the curriculum framework,
+> **not** a language (see `0-AI-MANIFEST.a2ml` §6). Its test posture is tracked in its own
+> repo and is intentionally excluded from this per-language table.
 
 ## Priority
 

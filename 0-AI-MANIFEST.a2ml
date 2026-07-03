@@ -81,8 +81,12 @@ the language family. There are no language subdirectories and no submodules.
 ### The language family (each a standalone `hyperpolymath/<lang>` repo)
 
 Phronesis, Eclexia, Oblíbený, WokeLang, AffineScript, My-Lang (Solo/Duet/Ensemble),
-JtV, Ephapax, Anvomidav, betlang, error-lang, Tangle. KitchenSpeak (an experimental
-kitchen-orchestration DSL) is canonical at `hyperpolymath/kitchenspeak`.
+JtV, Ephapax, Anvomidav, betlang, error-lang, Tangle, Haec, and 007. KitchenSpeak (an
+experimental kitchen-orchestration DSL) is canonical at `hyperpolymath/kitchenspeak`.
+
+007 is the sole exception to the `hyperpolymath/<lang>` convention: its source lives in a
+private repo (`The-Metadatastician/007`, a deliberate anti-training-scrape precaution) and is
+*indexed only* — no 007 content is mirrored here.
 
 Per-language paradigm, mechanism, and implementation status are tracked across the
 coordinator's cross-language files (`TOOLING-STATUS.adoc`, `language-status-tracker.jl`,

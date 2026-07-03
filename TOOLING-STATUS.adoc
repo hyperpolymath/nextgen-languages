@@ -4,14 +4,16 @@
 :toc:
 :toclevels: 2
 
-Last verified: 2026-03-21
+Registry surfaces reconciled 2026-07-02; language *grades* below unverified since 2026-03-21.
 
 == Overview
 
-This coordinator tracks 12 programming languages + 2 meta-projects, each maintained as its
-own standalone `hyperpolymath/<lang>` repo (no language code lives here). All 12 languages
-are registered in the BoJ Server `lang-mcp` cartridge with session management, type-checking,
-and evaluation via zig adapter + Zig FFI.
+This coordinator tracks **15 family entries — 14 languages + the KitchenSpeak DSL** — each
+maintained as its own standalone repo (no language code lives here). 11 of them are
+registered in the BoJ Server `lang-mcp` cartridge (plus one retired slot, ID 11 — see
+below) with session management, type-checking, and evaluation via zig adapter + Zig FFI.
+Adjacent database / type-theory estates are listed separately at the end of this section
+and are out of coordinator scope.
 
 == Language Grades Matrix
 
@@ -25,7 +27,8 @@ Per-language grades against the five hyperpolymath language-grade standards:
 
 All graders use `X | F | E | D | C | B | A`. The grade source of truth lives in each
 language's repo at `spec/{ARG,FRG,TRG}-PROFILE.adoc`; the values below are mirrored
-here for at-a-glance comparison and are refreshed by `language-status-tracker.jl`.
+here for at-a-glance comparison and are cross-checked against `language-status-tracker.jl`
+output (that script reports; it does not rewrite this file).
 
 Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 
@@ -43,7 +46,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 
 | **My**
 | TBD | TBD | D-leaning-E | X | FULL
-| 11 crates, 4 dialects. PROOF-NEEDS.md honestly records template-ABI removal (FRG-X discipline).
+| 11 crates, 3 dialects (Solo ⊂ Duet ⊂ Ensemble; Me is a runtime projection, not a dialect). PROOF-NEEDS.md honestly records template-ABI removal (FRG-X discipline).
 
 | **Eclexia** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Betlang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
@@ -57,14 +60,23 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | TBD | TBD | TBD | TBD | FULL
 | Trope-particularity front-end (design pass: grammar + elaboration + round-tripping examples). Siblings: trope-checker (Idris2 verified core + executable checker, conformance), trope-particularity-workbench (the nine-effect vocabulary).
 | **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
-| **Tangle** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
-| **Me-dialect** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
-| **VCL-total (vcl-ut)** | TBD | TBD | TBD | TBD | TBD | Database/identity language; per ARG §1.1 tightening applies.
-| **KRL** | TBD | TBD | TBD | TBD | TBD | Database/resolution language; canonical READINESS.md template lives here.
-| **Quandledb** | TBD | TBD | TBD | TBD | TBD | Database language.
-| **TypeLL** | TBD | TBD | TBD | TBD | TBD | Type-theory foundation, feeds VCL-total levels.
-| **PanLL** | TBD | TBD | TBD | TBD | TBD | Type-theory foundation.
+| **Tangle** | TBD | TBD | TBD | TBD | TBD | Topological (knot/braid) language; Lean core proofs. TangleIR feeds the separate KRL resolution stack (see Adjacent estates).
+| **007** | TBD | TBD | TBD | TBD | TBD | Agent meta-language; private repo (`The-Metadatastician/007`, anti-training-scrape); specification stage; profile not yet authored.
+| **Me-dialect** (retired) | X | X | X | X | X | RETIRED — superseded by the *Me* runtime projection (`tentacles-agentic-syllabus/me/README.adoc`). `hyperpolymath/me-dialect` archived; in-tree scaffolding sidelined. Not a language; kept only to explain the retirement.
 |===
+
+=== Adjacent estates (out of coordinator scope)
+
+Tracked by the database / type-theory estates, listed here only for discoverability — they
+are not part of the language family and are not registered in `.machine_readable/LANGUAGES.a2ml`:
+
+* *VCL-total (vcl-ut)* — database/identity language; per ARG §1.1 tightening applies.
+* *KRL* — resolution language at the base of the KRL stack
+  (`krl → Tangle/TangleIR → VeriSimCore → Skein.jl / quandledb`); **distinct** from the Tangle
+  language above, whose IR it consumes. Canonical READINESS.md template lives there.
+* *Quandledb* — database language.
+* *TypeLL* — type-theory foundation, feeds VCL-total levels.
+* *PanLL* — type-theory foundation.
 
 Standards specs:
 
@@ -201,21 +213,22 @@ Standards specs:
 | —
 | ✓
 
-| **Me-dialect**
-| Rust
-| planned
-| planned
+| **Me-dialect** (retired)
 | —
 | —
 | —
 | —
 | —
 | —
+| —
+| —
+| — (superseded by the Me projection — tentacles-agentic-syllabus/me)
 |===
 
 == BoJ Server Integration
 
-All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
+12 lang-mcp IDs exist in `boj-server/cartridges/lang-mcp/` — 11 active languages plus the
+retired Me-dialect slot (ID 11, kept because IDs are positional):
 
 [cols="<2,^1,<4", options="header"]
 |===
@@ -231,7 +244,7 @@ All 12 languages are registered in `boj-server/cartridges/lang-mcp/`:
 | Phronesis     | 8  | Session, typecheck, eval
 | Error-lang    | 9  | Session, typecheck, eval
 | JtV | 10 | Session, typecheck, eval, dialect injection
-| Me-dialect    | 11 | Session, typecheck
+| Me-dialect (retired) | 11 | Slot retained (IDs are positional); superseded by the Me projection — do not register new work here
 | Oblibeny      | 12 | Session, typecheck, eval
 |===
 
@@ -268,5 +281,5 @@ Any language can be augmented with JtV by requesting dialect `jtv`:
 
 == Meta-Projects
 
-* **7-Tentacles** — Game development curriculum using nextgen languages
-* **Anvomidav** — Stub (19 files, minimal)
+* **tentacles-agentic-syllabus** (formerly 7-tentacles) — agentic curriculum framework that
+  uses the family languages; NOT a language (see `0-AI-MANIFEST.a2ml`), do not audit as one.

@@ -105,7 +105,9 @@ coordinator boundary (no language code in-tree) is enforced by
 | [betlang](https://github.com/hyperpolymath/betlang) | betlang — probabilistic |
 | [jtv](https://github.com/hyperpolymath/jtv) | JtV — systems, Harvard architecture |
 | [error-lang](https://github.com/hyperpolymath/error-lang) | error-lang — pedagogical |
-| [tangle](https://github.com/hyperpolymath/tangle) | Tangle (KRL) — topological |
+| [haec](https://github.com/hyperpolymath/haec) | Haec — trope-particularity, graded quality-loss |
+| [tangle](https://github.com/hyperpolymath/tangle) | Tangle — topological (knot/braid); TangleIR feeds the separate KRL stack |
+| 007 (private: `The-Metadatastician/007`) | 007 — agent meta-language (anti-scrape; no public link) |
 | [kitchenspeak](https://github.com/hyperpolymath/kitchenspeak) | KitchenSpeak — experimental DSL |
 
 ## Project Status (2026-06-12)

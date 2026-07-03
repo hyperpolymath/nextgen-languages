@@ -9,15 +9,17 @@ const REPOS_DIR = joinpath(homedir(), "Documents/hyperpolymath-repos")
 
 # All known language repos
 const LANGUAGES = [
-    # Core 8 nextgen languages
+    # Family languages (14) — must match .machine_readable/LANGUAGES.a2ml
     "affinescript", "anvomidav", "betlang", "eclexia", "ephapax",
-    "jtv", "my-lang", "oblibeny", "phronesis", "wokelang",
+    "error-lang", "haec", "jtv", "my-lang", "oblibeny",
+    "phronesis", "tangle", "wokelang",
+    "007",          # private: The-Metadatastician/007 (local clone dir name "007")
 
-    # Database/specialized
-    "fqldt", "a2ml", "k9-svc",
+    # Family DSL
+    "kitchenspeak",
 
-    # Supporting
-    "error-lang", "universal-language-server-plugin",
+    # Supporting tooling (not languages)
+    "universal-language-server-plugin",
 
     # Playgrounds
     "betlang-playground", "ephapax-playground", "error-lang-playground", "mylang-playground",

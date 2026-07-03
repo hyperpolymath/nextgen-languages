@@ -5,7 +5,7 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-06-19"
+last-updated = "2026-07-02"
 status = "active"
 
 [project-context]
@@ -45,7 +45,8 @@ codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 [recent-work]
 # Landed since the 2026-06-02 STATE refresh (witness: git log).
 coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.md"
-pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml, Intentfile, Mustfile"
+pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml and Intentfile (an earlier note also claimed Mustfile; the Mustfile carries no per-language entries — corrected 2026-07-02)"
+registry-reconciliation = "2026-07-02: reconciled all language-registry surfaces to the canonical 15-entry family (14 languages incl. 007 + KitchenSpeak DSL). LANGUAGES.a2ml rewritten to a single [[language]] schema (legacy do-not-parse s-expr blob dropped; typefix-zero added as status=proposed); added error-lang/tangle/kitchenspeak pointers + indexed 007 in languages/; added haec+007 to ECOSYSTEM/0-AI-MANIFEST/boundary-hook LANGS; fixed the affinescript-dialects bug in Intentfile; marked me-dialect retired and split out adjacent DB/type-theory estates in TOOLING-STATUS"
 pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + policy tables updated"
 scm-pointer-fix = "stale .scm state-location pointers fixed in ROADMAP and CHANGELOG (196e0ad)"
 gitmodules-cleanup = "orphan language-playgrounds submodule entry dropped from .gitmodules (c089dfe)"

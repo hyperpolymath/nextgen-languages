@@ -22,13 +22,15 @@ tentacles = "hyperpolymath/tentacles-agentic-syllabus — curriculum (NOT a lang
 # top-level hyperpolymath repo, referenced here (not embedded). The submodule
 # pointers were removed 2026-06-13 — this repo coordinates/contextualises the
 # family, it does not vendor it.
-note = "Each language is a standalone canonical hyperpolymath repo, referenced (not vendored as a submodule)."
+note = "Each language is a standalone canonical hyperpolymath repo, referenced (not vendored as a submodule). Exception: 007 lives in a private non-hyperpolymath repo (anti-training-scrape) and is indexed only."
+"007" = "The-Metadatastician/007"
 affinescript = "hyperpolymath/affinescript"
 anvomidav = "hyperpolymath/anvomidav"
 betlang = "hyperpolymath/betlang"
 eclexia = "hyperpolymath/eclexia"
 ephapax = "hyperpolymath/ephapax"
 error-lang = "hyperpolymath/error-lang"
+haec = "hyperpolymath/haec"
 jtv = "hyperpolymath/jtv"
 my-lang = "hyperpolymath/my-lang"
 oblibeny = "hyperpolymath/oblibeny"
