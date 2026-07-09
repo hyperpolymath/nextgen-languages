@@ -19,7 +19,7 @@ Source → Parse → AST → Walk & Evaluate → Result
 **Pros:** Simple, easy to debug, good error messages
 **Cons:** Slower, redundant parsing on loops
 
-**Best for:** Me, Solo, educational contexts
+**Best for:** Solo and the Me projection, educational contexts
 
 ### Bytecode Interpreter
 

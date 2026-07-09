@@ -22,7 +22,7 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 | Repository | Purpose |
 |------------|---------|
 | [nextgen-languages](https://github.com/hyperpolymath/nextgen-languages) | Hub, docs, specifications |
-| [my-lang](https://github.com/hyperpolymath/my-lang) | Me/Solo/Duet/Ensemble |
+| [my-lang](https://github.com/hyperpolymath/my-lang) | Solo/Duet/Ensemble dialects (+ the Me projection) |
 | [phronesis](https://github.com/hyperpolymath/phronesis) | AI ethics language |
 | [eclexia](https://github.com/hyperpolymath/eclexia) | Sustainable computing |
 | [oblibeny](https://github.com/hyperpolymath/oblibeny) | Security-critical |

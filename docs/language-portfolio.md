@@ -41,13 +41,14 @@ live in each language's own repo and in the coordinator's canonical trackers:
 |----------|------|---------------|
 | KitchenSpeak | `hyperpolymath/kitchenspeak` | Experimental kitchen-orchestration DSL |
 
-## Proposed (repo not yet created)
+## Exploratory (private; viability under review)
 
-- **TypeFix Zero (TF0)** — proposed `hyperpolymath/typefix-zero` (not yet created). A
-  universe-stratified simply-typed lambda calculus that separates a total, proof-like
-  fragment from a partial computational fragment (a single `fix` primitive). The design
-  spec is parked at `../extraction-queue/typefix-zero/SPEC.adoc`; it is registered as
-  `status = "proposed"` in `../.machine_readable/LANGUAGES.a2ml`.
+- **TypeFix Zero (TF0)** — a universe-stratified simply-typed lambda calculus that separates
+  a total, proof-like fragment from a partial computational fragment (a single `fix`
+  primitive). The repo exists but is **private**, and its viability is still under review, so
+  it is index-only here (no public link, as with 007). The design spec is parked at
+  `../extraction-queue/typefix-zero/SPEC.adoc`; it is registered as `status = "exploratory"`
+  in `../.machine_readable/LANGUAGES.a2ml`.
 
 ## Related query/database languages (separate scope)
 

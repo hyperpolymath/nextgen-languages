@@ -12,12 +12,16 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 ### By Age (Educational)
 
-| Age | Language | Why |
-|-----|----------|-----|
-| 6-8 | Me | Visual blocks, no syntax errors |
+| Age | Surface | Why |
+|-----|---------|-----|
+| 6-8 | Me *(projection)* | Visual blocks, no syntax errors |
 | 8-10 | Solo | First text, explicit effects |
 | 11-14 | Duet | AI assistance, collaboration |
 | 15-18+ | Ensemble | Full AI-native, professional |
+
+> The three My-Lang dialects are nested: Solo ⊂ Duet ⊂ Ensemble. *Me* is not a fourth
+> dialect — it is an agent-generated projection over that hierarchy, used as the entry
+> surface for the youngest learners (specified in `tentacles-agentic-syllabus/me`).
 
 ### By Domain
 
@@ -61,7 +65,7 @@ Audience:       Expert ←――――――――→ Beginner
 
 ## Still Unsure?
 
-1. **Learning?** Start with Me or Solo
+1. **Learning?** Start with the Me projection or Solo
 2. **Building AI apps?** Use Ensemble
 3. **Safety-critical?** Use Anvomidav or Oblíbený
 4. **Green computing?** Use Eclexia
