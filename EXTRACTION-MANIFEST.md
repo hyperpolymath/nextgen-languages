@@ -64,7 +64,7 @@ repos** — land them, then delete the staged copy.
 | `extraction-queue/my-lang/wiki-Duet.md` | `hyperpolymath/my-lang` | `wiki/Duet.md` | dialect |
 | `extraction-queue/my-lang/wiki-Ensemble.md` | `hyperpolymath/my-lang` | `wiki/Ensemble.md` | dialect |
 | `extraction-queue/my-lang/wiki-Me.md` | `hyperpolymath/my-lang` | `wiki/Me.md` | **FIX on landing:** this page models "Me" as a fourth dialect. Me is an *agent-generated projection* over Solo/Duet/Ensemble (see `tentacles-agentic-syllabus/me/README.adoc`), not a static dialect. |
-| `extraction-queue/typefix-zero/SPEC.adoc` | `hyperpolymath/typefix-zero` *(proposed; not yet created, not in ECOSYSTEM.a2ml)* | `SPEC.adoc` | Was a headingless spec dump pasted into `README.adoc`. Create the repo or fold into the relevant design repo. |
+| `extraction-queue/typefix-zero/SPEC.adoc` | `typefix-zero` *(private repo; viability under review; not in ECOSYSTEM.a2ml)* | `SPEC.adoc` | Was a headingless spec dump pasted into `README.adoc`. Land in the private repo if/when its viability is confirmed. |
 
 ## C. Kept in the coordinator (cross-language — correctly belongs here)
 

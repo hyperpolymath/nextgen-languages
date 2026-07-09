@@ -141,7 +141,7 @@ name = "007"
 repo = "https://github.com/The-Metadatastician/007"
 invariant = "Agents that make agents"
 role = "Agent meta-language"
-note = "PRIVATE repo (dual-use precaution, anti-training-scrape). Indexed only; do not mirror content here. Pointer: languages/007.md"
+note = "PRIVATE repo (dual-use precaution, anti-training-scrape); held back pending further safety/guardrail testing — release pending. Indexed only; do not mirror content here. Pointer: languages/007.md"
 status = "specification"
 
 [[language]]
@@ -153,12 +153,12 @@ role = "Orchestration DSL (kitchen domain, physics-in-types); consumes the echo-
 note = "Extracted from this coordinator 2026-06; in-tree snapshot removed (EXTRACTION-MANIFEST.md)"
 status = "experimental"
 
-# ─── Proposed (destination repo not yet created; registered for discoverability only) ───
+# ─── Exploratory (private repo; viability under review — index-only, as with 007) ───
 [[language]]
 id = "typefix-zero"
 name = "TypeFix Zero (TF0)"
-repo = "https://github.com/hyperpolymath/typefix-zero"
+visibility = "private"
 invariant = "The total mathematical fragment and the partial computational fragment (fix) are explicitly separated"
 role = "Universe-stratified STLC + Nat + one fixed-point primitive; minimal typed teaching core"
-note = "PROPOSED — destination repo does not exist yet; design spec parked at extraction-queue/typefix-zero/SPEC.adoc"
-status = "proposed"
+note = "Private repo (index-only, no public link — as with 007); viability under review, not yet committed to the family. Design spec parked at extraction-queue/typefix-zero/SPEC.adoc."
+status = "exploratory"
