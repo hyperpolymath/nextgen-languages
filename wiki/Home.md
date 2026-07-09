@@ -68,7 +68,7 @@ them (see [External Repositories](#external-repositories) below). Quick map:
 
 NextGen Languages is a family of programming languages designed to grow with learners from age 8 through professional practice. The ecosystem includes:
 
-- **Educational progression**: Me → Solo → Duet → Ensemble
+- **Dialect progression**: Solo → Duet → Ensemble (nested). *Me* is an agent-generated projection over these, not a fourth dialect (see the My-Lang note above).
 - **Specialized tools**: Languages for probabilistic programming, real-time systems, creative synthesis, and more
 - **Unified tooling**: Shared infrastructure for all languages
 - **Open ecosystem**: Community-driven development

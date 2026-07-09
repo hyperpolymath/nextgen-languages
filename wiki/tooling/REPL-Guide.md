@@ -285,7 +285,7 @@ ephapax> (let ((sq (ephemeral (lambda (y) (* y y)))))
 | `:type <expr>` | Show expression type |
 | `:info <name>` | Show info about binding |
 
-### Educational Commands (Me/Solo/Duet)
+### Educational Commands (Solo/Duet; Me projection)
 
 | Command | Description |
 |---------|-------------|

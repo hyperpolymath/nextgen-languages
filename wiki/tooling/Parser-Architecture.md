@@ -165,7 +165,7 @@ let expr = SpannedExpr {
 
 ### Recursive Descent (Hand-Written)
 
-Best for: Educational languages (Me, Solo), maximum control
+Best for: Educational dialects (Solo, and the Me projection surface), maximum control
 
 ```rust
 impl Parser {

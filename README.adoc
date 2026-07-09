@@ -92,9 +92,11 @@ Status: early-stage.
 
 ---
 
-=== My Language (Me / Solo / Duet / Ensemble)
+=== My-Lang (Solo ⊂ Duet ⊂ Ensemble)
 
-A multi-dialect experimental language family exploring different levels of abstraction and composition.
+A multi-dialect experimental language family exploring different levels of abstraction and
+composition. The dialects are three and nested. *Me* is an agent-generated projection over
+that hierarchy — not a fourth dialect (see below).
 
 Status: partially implemented.
 
