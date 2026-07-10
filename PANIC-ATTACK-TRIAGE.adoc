@@ -6,7 +6,17 @@
 
 **Scanner:** `panic-attack assail`
 **Date of scan:** 2026-04-10
-**Scope:** `nextgen-languages` monorepo (all submodules)
+**Scope:** the pre-pivot `nextgen-languages` monorepo (all submodules, since extracted)
+
+[IMPORTANT]
+====
+**Historical record (2026-04-10).** This triage predates the pure-coordinator pivot, when
+the languages were in-tree submodules of `nextgen-languages`. Those submodules have since
+been extracted to their own standalone `hyperpolymath/<lang>` repos, so the in-tree paths
+below (`my-lang/crates/…`, `ephapax/src/…`, etc.) no longer exist in this coordinator — the
+findings now live in each language's own repo. Kept as an audit trail; do **not** read it as
+current coordinator state.
+====
 
 [NOTE]
 ====

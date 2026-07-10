@@ -21,8 +21,11 @@ gitlab = "hyperpolymath/nextgen-languages"
 bitbucket = "hyperpolymath/nextgen-languages"
 
 [lineage]
-type = "monorepo"
-parent = "Monorepo — anvomidav, ephapax, wokelang, eclexia, affinescript, betlang, etc."
+# Pure coordinator: references the family, does not contain it. (Was "monorepo"
+# before the 2026-06 pure-coordinator pivot; the in-tree languages were extracted
+# to their own standalone repos.)
+type = "coordinator"
+parent = "Pure coordinator — references (does not vendor) the standalone hyperpolymath/<lang> language repos; canonical registry in .machine_readable/LANGUAGES.a2ml"
 born = "2026-03-16"
 
 # Lifecycle status (added by clade-status-backfill; see gv-clade-index ADR 0006).

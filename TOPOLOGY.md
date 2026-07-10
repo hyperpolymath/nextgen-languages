@@ -2,102 +2,76 @@
 SPDX-License-Identifier: CC-BY-SA-4.0
 Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 -->
-<!-- TOPOLOGY.md — Project architecture map and completion dashboard -->
-<!-- Last updated: 2026-04-04 -->
+<!-- TOPOLOGY.md — Coordinator architecture map -->
+<!-- Last updated: 2026-07-10 -->
 
-# Next-Gen Languages — Project Topology
+# Next-Gen Languages — Coordinator Topology
 
-## System Architecture
+`nextgen-languages` is a **pure coordinator**. It contains no language code: it
+*references* a family of standalone `hyperpolymath/<lang>` repositories and holds the
+cross-language registries, trackers, governance, and CI that coordinate them. The map
+below is a reference diagram, **not** an in-tree component tree.
 
-```
-                        ┌─────────────────────────────────────────┐
-                        │              LANGUAGE DESIGNER          │
-                        │        (Specs, Metaprogramming, FFI)    │
-                        └───────────────────┬─────────────────────┘
-                                            │
-                                            ▼
-                        ┌─────────────────────────────────────────┐
-                        │           NEXT-GEN LANGUAGES HUB        │
-                        │                                         │
-                        │  ┌───────────┐  ┌───────────────────┐  │
-                        │  │ Solo/Duet │  │  Phronesis        │  │
-                        │  │ (Systems) │  │  (Ethics/Safety)  │  │
-                        │  └─────┬─────┘  └────────┬──────────┘  │
-                        │        │                 │              │
-                        │  ┌─────▼─────┐  ┌────────▼──────────┐  │
-                        │  │ Eclexia   │  │  WokeLang         │  │
-                        │  │ (Green)   │  │  (Human-centric)  │  │
-                        │  └─────┬─────┘  └───────────────────┘  │
-                        └────────│────────────────────────────────┘
-                                 │
-                                 ▼
-                        ┌─────────────────────────────────────────┐
-                        │          SATELLITE REPOSITORIES         │
-                        │  ┌───────────┐  ┌───────────┐  ┌───────┐│
-                        │  │ anvomidav │  │ oblibeny  │  │ ephapax││
-                        │  └───────────┘  └───────────┘  └───────┘│
-                        │  ┌───────────┐  ┌───────────┐  ┌───────┐│
-                        │  │ betlang   │  │ error-lang│  │ tangle ││
-                        │  └───────────┘  └───────────┘  └───────┘│
-                        └───────────────────┬─────────────────────┘
-                                            │
-                                            ▼
-                        ┌─────────────────────────────────────────┐
-                        │          DATABASE & MARKUP              │
-                        │      (GQL-dt, A2ML, fqldt, a2ml)        │
-                        └─────────────────────────────────────────┘
-
-                        ┌─────────────────────────────────────────┐
-                        │          REPO INFRASTRUCTURE            │
-                        │  Parent Tracking Only .machine_readable/│
-                        │  6SCM Metadata        0-AI-MANIFEST.a2ml│
-                        └─────────────────────────────────────────┘
-```
-
-## Completion Dashboard
+## Reference map
 
 ```
-COMPONENT                          STATUS              NOTES
-─────────────────────────────────  ──────────────────  ─────────────────────────────────
-LANGUAGE PORTFOLIO
-  Solo / Duet / Ensemble            ██████████ 100%    Progressive family mapped
-  Phronesis (Safety)                ██████████ 100%    Ethical framework stable
-  Eclexia (Sustainable)             ██████████ 100%    Resource constraints active
-  WokeLang (Human-centric)          ██████████ 100%    Consent model verified
-
-SATELLITE PROGRESS
-  Anvomidav (Formal)                ██████████ 100%    Real-time verification active
-  Oblibeny (Secure)                 ██████████ 100%    Turing-incomplete mode stable
-  Ephapax (Linear)                  ██████████ 100%    Dyadic type system active
-  betlang (Foundational)            ██████████ 100%    Core experiments verified
-  Groove Manifests                  ██████████ 100%    Service discovery active (affinescript, jtv)
-
-REPO INFRASTRUCTURE
-  6SCM Documentation Hub            ██████████ 100%    Canonical specs active
-  .machine_readable/                ██████████ 100%    STATE tracking active
-  Parent Coordination               ██████████ 100%    Portfolio Architected
-
-─────────────────────────────────────────────────────────────────────────────
-OVERALL:                            ██████████ 100%    Language Ecosystem Indexed
+                    ┌───────────────────────────────────────────────┐
+                    │           nextgen-languages (this repo)        │
+                    │                 PURE COORDINATOR               │
+                    │                                                │
+                    │  Registries & trackers                         │
+                    │    .machine_readable/LANGUAGES.a2ml            │
+                    │    languages/*.md · TOOLING-STATUS.adoc        │
+                    │    PROOF-NEEDS.md · TEST-NEEDS.md              │
+                    │    language-status-tracker.jl                  │
+                    │  Governance · CI · coordinator-boundary guard  │
+                    └───────────────────────┬───────────────────────┘
+                                            │ references (never vendors)
+        ┌───────────────────────────────────┼───────────────────────────────────┐
+        ▼                                   ▼                                   ▼
+ ┌────────────────┐                 ┌────────────────┐                 ┌────────────────┐
+ │ General-purpose│                 │  Specialised   │                 │   Private /    │
+ │ & foundational │                 │   & DSL        │                 │  exploratory   │
+ ├────────────────┤                 ├────────────────┤                 ├────────────────┤
+ │ my-lang        │                 │ kitchenspeak   │                 │ 007 (private)  │
+ │ phronesis      │                 │  (DSL)         │                 │ typefix-zero   │
+ │ eclexia        │                 └────────────────┘                 │  (private)     │
+ │ oblibeny       │                                                    └────────────────┘
+ │ anvomidav      │
+ │ wokelang       │      Each box is a standalone hyperpolymath/<lang> repo. This
+ │ betlang        │      coordinator holds a pointer + registry entry for each one;
+ │ jtv            │      the implementation, specs, grammars, and proofs live there,
+ │ affinescript   │      never here.
+ │ ephapax        │
+ │ haec           │
+ │ error-lang     │
+ │ tangle         │
+ └────────────────┘
 ```
 
-## Key Dependencies
+## Adjacent estates (referenced, out of scope)
 
-```
-Philosophy ──────► Design Spectrum ──────► Satellite Repo ──────► Artifact
-     │                 │                      │                    │
-     ▼                 ▼                      ▼                    ▼
-CCCP Policy ─────► Verification ────────► Implementation ─────► Binary
-```
+Tracked elsewhere and listed only for discoverability — **not** part of the language-family
+registry: the KRL resolution stack (`krl → TangleIR → VeriSimCore → Skein.jl / quandledb`)
+and the database / type-theory languages (VCL-total, Quandledb, TypeLL, PanLL,
+VQL/GQL/FBQL-DT). See `docs/language-portfolio.md` and the "Adjacent estates" section of
+`TOOLING-STATUS.adoc`.
 
-## Update Protocol
+## Where status actually lives
 
-This file is maintained by both humans and AI agents. When updating:
+This coordinator does **not** assert per-language completion — maturity is tracked in each
+language's own repo and mirrored in the canonical trackers:
 
-1. **After completing a component**: Change its bar and percentage
-2. **After adding a component**: Add a new row in the appropriate section
-3. **After architectural changes**: Update the ASCII diagram
-4. **Date**: Update the `Last updated` comment at the top of this file
+- `.machine_readable/LANGUAGES.a2ml` — machine-readable registry (id, repo, invariant, status)
+- `TOOLING-STATUS.adoc` — per-language grade matrix (CRG/TRG/ARG/FRG/RSR)
+- `PROOF-NEEDS.md` / `TEST-NEEDS.md` — cross-language proof/test gaps
+- `language-status-tracker.jl` — script that reports cross-language repo status
 
-Progress bars use: `█` (filled) and `░` (empty), 10 characters wide.
-Percentages: 0%, 10%, 20%, ... 100% (in 10% increments).
+The coordinator's own scaffolding status lives in `.machine_readable/6a2/STATE.a2ml`
+(`completion-percentage`), which reflects coordinator maturity — not a family-wide 100%.
+
+## Update protocol
+
+When the family changes (a language added, extracted, renamed, or retired), update the
+registries listed above **together** — they must agree — then refresh this map. Do not add
+per-language implementation detail here; it belongs in that language's own repo.

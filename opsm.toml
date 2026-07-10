@@ -1,29 +1,24 @@
 # SPDX-License-Identifier: MPL-2.0
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
-# nextgen-languages workspace manifest.
-# OPSM is the native package manager for all nextgen languages.
+# nextgen-languages OPSM manifest.
+# OPSM is the native package manager for the nextgen languages family.
+#
+# nextgen-languages is a PURE COORDINATOR: the language packages live in their
+# own standalone hyperpolymath/<lang> repos, so there is no in-tree workspace to
+# install or publish here. This manifest pins the coordinator's tooling
+# ([runtime], which also serves as the family-wide toolchain version reference)
+# and declares the shared services its CI/tooling talks to.
 #
 # Usage:
-#   opsm install              # install workspace deps
-#   opsm publish --registry hf  # publish all member packages
 #   opsm runtime install      # install pinned tool versions below
 
 [workspace]
-# All language sub-projects in this monorepo
-members = [
-  "affinescript",
-  "betlang",
-  "eclexia",
-  "ephapax",
-  "error-lang",
-  "jtv",
-  "my-lang",
-  "oblibeny",
-  "phronesis",
-  "tangle",
-  "wokelang",
-]
+# Pure coordinator: the language packages are NOT in-tree members — each lives in
+# its own standalone hyperpolymath/<lang> repo (see
+# .machine_readable/LANGUAGES.a2ml). This list held the pre-pivot monorepo
+# membership and is intentionally empty now.
+members = []
 
 # Workspace-level default registry — all members publish here unless overridden
 default_registry = "hf"
