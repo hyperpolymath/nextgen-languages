@@ -42,14 +42,6 @@ guix build -f guix.scm
 nix build
 ----
 
-=== Container (Stapeln)
-
-[source,bash]
-----
-just stapeln-export    # Generates Containerfile
-podman build -t nextgen-languages .
-----
-
 === Manual Package
 
 [source,bash]

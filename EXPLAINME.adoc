@@ -221,7 +221,7 @@ progress across all languages from this coordinator
 | Every RSR repo in the account
 
 | *Stapeln containers*
-| `stapeln.toml` — compiler toolchain containers
+| Account-wide layered container tool; the coordinator ships no build container (it contains no language code to build)
 | All containerised services in the account
 |===
 

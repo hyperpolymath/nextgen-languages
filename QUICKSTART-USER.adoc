@@ -51,14 +51,7 @@ The setup script will:
 * Offer install location choices
 * Run a self-diagnostic to verify everything works
 
-=== Option 2: Container (via Stapeln)
-
-[source,bash]
-----
-just stapeln-run
-----
-
-=== Option 3: Portable (no system changes)
+=== Option 2: Portable (no system changes)
 
 [source,bash]
 ----
