@@ -5,7 +5,7 @@
 
 using Dates
 
-const REPOS_DIR = joinpath(homedir(), "Documents/hyperpolymath-repos")
+const REPOS_DIR = get(ENV, "HYPERPOLYMATH_REPOS_DIR", joinpath(homedir(), "Documents/hyperpolymath-repos"))
 
 # All known language repos
 const LANGUAGES = [

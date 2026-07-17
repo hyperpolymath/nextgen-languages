@@ -258,13 +258,35 @@ jobs:
           echo "Verifies that no language-implementation content (proofs, grammars, compilers, specs, or a re-vendored language directory) has leaked into the coordinator. Language code lives in each \`hyperpolymath/<lang>\` repo, referenced here — not embedded." >> "$GITHUB_STEP_SUMMARY"
 
   # ---------------------------------------------------------------------------
+  # Job 5b: Language-registry consistency — every surface lists the same family
+  # ---------------------------------------------------------------------------
+  language-registry:
+    name: Language registry consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Enforce language-registry consistency
+        run: bash hooks/validate-language-registry.sh
+
+      - name: Write summary
+        if: always()
+        run: |
+          echo "## Language Registry Consistency" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Verifies every language appears on all registry surfaces (\`languages/\`, \`LANGUAGES.a2ml\`, the boundary-hook \`LANGS\` list, \`ECOSYSTEM.a2ml\`, and the status tracker), so the family cannot silently drift out of sync. Canonical set: \`languages/*.md\`." >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
   # Job 6: Dogfooding summary
   # ---------------------------------------------------------------------------
   dogfood-summary:
     name: Dogfooding compliance summary
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [a2ml-validate, k9-validate, empty-lint, groove-check, coordinator-boundary]
+    needs: [a2ml-validate, k9-validate, empty-lint, groove-check, coordinator-boundary, language-registry]
     if: always()
 
     steps:

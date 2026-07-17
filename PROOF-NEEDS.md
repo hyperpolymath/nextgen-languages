@@ -6,10 +6,14 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 ## Current State
 
-- **src/abi/*.idr**: YES (in oblibeny) — `Interface.idr`
-- **Dangerous patterns**: 4 `Admitted` in ephapax/formal/Semantics.v (ctx_transfer 15/24, subst_lemma, preservation)
-- **LOC**: ~456,000 (OCaml + Rust + Coq + Idris2 + Lean)
-- **Existing proofs**: Ephapax has Coq proofs, Tangle has Lean proofs, Idris2 in multiple sub-languages
+`nextgen-languages` is a pure coordinator and holds **no** proof code. This file tracks the
+family's proof gaps across the standalone `hyperpolymath/<lang>` repos; every path below is
+relative to the named language's own repo, not this one.
+
+- **Ephapax** — Coq proofs present; 4 `Admitted` remain in `formal/Semantics.v` (ctx_transfer 15/24, subst_lemma, preservation, + one more).
+- **Tangle** — Lean proofs present (`Tangle.lean`); coverage partial.
+- **Oblíbený** — Idris2 ABI present (`src/abi/Interface.idr`); minimal.
+- **AffineScript** — OCaml type checker + Rust runtime; soundness proofs outstanding.
 
 ## What Needs Proving
 
