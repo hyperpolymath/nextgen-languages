@@ -43,9 +43,9 @@ Status: design-stage, with partial specifications and experimental implementatio
 
 ---
 
-=== KRL — Knot Resolution Language (Tangle)
+=== Tangle
 
-A topologically inspired language where programs are represented as tangles (braids), and equivalence is defined by isotopy.
+A topologically inspired language where programs are represented as tangles (braids), and equivalence is defined by isotopy. Its IR (TangleIR) is consumed by the separate *KRL resolution stack* (`krl → TangleIR → VeriSimCore → Skein.jl / QuandleDB`), which is tracked by the database estate — not part of this coordinator's language family.
 
 * Composition and tensor operations correspond to braid structure
 * Formal semantics specified
@@ -141,7 +141,7 @@ Type-theoretic boundaries are made explicit: total proof-like fragments are dist
 
 These languages are designed to work with systems that treat equivalence, provenance, and semantic identity as first-class concepts:
 
-KRL ↔ QuandleDB / Skein
+Tangle (via the separate KRL resolution stack) ↔ QuandleDB / Skein
 JtV ↔ future equivalence-aware runtime and storage models
 
 See the nextgen-databases repository for details.
@@ -196,7 +196,7 @@ production system. The work it tracks spans, across the individual language repo
 Each language lives in its own `hyperpolymath/<lang>` repo; start there. For orientation:
 
 * link:https://github.com/hyperpolymath/tangle[`hyperpolymath/tangle`] — `Tangle.lean`, the
-  mechanised type-safety proof for the Tangle (KRL) core; topological language design
+  mechanised type-safety proof for the Tangle core; topological language design
 * link:https://github.com/hyperpolymath/jtv[`hyperpolymath/jtv`] — computation as
   path-based construction
 

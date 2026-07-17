@@ -22,20 +22,21 @@ NOTE: `tentacles-agentic-syllabus` is NOT a programming language. It is an
 educational framework using My-Lang's dialects as a curriculum vehicle. Never
 audit it as a language implementation.
 
-== Claim 1: "Ten languages that cover the full spectrum of modern software challenges"
+== Claim 1: "A family of languages covering the full spectrum of modern software challenges"
 
 [quote, README]
 ____
-A coordinated effort to design and develop ten programming languages that
+A coordinated effort to design and develop a family of programming languages that
 collectively cover the full spectrum of modern software challenges, from
 AI-native development to formally verified real-time systems.
 ____
 
 === How it works
 
-The eight core languages plus two specialised languages are designed to
-complement each other, not compete. They occupy distinct cells in the design
-space (each maintained as a standalone `hyperpolymath/<lang>` repo):
+The family currently spans fourteen languages plus the KitchenSpeak DSL — the canonical
+list is `.machine_readable/LANGUAGES.a2ml`. They are designed to complement each other, not
+compete, each occupying a distinct cell in the design space (each maintained as a standalone
+`hyperpolymath/<lang>` repo). The table below shows the representative core:
 
 [cols="1,1,2,1"]
 |===
@@ -90,9 +91,14 @@ Gossamer backend. Rust compiler, Coq proofs.
 | Rust (17 crates), Coq proofs
 |===
 
+NOTE: The table shows a representative core. The full family also includes *betlang*
+(probabilistic), *JtV* (systems / Harvard architecture), *Haec* (trope-particularity),
+*error-lang* (pedagogical), *Tangle* (topological), and *007* (a private agent
+meta-language) — see `.machine_readable/LANGUAGES.a2ml` for the canonical registry.
+
 NOTE: *KitchenSpeak* — an experimental applied-type-theory teaching DSL
 (seven-type kitchen orchestration: Tropical, Linear, Choreographic, Echo,
-Dyadic, Ceremonial, Primitive) — is NOT one of the ten core languages and is
+Dyadic, Ceremonial, Primitive) — is NOT one of the core languages above and is
 no longer carried in this repo. It is canonical at the standalone
 link:https://github.com/hyperpolymath/kitchenspeak[`hyperpolymath/kitchenspeak`]
 repository (v2.0: physics-in-the-types, reference OCaml compiler, machine-checked
