@@ -1,0 +1,51 @@
+== Language Quick Reference
+
+Each language has one core invariant that defines its design philosophy.
+
+[width="100%",cols="48%,52%",options="header",]
+|===
+|Language |Invariant
+|link:my-lang.md[my-lang] |Each level builds exactly on the previous
+
+|link:phronesis.md[phronesis] |Every AI decision traces to declared
+values
+
+|link:eclexia.md[eclexia] |No computation without explicit resource
+budget
+
+|link:oblibeny.md[oblibeny] |All programs must provably terminate
+
+|link:anvomidav.md[anvomidav] |Every deadline is statically guaranteed
+
+|link:wokelang.md[wokelang] |No operation without explicit consent
+
+|link:betlang.md[betlang] |All uncertainty must be explicitly modeled
+
+|link:jtv.md[jtv] |Data and code are strictly separated
+
+|link:affinescript.md[affinescript] |Every resource is used at most once
+
+|link:ephapax.md[ephapax] |Every value can be consumed exactly once
+
+|link:haec.md[haec] |Every quality-loss is graded and checked against
+its use
+
+|link:error-lang.md[error-lang] |Errors are first-class: systems
+thinking taught through failure
+
+|link:tangle.md[tangle] |Programs are braids; equivalence is topological
+isotopy
+
+|link:007.md[007] |Agents that make agents (private repo, anti-scrape;
+index-only)
+
+|link:kitchenspeak.md[kitchenspeak] |Physical-process constraints are
+enforced in the types
+|===
+
+Each row links to a thin pointer; the language itself lives in its own
+`+hyperpolymath/<lang>+` repo. For cross-language status see
+link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`],
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`],
+and
+link:../language-status-tracker.jl[`+../language-status-tracker.jl+`].

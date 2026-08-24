@@ -1,0 +1,14 @@
+== Phronesis
+
+____
+Every AI decision traces to declared values.
+____
+
+*Canonical repository:*
+https://github.com/hyperpolymath/phronesis[hyperpolymath/phronesis]
+
+This coordinator only _indexes_ the language. The implementation,
+specification, grammar, examples, and live status live in the canonical
+repository above — not here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].

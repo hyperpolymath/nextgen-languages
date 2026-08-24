@@ -1,0 +1,79 @@
+== Next-Gen Languages — Coordinator Topology
+
+`+nextgen-languages+` is a *pure coordinator*. It contains no language
+code: it _references_ a family of standalone `+hyperpolymath/<lang>+`
+repositories and holds the cross-language registries, trackers,
+governance, and CI that coordinate them. The map below is a reference
+diagram, *not* an in-tree component tree.
+
+=== Reference map
+
+....
+                    ┌───────────────────────────────────────────────┐
+                    │           nextgen-languages (this repo)        │
+                    │                 PURE COORDINATOR               │
+                    │                                                │
+                    │  Registries & trackers                         │
+                    │    .machine_readable/LANGUAGES.a2ml            │
+                    │    languages/*.md · TOOLING-STATUS.adoc        │
+                    │    PROOF-NEEDS.md · TEST-NEEDS.md              │
+                    │    language-status-tracker.jl                  │
+                    │  Governance · CI · coordinator-boundary guard  │
+                    └───────────────────────┬───────────────────────┘
+                                            │ references (never vendors)
+        ┌───────────────────────────────────┼───────────────────────────────────┐
+        ▼                                   ▼                                   ▼
+ ┌────────────────┐                 ┌────────────────┐                 ┌────────────────┐
+ │ General-purpose│                 │  Specialised   │                 │   Private /    │
+ │ & foundational │                 │   & DSL        │                 │  exploratory   │
+ ├────────────────┤                 ├────────────────┤                 ├────────────────┤
+ │ my-lang        │                 │ kitchenspeak   │                 │ 007 (private)  │
+ │ phronesis      │                 │  (DSL)         │                 │ typefix-zero   │
+ │ eclexia        │                 └────────────────┘                 │  (private)     │
+ │ oblibeny       │                                                    └────────────────┘
+ │ anvomidav      │
+ │ wokelang       │      Each box is a standalone hyperpolymath/<lang> repo. This
+ │ betlang        │      coordinator holds a pointer + registry entry for each one;
+ │ jtv            │      the implementation, specs, grammars, and proofs live there,
+ │ affinescript   │      never here.
+ │ ephapax        │
+ │ haec           │
+ │ error-lang     │
+ │ tangle         │
+ └────────────────┘
+....
+
+=== Adjacent estates (referenced, out of scope)
+
+Tracked elsewhere and listed only for discoverability — *not* part of
+the language-family registry: the KRL resolution stack
+(`+krl → TangleIR → VeriSimCore → Skein.jl / quandledb+`) and the
+database / type-theory languages (VCL-total, Quandledb, TypeLL, PanLL,
+VQL/GQL/FBQL-DT). See `+docs/language-portfolio.md+` and the "`Adjacent
+estates`" section of `+TOOLING-STATUS.adoc+`.
+
+=== Where status actually lives
+
+This coordinator does *not* assert per-language completion — maturity is
+tracked in each language’s own repo and mirrored in the canonical
+trackers:
+
+* `+.machine_readable/LANGUAGES.a2ml+` — machine-readable registry (id,
+repo, invariant, status)
+* `+TOOLING-STATUS.adoc+` — per-language grade matrix
+(CRG/TRG/ARG/FRG/RSR)
+* `+PROOF-NEEDS.md+` / `+TEST-NEEDS.md+` — cross-language proof/test
+gaps
+* `+language-status-tracker.jl+` — script that reports cross-language
+repo status
+
+The coordinator’s own scaffolding status lives in
+`+.machine_readable/6a2/STATE.a2ml+` (`+completion-percentage+`), which
+reflects coordinator maturity — not a family-wide 100%.
+
+=== Update protocol
+
+When the family changes (a language added, extracted, renamed, or
+retired), update the registries listed above *together* — they must
+agree — then refresh this map. Do not add per-language implementation
+detail here; it belongs in that language’s own repo.
