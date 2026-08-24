@@ -1,0 +1,18 @@
+== Error-Lang
+
+____
+Errors are first-class: systems thinking is taught through failure.
+____
+
+*Canonical repository:*
+https://github.com/hyperpolymath/error-lang[hyperpolymath/error-lang]
+
+A pedagogical language that teaches systems thinking by making errors
+the primary object of study rather than an afterthought — every failure
+mode is a named, first-class value the learner reasons about explicitly.
+
+This coordinator only _indexes_ the language. The implementation,
+specification, grammar, examples, and live status live in the canonical
+repository above — not here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].

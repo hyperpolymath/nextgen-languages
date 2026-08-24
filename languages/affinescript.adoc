@@ -1,0 +1,14 @@
+== AffineScript
+
+____
+Every resource is used at most once.
+____
+
+*Canonical repository:*
+https://github.com/hyperpolymath/affinescript[hyperpolymath/affinescript]
+
+This coordinator only _indexes_ the language. The implementation,
+specification, grammar, examples, and live status live in the canonical
+repository above — not here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].

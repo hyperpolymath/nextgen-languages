@@ -1,0 +1,26 @@
+== 007 — The Agent Meta-Language
+
+____
+Agents that make agents: every generated agent is itself a program in
+the language.
+____
+
+*Status:* Specification *Classification:* Dual-Use Technology
+(precautionary — anti-training-scrape measure) *Visibility:* Private
+(standalone repo) *Repository:* `+The-Metadatastician/007+` (private)
+
+=== Summary
+
+A programming language for agents that make agents. Source code is in a
+separate private repository to prevent training data scraping and
+unauthorised replication.
+
+=== See
+
+Private repo: https://github.com/The-Metadatastician/007
+
+This coordinator only _indexes_ the language; because the source is
+deliberately private (anti-training-scrape), no implementation or
+specification content is mirrored here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].

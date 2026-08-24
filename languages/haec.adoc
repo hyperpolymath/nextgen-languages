@@ -1,0 +1,34 @@
+== Haec
+
+____
+Every quality-loss is graded and checked against its use.
+____
+
+*Canonical repository:*
+https://github.com/hyperpolymath/haec[hyperpolymath/haec]
+
+Haec is a Turing-complete language whose type discipline is
+_trope-particularity_: every operation on a _property-instance_ (a
+quality as borne by _this_ entity, in _this_ context) carries a
+_loss-shape grade_, and the surviving residue is judged against a
+declared _use-model_. Haec is one *front-end* of a three-repo system —
+it lowers programs to a language-neutral *Trope IR*; it defines neither
+the checker nor the vocabulary:
+
+* https://github.com/hyperpolymath/trope-checker[hyperpolymath/trope-checker]
+— the portable checker (Idris2 verified core + executable) that consumes
+the Trope IR and returns a verdict (`+p-sufficient+` /
+`+p-insufficient+`) with a witness edge.
+* https://github.com/hyperpolymath/trope-particularity-workbench[hyperpolymath/trope-particularity-workbench]
+— the informal vocabulary (the nine named effects, the residual, the
+verdict).
+
+Shares the _irreversible-transformation-with-retained-residue_ substrate
+with https://github.com/hyperpolymath/echo-types[`+echo-types+`] (the
+graded-loss reading the calculus builds on).
+
+This coordinator only _indexes_ the language. The implementation,
+specification, grammar, examples, and live status live in the canonical
+repositories above — not here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].

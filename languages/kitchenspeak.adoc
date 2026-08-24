@@ -1,0 +1,22 @@
+== KitchenSpeak
+
+____
+Physical-process constraints are enforced in the types
+(physics-in-types).
+____
+
+*Canonical repository:*
+https://github.com/hyperpolymath/kitchenspeak[hyperpolymath/kitchenspeak]
+
+An experimental kitchen-orchestration DSL. The in-tree v1.0 snapshot was
+extracted 2026-06 (see
+link:../EXTRACTION-MANIFEST.md[`+../EXTRACTION-MANIFEST.md+`]); the
+standalone repo carries the superseding v2.0 (physics-in-types, OCaml
+compiler, machine-checked Agda) and consumes the
+https://github.com/hyperpolymath/echo-types[`+echo-types+`] substrate.
+
+This coordinator only _indexes_ the language. The implementation,
+specification, grammar, examples, and live status live in the canonical
+repository above — not here. See also
+link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`]
+and link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`].
