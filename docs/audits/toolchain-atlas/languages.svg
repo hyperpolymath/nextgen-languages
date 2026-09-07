@@ -1,0 +1,2221 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2398" height="1552" viewBox="0 0 2398 1552"><metadata>SPDX-License-Identifier: CC-BY-SA-4.0</metadata><rect width="100%" height="100%" fill="#f7f8fb"/>
+<rect x="0" y="0" width="2398" height="160" fill="#17293c"/>
+<text x="35" y="60" font-family="DejaVu Sans,sans-serif" font-size="37" font-weight="700" fill="#ffffff">Languages and research</text>
+<text x="36" y="96" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#b9d8e8">HYPERPOLYMATH  /  TOOLCHAIN EVIDENCE ATLAS  /  07 SEPTEMBER 2026</text>
+<text x="36" y="135" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="400" fill="#ffffff">Local + selected published evidence. A tested slice is not a whole-language safety certificate.</text>
+<rect x="35" y="176" width="29" height="27" fill="#138477"/>
+<text x="42" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white">T</text>
+<text x="72" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">tested</text>
+<rect x="195" y="176" width="29" height="27" fill="#684fb5"/>
+<text x="202" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white">P</text>
+<text x="232" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">proof checked</text>
+<rect x="403" y="176" width="29" height="27" fill="#2c6fae"/>
+<text x="410" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white">I</text>
+<text x="440" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">code inspected</text>
+<rect x="622" y="176" width="29" height="27" fill="#a8bedd"/>
+<text x="629" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#243449">D</text>
+<text x="659" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">design</text>
+<rect x="782" y="176" width="29" height="27" fill="#b65432"/>
+<text x="789" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white">!</text>
+<text x="819" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">partial / blocked</text>
+<rect x="1034" y="176" width="29" height="27" fill="#dbe4ee"/>
+<text x="1041" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#243449">F</text>
+<text x="1071" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">file only</text>
+<rect x="1198" y="176" width="29" height="27" fill="#edf1f5"/>
+<text x="1205" y="196" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="#243449">?</text>
+<text x="1235" y="195" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">not assessed</text>
+<text x="35" y="232" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="400" fill="#243449">R = related canonical core    H = host / different role    X = private    |    Every cell has notes and source navigation in atlas.html</text>
+<rect x="390" y="252" width="393" height="29" fill="#dce5ef"/>
+<text x="398" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">LANGUAGE</text>
+<rect x="786" y="252" width="327" height="29" fill="#dce5ef"/>
+<text x="794" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">FRONTEND</text>
+<rect x="1116" y="252" width="327" height="29" fill="#dce5ef"/>
+<text x="1124" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">EXECUTION</text>
+<rect x="1446" y="252" width="327" height="29" fill="#dce5ef"/>
+<text x="1454" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">INTEGRATION</text>
+<rect x="1776" y="252" width="261" height="29" fill="#dce5ef"/>
+<text x="1784" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">ASSURANCE</text>
+<rect x="2040" y="252" width="195" height="29" fill="#dce5ef"/>
+<text x="2048" y="270" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="700" fill="#243449">DELIVERY</text>
+<text transform="translate(412,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Syntax</text>
+<text transform="translate(478,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Semantics</text>
+<text transform="translate(544,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Type checker</text>
+<text transform="translate(610,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Ownership / effects</text>
+<text transform="translate(676,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">AST</text>
+<text transform="translate(742,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Judgement graph</text>
+<text transform="translate(808,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Lexer</text>
+<text transform="translate(874,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Parser</text>
+<text transform="translate(940,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Elaboration / IR</text>
+<text transform="translate(1006,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">REPL</text>
+<text transform="translate(1072,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">LSP / debugger</text>
+<text transform="translate(1138,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Interpreter / runner</text>
+<text transform="translate(1204,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Meta-interpreter</text>
+<text transform="translate(1270,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Compiler / build</text>
+<text transform="translate(1336,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Meta-compiler</text>
+<text transform="translate(1402,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Code generators</text>
+<text transform="translate(1468,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Coprocessor / GPU</text>
+<text transform="translate(1534,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">FFI / ABI / verifier</text>
+<text transform="translate(1600,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Standard library</text>
+<text transform="translate(1666,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Aggregate library</text>
+<text transform="translate(1732,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Other libraries</text>
+<text transform="translate(1798,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Unit / conformance tests</text>
+<text transform="translate(1864,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Property tests / fuzzing</text>
+<text transform="translate(1930,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Formal model / proofs</text>
+<text transform="translate(1996,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Proof correspondence</text>
+<text transform="translate(2062,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">CI / security gates</text>
+<text transform="translate(2128,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Measurement / bench</text>
+<text transform="translate(2194,487) rotate(-57)" font-family="DejaVu Sans,sans-serif" font-size="16" fill="#243449">Release / packaging</text>
+<rect x="28" y="500" width="2340" height="34" fill="#243b52"/>
+<text x="39" y="524" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="700" fill="white">LANGUAGES AND RESEARCH</text>
+<text x="38" y="572" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Tangle</text>
+<g><title>Tangle / syntax: Security-labelled syntax and formal core were reviewed; this is not the catalogue’s former KRL conflation.</title>
+<rect x="390" y="546" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Tangle / semantics: Security-labelled syntax and formal core were reviewed; this is not the catalogue’s former KRL conflation.</title>
+<rect x="456" y="546" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Tangle / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / ast: OCaml frontend and REPL implementation sources were inspected.</title>
+<rect x="654" y="546" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Tangle / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / lexer: OCaml frontend and REPL implementation sources were inspected.</title>
+<rect x="786" y="546" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Tangle / parser: OCaml frontend and REPL implementation sources were inspected.</title>
+<rect x="852" y="546" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Tangle / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / repl: OCaml frontend and REPL implementation sources were inspected.</title>
+<rect x="984" y="546" width="62" height="36" fill="#2c6fae"/>
+<text x="1007" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Tangle / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / interpreter: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1116" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1139" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / unit: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1776" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1799" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / proof: Lean core checked: progress, preservation, determinism, safety, and inference equivalence. This is the model, not a compiler refinement proof.</title>
+<rect x="1908" y="546" width="62" height="36" fill="#684fb5"/>
+<text x="1931" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">P</text>
+</g>
+<g><title>Tangle / closure: An end-to-end refinement from the OCaml implementation to the checked Lean core was not established.</title>
+<rect x="1974" y="546" width="62" height="36" fill="#edf1f5"/>
+<text x="1997" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Tangle / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Tangle / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="546" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="573" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="614" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Oblíbený</text>
+<g><title>Oblíbený / syntax: Reversible core syntax/semantics reviewed; whole-toolchain 100% completion claims were unsupported.</title>
+<rect x="390" y="588" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Oblíbený / semantics: Reversible core syntax/semantics reviewed; whole-toolchain 100% completion claims were unsupported.</title>
+<rect x="456" y="588" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Oblíbený / types: Static analysis has call/size gaps; debugger stepping is an index and continuation is unfinished; profiler reports zero placeholders; deployment completion not established.</title>
+<rect x="522" y="588" width="62" height="36" fill="#b65432"/>
+<text x="545" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oblíbený / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / ast: OCaml core implementation inspected; 27 conformance cases passed for the tested slice.</title>
+<rect x="654" y="588" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Oblíbený / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / lexer: OCaml core implementation inspected; 27 conformance cases passed for the tested slice.</title>
+<rect x="786" y="588" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Oblíbený / parser: OCaml core implementation inspected; 27 conformance cases passed for the tested slice.</title>
+<rect x="852" y="588" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Oblíbený / ir: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="918" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="941" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / editor: Static analysis has call/size gaps; debugger stepping is an index and continuation is unfinished; profiler reports zero placeholders; deployment completion not established.</title>
+<rect x="1050" y="588" width="62" height="36" fill="#b65432"/>
+<text x="1073" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oblíbený / interpreter: OCaml core implementation inspected; 27 conformance cases passed for the tested slice.</title>
+<rect x="1116" y="588" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Oblíbený / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / alib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1644" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1667" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / unit: 27 conformance cases passed; this does not certify debugger or deployment.</title>
+<rect x="1776" y="588" width="62" height="36" fill="#138477"/>
+<text x="1799" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>Oblíbený / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="588" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oblíbený / closure: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1974" y="588" width="62" height="36" fill="#dbe4ee"/>
+<text x="1997" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oblíbený / ci: CI/security configuration and actual PR checks were inspected and repaired in PR 127. Build/test/security results are separate from main branch policy and merge approval; follow the live PR for final status.</title>
+<rect x="2040" y="588" width="62" height="36" fill="#2c6fae"/>
+<text x="2063" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Oblíbený / bench: Static analysis has call/size gaps; debugger stepping is an index and continuation is unfinished; profiler reports zero placeholders; deployment completion not established.</title>
+<rect x="2106" y="588" width="62" height="36" fill="#b65432"/>
+<text x="2129" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oblíbený / release: Static analysis has call/size gaps; debugger stepping is an index and continuation is unfinished; profiler reports zero placeholders; deployment completion not established.</title>
+<rect x="2172" y="588" width="62" height="36" fill="#b65432"/>
+<text x="2195" y="615" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<text x="38" y="656" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">KitchenSpeak</text>
+<g><title>KitchenSpeak / syntax: Cooking syntax and safety model reviewed; physical guarantees depend on sensor and environment assumptions.</title>
+<rect x="390" y="630" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>KitchenSpeak / semantics: Cooking syntax and safety model reviewed; physical guarantees depend on sensor and environment assumptions.</title>
+<rect x="456" y="630" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>KitchenSpeak / types: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="522" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="545" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / ast: Compiler frontend sources are present and the conformance corpus exercises accepted and rejected inputs.</title>
+<rect x="654" y="630" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>KitchenSpeak / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / lexer: Compiler frontend sources are present and the conformance corpus exercises accepted and rejected inputs.</title>
+<rect x="786" y="630" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>KitchenSpeak / parser: Compiler frontend sources are present and the conformance corpus exercises accepted and rejected inputs.</title>
+<rect x="852" y="630" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>KitchenSpeak / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1116" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1139" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="630" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>KitchenSpeak / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / unit: 15 positive/negative conformance cases passed.</title>
+<rect x="1776" y="630" width="62" height="36" fill="#138477"/>
+<text x="1799" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>KitchenSpeak / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / proof: NoCurdle contains sensor-bound and temperature postulates; no unconditional physical-safety theorem or runtime refinement was established.</title>
+<rect x="1908" y="630" width="62" height="36" fill="#b65432"/>
+<text x="1931" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>KitchenSpeak / closure: NoCurdle contains sensor-bound and temperature postulates; no unconditional physical-safety theorem or runtime refinement was established.</title>
+<rect x="1974" y="630" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>KitchenSpeak / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>KitchenSpeak / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="630" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="657" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="698" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Eclexia</text>
+<g><title>Eclexia / syntax: Resource-aware language implementation, compiler and CLI were reviewed.</title>
+<rect x="390" y="672" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Eclexia / semantics: Resource-aware language implementation, compiler and CLI were reviewed.</title>
+<rect x="456" y="672" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Eclexia / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / ast: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="654" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="677" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="672" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Eclexia / lexer: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="786" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / parser: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="852" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="672" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Eclexia / repl: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="984" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="1007" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / interpreter: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="1116" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="672" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Eclexia / compiler: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="1248" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="1271" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / codegen: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="1380" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="1403" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="672" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Eclexia / abi: Oikosbot expects a JSON policy protocol and --input interface that the inspected Eclexia CLI does not implement. Resource provenance/units and runtime correspondence remain open.</title>
+<rect x="1512" y="672" width="62" height="36" fill="#b65432"/>
+<text x="1535" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Eclexia / stdlib: Rust lexer/parser/compiler/bytecode/VM/CLI and standard-library implementation inspected.</title>
+<rect x="1578" y="672" width="62" height="36" fill="#2c6fae"/>
+<text x="1601" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Eclexia / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="672" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Eclexia / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / unit: The two conformance test harnesses passed for this local snapshot.</title>
+<rect x="1776" y="672" width="62" height="36" fill="#138477"/>
+<text x="1799" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>Eclexia / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / closure: Oikosbot expects a JSON policy protocol and --input interface that the inspected Eclexia CLI does not implement. Resource provenance/units and runtime correspondence remain open.</title>
+<rect x="1974" y="672" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Eclexia / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Eclexia / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="672" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="699" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="740" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Ephapax v2</text>
+<g><title>Ephapax v2 / syntax: Current Rust/Idris frontend and layered linear-region semantics reviewed; do not inherit guarantees from the failed v1.</title>
+<rect x="390" y="714" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Ephapax v2 / semantics: Current Rust/Idris frontend and layered linear-region semantics reviewed; do not inherit guarantees from the failed v1.</title>
+<rect x="456" y="714" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Ephapax v2 / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / ast: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="654" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="677" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="714" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Ephapax v2 / lexer: Current parser implementation inspected; 62 unit tests and one additional parser test passed.</title>
+<rect x="786" y="714" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Ephapax v2 / parser: Current parser implementation inspected; 62 unit tests and one additional parser test passed.</title>
+<rect x="852" y="714" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Ephapax v2 / ir: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="918" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="941" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / interpreter: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1116" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1139" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="714" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Ephapax v2 / compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1248" y="714" width="62" height="36" fill="#edf1f5"/>
+<text x="1271" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Ephapax v2 / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / coproc: Zig coprocessor shim is explicitly a stub: native backend capabilities report unavailable. ABI design does not establish acceleration.</title>
+<rect x="1446" y="714" width="62" height="36" fill="#b65432"/>
+<text x="1469" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Ephapax v2 / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="714" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Ephapax v2 / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / unit: Parser slice: 62 + 1 tests passed. Not a full compiler/runtime validation.</title>
+<rect x="1776" y="714" width="62" height="36" fill="#138477"/>
+<text x="1799" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>Ephapax v2 / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / proof: Semantics_L1.v still admits preservation and a supporting lemma; higher-layer claims depend on this boundary.</title>
+<rect x="1908" y="714" width="62" height="36" fill="#b65432"/>
+<text x="1931" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Ephapax v2 / closure: Semantics_L1.v still admits preservation and a supporting lemma; higher-layer claims depend on this boundary.</title>
+<rect x="1974" y="714" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Ephapax v2 / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Ephapax v2 / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="714" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="741" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="782" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">AffineScript v2</text>
+<g><title>AffineScript v2 / syntax: Current v2 soundness boundary reviewed. Removed v1 refinement features must not be re-advertised through bridges.</title>
+<rect x="390" y="756" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>AffineScript v2 / semantics: Current v2 soundness boundary reviewed. Removed v1 refinement features must not be re-advertised through bridges.</title>
+<rect x="456" y="756" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>AffineScript v2 / types: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="522" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="545" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / effects: Non-tail effect resume has a 5-versus-105 semantic discrepancy; compiled unsupported effects are rejected. Local dune run also hits missing fixtures in the dirty checkout.</title>
+<rect x="588" y="756" width="62" height="36" fill="#b65432"/>
+<text x="611" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>AffineScript v2 / ast: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="654" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="756" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>AffineScript v2 / lexer: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="786" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / parser: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="852" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / ir: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="918" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="941" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / interpreter: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="1116" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="756" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>AffineScript v2 / compiler: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="1248" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="1271" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="756" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>AffineScript v2 / codegen: OCaml implementation and current soundness report inspected; not all generated targets were executed.</title>
+<rect x="1380" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="1403" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / coproc: Gate emits multiple GPU/coprocessor targets. Optional naga/SPIR-V checks and nonempty output checks do not establish hardware execution.</title>
+<rect x="1446" y="756" width="62" height="36" fill="#2c6fae"/>
+<text x="1469" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>AffineScript v2 / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / alib: Affine aLib source located; a complete semantic-conformance run was not established for this atlas.</title>
+<rect x="1644" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1667" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / unit: Non-tail effect resume has a 5-versus-105 semantic discrepancy; compiled unsupported effects are rejected. Local dune run also hits missing fixtures in the dirty checkout.</title>
+<rect x="1776" y="756" width="62" height="36" fill="#b65432"/>
+<text x="1799" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>AffineScript v2 / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="756" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>AffineScript v2 / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / closure: Non-tail effect resume has a 5-versus-105 semantic discrepancy; compiled unsupported effects are rejected. Local dune run also hits missing fixtures in the dirty checkout.</title>
+<rect x="1974" y="756" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>AffineScript v2 / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>AffineScript v2 / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="756" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="783" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="824" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">My family / shared core</text>
+<g><title>My family / shared core / syntax: Solo, Duet and Ensemble are the three dialects. Me is a projection; the dated FRG audit is historical.</title>
+<rect x="390" y="798" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>My family / shared core / semantics: Solo, Duet and Ensemble are the three dialects. Me is a projection; the dated FRG audit is historical.</title>
+<rect x="456" y="798" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>My family / shared core / types: QTT checker inspected. Safe fragment is opt-in; runtime borrowing and sequential async do not establish full-language static guarantees.</title>
+<rect x="522" y="798" width="62" height="36" fill="#2c6fae"/>
+<text x="545" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>My family / shared core / effects: QTT checker inspected. Safe fragment is opt-in; runtime borrowing and sequential async do not establish full-language static guarantees.</title>
+<rect x="588" y="798" width="62" height="36" fill="#2c6fae"/>
+<text x="611" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>My family / shared core / ast: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="654" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="677" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / parser: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="852" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="875" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / interpreter: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1116" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1139" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="798" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>My family / shared core / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / unit: 25 QTT unit tests passed for the inspected checker slice.</title>
+<rect x="1776" y="798" width="62" height="36" fill="#138477"/>
+<text x="1799" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>My family / shared core / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / proof: Core/surface proof registry and formal sources reviewed; distinguish original local unpublished work from the PR/main snapshot.</title>
+<rect x="1908" y="798" width="62" height="36" fill="#2c6fae"/>
+<text x="1931" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>My family / shared core / closure: Whole-language Rust/model correspondence is not established by the QTT tests or by named core theorems.</title>
+<rect x="1974" y="798" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>My family / shared core / ci: CI/security configuration and actual PR checks were inspected and repaired in PR 182. Build/test/security results are separate from main branch policy and merge approval; follow the live PR for final status.</title>
+<rect x="2040" y="798" width="62" height="36" fill="#2c6fae"/>
+<text x="2063" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>My family / shared core / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>My family / shared core / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="798" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="825" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="866" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Betlang</text>
+<g><title>Betlang / syntax: Racket implementation uses probabilistic ternary, lazy choice semantics.</title>
+<rect x="390" y="840" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Betlang / semantics: Racket implementation uses probabilistic ternary, lazy choice semantics.</title>
+<rect x="456" y="840" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Betlang / types: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="522" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="545" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / ast: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="654" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="677" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / parser: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="852" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="875" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / interpreter: Executable Racket semantics inspected; merely loading test files was not counted as a test run.</title>
+<rect x="1116" y="840" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Betlang / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="840" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Betlang / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / unit: Actual raco test run fails: check-true receives a membership list and invalid format directives abort tests. No all-green conformance claim.</title>
+<rect x="1776" y="840" width="62" height="36" fill="#b65432"/>
+<text x="1799" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Betlang / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / closure: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1974" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="1997" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Betlang / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="840" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="867" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="908" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">JtV v1 lineage</text>
+<g><title>JtV v1 lineage / syntax: v1 addition/control model is distinct from v2 reversible tokens. Version-specific implementation correspondence was not established.</title>
+<rect x="390" y="882" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>JtV v1 lineage / semantics: v1 addition/control model is distinct from v2 reversible tokens. Version-specific implementation correspondence was not established.</title>
+<rect x="456" y="882" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>JtV v1 lineage / types: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="522" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="545" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / lexer: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="786" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="809" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / parser: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="852" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="875" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1116" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1139" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1248" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1271" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / abi: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1512" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1535" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / libraries: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1710" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1733" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / unit: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1776" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1799" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / closure: Do not assign current jtv-core tests or coprocessor files to historical v1 without a version mapping.</title>
+<rect x="1974" y="882" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>JtV v1 lineage / ci: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2040" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="2063" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v1 lineage / release: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2172" y="882" width="62" height="36" fill="#edf1f5"/>
+<text x="2195" y="909" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<text x="38" y="950" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">JtV v2</text>
+<g><title>JtV v2 / syntax: Reversible-token v2 design reviewed independently from the v1 lineage.</title>
+<rect x="390" y="924" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>JtV v2 / semantics: Reversible-token v2 design reviewed independently from the v1 lineage.</title>
+<rect x="456" y="924" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>JtV v2 / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / ast: Current jtv-core AST, parser and interpreter inspected; version-to-model correspondence remains open.</title>
+<rect x="654" y="924" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>JtV v2 / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="924" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v2 / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / parser: Current jtv-core AST, parser and interpreter inspected; version-to-model correspondence remains open.</title>
+<rect x="852" y="924" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>JtV v2 / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="924" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v2 / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / interpreter: Current jtv-core AST, parser and interpreter inspected; version-to-model correspondence remains open.</title>
+<rect x="1116" y="924" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>JtV v2 / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="924" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v2 / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="924" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v2 / codegen: PataCL feature defaults off with explicit fallback. Lowering emits Zig/Idris/C artifacts, but Zig kernel bodies include unreachable placeholders.</title>
+<rect x="1380" y="924" width="62" height="36" fill="#b65432"/>
+<text x="1403" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>JtV v2 / coproc: PataCL feature defaults off with explicit fallback. Lowering emits Zig/Idris/C artifacts, but Zig kernel bodies include unreachable placeholders.</title>
+<rect x="1446" y="924" width="62" height="36" fill="#b65432"/>
+<text x="1469" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>JtV v2 / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="924" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>JtV v2 / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / unit: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1776" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1799" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / closure: Coupling between the reversible-token formal model and runtime was not demonstrated end to end.</title>
+<rect x="1974" y="924" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>JtV v2 / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>JtV v2 / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="924" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="951" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="992" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">WokeLang</text>
+<g><title>WokeLang / syntax: Consent/care design reviewed against the current Rust implementation, not just old OCaml sources.</title>
+<rect x="390" y="966" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>WokeLang / semantics: Consent/care design reviewed against the current Rust implementation, not just old OCaml sources.</title>
+<rect x="456" y="966" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>WokeLang / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / effects: Static consent theorem not established; disabling runtime care auto-grants consent in the inspected path.</title>
+<rect x="588" y="966" width="62" height="36" fill="#b65432"/>
+<text x="611" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>WokeLang / ast: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="654" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="677" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="966" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>WokeLang / lexer: Current Rust frontend and execution implementation inspected.</title>
+<rect x="786" y="966" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>WokeLang / parser: Current Rust frontend and execution implementation inspected.</title>
+<rect x="852" y="966" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>WokeLang / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="966" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>WokeLang / repl: Current Rust frontend and execution implementation inspected.</title>
+<rect x="984" y="966" width="62" height="36" fill="#2c6fae"/>
+<text x="1007" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>WokeLang / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / interpreter: Current Rust frontend and execution implementation inspected.</title>
+<rect x="1116" y="966" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>WokeLang / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="966" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>WokeLang / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="966" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>WokeLang / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="966" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>WokeLang / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / alib: Basic aLib operations are implemented, but map/filter/fold/ifThenElse return RuntimeError because interpreter context is unavailable.</title>
+<rect x="1644" y="966" width="62" height="36" fill="#b65432"/>
+<text x="1667" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>WokeLang / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / unit: 188 Rust library tests passed; not a static consent proof.</title>
+<rect x="1776" y="966" width="62" height="36" fill="#138477"/>
+<text x="1799" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>WokeLang / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / proof: Static consent theorem not established; disabling runtime care auto-grants consent in the inspected path.</title>
+<rect x="1908" y="966" width="62" height="36" fill="#b65432"/>
+<text x="1931" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>WokeLang / closure: Static consent theorem not established; disabling runtime care auto-grants consent in the inspected path.</title>
+<rect x="1974" y="966" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>WokeLang / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>WokeLang / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="966" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="993" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1034" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Phronesis</text>
+<g><title>Phronesis / syntax: Constraint/judgement language and justification-path comparison reviewed; consensus is not itself truth.</title>
+<rect x="390" y="1008" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Phronesis / semantics: Constraint/judgement language and justification-path comparison reviewed; consensus is not itself truth.</title>
+<rect x="456" y="1008" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Phronesis / types: Unknown names can receive :any; compiler/proof/benchmark claim extractors return empty lists. Dependency/toolchain failures prevented a full test run; REPORT output does not ensure delivery.</title>
+<rect x="522" y="1008" width="62" height="36" fill="#b65432"/>
+<text x="545" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Phronesis / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / ast: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="654" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="677" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / judgements: Real nodes, typed evidence edges and claim-to-graph construction. Invariant paths compare six justification stages, not semantic equivalence.</title>
+<rect x="720" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="743" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / lexer: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="786" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="809" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / parser: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="852" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="875" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / repl: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="984" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="1007" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / editor: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="1050" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="1073" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / interpreter: Elixir frontend, interpreter, tracing and debugger/REPL source inspected; full project test suite has not run in this audit.</title>
+<rect x="1116" y="1008" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Phronesis / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / stdlib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1578" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1601" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1008" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Phronesis / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / unit: Unknown names can receive :any; compiler/proof/benchmark claim extractors return empty lists. Dependency/toolchain failures prevented a full test run; REPORT output does not ensure delivery.</title>
+<rect x="1776" y="1008" width="62" height="36" fill="#b65432"/>
+<text x="1799" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Phronesis / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / closure: Unknown names can receive :any; compiler/proof/benchmark claim extractors return empty lists. Dependency/toolchain failures prevented a full test run; REPORT output does not ensure delivery.</title>
+<rect x="1974" y="1008" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Phronesis / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Phronesis / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="1008" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="1035" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1076" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Oikos language</text>
+<g><title>Oikos language / syntax: Accounting DSL source and Godley validation inspected.</title>
+<rect x="390" y="1050" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Oikos language / semantics: Godley check sums signs rather than symbolic quantities; Ephapax desugaring reports NotAvailable. Do not infer validated economic identities or a working lowering.</title>
+<rect x="456" y="1050" width="62" height="36" fill="#b65432"/>
+<text x="479" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oikos language / types: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="522" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="545" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / parser: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="852" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="875" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / ir: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="918" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="941" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1116" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1139" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1248" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1271" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / codegen: Godley check sums signs rather than symbolic quantities; Ephapax desugaring reports NotAvailable. Do not infer validated economic identities or a working lowering.</title>
+<rect x="1380" y="1050" width="62" height="36" fill="#b65432"/>
+<text x="1403" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oikos language / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / abi: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1512" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1535" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / alib: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1644" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="1667" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / unit: Rust workspace tests passed for the inspected DSL snapshot.</title>
+<rect x="1776" y="1050" width="62" height="36" fill="#138477"/>
+<text x="1799" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>Oikos language / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / closure: Godley check sums signs rather than symbolic quantities; Ephapax desugaring reports NotAvailable. Do not infer validated economic identities or a working lowering.</title>
+<rect x="1974" y="1050" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Oikos language / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Oikos language / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="1050" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Oikos language / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="1050" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="1077" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1118" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">ErrorLang</text>
+<g><title>ErrorLang / syntax: Error-oriented language documents reviewed. The claimed 100% verification was not established by an exhaustive function/dependency audit.</title>
+<rect x="390" y="1092" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>ErrorLang / semantics: Error-oriented language documents reviewed. The claimed 100% verification was not established by an exhaustive function/dependency audit.</title>
+<rect x="456" y="1092" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>ErrorLang / types: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="522" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="545" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / parser: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="852" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="875" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / interpreter: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1116" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1139" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1248" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1271" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / codegen: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1380" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1403" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / unit: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1776" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="1799" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / closure: No evidence here supports whole-implementation verification; retain individual theorem and runtime boundaries.</title>
+<rect x="1974" y="1092" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>ErrorLang / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>ErrorLang / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="1092" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>ErrorLang / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="1092" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="1119" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1160" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Anvomidav</text>
+<g><title>Anvomidav / syntax: Figure-skating/domain validation approach reviewed; broad compiler/toolchain status remains unassessed.</title>
+<rect x="390" y="1134" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Anvomidav / semantics: Figure-skating/domain validation approach reviewed; broad compiler/toolchain status remains unassessed.</title>
+<rect x="456" y="1134" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Anvomidav / types: A literal ExUnit assertion is not a domain validator. The inspected seven-jump rule is stale for the relevant 2026/27 Skate Canada update.</title>
+<rect x="522" y="1134" width="62" height="36" fill="#b65432"/>
+<text x="545" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Anvomidav / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="1134" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Anvomidav / parser: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="852" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="875" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1116" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1139" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1248" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1271" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / abi: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1512" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1535" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / libraries: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1710" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1733" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / unit: A literal ExUnit assertion is not a domain validator. The inspected seven-jump rule is stale for the relevant 2026/27 Skate Canada update.</title>
+<rect x="1776" y="1134" width="62" height="36" fill="#b65432"/>
+<text x="1799" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Anvomidav / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / closure: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1974" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="1997" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1134" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Anvomidav / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="1134" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Anvomidav / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="1134" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="1161" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1202" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">TypeZero / typefix-zero</text>
+<g><title>TypeZero / typefix-zero / syntax: Owner-described total declarative / partial imperative and universe/lower-calculus research direction. Public implementation detail is not exported from private scope.</title>
+<rect x="390" y="1176" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>TypeZero / typefix-zero / semantics: Owner-described total declarative / partial imperative and universe/lower-calculus research direction. Public implementation detail is not exported from private scope.</title>
+<rect x="456" y="1176" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>TypeZero / typefix-zero / types: Research boundary: no checked implementation is established here; a bounded observer must distinguish unknown from proven divergence.</title>
+<rect x="522" y="1176" width="62" height="36" fill="#b65432"/>
+<text x="545" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>TypeZero / typefix-zero / effects: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="588" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="611" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / lexer: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="786" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="809" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / parser: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="852" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="875" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1116" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1139" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1248" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1271" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / abi: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1512" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1535" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / libraries: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1710" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1733" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / unit: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1776" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1799" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / proof: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1908" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="1931" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / closure: Research boundary: no checked implementation is established here; a bounded observer must distinguish unknown from proven divergence.</title>
+<rect x="1974" y="1176" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>TypeZero / typefix-zero / ci: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2040" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="2063" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>TypeZero / typefix-zero / release: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2172" y="1176" width="62" height="36" fill="#edf1f5"/>
+<text x="2195" y="1203" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<text x="38" y="1244" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Haec</text>
+<g><title>Haec / syntax: Trope/loss design reviewed; language toolchain is not established by the existing research checker.</title>
+<rect x="390" y="1218" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Haec / semantics: Trope/loss design reviewed; language toolchain is not established by the existing research checker.</title>
+<rect x="456" y="1218" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Haec / types: Trope-checker implementation identified and reviewed at research scope.</title>
+<rect x="522" y="1218" width="62" height="36" fill="#2c6fae"/>
+<text x="545" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Haec / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / lexer: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="786" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="809" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / parser: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="852" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="875" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / ir: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="918" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="941" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / repl: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="984" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1007" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / editor: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1050" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1073" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / interpreter: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1116" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1139" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / compiler: A Haec language compiler and its soundness/refinement proof are not established in this audit.</title>
+<rect x="1248" y="1218" width="62" height="36" fill="#b65432"/>
+<text x="1271" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Haec / meta_compiler: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1314" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1337" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1218" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Haec / libraries: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1710" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1733" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / unit: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1776" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1799" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / fuzz: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1842" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1865" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / proof: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1908" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="1931" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / closure: A Haec language compiler and its soundness/refinement proof are not established in this audit.</title>
+<rect x="1974" y="1218" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Haec / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / bench: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2106" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="2129" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Haec / release: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2172" y="1218" width="62" height="36" fill="#dbe4ee"/>
+<text x="2195" y="1245" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<text x="38" y="1286" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">Firmboot</text>
+<g><title>Firmboot / syntax: Synchronic coherence and continuity across admitted updates. Native language/toolchain and arbitrary-code hot loading remain research directions.</title>
+<rect x="390" y="1260" width="62" height="36" fill="#a8bedd"/>
+<text x="413" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Firmboot / semantics: Synchronic coherence and continuity across admitted updates. Native language/toolchain and arbitrary-code hot loading remain research directions.</title>
+<rect x="456" y="1260" width="62" height="36" fill="#a8bedd"/>
+<text x="479" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">D</text>
+</g>
+<g><title>Firmboot / types: Elixir admission/checker/model implementation and Agda/Lean contracts inspected; a reference model is not a general language runtime.</title>
+<rect x="522" y="1260" width="62" height="36" fill="#2c6fae"/>
+<text x="545" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Firmboot / effects: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="588" y="1260" width="62" height="36" fill="#dbe4ee"/>
+<text x="611" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Firmboot / ast: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="654" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="677" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / judgements: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="720" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="743" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / lexer: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="786" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="809" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / parser: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="852" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="875" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / ir: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="918" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="941" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / repl: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="984" y="1260" width="62" height="36" fill="#dbe4ee"/>
+<text x="1007" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Firmboot / editor: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1050" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1073" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / interpreter: Elixir admission/checker/model implementation and Agda/Lean contracts inspected; a reference model is not a general language runtime.</title>
+<rect x="1116" y="1260" width="62" height="36" fill="#2c6fae"/>
+<text x="1139" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Firmboot / meta_interpreter: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1182" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1205" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / compiler: Finite agreement witnesses do not prove arbitrary-run language/runtime refinement, physical uptime or arbitrary-code hot loading.</title>
+<rect x="1248" y="1260" width="62" height="36" fill="#b65432"/>
+<text x="1271" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Firmboot / meta_compiler: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1314" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1337" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / codegen: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1380" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1403" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / coproc: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1446" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1469" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / abi: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="1512" y="1260" width="62" height="36" fill="#dbe4ee"/>
+<text x="1535" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Firmboot / stdlib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1578" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1601" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / alib: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1644" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1667" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / libraries: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1710" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1733" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / unit: 43 Elixir tests passed in the local working tree, including its uncommitted water-leak extension. This is explicitly local evidence, not evidence for only the published baseline.</title>
+<rect x="1776" y="1260" width="62" height="36" fill="#138477"/>
+<text x="1799" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">T</text>
+</g>
+<g><title>Firmboot / fuzz: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="1842" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="1865" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / proof: Safe Agda/Lean model and real rejection/axiom-audit harnesses reviewed. Fresh proof runs were not performed for this atlas.</title>
+<rect x="1908" y="1260" width="62" height="36" fill="#2c6fae"/>
+<text x="1931" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">I</text>
+</g>
+<g><title>Firmboot / closure: Finite agreement witnesses do not prove arbitrary-run language/runtime refinement, physical uptime or arbitrary-code hot loading.</title>
+<rect x="1974" y="1260" width="62" height="36" fill="#b65432"/>
+<text x="1997" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">!</text>
+</g>
+<g><title>Firmboot / ci: A related filename was enumerated. Its existence establishes neither implementation nor correctness.</title>
+<rect x="2040" y="1260" width="62" height="36" fill="#dbe4ee"/>
+<text x="2063" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">F</text>
+</g>
+<g><title>Firmboot / bench: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2106" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="2129" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<g><title>Firmboot / release: No sufficient component assessment in this audit. This is not a claim of absence.</title>
+<rect x="2172" y="1260" width="62" height="36" fill="#edf1f5"/>
+<text x="2195" y="1287" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#29384b">?</text>
+</g>
+<text x="38" y="1328" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">007 / 007-lang</text>
+<g><title>007 / 007-lang / syntax: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="390" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="413" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / semantics: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="456" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="479" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / types: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="522" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="545" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / effects: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="588" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="611" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / ast: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="654" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="677" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / judgements: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="720" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="743" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / lexer: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="786" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="809" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / parser: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="852" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="875" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / ir: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="918" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="941" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / repl: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="984" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1007" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / editor: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1050" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1073" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / interpreter: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1116" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1139" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / meta_interpreter: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1182" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1205" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / compiler: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1248" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1271" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / meta_compiler: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1314" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1337" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / codegen: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1380" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1403" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / coproc: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1446" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1469" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / abi: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1512" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1535" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / stdlib: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1578" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1601" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / alib: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1644" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1667" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / libraries: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1710" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1733" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / unit: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1776" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1799" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / fuzz: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1842" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1865" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / proof: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1908" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1931" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / closure: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="1974" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="1997" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / ci: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="2040" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="2063" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / bench: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="2106" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="2129" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<g><title>007 / 007-lang / release: Private implementation details are deliberately not included in the public atlas.</title>
+<rect x="2172" y="1302" width="62" height="36" fill="#777a84"/>
+<text x="2195" y="1329" font-family="DejaVu Sans,sans-serif" font-size="23" font-weight="700" fill="#ffffff">X</text>
+</g>
+<text x="36" y="1390" font-family="DejaVu Sans,sans-serif" font-size="20" font-weight="700" fill="#243449">19 rows × 28 component questions. Symbols describe evidence, not maturity scores or completeness percentages.</text>
+<text x="36" y="1427" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#243449">F and ? preserve uncertainty. Historical versions, dirty local work and generated target code do not inherit guarantees.</text>
+<text x="36" y="1463" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="400" fill="#243449">Open atlas.html for per-cell evidence; atlas.svg for lossless zoom; atlas.csv / atlas.json for reuse.</text>
+<text x="36" y="1498" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="400" fill="#243449">Source horizon and detailed failures: 2026-09-07-language-portfolio.md and 2026-09-07-checkout-horizon.md.</text>
+</svg>

@@ -79,7 +79,7 @@ products.
 | Haec | Language design using trope-particularity; a working separate trope checker is not a working Haec compiler. |
 | cut-calculus / echo-types | Formal substrates with explicit assumption and fragment boundaries, not additional end-user languages. |
 | bunsenite | Inspected README describes Nickel parser bindings; inventory descriptions calling it a new language should not determine classification. |
-| Firmboot | Not located in the enumerated account/local language sets. Owner identification pending; no maturity judgment made. Treat as a very early experiment once located. |
+| Firmboot | Located after the initial enumeration through concurrent coordinator PR #149. Continuity research with Agda/Lean models and an Elixir reference implementation; general language toolchain and arbitrary-code hot loading remain open. |
 
 The published My/Me archive claim and GitHub archive metadata disagree: the
 enumerated `me-dialect` repository was not marked archived. Architectural
@@ -140,7 +140,7 @@ and remaining frontier. This is more useful than a single maturity percentage.
 | Error-Lang | Distinct pedagogical design, including intentional error behavior; repository makes very strong production/formal-completeness claims. | No whole-implementation proof or production certification was established here. Define intentional object-language errors versus host failures, then test diagnostics, positional semantics and accessibility behavior. Treat broad “100% verified” claims as requiring component-specific evidence. |
 | 007 | Indexed agent language with a Rust implementation and dated component/proof audit documents. Private-source boundary is explicit in coordinator instructions. | This pass did not rerun the full 007 toolchain or certify its network deployment. Keep actual private implementation evidence private; link its dated audit and preserve its own proof frontier rather than importing grade claims into the whole estate. |
 | Haec | Grammar/elaboration design refers to independent trope-checker and echo substrates. | Demonstrate a real Haec source → checked IR → execution/rejection path before inheriting the separate checker's status. |
-| Firmboot | Identity pending. | Evaluate one experimental hypothesis and one executable witness after locating it; do not impose release obligations on a newly opened exploration. |
+| Firmboot | Continuity contracts and finite executable witnesses. | Preserve model assumptions, test rejection as well as acceptance, and distinguish finite model agreement from arbitrary-run runtime refinement. |
 
 ### Eclexia and OikosBot: the actual connection needed
 
@@ -438,8 +438,9 @@ SARIF projection after baseline filtering, while preserving raw historical
 findings. It rejects malformed/missing output and requires explicit successful
 filtering for a present baseline. My’s existing dated baseline is activated
 with the authoritative validator; its entries are not broadened. Oikosbot’s
-false “no tests” finding is scoped to that one rule, with the actual Rust test
-locations and passing CI documented in the exemption. No blanket alert dismissal
+false “no tests” finding is addressed with an explicit root test entry point
+that runs the real all-features adapter tests in CI. The attempted exemption
+was removed; no new test exemption remains. No blanket alert dismissal
 or branch-protection bypass is part of this repair.
 
 Repair PRs: [coordinator #148](https://github.com/hyperpolymath/nextgen-languages/pull/148),
@@ -451,3 +452,52 @@ Repair PRs: [coordinator #148](https://github.com/hyperpolymath/nextgen-language
 [shared gate #742](https://github.com/hyperpolymath/standards/pull/742).
 The PR records are the authority for final CI and merge status; the validation
 observations above do not assert that a pending PR has merged.
+
+
+## Toolchain atlas and subsequent component review
+
+The [toolchain atlas](toolchain-atlas/README.md) adds 67 selected rows across
+28 component questions, with a [whole-grid image](toolchain-atlas/atlas.png),
+[lossless SVG](toolchain-atlas/atlas.svg), and [per-cell evidence browser](toolchain-atlas/atlas.html).
+Filename-only and unassessed cells remain explicit; this is not a claim that all
+1,876 components are implemented or fully reviewed. Faces, version lineages,
+research foundations, private scope and augmentation tools retain their roles.
+
+Additional source observations:
+
+- Phronesis has a real judgement/evidence graph and six-stage invariant paths.
+  ClaimExtractor's compiler, proof and benchmark extraction paths still return
+  empty lists. A proof-obligation edge is an asserted claim, not proof discharge.
+- Ephapax's Zig coprocessor shim is explicitly a stub reporting unavailable
+  capabilities. JtV's lowering emits Zig/Idris/C artifacts with placeholder Zig
+  kernel bodies. AffineScript's multi-target gate checks emitted artifacts; it
+  does not demonstrate execution on each accelerator.
+- WokeLang's aLib bridge implements basic operations but map/filter/fold and
+  ifThenElse report that interpreter context is required. Full aggregate-library
+  semantic conformance must not be inferred from the operation names.
+- The augmentation review inspected build/run bodies across the iser group.
+  Several print plans and return success; the grid records each observed case.
+  Idrisiser repeats the relative build-script/cwd defect repaired in Chapeliser;
+  Nimiser attempts to launch a shared library directly; K9iser skips missing
+  source configuration while strict validation can still report success. These
+  additional findings are recorded, not silently marked repaired by the two
+  augmentation PRs in this audit.
+- Firmboot's published baseline is `fcf8e2e15cf7178818c9fe375c596956ee3ce3c9`.
+  The local working tree contains an uncommitted water-leak extension. Its actual
+  Elixir suite passed 43 tests after rerunning outside the sandbox so Mix could
+  open its local coordination socket. This result includes that local extension.
+  Agda/Lean proof and rejection harnesses were inspected, not freshly run here.
+  Finite agreement and transition models do not establish arbitrary-code hot
+  loading, arbitrary-run refinement, physical uptime or actuator safety.
+
+The CI follow-up added My's proof-boundary register for 15 Coq module-interface
+laws; these are not automatically 15 global axioms. The authoritative trusted-
+base gate passes the documented boundary. My's new label-job timeouts and
+immutable action references close the observed baseline-policy gaps. Halideiser
+restricts toolchain downloads and redirects to HTTPS after the exact SonarCloud
+PR query identified the security finding hidden by the local organisation filter.
+
+Standards #742 has passed all reported checks and is set to merge automatically
+when the remaining branch-policy requirements are satisfied. An ordinary merge
+was refused by GitHub; no protection was disabled or bypassed. Consult the live
+PRs for final merge status rather than inferring it from local commits or images.
