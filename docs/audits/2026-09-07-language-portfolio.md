@@ -413,3 +413,41 @@ the audit found them. Existing bulk fixture/source deletions must be understood
 before incorporation. Commit and merge only the reviewed batch after its actual
 CI succeeds. Larger research milestones above remain tracked work, not claims
 that this audit has implemented every language or closed every theorem.
+
+## Audit repair validation
+
+The isolated repair branches start from GitHub main, preserving divergent local
+work. The full Oikosbot Rust workspace and Eclexia adapter with all features,
+both adapters’ Rust suites, and Oblíbený’s OCaml conformance suite pass locally.
+The first PR run also compiled and ran Chapel’s golden program, checked its
+Idris2 ABI and Zig implementation, and passed the regenerated golden comparison.
+These results establish the tested surfaces, not whole-language soundness.
+
+CI exposed additional inherited defects: misplaced licence headers, missing
+workflow permissions, absent secret-presence guards, unauthenticated shell
+installers, malformed A2ML identity metadata, and unrendered K9 deployment
+templates presented as live contracts. Repairs retain the templates as `.in`
+inputs, remove placeholder credential assignments, and make environment setup
+syntactically valid. Halideiser reuses Chapeliser’s existing Julia structural
+ABI/FFI validator; it confirms 15 exports and eight matching result codes.
+
+The optional Hypatia gate also counted historical GitHub alert summaries before
+baseline filtering, creating a cycle in which a fix could not merge until its
+old main-branch alert closed. Standards PR #742 gates the scanner’s authoritative
+SARIF projection after baseline filtering, while preserving raw historical
+findings. It rejects malformed/missing output and requires explicit successful
+filtering for a present baseline. My’s existing dated baseline is activated
+with the authoritative validator; its entries are not broadened. Oikosbot’s
+false “no tests” finding is scoped to that one rule, with the actual Rust test
+locations and passing CI documented in the exemption. No blanket alert dismissal
+or branch-protection bypass is part of this repair.
+
+Repair PRs: [coordinator #148](https://github.com/hyperpolymath/nextgen-languages/pull/148),
+[Oikosbot #86](https://github.com/hyperpolymath/oikosbot/pull/86),
+[Chapeliser #71](https://github.com/hyperpolymath/chapeliser/pull/71),
+[Halideiser #64](https://github.com/hyperpolymath/halideiser/pull/64),
+[My #182](https://github.com/hyperpolymath/my-lang/pull/182),
+[Oblíbený #127](https://github.com/hyperpolymath/oblibeny/pull/127), and
+[shared gate #742](https://github.com/hyperpolymath/standards/pull/742).
+The PR records are the authority for final CI and merge status; the validation
+observations above do not assert that a pending PR has merged.

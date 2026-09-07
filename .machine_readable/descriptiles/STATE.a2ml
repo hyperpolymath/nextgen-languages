@@ -51,7 +51,7 @@ pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + polic
 scm-pointer-fix = "stale .scm state-location pointers fixed in ROADMAP and CHANGELOG (196e0ad)"
 gitmodules-cleanup = "orphan language-playgrounds submodule entry dropped from .gitmodules (c089dfe)"
 readme-updates = "five README.adoc touch-ups on main (91571be..f758d05)"
-estate-standardization = "2026-06-12: origin/estate-standardization-20260607 merged — flat contractiles now canonical (content ported from root contractiles/ and .machine_readable/*.contractile, both retired), 6a2/0-AI-MANIFEST + README + anchor/ landed, agent_instructions/ renamed bot_directives/, GOVERNANCE.adoc + MAINTAINERS.adoc + CODEOWNERS added, flake.nix removed (Guix primary), LICENSE normalized to MPL-2.0 text"
+estate-standardization = "2026-06-12: origin/estate-standardization-20260607 merged — flat contractiles now canonical (content ported from root contractiles/ and .machine_readable/*.contractile, both retired), descriptiles/0-AI-MANIFEST + README + anchor/ landed, agent_instructions/ renamed bot_directives/, GOVERNANCE.adoc + MAINTAINERS.adoc + CODEOWNERS added, flake.nix removed (Guix primary), LICENSE normalized to MPL-2.0 text"
 governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet, git-private-farm), flat Dustfile/Bustfile added, STATE bumped, wiki status note"
 
 [blockers]
