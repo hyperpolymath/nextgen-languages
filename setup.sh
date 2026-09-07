@@ -6,8 +6,7 @@
 # Then hands off to `just setup` for project-specific configuration.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/hyperpolymath/nextgen-languages/main/setup.sh | sh
-#   # or after cloning:
+#   Review this script in a verified checkout before running:
 #   ./setup.sh
 #
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath)
@@ -139,10 +138,7 @@ install_just() {
 
     case "$PKG_MGR" in
         dnf)        sudo dnf install -y just ;;
-        apt)        sudo apt-get install -y just 2>/dev/null || {
-                        # just not in older apt repos — use installer
-                        curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
-                    } ;;
+        apt)        sudo apt-get install -y just ;;
         pacman)     sudo pacman -S --noconfirm just ;;
         apk)        sudo apk add just ;;
         brew)       brew install just ;;
@@ -152,8 +148,8 @@ install_just() {
         guix)       guix install just ;;
         nix)        nix-env -iA nixpkgs.just ;;
         *)
-            info "Using just installer script..."
-            curl -fsSL https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+            fail "No supported package manager; install a verified just package before continuing."
+            return 1
             ;;
     esac
 

@@ -48,7 +48,7 @@ denied-actions = [
 [trust.branch-hygiene]
 # Carve-out (2026-06-02): deleting MERGED PR branches is permitted (local +
 # remote). `main` and any open/active branch must never be deleted, and
-# force-push stays denied. See 6a2/PLAYBOOK.a2ml [branch-hygiene].
+# force-push stays denied. See descriptiles/PLAYBOOK.a2ml [branch-hygiene].
 delete-merged-pr-branches = true
 never-delete = ["main", "any open/active branch"]
 

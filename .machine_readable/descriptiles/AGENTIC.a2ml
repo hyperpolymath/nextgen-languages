@@ -25,7 +25,7 @@ can-create-files = true
 
 [agent-ci-handling]
 # How agents/gitbots should treat CI on this repo.
-hypatia-advisory = "non-blocking; consult .machine_readable/descriptiles/NEUROSYM.a2ml [waivers] before acting on any finding"
+hypatia-gate = "current high/critical findings block; consult .machine_readable/descriptiles/NEUROSYM.a2ml [accepted-findings] (entries: [waivers.*]) before acting on any finding"
 do-not-refix = "findings recorded as accepted/by-design/false-positive in the waiver registry must not be re-fixed"
 runbook = "see .machine_readable/descriptiles/PLAYBOOK.a2ml [recurring-ci-advisories]"
 
