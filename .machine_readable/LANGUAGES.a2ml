@@ -6,7 +6,7 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-07-02"
+last-updated = "2026-09-07"
 migrated-from = "LANGUAGES.scm"
 
 # =============================================================================
@@ -15,7 +15,7 @@ migrated-from = "LANGUAGES.scm"
 # Canonical schema: [[language]] array-of-tables —
 #   id / name / repo / invariant / role / [ecosystem] / [note] / status
 #
-# Scope: the 14 family languages + the KitchenSpeak DSL (+ proposed entries,
+# Scope: the family languages, continuity research and KitchenSpeak DSL (+ proposed entries,
 # clearly marked). The database / type-theory estates (VCL-total, the KRL
 # resolution stack, Quandledb, TypeLL, PanLL, VQL/GQL/FBQL-DT, a2ml, k9-svc)
 # are OUT of this registry and are listed only for discoverability in
@@ -151,6 +151,16 @@ repo = "https://github.com/hyperpolymath/kitchenspeak"
 invariant = "Physical-process constraints are enforced in the types"
 role = "Orchestration DSL (kitchen domain, physics-in-types); consumes the echo-types substrate"
 note = "Extracted from this coordinator 2026-06; in-tree snapshot removed (EXTRACTION-MANIFEST.md)"
+status = "experimental"
+
+[[language]]
+id = "firmboot"
+name = "Firmboot"
+repo = "https://github.com/hyperpolymath/firmboot"
+invariant = "Admitted changes preserve declared continuity obligations"
+role = "Continuity through software transformation; synchronic coherence and diachronic commitments"
+ecosystem = ["https://github.com/hyperpolymath/epistemic-types", "https://github.com/hyperpolymath/echo-types"]
+note = "Research prototype: Agda and Lean models plus an Elixir reference runner; general live-code loading, implementation refinement and physical availability remain open. Application directions include water/environmental monitoring and desktop continuity."
 status = "experimental"
 
 # ─── Exploratory (private repo; viability under review — index-only, as with 007) ───

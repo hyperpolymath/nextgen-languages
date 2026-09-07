@@ -5,7 +5,7 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-07-02"
+last-updated = "2026-09-07"
 status = "active"
 
 [project-context]
@@ -43,6 +43,7 @@ hypatia-waivers = "recurring advisory findings triaged in .machine_readable/desc
 codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
+firmboot = "2026-09-07: indexed the public continuity research prototype, linked its synchronic/diachronic identity framing and ecological/desktop application directions, and retained specifications and proofs in its standalone repo. Readiness grades remain unassigned."
 # Landed since the 2026-06-02 STATE refresh (witness: git log).
 coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.md"
 pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml and Intentfile (an earlier note also claimed Mustfile; the Mustfile carries no per-language entries — corrected 2026-07-02)"

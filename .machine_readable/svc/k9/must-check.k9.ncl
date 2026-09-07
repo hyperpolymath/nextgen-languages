@@ -60,7 +60,7 @@ K9!
     },
 
     six_a_two_complete = {
-      description = "The 6a2 metadata set is complete (>= 6 .a2ml files)",
+      description = "The descriptiles metadata set is complete (>= 6 .a2ml files)",
       severity = 'warning,
       predicate = "test $(ls .machine_readable/descriptiles/*.a2ml 2>/dev/null | wc -l) -ge 6",
     },

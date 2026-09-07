@@ -31,6 +31,7 @@ governance, and cross-language decisions. No language source lives in-tree
 [purpose.language-family]
 affinescript = { kind = "general-purpose, affine-typed", proof-status = "concept v0.1" }
 kitchenspeak = { kind = "orchestration DSL, external — canonical at hyperpolymath/kitchenspeak", proof-status = "external repo" }
+firmboot = { kind = "continuity research prototype, external — canonical at hyperpolymath/firmboot", proof-status = "Agda and Lean models; implementation refinement remains open" }
 betlang = { kind = "experimental", proof-status = "concept" }
 ephapax = { kind = "experimental (linear types for WASM memory safety)", proof-status = "concept" }
 phronesis = { kind = "ethical AI specification DSL", proof-status = "concept v0.1" }

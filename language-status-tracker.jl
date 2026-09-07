@@ -9,7 +9,7 @@ const REPOS_DIR = get(ENV, "HYPERPOLYMATH_REPOS_DIR", joinpath(homedir(), "Docum
 
 # All known language repos
 const LANGUAGES = [
-    # Family languages (14) — must match .machine_readable/LANGUAGES.a2ml
+    # Family languages — must match .machine_readable/LANGUAGES.a2ml
     "affinescript", "anvomidav", "betlang", "eclexia", "ephapax",
     "error-lang", "haec", "jtv", "my-lang", "oblibeny",
     "phronesis", "tangle", "wokelang",
@@ -17,6 +17,9 @@ const LANGUAGES = [
 
     # Family DSL
     "kitchenspeak",
+
+    # Continuity language research prototype
+    "firmboot",
 
     # Supporting tooling (not languages)
     "universal-language-server-plugin",
@@ -48,10 +51,10 @@ end
 
 function count_source_files(path)
     count = 0
-    for ext in [".rs", ".ml", ".js", ".ts", ".res", ".idr", ".zig"]
+    for ext in [".rs", ".ml", ".js", ".ts", ".res", ".idr", ".zig", ".ex", ".exs", ".agda", ".lean"]
         try
             result = read(`find $path -name "*$ext" -type f`, String)
-            count += length(split(strip(result), '\n'))
+            count += isempty(strip(result)) ? 0 : length(split(strip(result), '\n'))
         catch
             continue
         end

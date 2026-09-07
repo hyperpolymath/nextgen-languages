@@ -27,6 +27,7 @@ ERRORS=0
 # ── Source of truth: languages/<id>.adoc pointers (excluding README) ────────────
 family() {
   for f in languages/*.adoc; do
+    [[ -f "$f" ]] || continue
     b="$(basename "$f" .adoc)"
     [[ "$b" == "README" ]] || printf '%s\n' "$b"
   done | sort -u

@@ -12,7 +12,7 @@ ignore-file = ".hypatia-ignore"
 ignore-file-present = false
 workflow = ".github/workflows/hypatia-scan.yml"
 ruleset-location = "hyperpolymath/standards (hypatia-scan-reusable.yml) — change rules there, not here"
-scan-is-blocking = false
+scan-is-blocking = true
 
 [accepted-findings]
 # Canonical registry: .machine_readable/descriptiles/NEUROSYM.a2ml [accepted-findings] (entries: [waivers.*]).

@@ -1,6 +1,6 @@
 == Hyperpolymath Language Portfolio
 
-*Last updated:* 2026-07-02
+*Last updated:* 2026-09-07
 
 This is a cross-language index. `+nextgen-languages+` is a *pure
 coordinator*: it does not contain any language. Each language is its own
@@ -69,6 +69,15 @@ TangleIR feeds the separate KRL stack
 |KitchenSpeak |`+hyperpolymath/kitchenspeak+` |Experimental
 kitchen-orchestration DSL
 |===
+
+=== Continuity research
+
+* https://github.com/hyperpolymath/firmboot[*Firmboot*] — a public research
+prototype for software transitions that preserve explicit commitments over time.
+Its synchronic/diachronic framing connects it to this portfolio's identity-under-
+transformation theme. See the
+https://github.com/hyperpolymath/firmboot/blob/main/PURPOSE.md[purpose statement]
+and https://github.com/hyperpolymath/firmboot/blob/main/VERIFICATION.md[evidence and limits].
 
 === Exploratory (private; viability under review)
 
