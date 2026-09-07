@@ -146,9 +146,10 @@ and remaining frontier. This is more useful than a single maturity percentage.
 
 The published bot adapter and inspected Eclexia CLI do not agree: the bot invokes
 `eclexia run POLICY --input JSON`, but the CLI's Run command has no `--input`.
-The bot's `eclexia-native` feature has no compiler dependencies while its source
-references those crates; enabling it failed with three unresolved-crate errors.
-The native sketch also built a budgeted interpreter but called a different
+Before repair, the bot's `eclexia-native` feature lacked compiler dependencies
+while referencing those crates; enabling it failed with three unresolved-crate
+errors. This describes the original inspected snapshot, not the repaired PR.
+The original native sketch also built a budgeted interpreter but called a different
 interpreter through `run`, and did not inject the supplied analysis results.
 
 Before the audit repair, malformed successful-process stdout became boolean
@@ -377,7 +378,7 @@ These results describe the starting local snapshots, before audit repairs.
 | Eclexia | `cargo test --offline --locked -p eclexia --test conformance_tests`: two harness tests pass | The existing conformance harness; no whole-workspace count inferred. |
 | Anytype | `idris2 --build anytype-tests.ipkg`, then `build/exec/anytype-tests`: 19 cases, 0 failures | Executable kernel matrix including negative cases. |
 | Oikos DSL | `cargo test --offline --locked --workspace`: exit 0 | Existing Rust tests; lowering remains unavailable. |
-| OikosBot | Default adapter: 6 tests pass; native feature fails compilation | The feature gap is reproduced, not inferred. |
+| OikosBot, before repair | Default adapter: 6 tests pass; native feature fails compilation | Original snapshot; repaired feature behavior and tests are recorded below. |
 | Halideiser | Rust suite passes: 24 unit tests in each of lib/bin plus 8 integration tests | Duplicated unit execution is not 48 independent properties; target compilation was absent. |
 | Chapeliser | Initial offline run could not resolve `assert_cmd` | No initial test-failure inference from absent cache. Repair run resolves dependencies and executes tests. |
 | AffineScript | `dune runtest`: failure, 32 walker cases cannot find fixtures | A merge blocker in this checkout; distinguish missing data from semantic failures. |
@@ -417,8 +418,13 @@ that this audit has implemented every language or closed every theorem.
 ## Audit repair validation
 
 The isolated repair branches start from GitHub main, preserving divergent local
-work. The full Oikosbot Rust workspace and Eclexia adapter with all features,
-both adapters’ Rust suites, and Oblíbený’s OCaml conformance suite pass locally.
+work. After repair, the Oikosbot Rust workspace passes with default features.
+`cargo test --locked -p oikosbot-eclexia --all-features` also passes nine adapter
+tests with `eclexia-native` enabled, including
+`native_feature_cannot_claim_policy_execution`: it checks the explicit
+**unavailable** error. This is buildability and refusal behavior, not native
+Eclexia execution or an implemented CLI protocol. Both augmentation adapters’
+Rust suites and Oblíbený’s OCaml conformance suite pass locally.
 The first PR run also compiled and ran Chapel’s golden program, checked its
 Idris2 ABI and Zig implementation, and passed the regenerated golden comparison.
 These results establish the tested surfaces, not whole-language soundness.
@@ -439,7 +445,8 @@ findings. It rejects malformed/missing output and requires explicit successful
 filtering for a present baseline. My’s existing dated baseline is activated
 with the authoritative validator; its entries are not broadened. Oikosbot’s
 false “no tests” finding is addressed with an explicit root test entry point
-that runs the real all-features adapter tests in CI. The attempted exemption
+that runs those real all-features adapter tests in CI, including the native
+unavailability assertion. The attempted exemption
 was removed; no new test exemption remains. No blanket alert dismissal
 or branch-protection bypass is part of this repair.
 

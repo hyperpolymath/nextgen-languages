@@ -7,7 +7,7 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-06-12"
+last-updated = "2026-09-07"
 
 [deployment]
 # method = "gitops"
@@ -29,20 +29,22 @@ last-updated = "2026-06-12"
 # ---------------------------------------------------------------------------
 # Recurring CI advisories — gitbot runbook.
 #
-# The Hypatia neurosymbolic scan posts an advisory comment on every PR. It
-# is NON-BLOCKING; the blocking gates are the governance/* and scan/* checks.
-# Most advisory findings are already triaged and recorded in
+# The Hypatia comment supplies triage context. The configured scan blocks
+# current high/critical findings after validated baseline filtering and rejects
+# missing/malformed scan output. Historical triage context is recorded in
 # .machine_readable/descriptiles/NEUROSYM.a2ml [waivers].
 # ---------------------------------------------------------------------------
 
 [recurring-ci-advisories]
 source = "Hypatia Security Scan advisory comment"
-blocking = false
+blocking = true
+blocking-threshold = "high"
+blocking-source = ".github/workflows/hypatia-scan.yml: block-on-high = true"
 registry = ".machine_readable/descriptiles/NEUROSYM.a2ml"
 step-1 = "For each finding, look it up in NEUROSYM [waivers] by rule + file."
-step-2 = "If present, skip it — it is accepted; do NOT open a fix."
-step-3 = "Act only on findings NOT in the registry, or with disposition = track and an open action."
-step-4 = "If a genuinely new finding appears, triage it; if accepted, add a waiver entry rather than re-fixing each PR."
+step-2 = "If present, review the recorded disposition against the current finding; a NEUROSYM entry alone never suppresses a blocking finding."
+step-3 = "Fix current high/critical findings or use the reviewed, schema-valid, unexpired Hypatia baseline where justified. Require the actual scan check to pass."
+step-4 = "Record triage rationale here; historical advisories and low/medium findings remain distinct from the current blocking scan."
 
 [branch-hygiene]
 # Permitted per the Trustfile carve-out (.machine_readable/contractiles/Trustfile.a2ml [trust.branch-hygiene]).
@@ -54,6 +56,6 @@ note = "GitHub auto-deletes PR branches on merge; prune local tracking refs with
 [merge-gating]
 # When self-merging (per maintainer authorization), gate on:
 rule-1 = "All required (blocking) checks green: governance/*, scan/*, analyze, semgrep, dogfood, validators."
-rule-2 = "Hypatia advisory is non-blocking and MUST NOT gate the merge."
+rule-2 = "Hypatia current high/critical findings block after validated baseline filtering. Missing/malformed artifacts or unsuccessful required filtering also block; comments and NEUROSYM waivers cannot override the check."
 rule-3 = "Draft/WIP PRs are never merged; mark ready first."
 rule-4 = "Architecture-decision PRs (ADRs) and implementation PRs are kept at separate granularity."

@@ -20,9 +20,10 @@ finishbot = "task completion"
 working-branch-pattern = "claude/* or bot/<botname>/*"
 draft-PRs-only = true
 ci-green-before-merge = true
-# Per descriptiles/PLAYBOOK.a2ml [merge-gating]: blocking checks are governance/*,
-# scan/*, analyze, semgrep, dogfood, validators; the Hypatia advisory is
-# non-blocking and MUST NOT gate the merge.
+# Per .machine_readable/descriptiles/PLAYBOOK.a2ml [merge-gating]: require
+# governance/*, scan/*, analyze, semgrep, dogfood and validators. Hypatia
+# current high/critical findings block after validated baseline filtering;
+# missing or malformed scan output also blocks. A comment/waiver is not a pass.
 never-touch = [
   ".claude/CLAUDE.md",
   "hooks/validate-coordinator-boundary.sh",
