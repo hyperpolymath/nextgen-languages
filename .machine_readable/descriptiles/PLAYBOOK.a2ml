@@ -14,7 +14,7 @@ last-updated = "2026-06-12"
 # target = "container"
 
 [incident-response]
-# 1. Check .machine_readable/6a2/STATE.a2ml for current status
+# 1. Check .machine_readable/descriptiles/STATE.a2ml for current status
 # 2. Review recent commits and CI results
 # 3. Run just validate to check compliance
 
@@ -32,13 +32,13 @@ last-updated = "2026-06-12"
 # The Hypatia neurosymbolic scan posts an advisory comment on every PR. It
 # is NON-BLOCKING; the blocking gates are the governance/* and scan/* checks.
 # Most advisory findings are already triaged and recorded in
-# .machine_readable/6a2/NEUROSYM.a2ml [waivers].
+# .machine_readable/descriptiles/NEUROSYM.a2ml [waivers].
 # ---------------------------------------------------------------------------
 
 [recurring-ci-advisories]
 source = "Hypatia Security Scan advisory comment"
 blocking = false
-registry = ".machine_readable/6a2/NEUROSYM.a2ml"
+registry = ".machine_readable/descriptiles/NEUROSYM.a2ml"
 step-1 = "For each finding, look it up in NEUROSYM [waivers] by rule + file."
 step-2 = "If present, skip it — it is accepted; do NOT open a fix."
 step-3 = "Act only on findings NOT in the registry, or with disposition = track and an open action."

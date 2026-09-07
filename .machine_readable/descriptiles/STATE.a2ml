@@ -39,7 +39,7 @@ codeql = "matrix switched javascript-typescript -> actions (repo has no JS/TS so
 nuget = "spurious nuget dependabot ecosystem removed (no .NET projects)"
 scorecard = "publish job split from unprivileged score-gate job"
 instant-sync = "repository-dispatch gated on FARM_DISPATCH_TOKEN presence"
-hypatia-waivers = "recurring advisory findings triaged in .machine_readable/6a2/NEUROSYM.a2ml [waivers]"
+hypatia-waivers = "recurring advisory findings triaged in .machine_readable/descriptiles/NEUROSYM.a2ml [waivers]"
 codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
@@ -60,3 +60,8 @@ governance-pin = "governance-reusable.yml referenced at @main; SHA pin pending a
 [next-actions]
 claude-md-paths = "maintainer edit needed: .claude/CLAUDE.md references my-lang/frontier-practices/ and my-lang/_exploratory/me-scaffolding/, which are not visible in-tree (paths live inside the my-lang submodule); proposed as issue at the 2026-06-12 checkpoint"
 verisim-naming = "integrations/verisim.a2ml vs siblings' verisimdb.a2ml — naming alignment proposed as issue, not renamed unilaterally"
+
+[language-portfolio-audit-20260907]
+scope = "Evidence audit and scoped repairs; no blanket readiness upgrade"
+report = "https://github.com/hyperpolymath/nextgen-languages/blob/main/docs/audits/2026-09-07-language-portfolio.md"
+metadata-path = ".machine_readable/descriptiles/"

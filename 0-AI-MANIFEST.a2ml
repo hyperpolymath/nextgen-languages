@@ -29,12 +29,12 @@ cross-language indexes and status trackers, governance, CI, and the
 ### Canonical File Locations (ONLY THESE - NO DUPLICATES)
 
 **Machine-Readable Metadata:** `.machine_readable/` directory ONLY
-- **.machine_readable/6a2/STATE.a2ml** - Current project state, progress, blockers, next actions
-- **.machine_readable/6a2/ECOSYSTEM.a2ml** - Position in ecosystem, relationships to other projects
-- **.machine_readable/6a2/META.a2ml** - Architecture decisions, governance, development practices
-- **.machine_readable/6a2/PLAYBOOK.a2ml** - Operational runbook, procedures, alerts
-- **.machine_readable/6a2/AGENTIC.a2ml** - AI agent interaction patterns and constraints
-- **.machine_readable/6a2/NEUROSYM.a2ml** - Neurosymbolic integration configuration
+- **.machine_readable/descriptiles/STATE.a2ml** - Current project state, progress, blockers, next actions
+- **.machine_readable/descriptiles/ECOSYSTEM.a2ml** - Position in ecosystem, relationships to other projects
+- **.machine_readable/descriptiles/META.a2ml** - Architecture decisions, governance, development practices
+- **.machine_readable/descriptiles/PLAYBOOK.a2ml** - Operational runbook, procedures, alerts
+- **.machine_readable/descriptiles/AGENTIC.a2ml** - AI agent interaction patterns and constraints
+- **.machine_readable/descriptiles/NEUROSYM.a2ml** - Neurosymbolic integration configuration
 - **.machine_readable/LANGUAGES.a2ml** - Language portfolio registry (references the external repos)
 
 **CRITICAL:** If any 6a2 state file (STATE/META/ECOSYSTEM/AGENTIC/NEUROSYM/PLAYBOOK)
@@ -65,8 +65,8 @@ The ONLY valid location is `.machine_readable/`. Do NOT create duplicates.
 ### Session Startup Checklist
 
 ✅ Read THIS file (0-AI-MANIFEST.a2ml) first
-✅ Read `.machine_readable/6a2/STATE.a2ml` for current status
-✅ Check `.machine_readable/6a2/AGENTIC.a2ml` for interaction constraints
+✅ Read `.machine_readable/descriptiles/STATE.a2ml` for current status
+✅ Check `.machine_readable/descriptiles/AGENTIC.a2ml` for interaction constraints
 ✅ Verify no duplicate state files exist in root
 ✅ Verify no language-implementation content has leaked in-tree
    (`bash hooks/validate-coordinator-boundary.sh`)
@@ -109,12 +109,12 @@ in-tree.
 
 ## Workflow
 
-1. Read `.machine_readable/6a2/*.a2ml` at session start
-2. Check `.machine_readable/6a2/STATE.a2ml` for current phase, blockers, next actions
+1. Read `.machine_readable/descriptiles/*.a2ml` at session start
+2. Check `.machine_readable/descriptiles/STATE.a2ml` for current phase, blockers, next actions
 3. Coordinate via external repo references — there are **no submodules to update**
-4. Follow patterns and constraints from `.machine_readable/6a2/AGENTIC.a2ml`
+4. Follow patterns and constraints from `.machine_readable/descriptiles/AGENTIC.a2ml`
 5. Respect the COORDINATOR BOUNDARY: language-specific work goes in that language's own repo
-6. Update `.machine_readable/6a2/STATE.a2ml` after completing work
+6. Update `.machine_readable/descriptiles/STATE.a2ml` after completing work
 
 <!-- BEGIN requires-initialisation -->
 

@@ -6,27 +6,28 @@
 # drifted badly before (a language present on one surface, missing on another),
 # so this check fails the build when they disagree.
 #
-# Source of truth: the human-facing pointers in `languages/<id>.md`. Every other
+# Source of truth: the human-facing pointers in `languages/<id>.adoc`. Every other
 # surface MUST list exactly that same set of ids:
 #   - .machine_readable/LANGUAGES.a2ml   ([[language]] stanzas; forward-looking entries with
 #                                         status "proposed"/"exploratory" are exempt — they
 #                                         are not yet committed and carry no languages/ pointer)
 #   - hooks/validate-coordinator-boundary.sh   (the LANGS re-vendoring guard list)
-#   - .machine_readable/6a2/ECOSYSTEM.a2ml     ([language-repos] keys)
+#   - .machine_readable/descriptiles/ECOSYSTEM.a2ml     ([language-repos] keys)
 #   - language-status-tracker.jl               (const LANGUAGES — must be a SUPERSET;
 #                                               it also tracks playgrounds/ecosystem/umbrella)
 #
 # See 0-AI-MANIFEST.a2ml and EXTRACTION-MANIFEST.md.
 set -euo pipefail
+shopt -s nullglob
 
 cd "$(git rev-parse --show-toplevel)"
 
 ERRORS=0
 
-# ── Source of truth: languages/<id>.md pointers (excluding README) ────────────
+# ── Source of truth: languages/<id>.adoc pointers (excluding README) ────────────
 family() {
-  for f in languages/*.md; do
-    b="$(basename "$f" .md)"
+  for f in languages/*.adoc; do
+    b="$(basename "$f" .adoc)"
     [[ "$b" == "README" ]] || printf '%s\n' "$b"
   done | sort -u
 }
@@ -58,7 +59,7 @@ ecosystem_keys() {
       key=$0; sub(/[ \t]*=.*/,"",key); gsub(/["[:space:]]/,"",key)
       if (key != "note" && key != "") print key
     }
-  ' .machine_readable/6a2/ECOSYSTEM.a2ml | sort -u
+  ' .machine_readable/descriptiles/ECOSYSTEM.a2ml | sort -u
 }
 
 # ── tracker const LANGUAGES vector (quoted ids) ───────────────────────────────
@@ -69,8 +70,17 @@ tracker_langs() {
 }
 
 FAMILY="$(family)"
+if [[ -z "$FAMILY" ]]; then
+  printf 'ERROR: no language pointers found in languages/*.adoc\n' >&2
+  exit 1
+fi
+# Capture each source before comparison so read/parse failures propagate.
+REGISTERED="$(a2ml_registered)"
+HOOK_LANGS="$(hook_langs)"
+ECOSYSTEM_KEYS="$(ecosystem_keys)"
+TRACKER_LANGS="$(tracker_langs)"
 COUNT="$(printf '%s\n' "$FAMILY" | wc -l | tr -d ' ')"
-printf 'language-registry: source of truth = languages/*.md (%s entries)\n' "$COUNT"
+printf 'language-registry: source of truth = languages/*.adoc (%s entries)\n' "$COUNT"
 
 # report_diff <surface-name> <surface-set> <mode: exact|superset>
 report_diff() {
@@ -91,15 +101,15 @@ report_diff() {
   fi
 }
 
-report_diff ".machine_readable/LANGUAGES.a2ml"             "$(a2ml_registered)" exact
-report_diff "hooks/validate-coordinator-boundary.sh LANGS" "$(hook_langs)"      exact
-report_diff ".machine_readable/6a2/ECOSYSTEM.a2ml"         "$(ecosystem_keys)"  exact
-report_diff "language-status-tracker.jl const LANGUAGES"   "$(tracker_langs)"   superset
+report_diff ".machine_readable/LANGUAGES.a2ml"             "$REGISTERED" exact
+report_diff "hooks/validate-coordinator-boundary.sh LANGS" "$HOOK_LANGS"      exact
+report_diff ".machine_readable/descriptiles/ECOSYSTEM.a2ml"         "$ECOSYSTEM_KEYS"  exact
+report_diff "language-status-tracker.jl const LANGUAGES"   "$TRACKER_LANGS"   superset
 
 if [[ "$ERRORS" -gt 0 ]]; then
   printf '\nlanguage-registry check FAILED (%s surface(s) out of sync).\n' "$ERRORS"
   printf 'Every language must appear on all registry surfaces. Update them together —\n'
-  printf 'the canonical set is languages/*.md; see .machine_readable/LANGUAGES.a2ml.\n'
+  printf 'the canonical set is languages/*.adoc; see .machine_readable/LANGUAGES.a2ml.\n'
   exit 1
 fi
 

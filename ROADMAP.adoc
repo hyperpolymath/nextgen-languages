@@ -28,4 +28,4 @@ See `README.adoc` for the full list of canonical repositories.
 
 == Tracking
 
-Progress tracked in `.machine_readable/6a2/STATE.a2ml`.
+Progress tracked in `.machine_readable/descriptiles/STATE.a2ml`.

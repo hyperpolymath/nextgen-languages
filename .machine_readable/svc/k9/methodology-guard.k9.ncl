@@ -59,7 +59,7 @@ let methodology_guard = {
     state_not_template = {
       description = "STATE.a2ml must not contain template placeholders",
       severity = "warning",
-      file = ".machine_readable/6a2/STATE.a2ml",
+      file = ".machine_readable/descriptiles/STATE.a2ml",
       reject_patterns = ["{{PLACEHOLDER}}", "NEXTGEN_LANGUAGES", "rsr-template-repo"],
       reject_key = "methodology.state-validation.reject-if-contains",
     },
@@ -67,7 +67,7 @@ let methodology_guard = {
     state_not_stale = {
       description = "STATE.a2ml last-updated should be within the staleness threshold",
       severity = "info",
-      file = ".machine_readable/6a2/STATE.a2ml",
+      file = ".machine_readable/descriptiles/STATE.a2ml",
       staleness_key = "methodology.state-validation.staleness-threshold-days",
       default_staleness_days = 90,
     },

@@ -6,7 +6,9 @@ image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=openssource
 
 == Overview
 
-This repository contains exploratory work on a family of programming and specification languages built around a shared principle:
+This repository coordinates independent programming and specification language repositories. It indexes their research and implementation evidence; language implementations live in their owning repositories.
+
+Many of the projects investigate the principle:
 
 *computation and meaning are determined by structured equivalence, not just raw values.*
 
@@ -45,7 +47,7 @@ Status: design-stage, with partial specifications and experimental implementatio
 
 === Tangle
 
-A topologically inspired language where programs are represented as tangles (braids), and equivalence is defined by isotopy. Its IR (TangleIR) is consumed by the separate *KRL resolution stack* (`krl → TangleIR → VeriSimCore → Skein.jl / QuandleDB`), which is tracked by the database estate — not part of this coordinator's language family.
+A topologically inspired language investigating tangles, braids, and equivalence. Tangle is independent of the KRL/QuandleDB language stack; its own README retracts the earlier conflation. See link:https://github.com/hyperpolymath/tangle[Tangle] for the implemented compiler and formal-core boundary.
 
 * Composition and tensor operations correspond to braid structure
 * Formal semantics specified
@@ -72,15 +74,15 @@ Status: grammar stable; formal verification in progress.
 
 An “economics-as-code” language where resource constraints are first-class.
 
-Status: specified; implementation not started.
+Status: implemented compiler/interpreter components and executable conformance tests. Resource semantics, optimization, and OikosBot integration have separate evidence boundaries; see the portfolio audit below.
 
 ---
 
 === Betlang
 
-A language for hard real-time systems using dependent, session, and linear types.
+A probabilistic language built around ternary stochastic choice, with a canonical Racket implementation and additional backend/formal work.
 
-Status: specified.
+Status: implemented experimental language; lazy evaluation, reproducible randomness, and backend agreement require their own conformance evidence.
 
 ---
 
@@ -141,7 +143,7 @@ Type-theoretic boundaries are made explicit: total proof-like fragments are dist
 
 These languages are designed to work with systems that treat equivalence, provenance, and semantic identity as first-class concepts:
 
-Tangle (via the separate KRL resolution stack) ↔ QuandleDB / Skein
+KRL / QuandleDB belong to the separately coordinated database estate. Tangle is an independent language; no KRL-to-Tangle dependency is asserted here.
 JtV ↔ future equivalence-aware runtime and storage models
 
 See the nextgen-databases repository for details.
@@ -190,6 +192,19 @@ production system. The work it tracks spans, across the individual language repo
 * formal proofs (e.g. the Tangle core)
 * partial compilers and grammars
 * design documents and specifications
+
+== Portfolio Audit
+
+link:docs/audits/2026-09-07-language-portfolio.md[The 7 September 2026 portfolio audit]
+examines language identity and lineage, implementation/proof boundaries, type
+foundations, augmentation tools, and the semantic and security checks needed for
+merging. Its findings are scoped to recorded repository snapshots; they are not
+new blanket TRG/CRG/FRG/ARG ratings.
+
+The audit also covers link:https://github.com/hyperpolymath/nextgen-typing[nextgen-typing],
+link:https://github.com/hyperpolymath/kategoria[Kategoria],
+link:https://github.com/hyperpolymath/typell[TypeLL], and typed-wasm, distinguishing
+research proposals from executable consumer integration.
 
 == Suggested Entry Points
 

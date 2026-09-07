@@ -1,6 +1,5 @@
+# This workflow is managed by gh actions-lock.
 # SPDX-License-Identifier: MPL-2.0
-# This workflow is managed by gh actions-lock.
-# This workflow is managed by gh actions-lock.
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
 # dogfood-gate.yml — Hyperpolymath Dogfooding Quality Gate
@@ -272,14 +271,16 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Enforce language-registry consistency
-        run: bash hooks/validate-language-registry.sh
+        run: |
+          bash hooks/validate-language-registry.sh
+          bash hooks/test-language-registry.sh
 
       - name: Write summary
         if: always()
         run: |
           echo "## Language Registry Consistency" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "Verifies every language appears on all registry surfaces (\`languages/\`, \`LANGUAGES.a2ml\`, the boundary-hook \`LANGS\` list, \`ECOSYSTEM.a2ml\`, and the status tracker), so the family cannot silently drift out of sync. Canonical set: \`languages/*.md\`." >> "$GITHUB_STEP_SUMMARY"
+          echo "Verifies every language appears on all registry surfaces (\`languages/\`, \`LANGUAGES.a2ml\`, the boundary-hook \`LANGS\` list, \`ECOSYSTEM.a2ml\`, and the status tracker), so the family cannot silently drift out of sync. Canonical set: \`languages/*.adoc\`." >> "$GITHUB_STEP_SUMMARY"
 
   # ---------------------------------------------------------------------------
   # Job 6: Dogfooding summary

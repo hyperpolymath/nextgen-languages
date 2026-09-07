@@ -307,7 +307,7 @@ and for automated agents:
   validator, `dogfood` (including the `coordinator-boundary` job), and dogfood
   checks.
 * Recurring advisory findings that have been triaged and accepted are recorded
-  once in `.machine_readable/6a2/NEUROSYM.a2ml` under `[accepted-findings]`.
+  once in `.machine_readable/descriptiles/NEUROSYM.a2ml` under `[accepted-findings]`.
   Agents consult that registry and do not re-fix accepted findings on every PR.
   Changing the enforcing ruleset itself must be done in `standards`.
 

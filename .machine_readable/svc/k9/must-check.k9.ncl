@@ -54,7 +54,7 @@ K9!
     },
 
     no_root_scm_duplication = {
-      description = "No STATE/META/ECOSYSTEM state file orphaned in repo root (canonical home is .machine_readable/6a2/)",
+      description = "No STATE/META/ECOSYSTEM state file orphaned in repo root (canonical home is .machine_readable/descriptiles/)",
       severity = 'error,
       predicate = "! ls STATE.* META.* ECOSYSTEM.* 2>/dev/null | head -1 | grep -q .",
     },
@@ -62,7 +62,7 @@ K9!
     six_a_two_complete = {
       description = "The 6a2 metadata set is complete (>= 6 .a2ml files)",
       severity = 'warning,
-      predicate = "test $(ls .machine_readable/6a2/*.a2ml 2>/dev/null | wc -l) -ge 6",
+      predicate = "test $(ls .machine_readable/descriptiles/*.a2ml 2>/dev/null | wc -l) -ge 6",
     },
 
     spdx_on_machine_readable = {
@@ -86,7 +86,7 @@ K9!
     hypatia_waiver_registry = {
       description = "Hypatia accepted-findings registry exists (NEUROSYM.a2ml)",
       severity = 'warning,
-      predicate = "grep -q '\\[accepted-findings\\]' .machine_readable/6a2/NEUROSYM.a2ml",
+      predicate = "grep -q '\\[accepted-findings\\]' .machine_readable/descriptiles/NEUROSYM.a2ml",
     },
 
     coordinator_boundary = {
