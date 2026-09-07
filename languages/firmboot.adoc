@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= Firmboot
+
+*Canonical repository:*
+https://github.com/hyperpolymath/firmboot[hyperpolymath/firmboot]
+
+Firmboot studies continuity through admitted software transformations:
+coherence of current state and evidence, and preservation of declared commitments
+over time. It is a research prototype with Agda and Lean models and an Elixir
+reference runner; a language toolchain and general live-code loading remain open.
+
+The connection to identity over time, ecological monitoring, resource limits and
+desktop-session continuity is explained in its
+https://github.com/hyperpolymath/firmboot/blob/main/PURPOSE.md[purpose statement].
+Proof meanings, assumptions and executable evidence live in the canonical
+repository's https://github.com/hyperpolymath/firmboot/blob/main/VERIFICATION.md[verification contract].
+
+This coordinator indexes Firmboot. Its specifications, proofs and implementation
+remain in the standalone repository.

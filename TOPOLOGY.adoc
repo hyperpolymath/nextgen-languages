@@ -68,7 +68,7 @@ gaps
 repo status
 
 The coordinator’s own scaffolding status lives in
-`+.machine_readable/6a2/STATE.a2ml+` (`+completion-percentage+`), which
+`+.machine_readable/descriptiles/STATE.a2ml+` (`+completion-percentage+`), which
 reflects coordinator maturity — not a family-wide 100%.
 
 === Update protocol

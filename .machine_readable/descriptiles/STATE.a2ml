@@ -5,7 +5,7 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-07-02"
+last-updated = "2026-09-07"
 status = "active"
 
 [project-context]
@@ -39,10 +39,11 @@ codeql = "matrix switched javascript-typescript -> actions (repo has no JS/TS so
 nuget = "spurious nuget dependabot ecosystem removed (no .NET projects)"
 scorecard = "publish job split from unprivileged score-gate job"
 instant-sync = "repository-dispatch gated on FARM_DISPATCH_TOKEN presence"
-hypatia-waivers = "recurring advisory findings triaged in .machine_readable/6a2/NEUROSYM.a2ml [waivers]"
+hypatia-waivers = "recurring advisory findings triaged in .machine_readable/descriptiles/NEUROSYM.a2ml [waivers]"
 codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
+firmboot = "2026-09-07: indexed the public continuity research prototype, linked its synchronic/diachronic identity framing and ecological/desktop application directions, and retained specifications and proofs in its standalone repo. Readiness grades remain unassigned."
 # Landed since the 2026-06-02 STATE refresh (witness: git log).
 coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.md"
 pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml and Intentfile (an earlier note also claimed Mustfile; the Mustfile carries no per-language entries — corrected 2026-07-02)"
@@ -51,7 +52,7 @@ pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + polic
 scm-pointer-fix = "stale .scm state-location pointers fixed in ROADMAP and CHANGELOG (196e0ad)"
 gitmodules-cleanup = "orphan language-playgrounds submodule entry dropped from .gitmodules (c089dfe)"
 readme-updates = "five README.adoc touch-ups on main (91571be..f758d05)"
-estate-standardization = "2026-06-12: origin/estate-standardization-20260607 merged — flat contractiles now canonical (content ported from root contractiles/ and .machine_readable/*.contractile, both retired), 6a2/0-AI-MANIFEST + README + anchor/ landed, agent_instructions/ renamed bot_directives/, GOVERNANCE.adoc + MAINTAINERS.adoc + CODEOWNERS added, flake.nix removed (Guix primary), LICENSE normalized to MPL-2.0 text"
+estate-standardization = "2026-06-12: origin/estate-standardization-20260607 merged — flat contractiles now canonical (content ported from root contractiles/ and .machine_readable/*.contractile, both retired), descriptiles/0-AI-MANIFEST + README + anchor/ landed, agent_instructions/ renamed bot_directives/, GOVERNANCE.adoc + MAINTAINERS.adoc + CODEOWNERS added, flake.nix removed (Guix primary), LICENSE normalized to MPL-2.0 text"
 governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet, git-private-farm), flat Dustfile/Bustfile added, STATE bumped, wiki status note"
 
 [blockers]
