@@ -148,6 +148,12 @@ compiler and machine-checked Agda proofs.
 
 == Common Principles
 
+Coordinator maintenance uses `hooks/validate-language-registry.sh` and
+`hooks/validate-coordinator-boundary.sh`. The Guix `manifest.scm` declares their
+shell and text-processing tools; run either with
+`guix shell -m manifest.scm -- bash hooks/<check>.sh`.
+Language compilers and proof toolchains remain in their own repositories.
+
 Across these languages:
 
 Formal semantics precede implementation

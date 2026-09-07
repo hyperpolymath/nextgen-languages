@@ -9,6 +9,8 @@ on:
   workflow_dispatch:
 jobs:
   trigger-boj:
+    # Configure an HTTPS endpoint reachable from the selected runner before enabling.
+    if: vars.BOJ_BUILD_URL != ''
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -18,12 +20,13 @@ jobs:
         env:
           BOJ_REPOSITORY: ${{ github.repository }}
           BOJ_BRANCH: ${{ github.ref_name }}
+          BOJ_BUILD_URL: ${{ vars.BOJ_BUILD_URL }}
         run: |
           jq -n --arg repo "$BOJ_REPOSITORY" --arg branch "$BOJ_BRANCH" \
             '{repo: $repo, branch: $branch, engine: "casket"}' |
-            curl --fail-with-body --silent --show-error --connect-timeout 5 --max-time 30 \
+            curl --proto '=https' --fail-with-body --silent --show-error --connect-timeout 5 --max-time 30 \
               -H 'Content-Type: application/json' --data-binary @- \
-              http://boj-server.local:7700/cartridges/ssg-mcp/invoke
+              "$BOJ_BUILD_URL"
         continue-on-error: true
 permissions:
   contents: read
