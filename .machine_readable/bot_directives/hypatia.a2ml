@@ -15,10 +15,10 @@ ruleset-location = "hyperpolymath/standards (hypatia-scan-reusable.yml) — chan
 scan-is-blocking = false
 
 [accepted-findings]
-# Canonical registry: .machine_readable/6a2/NEUROSYM.a2ml [waivers].
+# Canonical registry: .machine_readable/descriptiles/NEUROSYM.a2ml [waivers].
 # Look findings up there by rule + file BEFORE acting; if listed, do not
 # auto-fix. Summary of the current entries:
-registry = ".machine_readable/6a2/NEUROSYM.a2ml"
+registry = ".machine_readable/descriptiles/NEUROSYM.a2ml"
 reusable-caller-timeout = "missing_timeout_minutes on governance/hypatia-scan/mirror/scorecard/secret-scanner.yml — false-positive: these jobs call reusable workflows and GitHub Actions rejects timeout-minutes on reusable-workflow caller jobs"
 governance-reusable-pin = "unpinned_action on governance.yml — tracked: standards governance-reusable.yml referenced at @main pending SHA pin via authenticated lookup"
 scorecard-publish-split = "scorecard_publish_with_run_step on scorecard-enforcer.yml — addressed: privileged publish job split from unprivileged score-gate job; detector pattern mismatch"

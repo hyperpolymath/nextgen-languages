@@ -5,42 +5,45 @@ Each language has one core invariant that defines its design philosophy.
 [width="100%",cols="48%,52%",options="header",]
 |===
 |Language |Invariant
-|link:my-lang.md[my-lang] |Each level builds exactly on the previous
+|link:my-lang.adoc[my-lang] |Each level builds exactly on the previous
 
-|link:phronesis.md[phronesis] |Every AI decision traces to declared
+|link:phronesis.adoc[phronesis] |Every AI decision traces to declared
 values
 
-|link:eclexia.md[eclexia] |No computation without explicit resource
+|link:eclexia.adoc[eclexia] |No computation without explicit resource
 budget
 
-|link:oblibeny.md[oblibeny] |All programs must provably terminate
+|link:oblibeny.adoc[oblibeny] |All programs must provably terminate
 
-|link:anvomidav.md[anvomidav] |Every deadline is statically guaranteed
+|link:anvomidav.adoc[anvomidav] |Every deadline is statically guaranteed
 
-|link:wokelang.md[wokelang] |No operation without explicit consent
+|link:wokelang.adoc[wokelang] |No operation without explicit consent
 
-|link:betlang.md[betlang] |All uncertainty must be explicitly modeled
+|link:betlang.adoc[betlang] |All uncertainty must be explicitly modeled
 
-|link:jtv.md[jtv] |Data and code are strictly separated
+|link:jtv.adoc[jtv] |Data and code are strictly separated
 
-|link:affinescript.md[affinescript] |Every resource is used at most once
+|link:affinescript.adoc[affinescript] |Every resource is used at most once
 
-|link:ephapax.md[ephapax] |Every value can be consumed exactly once
+|link:ephapax.adoc[ephapax] |Every value can be consumed exactly once
 
-|link:haec.md[haec] |Every quality-loss is graded and checked against
+|link:haec.adoc[haec] |Every quality-loss is graded and checked against
 its use
 
-|link:error-lang.md[error-lang] |Errors are first-class: systems
+|link:error-lang.adoc[error-lang] |Errors are first-class: systems
 thinking taught through failure
 
-|link:tangle.md[tangle] |Programs are braids; equivalence is topological
+|link:tangle.adoc[tangle] |Programs are braids; equivalence is topological
 isotopy
 
-|link:007.md[007] |Agents that make agents (private repo, anti-scrape;
+|link:007.adoc[007] |Agents that make agents (private repo, anti-scrape;
 index-only)
 
-|link:kitchenspeak.md[kitchenspeak] |Physical-process constraints are
+|link:kitchenspeak.adoc[kitchenspeak] |Physical-process constraints are
 enforced in the types
+
+|link:firmboot.adoc[firmboot] |Admitted changes preserve declared
+continuity obligations (research prototype)
 |===
 
 Each row links to a thin pointer; the language itself lives in its own

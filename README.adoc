@@ -26,6 +26,8 @@ This appears in different forms:
 * *Topology*: objects are equivalent under isotopy (continuous deformation)
 * *Type systems*: structure constrains what transformations are valid
 * *Execution*: guarantees (termination, purity, resource bounds) are encoded in the language design
+* *Continuity*: state is coherent at a moment (synchronic), and declared
+commitments survive admitted changes over time (diachronic)
 
 These languages explore different instances of this idea.
 
@@ -114,6 +116,23 @@ substrate with `echo-types`.
 
 Status: design (grammar + elaboration + round-tripping examples); the checker's
 verified core typechecks with no axioms.
+
+---
+
+=== Firmboot
+
+https://github.com/hyperpolymath/firmboot[Firmboot] explores continuity through
+software change: current-state evidence, sufficient retained history and explicit
+handover obligations. It develops the temporal aspect of identity under
+transformation, while allowing a new implementation to make different future
+decisions without rewriting already committed observations and events.
+
+Status: research prototype with Agda and Lean models and an Elixir reference
+runner. General live-code loading, implementation refinement and physical
+availability remain open. Motivating directions include water conservation,
+environmental monitoring and desktop-session continuity, with explicit resource
+limits and stopping authority. See its
+https://github.com/hyperpolymath/firmboot/blob/main/PURPOSE.md[purpose and application directions].
 
 ---
 

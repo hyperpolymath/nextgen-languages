@@ -8,8 +8,9 @@ Registry surfaces reconciled 2026-07-02; language *grades* below unverified sinc
 
 == Overview
 
-This coordinator tracks **15 family entries — 14 languages + the KitchenSpeak DSL** — each
-maintained as its own standalone repo (no language code lives here). 11 of them are
+This coordinator tracks the language family, the KitchenSpeak DSL and Firmboot's
+continuity research prototype, each maintained as its own standalone repo (no
+language code lives here). In the existing integration record, 11 languages are
 registered in the BoJ Server `lang-mcp` cartridge (plus one retired slot, ID 11 — see
 below) with session management, type-checking, and evaluation via zig adapter + Zig FFI.
 Adjacent database / type-theory estates are listed separately at the end of this section
@@ -62,6 +63,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
 | **Tangle** | TBD | TBD | TBD | TBD | TBD | Topological (knot/braid) language; Lean core proofs. TangleIR feeds the separate KRL resolution stack (see Adjacent estates).
 | **007** | TBD | TBD | TBD | TBD | TBD | Agent meta-language; private repo (`The-Metadatastician/007`, anti-training-scrape); specification stage; profile not yet authored.
+| **Firmboot** | TBD | TBD | TBD | TBD | TBD | Research prototype: checked Agda/Lean models and Elixir reference runner. See https://github.com/hyperpolymath/firmboot/blob/main/VERIFICATION.md[evidence and limits]. No readiness grade or BoJ integration is claimed.
 | **Me-dialect** (retired) | X | X | X | X | X | RETIRED — superseded by the *Me* runtime projection (`tentacles-agentic-syllabus/me/README.adoc`). `hyperpolymath/me-dialect` archived; in-tree scaffolding sidelined. Not a language; kept only to explain the retirement.
 |===
 
