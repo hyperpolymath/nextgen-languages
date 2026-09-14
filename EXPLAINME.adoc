@@ -302,14 +302,16 @@ consumed from `hyperpolymath/standards` as *pinned reusable workflows* — the
 enforcing rulesets live there, not in this repo. Two consequences for readers
 and for automated agents:
 
-* The *Hypatia Security Scan* comment on PRs is *advisory and non-blocking*.
-  The blocking gates are the `governance/*`, `scan/*`, `analyze`, `semgrep`,
-  validator, `dogfood` (including the `coordinator-boundary` job), and dogfood
-  checks.
+* The *Hypatia scan* blocks current high and critical findings after validated
+  baseline filtering (`block-on-high: true`). Missing or malformed scan output
+  and unsuccessful required filtering also block. Require it alongside
+  `governance/*`, other `scan/*`, `analyze`, `semgrep`, validator and `dogfood`
+  checks (including `coordinator-boundary`). The PR comment supplies triage context.
 * Recurring advisory findings that have been triaged and accepted are recorded
   once in `.machine_readable/descriptiles/NEUROSYM.a2ml` under `[accepted-findings]`.
-  Agents consult that registry and do not re-fix accepted findings on every PR.
-  Changing the enforcing ruleset itself must be done in `standards`.
+  Agents consult that rationale, but it does not override blocking findings or
+  create executable exemptions. Any justified baseline must pass the actual
+  validation and filtering gates. Change the enforcing ruleset in `standards`.
 
 == Questions?
 

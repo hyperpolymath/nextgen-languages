@@ -9,10 +9,12 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-06-02"
+last-updated = "2026-09-07"
 
 [hypatia-config]
 scan-enabled = true
+block-on-high = true
+blocking-source = ".github/workflows/hypatia-scan.yml"
 scan-depth = "standard"
 report-format = "logtalk"
 
@@ -33,15 +35,15 @@ report-format = "logtalk"
 #
 # Hypatia's enforcing ruleset lives in hyperpolymath/standards
 # (hypatia-scan-reusable.yml / governance-reusable.yml), NOT in this repo,
-# so this registry is the repo-local source of truth for findings that have
-# been triaged and accepted. The Hypatia scan is advisory (non-blocking);
-# the governance gates are the blocking checks and already pass.
+# so this registry records local triage rationale, not executable exemptions.
+# Current high/critical findings block after validated baseline filtering.
+# Missing/malformed scan output or unsuccessful required filtering also blocks.
 #
 # Gitbot / agent contract (see AGENTIC.a2ml, PLAYBOOK.a2ml):
 #   - Before acting on a Hypatia advisory finding, look it up here by `rule`
-#     + `file`. If present, DO NOT attempt a fix — the finding is accepted.
-#   - Only act on findings NOT listed here, or whose `disposition` is
-#     "track" with an open `action`.
+#     + `file` and verify that the recorded disposition still applies.
+#   - A record here does not suppress a current high/critical finding. Fix it
+#     or use an explicitly reviewed valid baseline, and require the scan to pass.
 #
 # disposition values:
 #   false-positive    — the rule does not apply (acting on it would break CI)
@@ -52,9 +54,10 @@ report-format = "logtalk"
 
 [accepted-findings]
 # (kitchenspeak agda-postulate waivers removed — subtree extracted 2026-06-19)
-policy = "Findings listed below are triaged and accepted; do not auto-fix."
+policy = "Review these triage records before acting; they do not override the current blocking scan or create executable exemptions."
 ruleset-location = "hyperpolymath/standards (external to this repo)"
-scan-is-blocking = false
+scan-is-blocking = true
+blocking-threshold = "high"
 
 [waivers.reusable-caller-timeout]
 rule = "missing_timeout_minutes"
@@ -67,9 +70,8 @@ justification = "These jobs call reusable workflows (jobs.<id>.uses). GitHub Act
 rule = "unpinned_action"
 files = "governance.yml"
 severity = "medium"
-disposition = "track"
-justification = "hyperpolymath/standards governance-reusable.yml is referenced at @main. The standards repo is outside this session's scope and the SHA could not be resolved here; the check is green at @main."
-action = "Pin to a commit SHA via an authenticated lookup of standards governance-reusable.yml on main."
+disposition = "addressed"
+justification = "Governance and Hypatia callers are pinned to standards commit 469605210e767ee94d1c7a9c13cb6a1d0a78cad1; authoritative gh actions-lock --no-fix passes."
 
 [waivers.scorecard-publish-split]
 rule = "scorecard_publish_with_run_step"

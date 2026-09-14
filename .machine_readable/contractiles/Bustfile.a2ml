@@ -20,7 +20,7 @@ submodule-pointer-points-at-missing-sha = "git submodule update --init --checkou
 submodule-orphan-after-local-only-commit = "git reset to before the stranded commit locally; fix the child repo's remote state before re-attempting the bump"
 broken-workflow-change = "CI red after a workflow edit: revert the workflow commit; re-pin actions to known-good SHAs (MUST: SHA-pinned actions)"
 accidental-secret-committed = "hard-rotate the leaked secret immediately; scrub history with git-filter-repo or BFG; force-push only with explicit maintainer confirmation; re-publication only after rotation completes"
-bad-metadata-refresh = "6a2/ or contractile refresh introduced false claims: revert the docs commit; restore from origin/main history (governance files carry no build risk)"
+bad-metadata-refresh = "descriptiles/ or contractile refresh introduced false claims: revert the docs commit; restore from origin/main history (governance files carry no build risk)"
 
 [escalation-ladder]
 steps = [

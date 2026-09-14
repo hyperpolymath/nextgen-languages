@@ -99,7 +99,7 @@ policy)
 
 Policy enforcement (monorepo-wide): - .machine_readable/MUST.contractile
 — Bans believe_me, assert_total, Admitted, unsafeCoerce, Obj.magic -
-.machine_readable/6a2/AGENTIC.a2ml — "`Never use banned language
+.machine_readable/descriptiles/AGENTIC.a2ml — "`Never use banned language
 patterns`" - CI enforcement via rsr-antipattern.yml, boj-build.yml,
 quality.yml
 

@@ -61,3 +61,8 @@ governance-pin = "governance-reusable.yml referenced at @main; SHA pin pending a
 [next-actions]
 claude-md-paths = "maintainer edit needed: .claude/CLAUDE.md references my-lang/frontier-practices/ and my-lang/_exploratory/me-scaffolding/, which are not visible in-tree (paths live inside the my-lang submodule); proposed as issue at the 2026-06-12 checkpoint"
 verisim-naming = "integrations/verisim.a2ml vs siblings' verisimdb.a2ml — naming alignment proposed as issue, not renamed unilaterally"
+
+[language-portfolio-audit-20260907]
+scope = "Evidence audit and scoped repairs; no blanket readiness upgrade"
+report = "https://github.com/hyperpolymath/nextgen-languages/blob/main/docs/audits/2026-09-07-language-portfolio.md"
+metadata-path = ".machine_readable/descriptiles/"

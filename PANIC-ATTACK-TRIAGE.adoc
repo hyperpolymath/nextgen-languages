@@ -121,7 +121,7 @@ take many sessions.
 
 * **`jtv/playground/experiments/_attic/database-demos/arangodb-demo/queries.js`**
   — HardcodedSecret. **False positive.** The "secret" is
-  `auth: { username: "root", password: "rootpassword" }` — standard
+  a literal localhost demonstration login — standard
   ArangoDB localhost demo credentials. Other email addresses are
   `alice@example.com` / `bob@example.com` dummy data. File lives in `_attic/`
   (the project's own archive directory). **Recommend: delete the `_attic`
@@ -131,8 +131,8 @@ take many sessions.
 
 * **`jtv/playground/experiments/_attic/utilities/form-validation/validator.js`**
   — HardcodedSecret. **False positive.** The "secret" is
-  `password: 'SecurePass123!'` used as example data inside a form-validation
-  demo showing what valid passwords look like, and `password: 'weak'` showing
+  a literal example of a strong password used as example data inside a form-validation
+  demo showing what valid passwords look like, and a literal example of a weak password showing
   what invalid passwords look like. Same recommendation as above.
 
 * **`ephapax/src/formal/Ephapax/Formal/RegionLinear.idr`** — UnsafeCode.

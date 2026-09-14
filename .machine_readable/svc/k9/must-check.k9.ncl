@@ -54,9 +54,9 @@ K9!
     },
 
     no_root_scm_duplication = {
-      description = "No STATE/META/ECOSYSTEM state file orphaned in repo root (canonical home is .machine_readable/descriptiles/)",
+      description = "No core descriptor file orphaned in repo root (canonical home is .machine_readable/descriptiles/)",
       severity = 'error,
-      predicate = "! ls STATE.* META.* ECOSYSTEM.* 2>/dev/null | head -1 | grep -q .",
+      predicate = "! ls STATE.* META.* ECOSYSTEM.* AGENTIC.* NEUROSYM.* PLAYBOOK.* 2>/dev/null | head -1 | grep -q .",
     },
 
     six_a_two_complete = {
