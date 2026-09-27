@@ -1,274 +1,124 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-= Next-Generation Languages — Research Overview
-image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=openssourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/nextgen-languages"]
+= Next-Generation Languages
+:toc:
+:toc-placement: preamble
 
+A research portfolio and *coordination hub* for independent language projects in the Hyperpolymath ecosystem. This repository is an index and map: it does not build, host, or vendor the languages themselves.
 
-== Overview
+[IMPORTANT]
+====
+**Start here:** this README is the short orientation; link:EXPLAINME.adoc[EXPLAINME] explains the boundaries and connections; link:docs/ecosystem-map.adoc[the ecosystem map] shows the projects by role; and link:languages/README.adoc[the language index] links to each canonical project. The wiki's link:wiki/Home.md[Home] page is BerryWiki-compatible navigation for readers who prefer a wiki.
+====
 
-This repository coordinates independent programming and specification language repositories. It indexes their research and implementation evidence; language implementations live in their owning repositories.
+== What this is
 
-Many of the projects investigate the principle:
+The portfolio gathers research into languages and language-like systems that make important structure explicit: resources, termination, deadlines, consent, ethics, topology, uncertainty, construction, continuity, and physical constraints. They are related by research interests, not by a shared compiler, runtime, or promise of mutual compatibility. Read each project's own documentation for its current implementation and evidence.
 
-*computation and meaning are determined by structured equivalence, not just raw values.*
+This repository's responsibilities are to:
 
-Across different domains (topology, resource systems, ethics, computation), these languages investigate how formal guarantees can be built into the structure of a language itself rather than added as tooling or conventions.
+* maintain the scoped portfolio registry and links to canonical repositories;
+* explain project roles, boundaries, lineages, and cross-project dependencies;
+* maintain cross-language status and evidence summaries without upgrading claims by implication;
+* provide governance, navigation, and language-agnostic contributor orientation.
 
-This is research-stage work: some components are partially implemented or formally specified, others remain conceptual.
+Language implementations, language-specific specifications, grammars, proofs, and tutorials belong in their own canonical repositories. The boundary is checked by `hooks/validate-coordinator-boundary.sh` and `hooks/validate-language-registry.sh`.
 
-== Core Idea
+== Find your way
 
-The central idea underlying these languages is:
+[cols="1,3"]
+|===
+| If you want to… | Go to…
 
-*identity is defined by equivalence under transformation.*
+| Choose a language or understand the core portfolio
+| link:languages/README.adoc[Language quick reference] · link:docs/language-portfolio.adoc[Portfolio overview]
 
-This appears in different forms:
+| See how projects relate (without conflating them)
+| link:docs/ecosystem-map.adoc[Ecosystem map]
 
-* *Computation*: values arise from construction paths, and meaning depends on those paths
-* *Topology*: objects are equivalent under isotopy (continuous deformation)
-* *Type systems*: structure constrains what transformations are valid
-* *Execution*: guarantees (termination, purity, resource bounds) are encoded in the language design
-* *Continuity*: state is coherent at a moment (synchronic), and declared
-commitments survive admitted changes over time (diachronic)
+| Find the canonical repository for a language
+| link:languages/README.adoc[Language pointers] · link:.machine_readable/LANGUAGES.a2ml[Machine-readable registry]
 
-These languages explore different instances of this idea.
+| Check evidence, tooling, and open readiness gaps
+| link:TOOLING-STATUS.adoc[Tooling and integration status] · link:language-status-tracker.jl[Status tracker] · link:docs/audits/2026-09-07-language-portfolio.md[Portfolio audit]
 
-== Projects
+| Understand architecture and scope boundaries
+| link:EXPLAINME.adoc[EXPLAINME] · link:0-AI-MANIFEST.a2ml[AI and coordinator rules] · link:EXTRACTION-MANIFEST.adoc[Extraction history]
 
-=== JtV
+| Contribute to this coordinator
+| link:.github/CONTRIBUTING.md[Contribution guide] · link:GOVERNANCE.adoc[Governance] · link:SECURITY.md[Security reporting]
 
-A foundational language exploring computation as *additive construction from neutral anchors (CNO)*.
+| Read wiki-format material
+| link:wiki/Home.md[Wiki Home] (plain Markdown; BerryWiki-compatible; browse locally with `berrywiki serve ./wiki --no-commit`)
+|===
 
-* Identity is determined by equivalence of construction paths
-* Inversion is treated as retraction of construction, not primitive subtraction
-* Strong separation between data and control (Harvard-style architecture)
+== Portfolio at a glance
 
-Status: design-stage, with partial specifications and experimental implementations.
+The machine-readable registry in `.machine_readable/LANGUAGES.a2ml` is the authoritative list for this coordinator. It contains 17 records: 16 committed portfolio entries with human pointers, plus one exploratory/private TypeFix Zero record that is intentionally not a committed family member. The committed set includes the My-Lang dialect family, experimental KitchenSpeak DSL, Firmboot continuity-research prototype, and private index-only 007. Inclusion means *indexed here*, not mature, mutually compatible, or production-ready.
 
----
+[cols="1,2,2"]
+|===
+| Area | Projects | Main question
 
-=== Tangle
+| Resource and use disciplines
+| link:https://github.com/hyperpolymath/affinescript[AffineScript], link:https://github.com/hyperpolymath/ephapax[Ephapax], link:https://github.com/hyperpolymath/eclexia[Eclexia], link:https://github.com/hyperpolymath/oblibeny[Oblíbený]
+| How should resource use, consumption, cost, or termination constrain programs?
 
-A topologically inspired language investigating tangles, braids, and equivalence. Tangle is independent of the KRL/QuandleDB language stack; its own README retracts the earlier conflation. See link:https://github.com/hyperpolymath/tangle[Tangle] for the implemented compiler and formal-core boundary.
+| Values, consent, and real-time obligations
+| link:https://github.com/hyperpolymath/phronesis[Phronesis], link:https://github.com/hyperpolymath/wokelang[WokeLang], link:https://github.com/hyperpolymath/anvomidav[Anvomidav]
+| How can ethical constraints, consent, or timing obligations become explicit?
 
-* Composition and tensor operations correspond to braid structure
-* Formal semantics specified
-* Core type system mechanised in Lean (see `Tangle.lean`)
+| Computation, uncertainty, and teaching
+| link:https://github.com/hyperpolymath/my-lang[My-Lang], link:https://github.com/hyperpolymath/betlang[betlang], link:https://github.com/hyperpolymath/jtv[JtV], link:https://github.com/hyperpolymath/error-lang[Error-Lang]
+| How do dialect progression, stochastic choice, construction, and failure shape computation?
 
-Status: compiler and tooling in progress; formal core partially verified.
+| Topology and structured change
+| link:https://github.com/hyperpolymath/tangle[Tangle], link:https://github.com/hyperpolymath/haec[Haec], link:https://github.com/hyperpolymath/firmboot[Firmboot]
+| How do equivalence, property-loss, and continuity behave under transformation?
 
----
+| Domain or restricted entries
+| link:https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory)
+| What can domain-specific constraints or minimal calculi teach us?
+|===
 
-=== Oblíbený
+These groupings are navigational, not a formal taxonomy. Full summaries, statuses, and boundaries are in the link:docs/ecosystem-map.adoc[ecosystem map] and canonical project repositories.
 
-A phase-separated language with:
+== Connected work: related, not all members
 
-* Turing-complete development phase
-* Turing-incomplete deployment phase
+Several neighboring projects extend or study this work without being additional entries in the core language registry:
 
-Designed for secure and constrained environments.
+* **AffineScript surfaces:** link:https://github.com/hyperpolymath/cafescripto[CafeScripto], link:https://github.com/hyperpolymath/jaffascript[JaffaScript], link:https://github.com/hyperpolymath/lucidscript[LucidScript], link:https://github.com/hyperpolymath/pseudoscript[PseudoScript], and link:https://github.com/hyperpolymath/rattlescript[RattleScript] explore familiar syntax surfaces over AffineScript's resource-safety direction. Treat them as related surface projects, not five new core languages.
+* **Foundations and research labs:** link:https://github.com/hyperpolymath/kategoria[Kategoria] explores routes through type-safety levels; link:https://github.com/hyperpolymath/panoply[Panoply] is an envelope-first safety-claim discipline. They are related to language design, but have different scopes.
+* **Shared substrates and targets:** link:https://github.com/hyperpolymath/typed-wasm[typed-wasm] is a WasmGC target/ABI substrate; link:https://github.com/hyperpolymath/echo-types[echo-types] is a formal library for structured information loss. Neither is itself a member language here.
+* **Teaching and application:** link:https://github.com/hyperpolymath/tentacles-agentic-syllabus[tentacles-agentic-syllabus] is a curriculum framework, not a language. Language-specific teaching materials remain with their owning projects.
+* **Wiki tooling (Metadatastician estate):** link:https://github.com/metadatastician/berrywiki[BerryWiki] provides optional editing and navigation for ordinary Markdown wiki content. The portfolio wiki files remain in this repository and work without BerryWiki.
+* **Language augmentation tools:** the `*-iser` projects apply selected ideas from a language to other codebases; they are tools, not implementations or language-family members. See the link:docs/ecosystem-map.adoc[map] for examples and boundaries.
 
-Status: grammar stable; formal verification in progress.
+The public GitHub estate search did not identify a `ziz` repository or a language project by that name. It is intentionally *not* guessed into the registry. If “Ziz” refers to a private repository or a different spelling/owner, its canonical URL and intended role are needed before it can be indexed accurately.
 
----
+== Status and limitations
 
-=== Eclexia
+This is a research portfolio, not a unified language platform. Stages range from conceptual specifications to experimental implementations and partially verified cores. Readiness values are evidence-scoped; `TBD` means no coordinator-verified value, not a grade. The most recent cross-portfolio review is the link:docs/audits/2026-09-07-language-portfolio.md[7 September 2026 audit]; consult each upstream repository for changes since that snapshot.
 
-An “economics-as-code” language where resource constraints are first-class.
+The projects do not automatically share syntax, semantics, compilers, ABI, or release schedules. Connections in this repository are classified as **dependency**, **shared substrate**, **syntax surface**, **tool**, **curriculum**, or **research adjacency** so that a link does not imply an integration that has not been demonstrated.
 
-Status: implemented compiler/interpreter components and executable conformance tests. Resource semantics, optimization, and OikosBot integration have separate evidence boundaries; see the portfolio audit below.
+== Checks for this repository
 
----
+No language build is expected here. From the repository root, run:
 
-=== Betlang
+[source,bash]
+----
+bash hooks/validate-language-registry.sh
+bash hooks/validate-coordinator-boundary.sh
+----
 
-A probabilistic language built around ternary stochastic choice, with a canonical Racket implementation and additional backend/formal work.
+These check registry consistency and prevent language-specific implementation content from being copied into the coordinator. See link:QUICKSTART-DEV.adoc[the contributor quick start] for the full coordinator checks.
 
-Status: implemented experimental language; lazy evaluation, reproducible randomness, and backend agreement require their own conformance evidence.
+[WARNING]
+====
+**Open supply-chain follow-up:** `bash hooks/validate-sha-pins.sh` currently reports 29 workflow action references that use tags rather than commit SHAs. `.github/workflows/actions.lock` records tag-to-commit resolutions, but does not make those `uses:` lines immutable. The supported `gh actions-lock` tool could not be downloaded in this environment (release-asset transfer returned EOF), and the generated lock must not be hand-edited. Treat the SHA-pin check as outstanding until the lock tool can safely update workflows and lockfile together.
+====
 
----
+== Licensing
 
-=== Phronesis
-
-A domain-specific language for expressing ethical constraints in multi-agent systems.
-
-Status: early-stage.
-
----
-
-=== My-Lang (Solo ⊂ Duet ⊂ Ensemble)
-
-A multi-dialect experimental language family exploring different levels of abstraction and
-composition. The dialects are three and nested. *Me* is an agent-generated projection over
-that hierarchy — not a fourth dialect (see below).
-
-Status: partially implemented.
-
----
-
-=== Haec
-
-A Turing-complete language whose type discipline is *trope-particularity*: every
-operation on a property-instance carries a graded *loss-shape*, lowered to a
-language-neutral *Trope IR* and checked against a declared use-model by a separate,
-portable checker (`hyperpolymath/trope-checker`, an Idris2 verified core plus an
-executable). The named effects, residual, and verdict live in
-`hyperpolymath/trope-particularity-workbench`. Shares the loss-with-residue
-substrate with `echo-types`.
-
-Status: design (grammar + elaboration + round-tripping examples); the checker's
-verified core typechecks with no axioms.
-
----
-
-=== Firmboot
-
-https://github.com/hyperpolymath/firmboot[Firmboot] explores continuity through
-software change: current-state evidence, sufficient retained history and explicit
-handover obligations. It develops the temporal aspect of identity under
-transformation, while allowing a new implementation to make different future
-decisions without rewriting already committed observations and events.
-
-Status: research prototype with Agda and Lean models and an Elixir reference
-runner. General live-code loading, implementation refinement and physical
-availability remain open. Motivating directions include water conservation,
-environmental monitoring and desktop-session continuity, with explicit resource
-limits and stopping authority. See its
-https://github.com/hyperpolymath/firmboot/blob/main/PURPOSE.md[purpose and application directions].
-
----
-
-=== KitchenSpeak (experimental DSL — moved out)
-
-An experimental, formally-verified orchestration *DSL* for the domestic kitchen,
-used as a teaching vehicle for advanced type theory. It is no longer carried in
-this coordinator: its canonical home is the standalone
-link:https://github.com/hyperpolymath/kitchenspeak[`hyperpolymath/kitchenspeak`]
-repository — v2.0 puts *physics in the types* (so curdle / scorch /
-bake-the-spatula / over-torque are compile errors), with a reference OCaml
-compiler and machine-checked Agda proofs.
-
-== Common Principles
-
-Coordinator maintenance uses `hooks/validate-language-registry.sh` and
-`hooks/validate-coordinator-boundary.sh`. The Guix `manifest.scm` declares their
-shell and text-processing tools; run either with
-`guix shell -m manifest.scm -- bash hooks/<check>.sh`.
-Language compilers and proof toolchains remain in their own repositories.
-
-Across these languages:
-
-Formal semantics precede implementation
-Each language targets a specific structural guarantee
-Canonical intermediate representations (IRs) are preferred over direct compilation
-Languages are paired with database or verification systems where identity, provenance, or equivalence matter
-Type-theoretic boundaries are made explicit: total proof-like fragments are distinguished from partial or Turing-complete execution fragments
-
-== Relationship to Databases
-
-These languages are designed to work with systems that treat equivalence, provenance, and semantic identity as first-class concepts:
-
-KRL / QuandleDB belong to the separately coordinated database estate. Tangle is an independent language; no KRL-to-Tangle dependency is asserted here.
-JtV ↔ future equivalence-aware runtime and storage models
-
-See the nextgen-databases repository for details.
-
-== WasmGC Compilation Infrastructure
-
-Several languages in this family (AffineScript, Ephapax) compile to typed WebAssembly
-(WasmGC).  Their shared compilation target and binary convention infrastructure lives in
-a separate repository:
-
-* link:https://github.com/hyperpolymath/typed-wasm[`typed-wasm`] — TypeLL progressive type
-  safety for WasmGC linear memory, and the *aggregate library* that defines shared type
-  layout and ABI conventions for WasmGC-targeting languages.  AffineScript and Ephapax
-  reference `typed-wasm` as their binary convergence point.
-
-`typed-wasm` is not a language in the `nextgen-languages` sense — it is a compilation target
-and a library.  It lives in `nextgen-typing`'s scope (the type theory pipeline) but is
-documented here for discoverability.
-
-See also:
-* link:https://github.com/hyperpolymath/affinescript[`hyperpolymath/affinescript`] — affine type discipline, compiles to WasmGC
-* link:https://github.com/hyperpolymath/ephapax[`hyperpolymath/ephapax`] — dyadic linear/affine type system, compiles to WasmGC
-
-== Shared Formal Substrate — echo-types
-
-Several languages here reason about *irreversible transformation with retained
-residue* — an egg cannot be uncracked, flour and water become dough. The
-formal account of that idea lives in a separate repository:
-
-* link:https://github.com/hyperpolymath/echo-types[`echo-types`] — a
-  constructive Agda library for *Echo types*: the proof-relevant residue of
-  structured (non-total) loss, `Echo f y := Σ (x : A), f x ≡ y`. Its
-  link:https://github.com/hyperpolymath/EchoTypes.jl[`EchoTypes.jl`] companion
-  is an executable finite-domain model.
-
-KitchenSpeak is the first consumer: per ADR 0004 its Echo type attaches to the
-*Linear/Dyadic* consumption types (where irreversible transformation and
-provenance live), with `echo-types` as the substrate. `echo-types` is not a
-language in the `nextgen-languages` sense — it is a shared formal library.
-
-== Status
-
-This repository should be read as a *research-exploration coordinator* rather than a
-production system. The work it tracks spans, across the individual language repos:
-
-* formal proofs (e.g. the Tangle core)
-* partial compilers and grammars
-* design documents and specifications
-
-== Portfolio Audit
-
-link:docs/audits/2026-09-07-language-portfolio.md[The 7 September 2026 portfolio audit]
-examines language identity and lineage, implementation/proof boundaries, type
-foundations, augmentation tools, and the semantic and security checks needed for
-merging. Its findings are scoped to recorded repository snapshots; they are not
-new blanket TRG/CRG/FRG/ARG ratings.
-
-The audit also covers link:https://github.com/hyperpolymath/nextgen-typing[nextgen-typing],
-link:https://github.com/hyperpolymath/kategoria[Kategoria],
-link:https://github.com/hyperpolymath/typell[TypeLL], and typed-wasm, distinguishing
-research proposals from executable consumer integration.
-
-== Suggested Entry Points
-
-Each language lives in its own `hyperpolymath/<lang>` repo; start there. For orientation:
-
-* link:https://github.com/hyperpolymath/tangle[`hyperpolymath/tangle`] — `Tangle.lean`, the
-  mechanised type-safety proof for the Tangle core; topological language design
-* link:https://github.com/hyperpolymath/jtv[`hyperpolymath/jtv`] — computation as
-  path-based construction
-
-== Pedagogy and Learner Materials
-
-Teaching and learning materials for the languages in this family are *not* hosted in
-this repo. They live in two distinct layers:
-
-* **Curriculum source of truth** — link:https://github.com/hyperpolymath/tentacles-agentic-syllabus[`tentacles-agentic-syllabus`] (top-level
-  repo; previously `hyperpolymath/7-tentacles`). This is the aspect-agent-driven curriculum
-  framework that defines the syllabus, the agents, the kin framework, and the (to-be-built)
-  Me runtime projector that generates per-learner, per-task scoped views over the real
-  language. **Me is not a fourth dialect of any language here** — it is an on-the-fly
-  projection over whichever base dialect a learner picks, produced from an A2ML task spec
-  by the aspect-agents.
-
-* **Per-language applied layers** — my-lang's applied learner & teacher materials live in
-  `my-lang/frontier-practices/` (previously `my-lang/7-tentacles/`). This parallels the
-  pattern of `~/Desktop/Frontier_Programming_Practices_AffineScript/` for AffineScript.
-  Other languages may grow their own `frontier-practices/` subdirectories as their applied
-  learning surface matures.
-
-This coordinator points at the *language implementations* — compilers, grammars, type
-systems, semantics — which live in each `hyperpolymath/<lang>` repo, not here. If you are
-looking for lessons, exercises, worked examples, or curriculum content, start in
-`tentacles-agentic-syllabus` and the relevant language's `frontier-practices/` directory.
-
-=== Historical Note — Me Pivot
-
-A standalone exploratory attempt to build Me as a static dialect compiler
-(`hyperpolymath/me-dialect` on GitHub) has been archived. The earlier in-tree scaffolding
-at `my-lang/dialects/me/` has been sidelined to `my-lang/_exploratory/me-scaffolding/`.
-See that directory's `SIDELINED.adoc` and the `tentacles-agentic-syllabus/me/README.adoc`
-design document for the architectural pivot: Me is an agent-generated runtime projection,
-not a static dialect compiler.
+Project code and configuration use MPL-2.0; documentation uses CC-BY-SA-4.0 as marked in file headers. See link:LICENSE[LICENSE] and `LICENSES/` for the license texts.

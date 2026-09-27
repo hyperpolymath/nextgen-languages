@@ -24,7 +24,7 @@ language's own repo. This boundary is mechanically enforced by
 `hooks/validate-coordinator-boundary.sh` (CI job `coordinator-boundary` in
 `.github/workflows/dogfood-gate.yml`). Content that *does* belong here:
 cross-language indexes and status trackers, governance, CI, and the
-`.machine_readable/` coordination metadata. When in doubt, see `EXTRACTION-MANIFEST.md`.
+`.machine_readable/` coordination metadata. When in doubt, see `EXTRACTION-MANIFEST.adoc`.
 
 ### Canonical File Locations (ONLY THESE - NO DUPLICATES)
 
@@ -90,7 +90,7 @@ private repo (`The-Metadatastician/007`, a deliberate anti-training-scrape preca
 
 Per-language paradigm, mechanism, and implementation status are tracked across the
 coordinator's cross-language files (`TOOLING-STATUS.adoc`, `language-status-tracker.jl`,
-`TEST-NEEDS.md`, `PROOF-NEEDS.md`, `.machine_readable/LANGUAGES.a2ml`) — not duplicated
+`TEST-NEEDS.adoc`, `PROOF-NEEDS.adoc`, `.machine_readable/LANGUAGES.a2ml`) — not duplicated
 in-tree.
 
 ### Shared substrate & related repos (referenced, not vendored)
@@ -115,20 +115,3 @@ in-tree.
 4. Follow patterns and constraints from `.machine_readable/descriptiles/AGENTIC.a2ml`
 5. Respect the COORDINATOR BOUNDARY: language-specific work goes in that language's own repo
 6. Update `.machine_readable/descriptiles/STATE.a2ml` after completing work
-
-<!-- BEGIN requires-initialisation -->
-
-## PRIORITY ACTION — this repository is not fully initialised
-
-9 substitution token(s) still have no value. **Read
-`REQUIRES_INITIALISATION.md` in the repository root before doing anything
-else here** — it lists every outstanding token, what it means, and which
-files it belongs in.
-
-Do not fabricate values for them, and do not delete the sections that
-contain them to quiet a gate. They are unfilled because they need a
-decision, not because they were overlooked. Resolve what you legitimately
-can, leave the rest, and delete `REQUIRES_INITIALISATION.md` only when
-nothing outstanding remains.
-
-<!-- END requires-initialisation -->

@@ -5,32 +5,27 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-09-07"
+last-updated = "2026-09-26"
 status = "active"
 
 [project-context]
 name = "nextgen-languages"
+# Coarse historical estimate of coordinator setup, not language-family completion or readiness.
 completion-percentage = 15
-phase = "CRG C achieved for ephapax workspace (2026-04-04); pure-coordinator pivot finalized — in-tree kitchenspeak/ snapshot removed (canonical at hyperpolymath/kitchenspeak), coordinator-boundary guard added (2026-06-19)"
+phase = "Pure coordinator; core registry and navigation maintained, dated portfolio audit available, and adjacent-project map refreshed 2026-09-26. No shared language build or family-wide maturity target."
 
 [crg-status]
-overall = "CRG C achieved 2026-04-04"
-ephapax-rust-workspace = "CRG C: 330 tests across 17 crates, all passing"
-tangle-ocaml = "94 tests passing (adequate coverage)"
-affinescript-ocaml = "64 tests (22 pre-existing failures, not regressions)"
+overall = "Not assessed at coordinator level. Language-specific readiness is independent and must be checked upstream."
+ephapax-rust-workspace-historical = "CRG C was reported 2026-04-04; current value not verified here"
+tangle-historical = "94 tests were reported in an earlier snapshot; current count and adequacy not verified here"
+affinescript-historical = "64 tests and 22 pre-existing failures were reported in an earlier snapshot; current count and status not verified here"
 
 [test-coverage]
-# Rust (ephapax workspace) — workspace total
-ephapax-workspace-total = "330 tests, 100% pass rate"
-
-# New test additions (2026-04-04)
-ephapax-linear-new = "17 new tests: 5 P2P property, 4 E2E, 6 aspect, 2 unit"
-ephapax-lexer-new = "9 new tests: 4 P2P property, 2 E2E, 3 aspect"
-
-# Test categories added
-p2p-property-tests = "Loop-based invariant checks (10-20 iterations each)"
-e2e-tests = "Full pipeline: lexer->tokens, module->discipline check"
-aspect-tests = "Robustness: empty inputs, stateless checkers, edge cases"
+# The figures below are dated coordinator snapshots, not live test claims.
+ephapax-workspace-historical = "330 tests across 17 crates was reported 2026-04-04; re-check the canonical repository before reuse"
+ephapax-linear-historical = "17 test additions were reported 2026-04-04; current status not verified"
+ephapax-lexer-historical = "9 test additions were reported 2026-04-04; current status not verified"
+test-categories-historical = "Prior notes described property, end-to-end, and robustness tests; current coverage is owned by each language repository"
 
 [ci-governance]
 # Outcome of the 2026-06 CI hygiene pass.
@@ -43,9 +38,12 @@ hypatia-waivers = "recurring advisory findings triaged in .machine_readable/desc
 codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
+portfolio-navigation = "2026-09-26: rewrote README and EXPLAINME as a real front door and architecture guide; added a relationship-typed ecosystem map; updated language pointers and BerryWiki-compatible portfolio navigation. Publicly searchable AffineScript surfaces, Kategoria, Panoply, education projects, and selected language tools are discoverable without being added as core language members."
+coordinator-quickstarts = "2026-09-26: replaced template-era build/deploy instructions and echo-only task recipes with accurate coordinator validation commands; removed resolved REQUIRES_INITIALISATION state. Replaced unsupported generic wiki claims and deprecated machine-specific FormBD/VeriSimDB plans with scope-accurate guides and pointers; corrected dated affirmation and normative-scope records, and moved SPDX headers to the required first line of workflow files."
+unresolved-ziz = "2026-09-26: no public ziz repository was identified in the Hyperpolymath or Metadatastician estate searches; no project facts or private URLs were fabricated. Await canonical URL and visibility-safe description if this means a private/differently named project."
 firmboot = "2026-09-07: indexed the public continuity research prototype, linked its synchronic/diachronic identity framing and ecological/desktop application directions, and retained specifications and proofs in its standalone repo. Readiness grades remain unassigned."
 # Landed since the 2026-06-02 STATE refresh (witness: git log).
-coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.md"
+coordinator-boundary = "2026-06-19: finalized pure-coordinator pivot — removed in-tree kitchenspeak/ snapshot (canonical at hyperpolymath/kitchenspeak), added hooks/validate-coordinator-boundary.sh guard + dogfood-gate coordinator-boundary CI job, rewrote stale monorepo instructions (0-AI-MANIFEST/EXPLAINME), staged per-language docs to extraction-queue/ with EXTRACTION-MANIFEST.adoc"
 pr-68 = "KitchenSpeak registered in LANGUAGES.a2ml and Intentfile (an earlier note also claimed Mustfile; the Mustfile carries no per-language entries — corrected 2026-07-02)"
 registry-reconciliation = "2026-07-02: reconciled all language-registry surfaces to the canonical 15-entry family (14 languages incl. 007 + KitchenSpeak DSL). LANGUAGES.a2ml rewritten to a single [[language]] schema (legacy do-not-parse s-expr blob dropped; typefix-zero added as status=proposed); added error-lang/tangle/kitchenspeak pointers + indexed 007 in languages/; added haec+007 to ECOSYSTEM/0-AI-MANIFEST/boundary-hook LANGS; fixed the affinescript-dialects bug in Intentfile; marked me-dialect retired and split out adjacent DB/type-theory estates in TOOLING-STATUS"
 pr-69 = "ReScript banned estate-wide (Hyperpolymath Standard); CLAUDE.md + policy tables updated"
@@ -56,11 +54,11 @@ estate-standardization = "2026-06-12: origin/estate-standardization-20260607 mer
 governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet, git-private-farm), flat Dustfile/Bustfile added, STATE bumped, wiki status note"
 
 [blockers]
-governance-pin = "governance-reusable.yml referenced at @main; SHA pin pending authenticated lookup (NEUROSYM [waivers.governance-reusable-pin])"
+action-sha-pins = "bash hooks/validate-sha-pins.sh reports 29 mutable tag refs across workflows. The official gh-actions-lock extension is not installed and release-asset downloads failed with EOF in this environment. The existing generated actions.lock maps tags to commits but does not make workflow uses lines SHA-pinned. Do not hand-edit the generated lock; rerun gh actions-lock with its safe no-migrate/no-onboard options when the tool is available."
 
 [next-actions]
-claude-md-paths = "maintainer edit needed: .claude/CLAUDE.md references my-lang/frontier-practices/ and my-lang/_exploratory/me-scaffolding/, which are not visible in-tree (paths live inside the my-lang submodule); proposed as issue at the 2026-06-12 checkpoint"
-verisim-naming = "integrations/verisim.a2ml vs siblings' verisimdb.a2ml — naming alignment proposed as issue, not renamed unilaterally"
+verisim-naming = "Owner decision remains: .machine_readable/integrations/verisim.a2ml describes integration.name = verisimdb and points to nextgen-databases. Consider a consistent filename, but do not rename without confirming downstream readers and the canonical integration naming rule."
+lineage-review = "Confirm whether hyperpolymath/jtv-lang is an alias, predecessor, or separate project from canonical hyperpolymath/jtv before changing either registry pointer."
 
 [language-portfolio-audit-20260907]
 scope = "Evidence audit and scoped repairs; no blanket readiness upgrade"

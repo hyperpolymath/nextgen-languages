@@ -4,7 +4,12 @@
 :toc:
 :toclevels: 2
 
-Registry surfaces reconciled 2026-07-02; language *grades* below unverified since 2026-03-21.
+Registry surfaces reconciled 2026-09-26; language *grades* below unverified since 2026-03-21.
+
+[WARNING]
+====
+This file contains legacy tooling and integration matrices captured at different times. The tables below are *not a current verified inventory*: some rows are explicitly TBD, and the BoJ/tooling claims have not been revalidated as part of the 2026-09-26 coordinator update. Do not treat an entry as implemented or available without checking its canonical project and the dated portfolio audit. The stable role map is link:docs/ecosystem-map.adoc[docs/ecosystem-map.adoc].
+====
 
 == Overview
 
@@ -47,7 +52,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 
 | **My**
 | TBD | TBD | D-leaning-E | X | FULL
-| 11 crates, 3 dialects (Solo ⊂ Duet ⊂ Ensemble; Me is a runtime projection, not a dialect). PROOF-NEEDS.md honestly records template-ABI removal (FRG-X discipline).
+| 11 crates, 3 dialects (Solo ⊂ Duet ⊂ Ensemble; Me is a runtime projection, not a dialect). PROOF-NEEDS.adoc honestly records template-ABI removal (FRG-X discipline).
 
 | **Eclexia** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
 | **Betlang** | TBD | TBD | TBD | TBD | TBD | Profile not yet authored.
@@ -61,7 +66,7 @@ Cross-axis invariants: ARG ≤ TRG always; ARG-A requires FRG ≥ B.
 | TBD | TBD | TBD | TBD | FULL
 | Trope-particularity front-end (design pass: grammar + elaboration + round-tripping examples). Siblings: trope-checker (Idris2 verified core + executable checker, conformance), trope-particularity-workbench (the nine-effect vocabulary).
 | **Kitchenspeak** | TBD | TBD | TBD | TBD | TBD | Proofs commenced (Dough, PoachedEgg, EchoBridge); ADR 0001–0004; echo-types dependency. Profile not yet authored.
-| **Tangle** | TBD | TBD | TBD | TBD | TBD | Topological (knot/braid) language; Lean core proofs. TangleIR feeds the separate KRL resolution stack (see Adjacent estates).
+| **Tangle** | TBD | TBD | TBD | TBD | TBD | Topological (knot/braid) language; Lean core proofs. Earlier notes conflated Tangle with the KRL resolution stack; Tangle's own README retracts this. No dependency is asserted here; verify the Tangle repository and ecosystem map.
 | **007** | TBD | TBD | TBD | TBD | TBD | Agent meta-language; private repo (`The-Metadatastician/007`, anti-training-scrape); specification stage; profile not yet authored.
 | **Firmboot** | TBD | TBD | TBD | TBD | TBD | Research prototype: checked Agda/Lean models and Elixir reference runner. See https://github.com/hyperpolymath/firmboot/blob/main/VERIFICATION.md[evidence and limits]. No readiness grade or BoJ integration is claimed.
 | **Me-dialect** (retired) | X | X | X | X | X | RETIRED — superseded by the *Me* runtime projection (`tentacles-agentic-syllabus/me/README.adoc`). `hyperpolymath/me-dialect` archived; in-tree scaffolding sidelined. Not a language; kept only to explain the retirement.

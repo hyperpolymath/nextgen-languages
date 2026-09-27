@@ -8,7 +8,7 @@
 # language-implementation content leaks back into the coordinator, which is how
 # the monorepo->coordinator pivot kept regressing.
 #
-# See 0-AI-MANIFEST.a2ml "COORDINATOR BOUNDARY" and EXTRACTION-MANIFEST.md.
+# See 0-AI-MANIFEST.a2ml "COORDINATOR BOUNDARY" and EXTRACTION-MANIFEST.adoc.
 set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
@@ -37,7 +37,7 @@ for f in "${FILES[@]}"; do
   case "$f" in "$ALLOW_PREFIX"*) continue ;; esac
   if [[ "$f" =~ $LANG_EXT_RE ]]; then
     echo "ERROR: language-implementation source in coordinator: $f"
-    echo "  -> belongs in that language's own hyperpolymath/<lang> repo (see EXTRACTION-MANIFEST.md)"
+    echo "  -> belongs in that language's own hyperpolymath/<lang> repo (see EXTRACTION-MANIFEST.adoc)"
     ERRORS=$((ERRORS + 1))
   elif [[ "$f" =~ $IMPL_EXT_RE ]] && [[ "$f" =~ $IMPL_DIR_RE ]]; then
     echo "ERROR: compiler/implementation source tree in coordinator: $f"

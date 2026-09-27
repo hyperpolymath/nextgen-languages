@@ -1,54 +1,82 @@
-== Language Quick Reference
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= Language Quick Reference
 
-Each language has one core invariant that defines its design philosophy.
+This directory contains *thin coordinator pointers*, not language specifications. The canonical implementation and current status for each entry live in the linked repository. Registry membership is not a maturity claim.
 
-[width="100%",cols="48%,52%",options="header",]
+[cols="1,2,3"]
 |===
-|Language |Invariant
-|link:my-lang.adoc[my-lang] |Each level builds exactly on the previous
+| Project | Core design question / invariant | Canonical repository
 
-|link:phronesis.adoc[phronesis] |Every AI decision traces to declared
-values
+| link:my-lang.adoc[My-Lang]
+| Nested dialect family: Solo ⊂ Duet ⊂ Ensemble. “Me” is a projection, not a fourth dialect.
+| https://github.com/hyperpolymath/my-lang[hyperpolymath/my-lang]
 
-|link:eclexia.adoc[eclexia] |No computation without explicit resource
-budget
+| link:phronesis.adoc[Phronesis]
+| How can declared values shape and explain agent decisions?
+| https://github.com/hyperpolymath/phronesis[hyperpolymath/phronesis]
 
-|link:oblibeny.adoc[oblibeny] |All programs must provably terminate
+| link:eclexia.adoc[Eclexia]
+| How can resource budgets become explicit in computation?
+| https://github.com/hyperpolymath/eclexia[hyperpolymath/eclexia]
 
-|link:anvomidav.adoc[anvomidav] |Every deadline is statically guaranteed
+| link:oblibeny.adoc[Oblíbený]
+| How can authoring-time expressivity be separated from constrained deployment?
+| https://github.com/hyperpolymath/oblibeny[hyperpolymath/oblibeny]
 
-|link:wokelang.adoc[wokelang] |No operation without explicit consent
+| link:anvomidav.adoc[Anvomidav]
+| How can real-time timing constraints be represented and checked?
+| https://github.com/hyperpolymath/anvomidav[hyperpolymath/anvomidav]
 
-|link:betlang.adoc[betlang] |All uncertainty must be explicitly modeled
+| link:wokelang.adoc[WokeLang]
+| How can consent and awareness be expressed in a program?
+| https://github.com/hyperpolymath/wokelang[hyperpolymath/wokelang]
 
-|link:jtv.adoc[jtv] |Data and code are strictly separated
+| link:betlang.adoc[betlang]
+| How should programs represent uncertainty and stochastic choice?
+| https://github.com/hyperpolymath/betlang[hyperpolymath/betlang]
 
-|link:affinescript.adoc[affinescript] |Every resource is used at most once
+| link:jtv.adoc[JtV]
+| How can computation be modeled as constrained construction with data/control separation?
+| https://github.com/hyperpolymath/jtv[hyperpolymath/jtv]
 
-|link:ephapax.adoc[ephapax] |Every value can be consumed exactly once
+| link:affinescript.adoc[AffineScript]
+| How can types constrain resource use to at most once?
+| https://github.com/hyperpolymath/affinescript[hyperpolymath/affinescript]
 
-|link:haec.adoc[haec] |Every quality-loss is graded and checked against
-its use
+| link:ephapax.adoc[Ephapax]
+| How can linear and affine resource disciplines be expressed and checked?
+| https://github.com/hyperpolymath/ephapax[hyperpolymath/ephapax]
 
-|link:error-lang.adoc[error-lang] |Errors are first-class: systems
-thinking taught through failure
+| link:haec.adoc[Haec]
+| How can graded property loss be represented and checked against use?
+| https://github.com/hyperpolymath/haec[hyperpolymath/haec]
 
-|link:tangle.adoc[tangle] |Programs are braids; equivalence is topological
-isotopy
+| link:error-lang.adoc[Error-Lang]
+| How can errors serve as first-class material for systems thinking?
+| https://github.com/hyperpolymath/error-lang[hyperpolymath/error-lang]
 
-|link:007.adoc[007] |Agents that make agents (private repo, anti-scrape;
-index-only)
+| link:tangle.adoc[Tangle]
+| How can program equivalence be related to topological isotopy?
+| https://github.com/hyperpolymath/tangle[hyperpolymath/tangle]
 
-|link:kitchenspeak.adoc[kitchenspeak] |Physical-process constraints are
-enforced in the types
+| link:007.adoc[007]
+| Agent meta-language; private and index-only.
+| Private repository; no public source link
 
-|link:firmboot.adoc[firmboot] |Admitted changes preserve declared
-continuity obligations (research prototype)
+| link:kitchenspeak.adoc[KitchenSpeak]
+| Experimental domain-specific orchestration DSL with physical-process constraints.
+| https://github.com/hyperpolymath/kitchenspeak[hyperpolymath/kitchenspeak]
+
+| link:firmboot.adoc[Firmboot]
+| What continuity obligations should survive admitted software changes?
+| https://github.com/hyperpolymath/firmboot[hyperpolymath/firmboot]
 |===
 
-Each row links to a thin pointer; the language itself lives in its own
-`+hyperpolymath/<lang>+` repo. For cross-language status see
-link:../TOOLING-STATUS.adoc[`+../TOOLING-STATUS.adoc+`],
-link:../.machine_readable/LANGUAGES.a2ml[`+../.machine_readable/LANGUAGES.a2ml+`],
-and
-link:../language-status-tracker.jl[`+../language-status-tracker.jl+`].
+The registry also records *TypeFix Zero* as an exploratory/private item under review. It has no `languages/` pointer because it is not yet a committed portfolio member.
+
+== Related but not additional core languages
+
+The AffineScript syntax surfaces (CafeScripto, JaffaScript, LucidScript, PseudoScript, and RattleScript), Kategoria, Panoply, typed-wasm, echo-types, `*-iser` tools, and teaching projects are mapped separately in link:../docs/ecosystem-map.adoc[the ecosystem map]. Keeping these categories separate prevents a tool, surface, substrate, or curriculum from being mistaken for another core language.
+
+For evidence and cross-language status, see link:../TOOLING-STATUS.adoc[`TOOLING-STATUS.adoc`], link:../.machine_readable/LANGUAGES.a2ml[the registry], and the dated link:../docs/audits/2026-09-07-language-portfolio.md[portfolio audit].

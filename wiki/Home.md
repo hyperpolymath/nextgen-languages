@@ -1,130 +1,41 @@
-<!--
-SPDX-License-Identifier: CC-BY-SA-4.0
-Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+<!-- berrywiki
+id: 0199a001-0000-7000-8000-000000000001
+parent: null
+position: 0
+kind: page
+tags:
+  - index
+  - portfolio
+archived: false
 -->
-# NextGen Languages Wiki
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk> -->
+# Next-Generation Languages — Wiki Home
 
-Welcome to the NextGen Languages ecosystem documentation.
+This wiki is the *orientation layer* for the Next-Generation Languages portfolio. It does not contain language implementations or replace project documentation. Each language's canonical repository is the source of truth for its grammar, compiler, proofs, examples, and current status.
 
-## Quick Navigation
+## Start here
 
-### Getting Started
-- [[Installation]]
-- [[Your First Program]]
-- [[Choosing a Language]]
-- [[IDE Setup]]
+- [[Portfolio]] — the indexed projects, grouped by research area.
+- [[Ecosystem-Connections]] — how languages, syntax surfaces, libraries, tools, and teaching projects relate.
+- [[Contributor-Guide]] — what belongs in this coordinator and where work should go.
 
-### Languages
-Per-language guides live in each language's **own repo** — this coordinator no longer hosts
-them (see [External Repositories](#external-repositories) below). Quick map:
-- **My-Lang family** (`hyperpolymath/my-lang`): Solo → Duet → Ensemble. *Me* is not a fourth
-  dialect — it is an agent-generated projection over that hierarchy.
-- **Foundational**: betlang (probabilistic), jtv (systems / Harvard architecture)
-- **Specialized**: Phronesis, Eclexia, Oblíbený, Anvomidav, WokeLang, AffineScript, Ephapax
+For the main repository front door, see [README.adoc](../README.adoc). The deeper architectural explanation is [EXPLAINME.adoc](../EXPLAINME.adoc).
 
-### Tooling
-- [[Lexer Design]]
-- [[Parser Architecture]]
-- [[Compiler Pipeline]]
-- [[Interpreter Implementation]]
-- [[REPL Guide]]
-- [[Language Server Protocol]]
-- [[Package Manager]]
-- [[Build System]]
+## Quick orientation
 
-### Frameworks & Libraries
-- [[Standard Library]]
-- [[Web Framework]]
-- [[GUI Framework]]
-- [[Game Framework]]
-- [[Data Science Libraries]]
+`nextgen-languages` is a *coordinator*, not a monorepo. Its registry has 17 records: 16 committed portfolio entries plus one exploratory/private TypeFix Zero record. Adjacent language surfaces, foundations, tools, and curriculum projects are kept distinct. A project link means “go here to learn more,” not “these projects are integrated.”
 
-### Tutorials
-- [[Tutorial: Hello World]]
-- [[Tutorial: Variables and Types]]
-- [[Tutorial: Control Flow]]
-- [[Tutorial: Functions]]
-- [[Tutorial: Modules]]
-- [[Tutorial: Testing]]
-- [[Tutorial: Building Projects]]
+- [Canonical language index](../languages/README.adoc)
+- [Machine-readable registry](../.machine_readable/LANGUAGES.a2ml)
+- [Portfolio map](../docs/ecosystem-map.adoc)
+- [Tooling and evidence status](../TOOLING-STATUS.adoc)
+- [Dated portfolio audit](../docs/audits/2026-09-07-language-portfolio.md)
 
-### Reference
-- [[Grammar Specifications]]
-- [[AST Node Reference]]
-- [[Standard Library API]]
-- [[Error Messages]]
-- [[Configuration]]
+## BerryWiki compatibility
 
-### Contributing
-- [[How to Contribute]]
-- [[Code Style Guide]]
-- [[Testing Guidelines]]
-- [[Documentation Guide]]
-- [[Release Process]]
+These pages are plain Markdown with BerryWiki's hidden metadata block. They remain readable in ordinary Markdown viewers; BerryWiki is an optional authoring and navigation layer, not a runtime dependency. With BerryWiki installed, browse this local folder using `berrywiki serve ./wiki --no-commit`. This coordinator repository's `wiki/` folder is a BerryWiki-compatible notebook source, not the separate `metadatastician/berrywiki` application repository or a claim that content has been published to a GitHub `.wiki.git` remote. The pages intentionally stay portfolio-level rather than copying per-language specifications into the coordinator.
 
----
+## Scope note
 
-## About the Project
-
-NextGen Languages is a family of programming languages designed to grow with learners from age 8 through professional practice. The ecosystem includes:
-
-- **Dialect progression**: Solo → Duet → Ensemble (nested). *Me* is an agent-generated projection over these, not a fourth dialect (see the My-Lang note above).
-- **Specialized tools**: Languages for probabilistic programming, real-time systems, creative synthesis, and more
-- **Unified tooling**: Shared infrastructure for all languages
-- **Open ecosystem**: Community-driven development
-
-## Repository Structure
-
-```
-nextgen-languages/          # This coordinator (references languages; contains none)
-├── wiki/                   # Cross-language, language-agnostic docs (you are here)
-├── docs/                   # Cross-language design & disambiguation notes
-├── scripts/                # Coordinator utility scripts
-├── language-status-tracker.jl     # Cross-language status tracker
-├── ROADMAP.adoc            # Coordinator roadmap
-├── .machine_readable/LANGUAGES.a2ml  # Language registry (points at the repos)
-└── README.adoc             # Project overview
-```
-
-Each language is its own standalone repo — see **External Repositories** below. The
-coordinator boundary (no language code in-tree) is enforced by
-`hooks/validate-coordinator-boundary.sh`.
-
-## External Repositories
-
-| Repository | Description |
-|------------|-------------|
-| [my-lang](https://github.com/hyperpolymath/my-lang) | My-Lang — Solo / Duet / Ensemble dialect family |
-| [affinescript](https://github.com/hyperpolymath/affinescript) | AffineScript — affine types → WASM |
-| [ephapax](https://github.com/hyperpolymath/ephapax) | Ephapax — dyadic linear/affine types |
-| [phronesis](https://github.com/hyperpolymath/phronesis) | Phronesis — agent ethics |
-| [eclexia](https://github.com/hyperpolymath/eclexia) | Eclexia — resource-first computing |
-| [oblibeny](https://github.com/hyperpolymath/oblibeny) | Oblíbený — Turing-incomplete deployment |
-| [anvomidav](https://github.com/hyperpolymath/anvomidav) | Anvomidav — hard real-time |
-| [wokelang](https://github.com/hyperpolymath/wokelang) | WokeLang — consent-first |
-| [betlang](https://github.com/hyperpolymath/betlang) | betlang — probabilistic |
-| [jtv](https://github.com/hyperpolymath/jtv) | JtV — systems, Harvard architecture |
-| [error-lang](https://github.com/hyperpolymath/error-lang) | error-lang — pedagogical |
-| [haec](https://github.com/hyperpolymath/haec) | Haec — trope-particularity, graded quality-loss |
-| [tangle](https://github.com/hyperpolymath/tangle) | Tangle — topological (knot/braid); TangleIR feeds the separate KRL stack |
-| 007 (private: `The-Metadatastician/007`) | 007 — agent meta-language (anti-scrape; no public link) |
-| [kitchenspeak](https://github.com/hyperpolymath/kitchenspeak) | KitchenSpeak — experimental DSL |
-
-## Project Status (2026-06-12)
-
-- **KitchenSpeak** (experimental kitchen-orchestration DSL) was extracted to its own canonical
-  repo [hyperpolymath/kitchenspeak](https://github.com/hyperpolymath/kitchenspeak); the in-tree
-  snapshot has been removed. Per-language content now lives in each language's own repo
-  (enforced by `hooks/validate-coordinator-boundary.sh`).
-- **ReScript banned estate-wide** per the Hyperpolymath Standard (PR #69).
-- **Estate standardization merged** (2026-06-12): flat contractiles under
-  `.machine_readable/contractiles/` are now canonical (root `contractiles/` and
-  `.machine_readable/*.contractile` retired, content ported), governance docs
-  (GOVERNANCE.adoc, MAINTAINERS.adoc, CODEOWNERS) added, `agent_instructions/`
-  renamed `bot_directives/`, `flake.nix` removed (Guix is the package manifest).
-- **CodeQL cron** reduced weekly → monthly (standards#288).
-
-## Getting Help
-
-- [GitHub Issues](https://github.com/hyperpolymath/nextgen-languages/issues)
-- [Discussions](https://github.com/hyperpolymath/nextgen-languages/discussions)
+The public estate search on 2026-09-26 did not identify a public language repository named `ziz`. The name remains an unresolved discovery item, not an invented portfolio entry. If it refers to a private project, do not publish a link or private details here without an approved visibility-safe pointer.

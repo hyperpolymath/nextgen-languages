@@ -39,3 +39,38 @@ tangle = "hyperpolymath/tangle"
 wokelang = "hyperpolymath/wokelang"
 kitchenspeak = "hyperpolymath/kitchenspeak"
 firmboot = "hyperpolymath/firmboot"
+
+# Adjacent discovery links. These are not registry members unless separately
+# listed under [language-repos]; see docs/ecosystem-map.adoc for relationship
+# types and scope boundaries.
+[portfolio-adjacent]
+affinescript-surfaces = [
+  "hyperpolymath/cafescripto",
+  "hyperpolymath/jaffascript",
+  "hyperpolymath/lucidscript",
+  "hyperpolymath/pseudoscript",
+  "hyperpolymath/rattlescript",
+]
+foundations-and-disciplines = [
+  "hyperpolymath/kategoria",
+  "hyperpolymath/panoply",
+  "hyperpolymath/typed-wasm",
+  "hyperpolymath/echo-types",
+]
+language-tools = [
+  "hyperpolymath/affinescriptiser",
+  "hyperpolymath/anvomidaviser",
+  "hyperpolymath/betlangiser",
+  "hyperpolymath/eclexiaiser",
+  "hyperpolymath/ephapaxiser",
+  "hyperpolymath/mylangiser",
+  "hyperpolymath/phronesiser",
+  "hyperpolymath/wokelangiser",
+]
+education = [
+  "hyperpolymath/tentacles-agentic-syllabus",
+  "hyperpolymath/nextgen-language-evangeliser",
+]
+wiki-tooling = "metadatastician/berrywiki (optional authoring/navigation tool; portfolio wiki content is plain Markdown in this repository)"
+lineage-needs-review = ["hyperpolymath/jtv-lang"]
+unresolved-name = "ziz (no public canonical repository identified as of 2026-09-26)"

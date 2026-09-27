@@ -1,0 +1,199 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= Ecosystem Map — Projects, Roles, and Connections
+:toc:
+:toclevels: 3
+
+This map is a *navigation aid*, not a claim that the projects form one integrated product. The core member list remains `.machine_readable/LANGUAGES.a2ml`; projects below it are grouped by role so that related work can be found without conflating it with a language implementation.
+
+[NOTE]
+====
+**Current as of 2026-09-26.** Repository descriptions and public repository existence were checked for the newly added adjacent-project links. Relationship classifications describe portfolio scope, not a fresh code audit of each upstream repository. Follow the canonical links for current content.
+====
+
+== 1. Core indexed portfolio
+
+The registry has 17 records: 16 committed entries with human pointers, plus one exploratory/private TypeFix Zero record that is not yet a committed family member. Each public project below owns its implementation and detailed specification in its own repository. The list is grouped for discovery, not ranked by maturity.
+
+[cols="1,2,2,2"]
+|===
+| Research area | Project | Coordinator-level description | Canonical home
+
+| Resources, usage, and execution constraints
+| AffineScript
+| Affine resource discipline; familiar syntax surfaces are listed separately below.
+| https://github.com/hyperpolymath/affinescript[affinescript]
+
+| Resources, usage, and execution constraints
+| Ephapax
+| Dyadic linear/affine type-system research.
+| https://github.com/hyperpolymath/ephapax[ephapax]
+
+| Resources, usage, and execution constraints
+| Eclexia
+| Resource-aware language research.
+| https://github.com/hyperpolymath/eclexia[eclexia]
+
+| Resources, usage, and execution constraints
+| Oblíbený
+| Phase-separated and constrained deployment language research.
+| https://github.com/hyperpolymath/oblibeny[oblibeny]
+
+| Normative, social, and timing constraints
+| Phronesis
+| Language research for declared values and ethical reasoning.
+| https://github.com/hyperpolymath/phronesis[phronesis]
+
+| Normative, social, and timing constraints
+| WokeLang
+| Consent and awareness-oriented language research.
+| https://github.com/hyperpolymath/wokelang[wokelang]
+
+| Normative, social, and timing constraints
+| Anvomidav
+| Real-time and choreographic language research.
+| https://github.com/hyperpolymath/anvomidav[anvomidav]
+
+| Computation and learning
+| My-Lang
+| Nested dialect family Solo ⊂ Duet ⊂ Ensemble. “Me” is a runtime projection, not a fourth dialect.
+| https://github.com/hyperpolymath/my-lang[my-lang]
+
+| Computation and learning
+| betlang
+| Probabilistic language research.
+| https://github.com/hyperpolymath/betlang[betlang]
+
+| Computation and learning
+| JtV
+| Computation-as-construction and data/control separation research.
+| https://github.com/hyperpolymath/jtv[jtv]
+
+| Computation and learning
+| Error-Lang
+| Pedagogical language focused on systems thinking through errors.
+| https://github.com/hyperpolymath/error-lang[error-lang]
+
+| Equivalence, properties, and change
+| Tangle
+| Topological language research; its KRL adjacency is not a claim of language equivalence.
+| https://github.com/hyperpolymath/tangle[tangle]
+
+| Equivalence, properties, and change
+| Haec
+| Trope-particularity and graded property-loss research.
+| https://github.com/hyperpolymath/haec[haec]
+
+| Equivalence, properties, and change
+| Firmboot
+| Continuity obligations across software transformations; a research prototype.
+| https://github.com/hyperpolymath/firmboot[firmboot]
+
+| Domain-specific and restricted entries
+| KitchenSpeak
+| Experimental kitchen-domain orchestration DSL; now standalone.
+| https://github.com/hyperpolymath/kitchenspeak[kitchenspeak]
+
+| Domain-specific and restricted entries
+| 007
+| Private agent meta-language; index-only. No source or private link is mirrored here.
+| The-Metadatastician/007 (private)
+
+| Domain-specific and restricted entries
+| TypeFix Zero
+| Exploratory/private minimal typed teaching core; viability under review. Not a committed family member.
+| Design note staged at `extraction-queue/typefix-zero/SPEC.adoc`; no public canonical URL
+|===
+
+The registry's status labels distinguish active, design, experimental, specification, and exploratory projects. They are not the standards readiness grades. Private entries intentionally expose only the minimum pointer permitted by their visibility policy.
+
+== 2. Related syntax surfaces
+
+These projects explore familiar surface syntaxes in the AffineScript direction. They are separate repositories and should be represented as *surface projects*, not silently added to the 16-entry core language registry.
+
+[cols="1,2,2"]
+|===
+| Project | Relationship | Canonical home
+
+| CafeScripto
+| CoffeeScript-shaped AffineScript surface
+| https://github.com/hyperpolymath/cafescripto[cafescripto]
+
+| JaffaScript
+| JavaScript/TypeScript-shaped AffineScript surface
+| https://github.com/hyperpolymath/jaffascript[jaffascript]
+
+| LucidScript
+| PureScript/Haskell-shaped AffineScript surface
+| https://github.com/hyperpolymath/lucidscript[lucidscript]
+
+| PseudoScript
+| Pseudocode-shaped AffineScript surface and pedagogy-oriented project
+| https://github.com/hyperpolymath/pseudoscript[pseudoscript]
+
+| RattleScript
+| Python-shaped AffineScript surface
+| https://github.com/hyperpolymath/rattlescript[rattlescript]
+|===
+
+The table describes their stated repository relationship; it does not certify feature parity, shared parser internals, or ABI-level integration. Start with AffineScript's own documentation and then follow each surface repository.
+
+== 3. Foundations, libraries, and targets
+
+[cols="1,2,2"]
+|===
+| Project | Role in the wider ecosystem | Canonical home
+
+| typed-wasm
+| WasmGC target and shared type-layout/ABI work for projects that explicitly use it. Not a source language.
+| https://github.com/hyperpolymath/typed-wasm[typed-wasm]
+
+| echo-types
+| Constructive formal library for structured information loss/residue. Not a source language.
+| https://github.com/hyperpolymath/echo-types[echo-types]
+
+| EchoTypes.jl
+| Executable finite-domain companion model; not a proof or a language implementation.
+| https://github.com/hyperpolymath/EchoTypes.jl[EchoTypes.jl]
+
+| Kategoria
+| Multi-route exploration of type-safety levels and language-building approaches. Research adjacency, not a core member.
+| https://github.com/hyperpolymath/kategoria[kategoria]
+
+| Panoply
+| Envelope-first language/safety discipline: claims are explicit, scoped, inspectable, and accountable. Adjacent discipline, not a core registry entry.
+| https://github.com/hyperpolymath/panoply[panoply]
+|===
+
+Some languages document dependencies or shared substrates in their own records. A project-wide topic similarity is not a dependency: follow the language's canonical dependency manifest and tests before relying on one.
+
+== 4. Tools and teaching layer
+
+=== Language augmentation (`*-iser`) tools
+
+The estate includes tools such as link:https://github.com/hyperpolymath/affinescriptiser[affinescriptiser], link:https://github.com/hyperpolymath/anvomidaviser[anvomidaviser], link:https://github.com/hyperpolymath/betlangiser[betlangiser], link:https://github.com/hyperpolymath/eclexiaiser[eclexiaiser], link:https://github.com/hyperpolymath/ephapaxiser[ephapaxiser], link:https://github.com/hyperpolymath/mylangiser[mylangiser], link:https://github.com/hyperpolymath/phronesiser[phronesiser], and link:https://github.com/hyperpolymath/wokelangiser[wokelangiser].
+
+These aim to apply selected language-derived ideas to other codebases. An `-iser` is a separate tool with its own maturity and evidence; it is not a compiler for the parent language and its existence does not imply production readiness.
+
+=== Education and presentation
+
+* link:https://github.com/hyperpolymath/tentacles-agentic-syllabus[tentacles-agentic-syllabus] is a curriculum/agentic teaching framework, not a language implementation. It uses My-Lang dialects as one learning vehicle; “Me” is a generated projection, not a dialect.
+* link:https://github.com/hyperpolymath/nextgen-language-evangeliser[nextgen-language-evangeliser] is an educational toolkit, not a language or shared compiler.
+* link:https://github.com/metadatastician/berrywiki[BerryWiki] (Metadatastician estate) is an optional notebook-style authoring/navigation tool. The portfolio wiki remains plain Markdown in this repository; the tool is not a content dependency or canonical language source.
+* Per-language examples and lessons belong with each language's canonical repository unless that repository explicitly delegates them elsewhere.
+
+== 5. Adjacent estates and project naming
+
+This coordinator is not the registry for the database or type-theory estates. `TOOLING-STATUS.adoc` names selected adjacent projects (including the KRL resolution stack and TypeLL) where those distinctions matter. Keep estate ownership and canonical project status with their own registries.
+
+JtV is indexed here under canonical `hyperpolymath/jtv`. A separate public `hyperpolymath/jtv-lang` repository describes related JtV research. Its exact lineage and canonical status have not been confirmed by this coordinator; treat it as a *lineage question*, not as a second member or a confirmed alias, until the project owner reconciles the repositories.
+
+The public repositories `hyperpolymath/ziz` and `hyperpolymath/Ziz` could not be resolved on 2026-09-26, and public estate search did not identify a matching language project. “Ziz” therefore remains an unresolved name only; no registry entry or wiki project page is fabricated. For a private or differently named project, its owner must provide the canonical URL and visibility-safe description.
+
+== 6. Read next
+
+* link:../README.adoc[README] — short front door and primary routes.
+* link:../EXPLAINME.adoc[EXPLAINME] — architecture and claim boundaries.
+* link:../.machine_readable/LANGUAGES.a2ml[LANGUAGES.a2ml] — scoped registry.
+* link:../languages/README.adoc[Language quick reference] — concise project pointers.
+* link:audits/2026-09-07-language-portfolio.md[Portfolio audit] — dated evidence and limitations.

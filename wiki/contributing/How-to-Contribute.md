@@ -1,80 +1,22 @@
-<!--
-SPDX-License-Identifier: CC-BY-SA-4.0
-Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+<!-- berrywiki
+id: 0199a001-0000-7000-8000-000000000021
+parent: 0199a001-0000-7000-8000-000000000001
+position: 80
+kind: page
+tags:
+  - contributing
+archived: false
 -->
-# How to Contribute
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+# Contributing
 
-> Join the NextGen Languages community
+First choose the correct canonical repository. This coordinator accepts cross-language maps, registry and status maintenance, evidence audits, navigation, and governance changes. Compiler, grammar, proof, language-specific tutorial, and implementation changes belong in their owning repositories.
 
-**Status:** 📝 Placeholder - contributions welcome
+## For this coordinator
 
-## Getting Started
+1. Read the repository's [CONTRIBUTING](../../.github/CONTRIBUTING.md) and [GOVERNANCE](../../GOVERNANCE.adoc) documents.
+2. Keep registry and human-pointer surfaces synchronized; run `bash hooks/validate-language-registry.sh`.
+3. Run `bash hooks/validate-coordinator-boundary.sh` and `git diff --check`.
+4. Scope claims to their evidence and date; do not expose private-project information.
 
-1. **Fork** the relevant repository
-2. **Clone** your fork locally
-3. **Create** a feature branch
-4. **Make** your changes
-5. **Test** your changes
-6. **Submit** a pull request
-
-## Repository Structure
-
-| Repository | Purpose |
-|------------|---------|
-| [nextgen-languages](https://github.com/hyperpolymath/nextgen-languages) | Hub, docs, specifications |
-| [my-lang](https://github.com/hyperpolymath/my-lang) | Solo/Duet/Ensemble dialects (+ the Me projection) |
-| [phronesis](https://github.com/hyperpolymath/phronesis) | AI ethics language |
-| [eclexia](https://github.com/hyperpolymath/eclexia) | Sustainable computing |
-| [oblibeny](https://github.com/hyperpolymath/oblibeny) | Security-critical |
-| [anvomidav](https://github.com/hyperpolymath/anvomidav) | Real-time systems |
-| [wokelang](https://github.com/hyperpolymath/wokelang) | Human-centric |
-| [language-playgrounds](https://github.com/hyperpolymath/language-playgrounds) | Interactive sandboxes |
-
-## Contribution Types
-
-### Code Contributions
-
-- Bug fixes
-- New features
-- Performance improvements
-- Test coverage
-
-### Documentation
-
-- Fix typos
-- Improve explanations
-- Add examples
-- Translate content
-
-### Design
-
-- Language design proposals
-- Syntax discussions
-- Type system extensions
-
-## Commit Convention
-
-Use [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-feat: add new syntax for resource budgets
-fix: correct type inference for linear types
-docs: update installation guide
-chore: update dependencies
-```
-
-## Code Style
-
-See [[Code Style Guide]] for language-specific conventions.
-
-## Getting Help
-
-- Open an issue with your question
-- Join discussions in the repository
-- Check existing issues and PRs
-
-## See Also
-
-- [[Code Style Guide]]
-- [[Testing Guidelines]]
-- [[Documentation Guide]]
+For practical boundaries, see [[Contributor-Guide]].

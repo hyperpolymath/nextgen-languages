@@ -1,7 +1,14 @@
-== TEST-NEEDS.md — nextgen-languages
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Historical, evidence-scoped snapshot. Do not treat counts or gaps as current without upstream verification.
+== TEST-NEEDS — nextgen-languages
+
+[WARNING]
+====
+The figures and repository-specific test descriptions below are a 2026-03 snapshot, not a current verified inventory. They predate recent project changes. Consult each canonical repository and the link:docs/audits/2026-09-07-language-portfolio.md[portfolio audit] before repeating a count or status claim.
+====
 
 ____
-Generated 2026-03-29 by punishing audit.
+Generated 2026-03-29 by audit.
 ____
 
 === CRG Grade: C — ACHIEVED 2026-04-04

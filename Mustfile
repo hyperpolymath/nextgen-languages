@@ -1,16 +1,14 @@
 # SPDX-License-Identifier: MPL-2.0
-# Mustfile - hyperpolymath mandatory checks
-# See: https://github.com/hyperpolymath/mustfile
+# Coordinator mandatory checks. No language compiler build/test is claimed here.
 
 version: 1
 
 checks:
-  - name: security
-    run: just lint
-  - name: tests
-    run: just test
-  - name: format
-    run: just fmt
+  - name: license-present
+    run: test -f LICENSE
+  - name: registry-consistency
+    run: bash hooks/validate-language-registry.sh
   - name: coordinator-boundary
     run: bash hooks/validate-coordinator-boundary.sh
-
+  - name: diff-whitespace
+    run: git diff --check

@@ -147,11 +147,9 @@ anti-confusion doc; its whole purpose is to span two repos.
 relocation to `+hyperpolymath/tentacles-agentic-syllabus+` (curriculum),
 but not language-specific leakage.
 
-|`+docs/design/verisim-parallel-dev.adoc+` |Cross-cutting
-language↔VeriSim co-development note. Could later move to
-`+hyperpolymath/verisimdb+`.
+|`+docs/design/verisim-parallel-dev.adoc+` |Deprecated pointer only. The former FormBD/VeriSimDB plan was withdrawn 2026-09-26 because its status figures, paths, and commands were stale or unverifiable. The canonical database-estate map is `+hyperpolymath/nextgen-databases+`; VeriSimDB's canonical repo is `+hyperpolymath/verisimdb+`. No current public FormBD repo was identified, so no destination is guessed.
 
-|`+TEST-NEEDS.md+`, `+PROOF-NEEDS.md+`, `+TOOLING-STATUS.adoc+`,
+|`+TEST-NEEDS.adoc+`, `+PROOF-NEEDS.adoc+`, `+TOOLING-STATUS.adoc+`,
 `+language-status-tracker.jl+` |Cross-language trackers — the
 coordinator’s core job.
 |===

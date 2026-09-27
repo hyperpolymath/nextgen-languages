@@ -55,7 +55,7 @@ perfective = 10   # % for SPDX headers, doc updates, formatting, style
 # Customise this per project — the template default is generic.
 
 [methodology.unique-strength]
-description = "{{PROJECT_UNIQUE_STRENGTH}}"
+description = "A curated, evidence-scoped map of independent language research projects, with explicit boundaries between core languages and adjacent surfaces, tools, substrates, and curricula."
 deepen-not-broaden = true
 
 # ============================================================================
@@ -71,10 +71,9 @@ deepen-not-broaden = true
 
 [methodology.divergent-invariants]
 rules = [
-  # Customise per project. Examples:
-  # "Idris2 only for formal verification — no Lean4, Coq, Agda",
-  # "believe_me count must remain zero",
-  # "FFI architecture: Idris2 → RefC → Zig → C ABI (no shortcuts)",
+  "Never describe a related project as integrated unless a tested dependency, adapter, or conformance path is evidenced.",
+  "Never infer production readiness or a standards grade from registry inclusion, project descriptions, or a design-stage proof.",
+  "Keep private project names, URLs, and details within their declared visibility policy.",
 ]
 
 # Optional: language invariant for the core strength
@@ -89,9 +88,9 @@ rules = [
 
 [methodology.known-constraints]
 constraints = [
-  # Customise per project. Examples:
-  # "End-to-end build has never been verified",
-  # "libproject.so does not exist yet — all bindings call stubs",
+  "This repository has no language compiler or runtime to build; build and implementation tests belong to canonical project repositories.",
+  "Cross-project status is a dated snapshot and may lag upstream changes.",
+  "The public estate search did not resolve the requested name 'ziz'; do not invent a project record without a canonical pointer.",
 ]
 
 # ============================================================================

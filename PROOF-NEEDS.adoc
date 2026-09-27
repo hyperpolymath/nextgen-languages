@@ -1,6 +1,13 @@
-== PROOF-NEEDS.md — nextgen-languages
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Historical, evidence-scoped snapshot. Repository-specific claims require upstream verification.
+== PROOF-NEEDS — nextgen-languages
 
-=== Current State
+[WARNING]
+====
+The proof inventory below is a historical snapshot and has not been revalidated as part of the 2026-09-26 coordinator update. Proof status and terminology may have changed in the canonical repositories. Do not use the listed theorem names, admitted counts, or paths as current facts without checking upstream and the link:docs/audits/2026-09-07-language-portfolio.md[portfolio audit].
+====
+
+=== Current State (historical snapshot; see warning)
 
 `+nextgen-languages+` is a pure coordinator and holds *no* proof code.
 This file tracks the family’s proof gaps across the standalone

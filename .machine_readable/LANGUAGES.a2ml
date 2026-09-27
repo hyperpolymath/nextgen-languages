@@ -132,7 +132,7 @@ name = "Tangle"
 repo = "https://github.com/hyperpolymath/tangle"
 invariant = "Programs are braids; equivalence is topological isotopy"
 role = "Topological (knot/braid) language; core mechanised in Lean"
-note = "TangleIR is consumed by the separate KRL resolution stack (krl → TangleIR → VeriSimCore → Skein.jl/quandledb) — that stack is out of coordinator scope"
+note = "Earlier estate notes conflated Tangle with the separate KRL resolution stack; Tangle's own README retracts that conflation. Do not assert a KRL dependency or shared lineage here. See docs/ecosystem-map.adoc and the Tangle canonical repository."
 status = "active"
 
 [[language]]
@@ -150,7 +150,7 @@ name = "KitchenSpeak"
 repo = "https://github.com/hyperpolymath/kitchenspeak"
 invariant = "Physical-process constraints are enforced in the types"
 role = "Orchestration DSL (kitchen domain, physics-in-types); consumes the echo-types substrate"
-note = "Extracted from this coordinator 2026-06; in-tree snapshot removed (EXTRACTION-MANIFEST.md)"
+note = "Extracted from this coordinator 2026-06; in-tree snapshot removed (EXTRACTION-MANIFEST.adoc)"
 status = "experimental"
 
 [[language]]

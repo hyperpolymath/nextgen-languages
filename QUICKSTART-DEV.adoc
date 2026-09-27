@@ -1,111 +1,73 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-// Template: QUICKSTART-DEV.adoc — clone → build → test → PR
-// Replace nextgen-languages, {{BUILD_CMD}}, {{TEST_CMD}}, {{LANG_STACK}} with actuals
-= nextgen-languages — Quick Start for Developers
+= nextgen-languages — Contributor Quick Start
 :toc:
 :toclevels: 2
 
-== Tech Stack
+== What you are working on
 
-{{LANG_STACK}}
+This is a documentation, registry, and governance coordinator. It contains no language build workspace. Do not expect `just build` to compile a language: implementations and their detailed specs, proofs, and tutorials live in their canonical repositories.
 
-== Set Up Development Environment
-
-=== Option A: Guix (preferred)
-
-[source,bash]
-----
-guix shell
-----
-
-=== Option B: Nix (fallback)
-
-[source,bash]
-----
-nix develop
-----
-
-=== Option C: Manual
+== Set up
 
 [source,bash]
 ----
 git clone https://github.com/hyperpolymath/nextgen-languages.git
 cd nextgen-languages
-just setup-dev
 ----
 
-== Build
+For a reproducible shell, use the repository's Guix manifest when Guix is available:
 
 [source,bash]
 ----
-{{BUILD_CMD}}
+guix shell -m manifest.scm
 ----
 
-== Test
+There is no `setup-dev` recipe. For the checks below, Bash and Git are sufficient; `just` is optional shorthand.
+
+== Validate the coordinator
 
 [source,bash]
 ----
-{{TEST_CMD}}
+bash hooks/validate-language-registry.sh
+bash hooks/validate-coordinator-boundary.sh
 ----
 
-== Project Structure
+The first check compares the human pointers with the machine registry and other cross-reference surfaces. The second prevents language implementation material from being added here.
 
-[source]
-----
-nextgen-languages/
-├── src/                  # Source code
-├── src/abi/              # Idris2 ABI definitions (if applicable)
-├── ffi/zig/              # Zig FFI bridge (if applicable)
-├── tests/                # Test suite
-├── docs/                 # Documentation
-├── .machine_readable/    # Checkpoint files (STATE, META, ECOSYSTEM)
-├── Justfile              # Task runner recipes
-├── guix.scm              # Guix environment
-└── 0-AI-MANIFEST.a2ml    # AI agent entry point
-----
-
-== Key Recipes
+With `just` installed, the same baseline is available through:
 
 [source,bash]
 ----
-just build          # Build the project
-just test           # Run tests
-just doctor         # Self-diagnostic
-just lint           # Lint and format
-just panic-scan     # Security scan via panic-attacker
-just tour           # Guided tour of the codebase
+just validate
+just test
+just check
 ----
 
-== Before Submitting a PR
+`test` and `check` are checks of this coordinator, not of any language implementation. Run the owning language repository's tests for language changes.
 
-[source,bash]
-----
-just lint           # Format and lint
-just test           # All tests pass
-just panic-scan     # No new security issues
-----
+== Repository map
 
-== Contractile Invariants
+* `languages/` — thin, human-readable pointers to canonical repositories.
+* `.machine_readable/LANGUAGES.a2ml` — scoped portfolio registry.
+* `.machine_readable/descriptiles/ECOSYSTEM.a2ml` — ecosystem references.
+* `TOOLING-STATUS.adoc`, `language-status-tracker.jl` — cross-project status surfaces.
+* `docs/ecosystem-map.adoc` — languages, syntax surfaces, substrates, tools, and teaching projects, clearly distinguished.
+* `wiki/` — portfolio-level BerryWiki-compatible navigation; not per-language documentation.
+* `extraction-queue/` — historical material pending confirmation that it has landed in canonical repositories; not canonical language source.
 
-Read `.machine_readable/contractiles/Mustfile.a2ml` before making changes.
-Key invariants that must never be violated:
+== Before submitting
 
-{{MUST_INVARIANTS}}
+1. Follow `.github/CONTRIBUTING.md` and `GOVERNANCE.adoc`.
+2. Keep status claims dated and evidence-scoped; do not turn `TBD` into a grade.
+3. For an actual registry member addition, update all registry surfaces together.
+4. Run both registry and boundary checks and review `git diff --check`.
+5. Keep private-repository names and details within their declared visibility policy.
 
-== LLM/AI Agent Development
+== More context
 
-If using an AI assistant, load the warmup context first:
-
-[source,bash]
-----
-just llm-context    # Outputs role-appropriate context
-----
-
-Or read `0-AI-MANIFEST.a2ml` and `.claude/CLAUDE.md` directly.
-
-== Get Help
-
-* **Architecture**: link:EXPLAINME.adoc[EXPLAINME.adoc]
-* **Wiki**: https://github.com/hyperpolymath/nextgen-languages/wiki
-* **Report issue**: `just help-me`
+* link:README.adoc[README] — entry point.
+* link:EXPLAINME.adoc[EXPLAINME] — architecture and claim boundaries.
+* link:docs/ecosystem-map.adoc[Ecosystem map] — discover related projects by role.
+* link:languages/README.adoc[Language index] — canonical links.
+* link:SECURITY.md[Security reporting].

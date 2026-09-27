@@ -1,112 +1,48 @@
-== Hyperpolymath Language Portfolio
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= Language Portfolio Index
+:toc:
 
-*Last updated:* 2026-09-07
+*Updated:* 2026-09-26
 
-This is a cross-language index. `+nextgen-languages+` is a *pure
-coordinator*: it does not contain any language. Each language is its own
-standalone `+hyperpolymath/<lang>+` repo. *Per-language status,
-completion, and tech-stack detail are not duplicated here* — they live
-in each language’s own repo and in the coordinator’s canonical trackers:
+This is a cross-language orientation page, not a source of per-language implementation details. The canonical scoped registry is link:../.machine_readable/LANGUAGES.a2ml[`.machine_readable/LANGUAGES.a2ml`]; the canonical repositories own their language specifications, compilers, proofs, and current status.
 
-* *`+.machine_readable/LANGUAGES.a2ml+`* — the machine-readable language
-registry
-* *`+language-status-tracker.jl+`* — the script that computes
-cross-language status
-* *`+TOOLING-STATUS.adoc+`* — the per-language grade matrix
-(CRG/TRG/ARG/FRG/RSR)
-* *`+PROOF-NEEDS.md+` / `+TEST-NEEDS.md+`* — cross-language proof/test
-gaps
+== Start here
 
-=== General-purpose languages
+* link:../README.adoc[README] — project front door and primary routes.
+* link:../EXPLAINME.adoc[EXPLAINME] — architecture, scope, and claim boundaries.
+* link:../languages/README.adoc[Language quick reference] — pointers for each indexed project.
+* link:ecosystem-map.adoc[Ecosystem map] — core portfolio plus related surfaces, substrates, tools, and education projects.
+* link:../TOOLING-STATUS.adoc[Tooling and integration status] — explicitly unverified/dated matrix; check its warning before using it as evidence.
 
-[width="100%",cols="33%,19%,48%",options="header",]
+== Core portfolio
+
+The registry has 17 records: 16 committed entries with human pointers, plus one exploratory/private TypeFix Zero record not yet committed to the family. The committed entries span active projects, experimental language work, a continuity research prototype, and a private index-only item. “In the registry” is not a readiness grade. Consult the individual project and the dated link:audits/2026-09-07-language-portfolio.md[portfolio audit] for evidence and caveats.
+
+[cols="1,2"]
 |===
-|Language |Repo |One-line role
-|Phronesis |`+hyperpolymath/phronesis+` |Formal, auditable agent ethics
+| Area | Canonical repositories
 
-|Eclexia |`+hyperpolymath/eclexia+` |Resource-first / green computing
+| Resource and execution constraints
+| https://github.com/hyperpolymath/affinescript[AffineScript], https://github.com/hyperpolymath/ephapax[Ephapax], https://github.com/hyperpolymath/eclexia[Eclexia], https://github.com/hyperpolymath/oblibeny[Oblíbený]
 
-|WokeLang |`+hyperpolymath/wokelang+` |Consent & well-being as
-primitives
+| Normative, timing, and consent concerns
+| https://github.com/hyperpolymath/phronesis[Phronesis], https://github.com/hyperpolymath/anvomidav[Anvomidav], https://github.com/hyperpolymath/wokelang[WokeLang]
 
-|AffineScript |`+hyperpolymath/affinescript+` |Affine types targeting
-WasmGC
+| Computation and pedagogy
+| https://github.com/hyperpolymath/my-lang[My-Lang], https://github.com/hyperpolymath/betlang[betlang], https://github.com/hyperpolymath/jtv[JtV], https://github.com/hyperpolymath/error-lang[Error-Lang]
 
-|Ephapax |`+hyperpolymath/ephapax+` |Dyadic linear/affine types → WasmGC
+| Equivalence, property loss, and continuity
+| https://github.com/hyperpolymath/tangle[Tangle], https://github.com/hyperpolymath/haec[Haec], https://github.com/hyperpolymath/firmboot[Firmboot]
 
-|My-Lang |`+hyperpolymath/my-lang+` |Solo → Duet → Ensemble dialect
-family
-
-|JtV |`+hyperpolymath/jtv+` |Systems language, Harvard architecture
-
-|Error-Lang |`+hyperpolymath/error-lang+` |Pedagogical, systems thinking
-via errors
-
-|Haec |`+hyperpolymath/haec+` |Trope-particularity: graded
-property-instance loss, use-checked
-
-|Oblíbený |`+hyperpolymath/oblibeny+` |Turing-incomplete secure
-deployment
-
-|Anvomidav |`+hyperpolymath/anvomidav+` |Hard real-time / formal
-verification
-
-|betlang |`+hyperpolymath/betlang+` |Foundational / probabilistic
-experiment
-
-|Tangle |`+hyperpolymath/tangle+` |Topological (knot/braid) language;
-TangleIR feeds the separate KRL stack
-
-|007 |`+The-Metadatastician/007+` (private) |Agent meta-language
-(anti-scrape; index-only)
+| Domain-specific / restricted
+| https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory)
 |===
 
-=== Specialised & DSL
+Grouping is a reading aid, not a formal taxonomy. My-Lang's Solo, Duet, and Ensemble are nested dialects; “Me” is a runtime projection, not a fourth dialect. KitchenSpeak, Firmboot, 007, and TypeFix Zero have distinct project/status boundaries documented in the machine registry.
 
-[width="100%",cols="33%,19%,48%",options="header",]
-|===
-|Language |Repo |One-line role
-|KitchenSpeak |`+hyperpolymath/kitchenspeak+` |Experimental
-kitchen-orchestration DSL
-|===
+== Related work is not automatically a member
 
-=== Continuity research
+The AffineScript syntax-surface projects (CafeScripto, JaffaScript, LucidScript, PseudoScript, RattleScript), Kategoria, Panoply, typed-wasm, echo-types, selected `*-iser` tools, and education projects are deliberately classified separately. Follow their roles and links in the link:ecosystem-map.adoc[ecosystem map].
 
-* https://github.com/hyperpolymath/firmboot[*Firmboot*] — a public research
-prototype for software transitions that preserve explicit commitments over time.
-Its synchronic/diachronic framing connects it to this portfolio's identity-under-
-transformation theme. See the
-https://github.com/hyperpolymath/firmboot/blob/main/PURPOSE.md[purpose statement]
-and https://github.com/hyperpolymath/firmboot/blob/main/VERIFICATION.md[evidence and limits].
-
-=== Exploratory (private; viability under review)
-
-* *TypeFix Zero (TF0)* — a universe-stratified simply-typed lambda
-calculus that separates a total, proof-like fragment from a partial
-computational fragment (a single `+fix+` primitive). The repo exists but
-is *private*, and its viability is still under review, so it is
-index-only here (no public link, as with 007). The design spec is parked
-at `+../extraction-queue/typefix-zero/SPEC.adoc+`; it is registered as
-`+status = "exploratory"+` in `+../.machine_readable/LANGUAGES.a2ml+`.
-
-=== Related query/database languages (separate scope)
-
-These are tracked by the database estate, not this coordinator, and are
-listed only for discoverability:
-
-* *VQL / VQL-DT* — `+hyperpolymath/verisimdb+` (VeriSim Query Language)
-* *GQL / GQL-DT* — `+hyperpolymath/lithoglyph+` +
-`+hyperpolymath/gql-dt+`
-* *FBQL-DT* — `+hyperpolymath/fbql-dt+` (FormDB query language,
-dependent types)
-
-'''''
-
-____
-Historical note: an earlier version of this file was a pre-pivot
-planning snapshot that listed in-tree `+/var/.../REPOS+` paths and hour
-estimates. That content is obsolete under the pure-coordinator model and
-has been replaced by the pointer above. Planning and status now live in
-each language’s own repo and in the canonical trackers listed at the
-top.
-____
+The separate `hyperpolymath/jtv-lang` repository describes related JtV work, but its lineage against canonical `hyperpolymath/jtv` is unresolved here. “Ziz” was not identified as a public language repository in the Hyperpolymath or Metadatastician estate search on 2026-09-26; no speculative entry is made.
