@@ -32,7 +32,7 @@ A committed member addition must be reflected consistently in `languages/`, `.ma
 
 ## External project references
 
-My-Lang's applied learning materials and retired Me scaffolding are maintained in the external `hyperpolymath/my-lang` repository. They are not submodules or paths in this checkout. See that repository's `frontier-practices/` and `_exploratory/me-scaffolding/` when relevant, and do not copy their contents here.
+My-Lang's applied learning materials and retired Me scaffolding are maintained in the external `hyperpolymath/my-lang` repository. They are not submodules or paths in this checkout. See the external [frontier-practices](https://github.com/hyperpolymath/my-lang/tree/main/frontier-practices/) and [retired Me scaffolding](https://github.com/hyperpolymath/my-lang/tree/main/_exploratory/me-scaffolding/) when relevant; these are not local paths. Do not copy their contents here.
 
 ## Change discipline
 
