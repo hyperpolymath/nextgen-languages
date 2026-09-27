@@ -10,7 +10,7 @@ https://github.com/hyperpolymath/kitchenspeak[hyperpolymath/kitchenspeak]
 
 An experimental kitchen-orchestration DSL. The in-tree v1.0 snapshot was
 extracted 2026-06 (see
-link:../EXTRACTION-MANIFEST.md[`+../EXTRACTION-MANIFEST.md+`]); the
+link:../EXTRACTION-MANIFEST.adoc[`+../EXTRACTION-MANIFEST.adoc+`]); the
 standalone repo carries the superseding v2.0 (physics-in-types, OCaml
 compiler, machine-checked Agda) and consumes the
 https://github.com/hyperpolymath/echo-types[`+echo-types+`] substrate.

@@ -1,77 +1,29 @@
-<!--
-SPDX-License-Identifier: CC-BY-SA-4.0
-Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+<!-- berrywiki
+id: 0199a001-0000-7000-8000-000000000010
+parent: 0199a001-0000-7000-8000-000000000001
+position: 40
+kind: page
+tags:
+  - overview
+  - guide
+archived: false
 -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
 # Choosing a Language
 
-> Find the right NextGen language for your needs
+There is no single “best” language in this portfolio and no centrally managed platform that makes all entries interchangeable. Start from the property you need to explore, then read the canonical repository's current documentation before relying on it.
 
-**Status:** 📝 Placeholder - contributions welcome
+## A useful selection process
 
-## Quick Decision Guide
+1. State the problem or guarantee precisely: resource use, termination, timing, consent, ethical constraints, uncertainty, topological equivalence, or continuity.
+2. Use the [portfolio map](../Portfolio.md) and [ecosystem map](../../docs/ecosystem-map.adoc) to find relevant projects.
+3. Check the project's own README, roadmap, tests, and proof/evidence notes. A design goal is not necessarily an implemented guarantee.
+4. Confirm the project's current toolchain, license, and intended use before adopting it.
 
-### By Age (Educational)
+The groupings are for discovery only. Inclusion in the registry is not a recommendation, maturity grade, or compatibility statement.
 
-| Age | Surface | Why |
-|-----|---------|-----|
-| 6-8 | Me *(projection)* | Visual blocks, no syntax errors |
-| 8-10 | Solo | First text, explicit effects |
-| 11-14 | Duet | AI assistance, collaboration |
-| 15-18+ | Ensemble | Full AI-native, professional |
+## Related routes
 
-> The three My-Lang dialects are nested: Solo ⊂ Duet ⊂ Ensemble. *Me* is not a fourth
-> dialect — it is an agent-generated projection over that hierarchy, used as the entry
-> surface for the youngest learners (specified in `tentacles-agentic-syllabus/me`).
-
-### By Domain
-
-| Domain | Language | Key Feature |
-|--------|----------|-------------|
-| Systems programming | Solo | Explicit effects, contracts |
-| AI/ML applications | Ensemble | AI as first-class effect |
-| AI safety/ethics | Phronesis | Formal value specification |
-| Green computing | Eclexia | Resource budgets |
-| Security-critical | Oblíbený | Guaranteed termination |
-| Real-time systems | Anvomidav | Deadline guarantees |
-| Accessibility | WokeLang | Consent, supportive errors |
-| Probabilistic | betlang | Explicit uncertainty |
-
-### By Guarantee Needed
-
-| Guarantee | Language |
-|-----------|----------|
-| Memory safety | Solo, Anvomidav, Oblíbený |
-| Type safety | All |
-| Termination | Oblíbený |
-| Real-time | Anvomidav |
-| Resource bounds | Eclexia |
-| Ethical compliance | Phronesis |
-
-## Language Comparison
-
-```
-Abstraction:    Low ←――――――――――――――→ High
-                Solo                 WokeLang
-
-Verification:   Minimal ←―――――――→ Maximal
-                WokeLang            Anvomidav
-
-AI Integration: None ←―――――――――――→ Native
-                Oblíbený            Ensemble
-
-Audience:       Expert ←――――――――→ Beginner
-                Anvomidav           WokeLang
-```
-
-## Still Unsure?
-
-1. **Learning?** Start with the Me projection or Solo
-2. **Building AI apps?** Use Ensemble
-3. **Safety-critical?** Use Anvomidav or Oblíbený
-4. **Green computing?** Use Eclexia
-
-## See Also
-
-- [[Installation]]
-- [[Tutorial: Hello World]]
-- [[My-Language Family]]
+- [[Portfolio]]
+- [[Ecosystem-Connections]]
+- [Language pointers](../../languages/README.adoc)

@@ -1,122 +1,36 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-// Template: QUICKSTART-MAINTAINER.adoc — packaging, deploying, and maintaining
-// Replace nextgen-languages, nextgen-languages, {{DEPS}} with actuals
-= nextgen-languages — Quick Start for Platform Maintainers
+= nextgen-languages — Coordinator Maintenance Guide
 :toc:
 :toclevels: 2
 
-== Overview
+== Scope
 
-This guide covers packaging, deploying, and maintaining nextgen-languages for
-distribution on your platform.
+This repository is a pure coordinator; it has no runtime service, language compiler build, distributable binary, or installable application. Do not package or deploy it as if it were a language implementation. The language repositories own their own release and packaging processes.
 
-== Runtime Dependencies
+== Dependencies and checks
 
-{{DEPS}}
-
-== Build from Source
+For the coordinator checks, Bash and Git are sufficient. `just` provides convenience recipes. Guix users can enter the declared environment with `guix shell -m manifest.scm`.
 
 [source,bash]
 ----
-git clone https://github.com/hyperpolymath/nextgen-languages.git
-cd nextgen-languages
-just build-release
+bash hooks/validate-language-registry.sh
+bash hooks/validate-coordinator-boundary.sh
+git diff --check
 ----
 
-Output: `{{BUILD_OUTPUT_PATH}}`
+== Registry maintenance
 
-== Packaging
+The registry scope is `.machine_readable/LANGUAGES.a2ml`; `languages/*.adoc` provides the corresponding human pointers. A committed family member must be reflected consistently in the registry, boundary guard, ecosystem metadata, and tracker. Validate the full set with `bash hooks/validate-language-registry.sh`.
 
-=== Guix
+Do not add an adjacent tool, syntax surface, curriculum, library, or research lab as a core language merely for discoverability. Add those to `docs/ecosystem-map.adoc` with their relationship category. Confirm the canonical repository and its privacy policy before publishing a pointer.
 
-[source,bash]
-----
-guix build -f build/guix.scm
-----
+== Releases and operational deployment
 
-=== Nix
+There is no release artifact or service to deploy from this coordinator. Changes are reviewed and merged through the repository's normal GitHub process. Check the owning project repository for language or tool releases.
 
-[source,bash]
-----
-nix build
-----
+== Governance and security
 
-=== Manual Package
-
-[source,bash]
-----
-just install --prefix=/usr/local
-----
-
-Files installed:
-
-[cols="1,2"]
-|===
-| Path | Contents
-
-| `$PREFIX/bin/`
-| Executables
-
-| `$PREFIX/share/nextgen-languages/`
-| Data files, assets
-
-| `$PREFIX/share/doc/nextgen-languages/`
-| Documentation
-
-| `$PREFIX/share/applications/`
-| .desktop file (Linux, if GUI)
-
-| `$PREFIX/share/man/man1/`
-| Man pages
-|===
-
-== Configuration
-
-Default config location: `$XDG_CONFIG_HOME/nextgen-languages/config.toml`
-
-Fallback: `$HOME/.config/nextgen-languages/config.toml`
-
-== Health Checks
-
-[source,bash]
-----
-just doctor            # Full diagnostic
-just run --version   # Version check
-just run --selftest  # Built-in self-test
-----
-
-== Updating
-
-[source,bash]
-----
-git pull
-just build-release
-just install --prefix=/usr/local
-----
-
-Or via OPSM: `opsm update nextgen-languages`
-
-== Security Notes
-
-* License: MPL-2.0 (Palimpsest License)
-* All dependencies SHA-pinned
-* `panic-attacker` scan results: link:INSTALL-SECURITY-REPORT.adoc[]
-* OpenSSF Scorecard: see badge in README
-
-== Multi-Instance Deployment
-
-For deploying multiple instances (e.g., different users or tenants):
-
-[source,bash]
-----
-just install --prefix=/opt/nextgen-languages-instance1 --config=/etc/nextgen-languages/instance1.toml
-just install --prefix=/opt/nextgen-languages-instance2 --config=/etc/nextgen-languages/instance2.toml
-----
-
-Each instance has isolated config, data, and logs.
-
-== Reporting Issues
-
-* Upstream: https://github.com/hyperpolymath/nextgen-languages/issues
-* With diagnostic: `just help-me` (pre-fills context)
+* Follow link:GOVERNANCE.adoc[governance] and link:MAINTAINERS.adoc[maintainer responsibilities].
+* Report security issues through link:SECURITY.md[the security policy].
+* Do not alter the license, CI permissions, action-lock policy, private project visibility, or coordinator boundary without the appropriate maintainer review.

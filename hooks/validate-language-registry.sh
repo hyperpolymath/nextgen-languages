@@ -16,7 +16,7 @@
 #   - language-status-tracker.jl               (const LANGUAGES — must be a SUPERSET;
 #                                               it also tracks playgrounds/ecosystem/umbrella)
 #
-# See 0-AI-MANIFEST.a2ml and EXTRACTION-MANIFEST.md.
+# See 0-AI-MANIFEST.a2ml and EXTRACTION-MANIFEST.adoc.
 set -euo pipefail
 shopt -s nullglob
 

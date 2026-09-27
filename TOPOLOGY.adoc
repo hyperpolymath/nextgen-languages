@@ -1,79 +1,59 @@
-== Next-Gen Languages — Coordinator Topology
+// SPDX-License-Identifier: CC-BY-SA-4.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+= Next-Gen Languages — Coordinator Topology
+:toc:
 
-`+nextgen-languages+` is a *pure coordinator*. It contains no language
-code: it _references_ a family of standalone `+hyperpolymath/<lang>+`
-repositories and holds the cross-language registries, trackers,
-governance, and CI that coordinate them. The map below is a reference
-diagram, *not* an in-tree component tree.
+`nextgen-languages` is a *pure coordinator*. It references independent canonical project repositories and holds cross-language indexes, evidence notes, governance, and navigation. This diagram shows conceptual relationships, not a shared runtime or an in-tree component layout.
 
-=== Reference map
+== Reference map
 
-....
-                    ┌───────────────────────────────────────────────┐
-                    │           nextgen-languages (this repo)        │
-                    │                 PURE COORDINATOR               │
-                    │                                                │
-                    │  Registries & trackers                         │
-                    │    .machine_readable/LANGUAGES.a2ml            │
-                    │    languages/*.md · TOOLING-STATUS.adoc        │
-                    │    PROOF-NEEDS.md · TEST-NEEDS.md              │
-                    │    language-status-tracker.jl                  │
-                    │  Governance · CI · coordinator-boundary guard  │
-                    └───────────────────────┬───────────────────────┘
-                                            │ references (never vendors)
-        ┌───────────────────────────────────┼───────────────────────────────────┐
-        ▼                                   ▼                                   ▼
- ┌────────────────┐                 ┌────────────────┐                 ┌────────────────┐
- │ General-purpose│                 │  Specialised   │                 │   Private /    │
- │ & foundational │                 │   & DSL        │                 │  exploratory   │
- ├────────────────┤                 ├────────────────┤                 ├────────────────┤
- │ my-lang        │                 │ kitchenspeak   │                 │ 007 (private)  │
- │ phronesis      │                 │  (DSL)         │                 │ typefix-zero   │
- │ eclexia        │                 └────────────────┘                 │  (private)     │
- │ oblibeny       │                                                    └────────────────┘
- │ anvomidav      │
- │ wokelang       │      Each box is a standalone hyperpolymath/<lang> repo. This
- │ betlang        │      coordinator holds a pointer + registry entry for each one;
- │ jtv            │      the implementation, specs, grammars, and proofs live there,
- │ affinescript   │      never here.
- │ ephapax        │
- │ haec           │
- │ error-lang     │
- │ tangle         │
- └────────────────┘
-....
+[source,text]
+----
+                           ┌──────────────────────────────────┐
+                           │ nextgen-languages (this repo)    │
+                           │ pure coordinator                 │
+                           ├──────────────────────────────────┤
+                           │ README / EXPLAINME               │
+                           │ LANGUAGES.a2ml + languages/*.adoc│
+                           │ status + audit + ecosystem map   │
+                           │ coordinator checks + wiki        │
+                           └────────────────┬─────────────────┘
+                                            │ links; does not vendor
+            ┌───────────────────────────────┼────────────────────────┐
+            ▼                               ▼                        ▼
+   Core language projects          Related project roles       Learning layer
+   - My-Lang, JtV, betlang         - syntax surfaces            - curriculum
+   - AffineScript, Ephapax          (AffineScript family)         - evangeliser
+   - Eclexia, Oblíbený              - formal substrates         - BerryWiki optional
+   - Phronesis, WokeLang            - targets/libraries           wiki editor
+   - Anvomidav, Error-Lang           - -iser tools
+   - Tangle, Haec, Firmboot         - adjacent research
+   - KitchenSpeak (experimental)
+   - 007 (private, index-only)
+   - TypeFix Zero (exploratory,
+     private; not a committed member)
 
-=== Adjacent estates (referenced, out of scope)
+ Each implementation, detailed specification, and proof remains in its own
+ canonical repository. An edge in the related-project layer is typed and does
+ not imply technical integration unless the link is explicitly verified.
+----
 
-Tracked elsewhere and listed only for discoverability — *not* part of
-the language-family registry: the KRL resolution stack
-(`+krl → TangleIR → VeriSimCore → Skein.jl / quandledb+`) and the
-database / type-theory languages (VCL-total, Quandledb, TypeLL, PanLL,
-VQL/GQL/FBQL-DT). See `+docs/language-portfolio.md+` and the "`Adjacent
-estates`" section of `+TOOLING-STATUS.adoc+`.
+== Canonical navigation
 
-=== Where status actually lives
+* link:README.adoc[README] — front door.
+* link:EXPLAINME.adoc[EXPLAINME] — architecture and scope boundaries.
+* link:docs/ecosystem-map.adoc[Ecosystem map] — full project crosswalk with relationship types.
+* link:languages/README.adoc[Language pointers] — canonical links for the committed portfolio entries.
+* link:.machine_readable/LANGUAGES.a2ml[LANGUAGES.a2ml] — machine-readable registry (17 records: 16 committed entries plus exploratory TypeFix Zero).
+* link:TOOLING-STATUS.adoc[Tooling status] — dated, unverified tables; read its warning before using them.
+* link:docs/audits/2026-09-07-language-portfolio.md[Portfolio audit] — evidence snapshot.
 
-This coordinator does *not* assert per-language completion — maturity is
-tracked in each language’s own repo and mirrored in the canonical
-trackers:
+== Scope and status
 
-* `+.machine_readable/LANGUAGES.a2ml+` — machine-readable registry (id,
-repo, invariant, status)
-* `+TOOLING-STATUS.adoc+` — per-language grade matrix
-(CRG/TRG/ARG/FRG/RSR)
-* `+PROOF-NEEDS.md+` / `+TEST-NEEDS.md+` — cross-language proof/test
-gaps
-* `+language-status-tracker.jl+` — script that reports cross-language
-repo status
+The registry's `status` field is not a standards readiness grade. The coordinator records no family-wide completion percentage. `TBD` means no value is verified here; implementations and current readiness evidence live in each owning project.
 
-The coordinator’s own scaffolding status lives in
-`+.machine_readable/descriptiles/STATE.a2ml+` (`+completion-percentage+`), which
-reflects coordinator maturity — not a family-wide 100%.
+Separate database and type-theory estates—including the KRL resolution stack, VeriSimDB, Quandledb, TypeLL, and PanLL—are out of this registry's scope. Tangle is an independent language and is not represented here as a KRL dependency. See the adjacent-project section in link:docs/ecosystem-map.adoc[the ecosystem map] for qualified pointers.
 
-=== Update protocol
+== Update protocol
 
-When the family changes (a language added, extracted, renamed, or
-retired), update the registries listed above *together* — they must
-agree — then refresh this map. Do not add per-language implementation
-detail here; it belongs in that language’s own repo.
+When a committed family member is added, removed, renamed, or extracted, update the registry surfaces together and run `bash hooks/validate-language-registry.sh`. For adjacent surfaces, tools, libraries, targets, education projects, or research neighbors, update `docs/ecosystem-map.adoc` and the `[portfolio-adjacent]` section of `ECOSYSTEM.a2ml`; do not enlarge the core family by default. Then run `bash hooks/validate-coordinator-boundary.sh`.

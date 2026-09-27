@@ -1,31 +1,35 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
-= Roadmap
+= Roadmap — Coordinator
 :toc:
 
-== Current Phase: Language Maturation
+== Scope
 
-This repository is a **parent tracking repo** for the NextGen Languages ecosystem.
-All implementation work happens in the individual canonical repositories.
+This roadmap is for `nextgen-languages` as a *pure coordinator*. It does not schedule implementation work owned by individual language repositories, promise that every language will reach production, or prescribe a shared ABI/package registry.
 
-== Priorities
+== Current priorities
 
 === Active
 
-* Complete remaining languages to production-ready status
-* Establish ABI/FFI layer (Idris2 + Zig) for cross-language interop
-* Integrate `proven` library for shared formal verification
+* Keep README, EXPLAINME, the portfolio map, and wiki navigation accurate and usable as front doors.
+* Maintain a scoped core registry and a separate map of related syntax surfaces, libraries/targets, tools, curricula, and research neighbors.
+* Preserve evidence boundaries: date status snapshots; distinguish formal models, implementations, and tested integrations.
+* Resolve known discovery questions only from authoritative owner information: the `jtv` / `jtv-lang` relationship and the requested “Ziz” project pointer.
+* Keep the coordinator boundary and registry validation checks passing.
 
-=== Planned
+=== Later, subject to maintainer and project-owner agreement
 
-* Cross-language interoperability framework
-* Unified package registry
-* Shared test infrastructure
+* Replace legacy tooling tables with evidence-backed, dated snapshots or remove them when no longer useful.
+* Establish a lightweight process for refreshing cross-repository status and recording link/lineage changes.
+* Add shared conformance infrastructure only where participating language owners agree on scope, semantics, and maintenance responsibility.
 
-== Language Canonical Repos
+== Out of scope
 
-See `README.adoc` for the full list of canonical repositories.
+* Building or releasing language implementations from this coordinator.
+* Assigning one readiness grade to the whole family.
+* Declaring a common compiler, runtime, ABI, package manager, or production target without implementation and governance evidence.
+* Moving or editing sibling-repository content from this repository's branch.
 
 == Tracking
 
-Progress tracked in `.machine_readable/descriptiles/STATE.a2ml`.
+Coordinator state lives in `.machine_readable/descriptiles/STATE.a2ml`. Canonical project details live in their owning repositories. Start with link:README.adoc[README] and link:docs/ecosystem-map.adoc[the ecosystem map].

@@ -87,13 +87,7 @@ let methodology_guard = {
     },
   },
 
-  # KNOWN GAP: methodology.a2ml still carries template defaults for
-  # unique-strength, divergent-invariants.rules, and known-constraints.
-  # Until those are filled, the divergent-mode checks fall back to defaults.
-  open_gaps = [
-    "methodology.unique-strength.description == {{PROJECT_UNIQUE_STRENGTH}}",
-    "methodology.divergent-invariants.rules == []",
-    "methodology.known-constraints.constraints == []",
-  ],
+  # No unresolved methodology template defaults remain in this coordinator.
+  open_gaps = [],
 }
 in methodology_guard

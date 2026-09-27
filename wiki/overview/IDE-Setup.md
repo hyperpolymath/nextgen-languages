@@ -1,89 +1,23 @@
-<!--
-SPDX-License-Identifier: CC-BY-SA-4.0
-Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+<!-- berrywiki
+id: 0199a001-0000-7000-8000-000000000012
+parent: 0199a001-0000-7000-8000-000000000001
+position: 42
+kind: page
+tags:
+  - overview
+  - editors
+archived: false
 -->
-# IDE Setup
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+# Editor and IDE Setup
 
-> Configure your editor for NextGen Languages
+This portfolio does not ship a unified editor extension, language server, debugger, or file-extension standard. Tool support differs by project and may be experimental.
 
-**Status:** 📝 Placeholder - contributions welcome
+## Configure an editor safely
 
-## Recommended Editors
+1. Check the language's canonical repository for an official LSP, formatter, syntax package, or editor extension.
+2. Install only the tool and version documented there.
+3. Treat community syntax highlighting as presentation support, not evidence of parsing or type-checking.
+4. If no official extension is listed, use a plain-text editor and the project's documented CLI rather than assuming a shared `nextgen` command.
 
-| Editor | Support Level | Extensions |
-|--------|---------------|------------|
-| VS Code | Full | NextGen Languages Pack |
-| Neovim | Good | Tree-sitter grammars |
-| Emacs | Good | Major modes available |
-| Helix | Basic | Syntax highlighting |
-
-## VS Code Setup
-
-### Install Extensions
-
-1. **NextGen Languages Pack** - Syntax highlighting for all languages
-2. **Rust Analyzer** - For Rust-based language implementations
-3. **Error Lens** - Inline error display
-
-### Settings
-
-```json
-{
-  "editor.formatOnSave": true,
-  "nextgen.defaultLanguage": "solo",
-  "nextgen.playground.autoOpen": true
-}
-```
-
-## Neovim Setup
-
-### Tree-sitter Grammars
-
-```lua
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "solo",
-    "duet",
-    "ensemble",
-    "phronesis",
-  },
-}
-```
-
-### LSP Configuration
-
-```lua
-require('lspconfig').nextgen_ls.setup {
-  filetypes = { "solo", "duet", "ensemble" },
-}
-```
-
-## Emacs Setup
-
-```elisp
-(use-package nextgen-mode
-  :mode (("\\.solo\\'" . solo-mode)
-         ("\\.duet\\'" . duet-mode)
-         ("\\.ensemble\\'" . ensemble-mode)))
-```
-
-## Syntax Highlighting
-
-Each language has its own file extension:
-
-| Language | Extension |
-|----------|-----------|
-| Solo | `.solo` |
-| Duet | `.duet` |
-| Ensemble | `.ensemble` |
-| Phronesis | `.phro` |
-| Eclexia | `.ecl` |
-| Oblíbený | `.obl` |
-| Anvomidav | `.anv` |
-| WokeLang | `.woke` |
-
-## See Also
-
-- [[Installation]]
-- [[Your First Program]]
-- [[REPL Guide]]
+For the project's repository, start at the [language index](../../languages/README.adoc). For coordinator development, see the [contributor quick start](../../QUICKSTART-DEV.adoc).

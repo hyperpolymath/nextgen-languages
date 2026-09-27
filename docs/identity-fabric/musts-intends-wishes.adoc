@@ -1,63 +1,53 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
-// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = nextgen-languages — Normative Scope (Must / Intend / Wish)
-:toc: preamble
-:revdate: 2026-06-19
+:toc:
+:revdate: 2026-09-26
 
-[abstract]
-Per-repo normative-scope record for nextgen-languages (the research-overview /
-catalog + language-policy hub for the Hyperpolymath language ecosystem). Estate
-rule (2026-06-19): every repo carries its own scoped table; crossover content is
-duplicated and marked until resolved, then wired into the other relevant repos.
-`◇` marks proposals not yet canonical.
+This document states what the coordinator is responsible for. It does not define the individual languages or assert unverified integration with adjacent projects.
 
 == Levels
 
-* *MUST* — required to be what it is (RFC 2119 normative).
-* *INTEND* — committed direction.
-* *WISH* — aspirational.
+* *MUST* — structural requirement for this repository.
+* *INTEND* — committed direction for coordinator work.
+* *WISH* — aspiration, not a present capability.
 
-== nextgen-languages (own)
+== Scope
 
 [cols="1,5", options="header"]
 |===
-| Level | nextgen-languages
+| Level | Requirement
 
 | *MUST*
-| Be the *catalog + policy hub* for the language ecosystem — carry a faithful
-  spec-overview per language under `languages/` (AffineScript, my-lang, betlang,
-  ephapax, anvomidav, eclexia, phronesis, wokelang, julia-the-viper, oblibeny,
-  kitchenspeak); carry the *Hyperpolymath language policy* (allowed/banned
-  languages); keep the *my-lang dialect family* honest — `Solo ⊂ Duet ⊂ Ensemble`,
-  *Me is a projection not a fourth dialect*, pedagogy/frontier-practices are *not*
-  audited as languages; estate governance — LICENSE/SPDX, no banned files.
+| Remain a *pure coordinator*: index canonical language repositories without vendoring language implementations, grammars, proofs, or detailed per-language documentation.
+
+| *MUST*
+| Keep the canonical registry, human pointers, boundary guard list, ecosystem language keys, and status tracker consistent; verify with `bash hooks/validate-language-registry.sh`.
+
+| *MUST*
+| Distinguish core portfolio membership from syntax surfaces, tools, curricula, libraries, targets, and adjacent research; do not imply maturity or integration from mere inclusion or linking.
+
+| *MUST*
+| Respect privacy boundaries. The private 007 and exploratory TypeFix Zero entries remain index-only; do not disclose private source, URLs, or details.
 
 | *INTEND*
-| Keep the catalog *in sync* with each language's own repo (the implementations
-  live there, not here); clear the residual template debt (3 `{{PLACEHOLDER}}`
-  files + 4 `rsr-template-repo` references); keep the policy current as the estate
-  evolves (e.g. the ReScript ban already in `main`); host shared cross-language
-  tooling/decisions where it genuinely belongs at the meta level.
+| Keep the README, EXPLAINME, wiki, and ecosystem map usable as an entry path for people who do not already know the repository topology.
+
+| *INTEND*
+| Record status claims with dates and evidence boundaries. A `TBD` value means “not verified here”; it is not a readiness grade.
+
+| *INTEND*
+| Add newly discovered projects only after verifying their canonical URL, owner, scope, and privacy policy. Resolve “Ziz” and the `jtv-lang` lineage only with owner-confirmed information.
 
 | *WISH*
-| A coherent, navigable map of the whole language estate with live status per
-  language ◇; shared conformance/aspect tooling across the family ◇; the my-lang
-  `Me` runtime-projector story fully cross-linked to the agentic-syllabus repo ◇.
+| A useful, low-maintenance graph of the broader language ecosystem with named relationship types and links to authoritative upstream evidence.
+
+| *WISH*
+| Shared conformance tooling where multiple project owners explicitly adopt and maintain it.
 |===
 
-== Cross-repo wiring
+== Relationship boundaries
 
-nextgen-languages is the *meta / catalog* node: it indexes the languages but does
-not implement them. Two of its catalogued languages are load-bearing for the rest
-of the estate: *tangle* (whose TangleIR is the canonical representation of the KRL
-stack) and *AffineScript* (the estate's primary application language — e.g.
-quandledb's TEA frontend). The confirmed KRL-stack ladder (maintainer-confirmed
-2026-06-19) is: *krl → tangle/TangleIR → VerisimCore → Skein.jl / quandledb*.
+The portfolio is related by research questions; it is not a unified compiler or runtime. Links in the ecosystem map are classified as dependency, shared substrate, syntax surface, tool, curriculum, or research adjacency. Only call something an integration when a tested dependency, adapter, or conformance path supports the claim.
 
-Sibling repos' key concerns (keep in sync as crossover resolves): *tangle* —
-TangleIR + type-safe core (a catalogued language *and* a stack component);
-*krl* — resolution DSL surface; *quandledb* — equivalence / identity face;
-*Skein.jl* — computational engine; *nextgen-databases* — sibling research-overview
-monorepo (home of `verisim-core/`); *echo-types* — structured-loss theory + the
-identity-fabric framing (Conway·Fichte / Bruner / Ricoeur); *KnotTheory.jl* — knot-theory mathematics library (Skein weak-dep);
-*nextgen-typing* — type-theory coordination monorepo. See `../AFFIRMATION.adoc`.
+Tangle is an independent topological language. Its own canonical repository is the authority for its representation and scope; this coordinator does not assert a KRL dependency or make KRL/QuandleDB a member of this registry. Similarly, `typed-wasm` and `echo-types` are discoverable shared-infrastructure projects, not language-family members. Consult the link:../ecosystem-map.adoc[ecosystem map] for current pointers and caveats.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: CC-BY-SA-4.0
 // Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 //
-// STAGED FOR EXTRACTION — see ../../EXTRACTION-MANIFEST.md
+// STAGED FOR EXTRACTION — see ../../EXTRACTION-MANIFEST.adoc
 // This content was pasted into the coordinator README.adoc by an agent. TypeFix
 // Zero is a proposed standalone language; this is its design text, removed from
 // the coordinator and parked here pending creation of its own repo.

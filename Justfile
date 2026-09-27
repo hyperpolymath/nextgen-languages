@@ -1,136 +1,47 @@
 # SPDX-License-Identifier: MPL-2.0
-# Justfile - hyperpolymath standard task runner
+# Coordinator task runner. This repository has no language build artifacts.
 
 import? "contractile.just"
 
 default:
     @just --list
 
-# Build the project
-build:
-    @echo "Building..."
+# Check portfolio registry consistency.
+validate-registry:
+    bash hooks/validate-language-registry.sh
 
-# Run tests
-test:
-    @echo "Testing..."
+# Ensure implementation material stays in canonical language repositories.
+validate-boundary:
+    bash hooks/validate-coordinator-boundary.sh
 
-# Run lints
+# Run the coordinator's substantive validation checks.
+validate: validate-registry validate-boundary
+
+test: validate
+    git diff --check
+
 lint:
-    @echo "Linting..."
+    for f in hooks/*.sh scripts/*.sh; do test ! -f "$$f" || bash -n "$$f"; done
+    git diff --check
 
-# Clean build artifacts
-clean:
-    @echo "Cleaning..."
-
-# Format code
-fmt:
-    @echo "Formatting..."
-
-# Run all checks
 check: lint test
 
-# Prepare a release
-release VERSION:
-    @echo "Releasing {{VERSION}}..."
+# A coordinator has no compiler or binary to build.
+build:
+    @echo "No build target: language implementations are maintained in their canonical repositories."
 
-# ============================================================
-# OPSM — native package management for nextgen-languages
-# ============================================================
-
-# Install all workspace dependencies via OPSM
-deps:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found — install from https://github.com/hyperpolymath/odds-and-sods-package-manager" && exit 1)
-    opsm install --workspace
-
-# Install pinned tool versions from [runtime] section in opsm.toml
-runtime-install:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
-    opsm runtime install --from opsm.toml
-
-# Publish all workspace members to the Hyperpolymath Forge Registry
-publish:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
-    opsm publish --workspace --registry hf
-
-# Search OPSM for a package across all nextgen-languages registries
-search QUERY:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
-    opsm search "{{QUERY}}" --registry hf
-
-# List installed OPSM runtime tools
-runtime-list:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
-    opsm runtime list
-
-# Audit workspace packages (license + sustainability)
-audit:
-    @command -v opsm >/dev/null 2>&1 || (echo "OPSM not found" && exit 1)
-    opsm audit --workspace
-
-
-# Run panic-attacker pre-commit scan
-assail:
-    @command -v panic-attack >/dev/null 2>&1 && panic-attack assail . || echo "panic-attack not found — install from https://github.com/hyperpolymath/panic-attacker"
-
-# Self-diagnostic — checks dependencies, permissions, paths
+# Show basic environment information without changing files.
 doctor:
-    @echo "Running diagnostics for nextgen-languages..."
-    @echo "Checking required tools..."
-    @command -v just >/dev/null 2>&1 && echo "  [OK] just" || echo "  [FAIL] just not found"
-    @command -v git >/dev/null 2>&1 && echo "  [OK] git" || echo "  [FAIL] git not found"
-    @echo "Checking for hardcoded paths..."
-    @grep -rn '$HOME\|$ECLIPSE_DIR' --include='*.rs' --include='*.ex' --include='*.res' --include='*.gleam' --include='*.sh' . 2>/dev/null | head -5 || echo "  [OK] No hardcoded paths"
-    @echo "Diagnostics complete."
+    @printf 'Repository: '; git rev-parse --show-toplevel
+    @printf 'Branch: '; git branch --show-current
+    @command -v bash >/dev/null && echo "Bash: available"
+    @command -v git >/dev/null && echo "Git: available"
+    @command -v just >/dev/null && echo "Just: available" || true
 
-# Auto-repair common issues
-heal:
-    @echo "Attempting auto-repair for nextgen-languages..."
-    @echo "Fixing permissions..."
-    @find . -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
-    @echo "Cleaning stale caches..."
-    @rm -rf .cache/stale 2>/dev/null || true
-    @echo "Repair complete."
-
-# Guided tour of key features
+# Print the current coordinator status entry points.
 tour:
-    @echo "=== nextgen-languages Tour ==="
-    @echo ""
-    @echo "1. Project structure:"
-    @ls -la
-    @echo ""
-    @echo "2. Available commands: just --list"
-    @echo ""
-    @echo "3. Read README.adoc for full overview"
-    @echo "4. Read EXPLAINME.adoc for architecture decisions"
-    @echo "5. Run 'just doctor' to check your setup"
-    @echo ""
-    @echo "Tour complete! Try 'just --list' to see all available commands."
+    @echo "Start with README.adoc, then EXPLAINME.adoc and docs/ecosystem-map.adoc."
+    @echo "Run 'just validate' to check registry and coordinator boundaries."
 
-# Open feedback channel with diagnostic context
 help-me:
-    @echo "=== nextgen-languages Help ==="
-    @echo "Platform: $(uname -s) $(uname -m)"
-    @echo "Shell: $SHELL"
-    @echo ""
-    @echo "To report an issue:"
-    @echo "  https://github.com/hyperpolymath/nextgen-languages/issues/new"
-    @echo ""
-    @echo "Include the output of 'just doctor' in your report."
-
-
-# Print the current CRG grade (reads from READINESS.md '**Current Grade:** X' line)
-crg-grade:
-    @grade=$$(grep -oP '(?<=\*\*Current Grade:\*\* )[A-FX]' READINESS.md 2>/dev/null | head -1); \
-    [ -z "$$grade" ] && grade="X"; \
-    echo "$$grade"
-
-# Generate a shields.io badge markdown for the current CRG grade
-# Looks for '**Current Grade:** X' in READINESS.md; falls back to X
-crg-badge:
-    @grade=$$(grep -oP '(?<=\*\*Current Grade:\*\* )[A-FX]' READINESS.md 2>/dev/null | head -1); \
-    [ -z "$$grade" ] && grade="X"; \
-    case "$$grade" in \
-      A) color="brightgreen" ;; B) color="green" ;; C) color="yellow" ;; \
-      D) color="orange" ;; E) color="red" ;; F) color="critical" ;; \
-      *) color="lightgrey" ;; esac; \
-    echo "[![CRG $$grade](https://img.shields.io/badge/CRG-$$grade-$$color?style=flat-square)](https://github.com/hyperpolymath/standards/tree/main/component-readiness-grades)"
+    @echo "https://github.com/hyperpolymath/nextgen-languages/issues/new"
