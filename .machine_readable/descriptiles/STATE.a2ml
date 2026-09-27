@@ -57,7 +57,7 @@ governance-checkpoint = "2026-06-12: bot_directives trio (hypatia, gitbot-fleet,
 action-sha-pins = "bash hooks/validate-sha-pins.sh reports 29 mutable tag refs across workflows. The official gh-actions-lock extension is not installed and release-asset downloads failed with EOF in this environment. The existing generated actions.lock maps tags to commits but does not make workflow uses lines SHA-pinned. Do not hand-edit the generated lock; rerun gh actions-lock with its safe no-migrate/no-onboard options when the tool is available."
 
 [next-actions]
-verisim-naming = "Owner decision remains: .machine_readable/integrations/verisim.a2ml describes integration.name = verisimdb and points to nextgen-databases. Consider a consistent filename, but do not rename without confirming downstream readers and the canonical integration naming rule."
+verisim-naming = "Blocked pending coordinated downstream migration: public references include hyperpolymath/gitbot-fleet/scripts/fix-missing-verisim-feed.sh writing integrations/verisim.a2ml and hyperpolymath/echidna/CHANGELOG.adoc documenting that filename. Do not rename until those consumers and estate naming policy are reconciled."
 lineage-review = "Confirm whether hyperpolymath/jtv-lang is an alias, predecessor, or separate project from canonical hyperpolymath/jtv before changing either registry pointer."
 
 [language-portfolio-audit-20260907]
