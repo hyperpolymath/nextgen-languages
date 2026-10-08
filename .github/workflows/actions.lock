@@ -34,9 +34,6 @@ workflows:
         - 'hyperpolymath/smtp-notify-action@22e7bdb322c430c1d0dac6b3bb307f4bb139d0be'
     '.github/workflows/scorecard.yml': []
     '.github/workflows/secret-scanner.yml': []
-    '.github/workflows/semgrep.yml':
-        - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'github/codeql-action@1c5b675653bb5c22dbe9b12b556ec555138e09fd'
     '.github/workflows/workflow-linter.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
 dependencies:
