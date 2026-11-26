@@ -54,7 +54,7 @@ A project appearing in the registry means it belongs on this portfolio's index. 
 
 == Portfolio membership and exclusions
 
-The registry intentionally has a narrow scope. It contains 17 records: 16 committed entries represented by human pointers, plus one exploratory/private TypeFix Zero record that is not yet a committed family member. See `.machine_readable/LANGUAGES.a2ml` for exact IDs, canonical links, status labels, and privacy notes. Firmboot is a continuity research prototype, KitchenSpeak is an experimental domain-specific DSL, and 007 is private and index-only. These differences are surfaced rather than flattened into a claim that all are comparable implementations.
+The registry intentionally has a narrow scope. It contains 18 records: 16 committed entries represented by human pointers, plus two exploratory records (private TypeFix Zero and design-stage Ubiety) that are not yet committed family members. See `.machine_readable/LANGUAGES.a2ml` for exact IDs, canonical links, status labels, and privacy notes. Firmboot is a continuity research prototype, KitchenSpeak is an experimental domain-specific DSL, and 007 is private and index-only. These differences are surfaced rather than flattened into a claim that all are comparable implementations.
 
 Neighboring repos are useful to discover but are not silently added as languages:
 

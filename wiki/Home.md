@@ -24,7 +24,7 @@ For the main repository front door, see [README.adoc](../README.adoc). The deepe
 
 ## Quick orientation
 
-`nextgen-languages` is a *coordinator*, not a monorepo. Its registry has 17 records: 16 committed portfolio entries plus one exploratory/private TypeFix Zero record. Adjacent language surfaces, foundations, tools, and curriculum projects are kept distinct. A project link means “go here to learn more,” not “these projects are integrated.”
+`nextgen-languages` is a *coordinator*, not a monorepo. Its registry has 18 records: 16 committed portfolio entries plus two exploratory records (private TypeFix Zero and design-stage Ubiety). Adjacent language surfaces, foundations, tools, and curriculum projects are kept distinct. A project link means “go here to learn more,” not “these projects are integrated.”
 
 - [Canonical language index](../languages/README.adoc)
 - [Machine-readable registry](../.machine_readable/LANGUAGES.a2ml)

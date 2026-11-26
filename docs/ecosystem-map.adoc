@@ -13,7 +13,7 @@ This map is a *navigation aid*, not a claim that the projects form one integrate
 
 == 1. Core indexed portfolio
 
-The registry has 17 records: 16 committed entries with human pointers, plus one exploratory/private TypeFix Zero record that is not yet a committed family member. Each public project below owns its implementation and detailed specification in its own repository. The list is grouped for discovery, not ranked by maturity.
+The registry has 18 records: 16 committed entries with human pointers, plus two exploratory records (private TypeFix Zero and design-stage Ubiety) that are not yet committed family members. Each public project below owns its implementation and detailed specification in its own repository. The list is grouped for discovery, not ranked by maturity.
 
 [cols="1,2,2,2"]
 |===
@@ -103,6 +103,11 @@ The registry has 17 records: 16 committed entries with human pointers, plus one 
 | TypeFix Zero
 | Exploratory/private minimal typed teaching core; viability under review. Not a committed family member.
 | Design note staged at `extraction-queue/typefix-zero/SPEC.adoc`; no public canonical URL
+
+| Domain-specific and restricted entries
+| Ubiety
+| Exploratory design in which every fact has a place and each law about places is earned with recorded evidence. Design stage, no repository. Not a committed family member.
+| Private design records held by the owner; no public canonical URL
 |===
 
 The registry's status labels distinguish active, design, experimental, specification, and exploratory projects. They are not the standards readiness grades. Private entries intentionally expose only the minimum pointer permitted by their visibility policy.

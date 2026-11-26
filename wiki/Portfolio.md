@@ -22,7 +22,7 @@ This is a grouped *directory*, not a maturity ranking. The canonical list, IDs, 
 | Normative, social, and timing constraints | [Phronesis](https://github.com/hyperpolymath/phronesis), [WokeLang](https://github.com/hyperpolymath/wokelang), [Anvomidav](https://github.com/hyperpolymath/anvomidav) |
 | Computation and learning | [My-Lang](https://github.com/hyperpolymath/my-lang), [betlang](https://github.com/hyperpolymath/betlang), [JtV](https://github.com/hyperpolymath/jtv), [Error-Lang](https://github.com/hyperpolymath/error-lang) |
 | Equivalence, properties, and change | [Tangle](https://github.com/hyperpolymath/tangle), [Haec](https://github.com/hyperpolymath/haec), [Firmboot](https://github.com/hyperpolymath/firmboot) |
-| Domain-specific / restricted entries | [KitchenSpeak](https://github.com/hyperpolymath/kitchenspeak) (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory) |
+| Domain-specific / restricted entries | [KitchenSpeak](https://github.com/hyperpolymath/kitchenspeak) (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory); Ubiety (design stage, exploratory) |
 
 ## Important distinctions
 
@@ -31,6 +31,7 @@ This is a grouped *directory*, not a maturity ranking. The canonical list, IDs, 
 - **KitchenSpeak** is experimental and standalone; no old in-tree implementation is canonical.
 - **007** is private and index-only. This directory deliberately has no private repository link or source details.
 - **TypeFix Zero** is exploratory and private, not a committed language-family member.
+- **Ubiety** is exploratory and at design stage with no repository, not a committed language-family member.
 
 ## Related projects (not additional core entries)
 

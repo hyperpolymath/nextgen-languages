@@ -54,7 +54,7 @@ Language implementations, language-specific specifications, grammars, proofs, an
 
 == Portfolio at a glance
 
-The machine-readable registry in `.machine_readable/LANGUAGES.a2ml` is the authoritative list for this coordinator. It contains 17 records: 16 committed portfolio entries with human pointers, plus one exploratory/private TypeFix Zero record that is intentionally not a committed family member. The committed set includes the My-Lang dialect family, experimental KitchenSpeak DSL, Firmboot continuity-research prototype, and private index-only 007. Inclusion means *indexed here*, not mature, mutually compatible, or production-ready.
+The machine-readable registry in `.machine_readable/LANGUAGES.a2ml` is the authoritative list for this coordinator. It contains 18 records: 16 committed portfolio entries with human pointers, plus two exploratory records (private TypeFix Zero and design-stage Ubiety) that are intentionally not committed family members. The committed set includes the My-Lang dialect family, experimental KitchenSpeak DSL, Firmboot continuity-research prototype, and private index-only 007. Inclusion means *indexed here*, not mature, mutually compatible, or production-ready.
 
 [cols="1,2,2"]
 |===
@@ -77,7 +77,7 @@ The machine-readable registry in `.machine_readable/LANGUAGES.a2ml` is the autho
 | How do equivalence, property-loss, and continuity behave under transformation?
 
 | Domain or restricted entries
-| link:https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory)
+| link:https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory); Ubiety (design stage, exploratory)
 | What can domain-specific constraints or minimal calculi teach us?
 |===
 
