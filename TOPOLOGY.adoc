@@ -32,6 +32,8 @@
    - 007 (private, index-only)
    - TypeFix Zero (exploratory,
      private; not a committed member)
+   - Ubiety (exploratory, design
+     stage; not a committed member)
 
  Each implementation, detailed specification, and proof remains in its own
  canonical repository. An edge in the related-project layer is typed and does
@@ -44,7 +46,7 @@
 * link:EXPLAINME.adoc[EXPLAINME] — architecture and scope boundaries.
 * link:docs/ecosystem-map.adoc[Ecosystem map] — full project crosswalk with relationship types.
 * link:languages/README.adoc[Language pointers] — canonical links for the committed portfolio entries.
-* link:.machine_readable/LANGUAGES.a2ml[LANGUAGES.a2ml] — machine-readable registry (17 records: 16 committed entries plus exploratory TypeFix Zero).
+* link:.machine_readable/LANGUAGES.a2ml[LANGUAGES.a2ml] — machine-readable registry (18 records: 16 committed entries plus exploratory TypeFix Zero and Ubiety).
 * link:TOOLING-STATUS.adoc[Tooling status] — dated, unverified tables; read its warning before using them.
 * link:docs/audits/2026-09-07-language-portfolio.md[Portfolio audit] — evidence snapshot.
 

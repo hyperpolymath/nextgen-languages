@@ -6,7 +6,7 @@
 
 [metadata]
 version = "0.2.0"
-last-updated = "2026-09-07"
+last-updated = "2026-11-26"
 migrated-from = "LANGUAGES.scm"
 
 # =============================================================================
@@ -171,4 +171,14 @@ visibility = "private"
 invariant = "The total mathematical fragment and the partial computational fragment (fix) are explicitly separated"
 role = "Universe-stratified STLC + Nat + one fixed-point primitive; minimal typed teaching core"
 note = "Private repo (index-only, no public link — as with 007); viability under review, not yet committed to the family. Design spec parked at extraction-queue/typefix-zero/SPEC.adoc."
+status = "exploratory"
+
+# ─── Exploratory (design stage; no repository yet; private design records, index-only) ───
+[[language]]
+id = "ubiety"
+name = "Ubiety"
+visibility = "private"
+invariant = "Every fact has a place, and every law about places is earned with recorded evidence"
+role = "Kripke semantics as the language design: worlds come from a real system, and a frame declaration is a contract that gives types to the program and tests to the system"
+note = "Design stage only: no repository, no compiler and no canonical URL (index-only, no public link). The owner holds two private design records, titled 'Kripke language: design record' and 'Kripke language: second design record'; Kripke language was the working title until 2026-11-26. Not yet committed to the family."
 status = "exploratory"

@@ -17,7 +17,7 @@ This is a cross-language orientation page, not a source of per-language implemen
 
 == Core portfolio
 
-The registry has 17 records: 16 committed entries with human pointers, plus one exploratory/private TypeFix Zero record not yet committed to the family. The committed entries span active projects, experimental language work, a continuity research prototype, and a private index-only item. “In the registry” is not a readiness grade. Consult the individual project and the dated link:audits/2026-09-07-language-portfolio.md[portfolio audit] for evidence and caveats.
+The registry has 18 records: 16 committed entries with human pointers, plus two exploratory records (private TypeFix Zero and design-stage Ubiety) not yet committed to the family. The committed entries span active projects, experimental language work, a continuity research prototype, and a private index-only item. “In the registry” is not a readiness grade. Consult the individual project and the dated link:audits/2026-09-07-language-portfolio.md[portfolio audit] for evidence and caveats.
 
 [cols="1,2"]
 |===
@@ -36,7 +36,7 @@ The registry has 17 records: 16 committed entries with human pointers, plus one 
 | https://github.com/hyperpolymath/tangle[Tangle], https://github.com/hyperpolymath/haec[Haec], https://github.com/hyperpolymath/firmboot[Firmboot]
 
 | Domain-specific / restricted
-| https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory)
+| https://github.com/hyperpolymath/kitchenspeak[KitchenSpeak] (experimental DSL); 007 (private, index-only); TypeFix Zero (private, exploratory); Ubiety (design stage, exploratory)
 |===
 
 Grouping is a reading aid, not a formal taxonomy. My-Lang's Solo, Duet, and Ensemble are nested dialects; “Me” is a runtime projection, not a fourth dialect. KitchenSpeak, Firmboot, 007, and TypeFix Zero have distinct project/status boundaries documented in the machine registry.
