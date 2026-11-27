@@ -26,7 +26,7 @@ path-style = "env vars, XDG dirs, or relative references"
 no-new-typescript = true
 no-new-python = true
 no-new-go = true
-package-manager = "Deno only — no npm/bun/yarn/pnpm dependencies"
+package-manager = "Bun first (package.json + bun.lock), then Deno, pnpm, npm as fallbacks — no Node.js/yarn dependencies"
 
 [universal.dangerous-patterns]
 idris2 = ["no believe_me", "no assert_total"]

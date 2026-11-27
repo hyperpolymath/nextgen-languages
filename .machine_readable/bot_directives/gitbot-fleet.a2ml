@@ -44,7 +44,7 @@ deny = ["weaken or delete tests", "vendor language source in-tree (pure coordina
 
 [per-bot.sustainabot]
 allow = ["dependency bump PRs (SHA-pinned actions only)"]
-deny = ["unpinned action references", "npm/bun/yarn/pnpm dependencies (Deno only)"]
+deny = ["unpinned action references", "Node.js/yarn dependencies (Bun first; Deno, pnpm, npm as fallbacks)"]
 
 [per-bot.glambot]
 allow = ["docs and wiki edits (AsciiDoc stays AsciiDoc, MD stays MD)"]
