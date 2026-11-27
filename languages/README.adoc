@@ -73,7 +73,7 @@ This directory contains *thin coordinator pointers*, not language specifications
 | https://github.com/hyperpolymath/firmboot[hyperpolymath/firmboot]
 |===
 
-The registry also records *TypeFix Zero* as an exploratory/private item under review. It has no `languages/` pointer because it is not yet a committed portfolio member.
+The registry also records *TypeFix Zero* (private) and *Ubiety* (design stage, no repository) as exploratory items under review. They have no `languages/` pointers because they are not yet committed portfolio members.
 
 == Related but not additional core languages
 

@@ -5,7 +5,7 @@
 [metadata]
 project = "nextgen-languages"
 version = "0.1.0"
-last-updated = "2026-09-26"
+last-updated = "2026-11-26"
 status = "active"
 
 [project-context]
@@ -38,6 +38,7 @@ hypatia-waivers = "recurring advisory findings triaged in .machine_readable/desc
 codeql-cron = "weekly -> monthly (standards#288, cherry-picked 2026-06-12)"
 
 [recent-work]
+ubiety-exploratory = "2026-11-26: indexed Ubiety (working title until then: Kripke language) as a second exploratory record in LANGUAGES.a2ml. It is at design stage with no repository; its design records stay private and index-only. Navigation pages now state 18 records (16 committed plus 2 exploratory). No committed-member surface changed."
 portfolio-navigation = "2026-09-26: rewrote README and EXPLAINME as a real front door and architecture guide; added a relationship-typed ecosystem map; updated language pointers and BerryWiki-compatible portfolio navigation. Publicly searchable AffineScript surfaces, Kategoria, Panoply, education projects, and selected language tools are discoverable without being added as core language members."
 coordinator-quickstarts = "2026-09-26: replaced template-era build/deploy instructions and echo-only task recipes with accurate coordinator validation commands; removed resolved REQUIRES_INITIALISATION state. Replaced unsupported generic wiki claims and deprecated machine-specific FormBD/VeriSimDB plans with scope-accurate guides and pointers; corrected dated affirmation and normative-scope records, and moved SPDX headers to the required first line of workflow files."
 unresolved-ziz = "2026-09-26: no public ziz repository was identified in the Hyperpolymath or Metadatastician estate searches; no project facts or private URLs were fabricated. Await canonical URL and visibility-safe description if this means a private/differently named project."
