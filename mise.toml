@@ -16,6 +16,7 @@ stylua = "latest"
 # Build tools
 cmake = "latest"
 ninja = "latest"
+just = "latest"
 
 # Shell tools
 git = "latest"
@@ -31,9 +32,6 @@ gnu-grep = "latest"
 # Task runner alias
 [alias]
 task = "go-task"
-
-[tasks.build]
-run = "just build"
 
 [tasks.test]
 run = "just test"
